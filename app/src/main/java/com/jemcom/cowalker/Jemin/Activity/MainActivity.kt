@@ -11,7 +11,7 @@ import android.widget.ImageButton
 import com.jemcom.cowalker.Jemin.Fragment.HomeFragment
 import com.jemcom.cowalker.Nuri.Fragment.NoticeTab
 import android.widget.Toast
-import com.jemcom.cowalker.Hyunmin.Activity.ProfileEditActivity.MypageFragment
+import com.jemcom.cowalker.Hyunmin.MypageTab
 import com.jemcom.cowalker.R
 import com.jemcom.cowalker.Jemin.Fragment.SearchFragment
 
@@ -137,7 +137,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             5 -> {
                 // '마이페이지 프래그먼트' 호출
-                val mypageFragment = MypageFragment()
+                val mypageFragment = MypageTab()
                 transaction.replace(R.id.fragment_container, mypageFragment)
                 transaction.commit()
             }

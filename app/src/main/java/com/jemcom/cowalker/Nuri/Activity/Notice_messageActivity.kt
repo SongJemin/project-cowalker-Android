@@ -44,7 +44,6 @@ class Notice_messageActivity : AppCompatActivity(), View.OnClickListener {
     fun post() {
         var content = PostMessageSend(notice_message_ed.text.toString())
         var user_id = intent.getStringExtra("partner_id")
-        System.out.println("아료옹" + intent.getStringExtra("partner_id"))
         val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
         var postMessageSend = networkService.postMessage("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA5NTE1ODMsImV4cCI6MTUzMzU0MzU4M30.90d2qcRcikydx8R-lMMyLgcYGcAxY0Poi61a-NGpujY",content,user_id)
