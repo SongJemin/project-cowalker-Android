@@ -16,4 +16,30 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <string-array name="profile_edit_role_spin">
+        <item>PM</item>
+        <item>기획자</item>
+        <item>디자이너</item>
+        <item>개발자</item>
+    </string-array>
+    <string-array name="profile_edit_object_spin">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+    <string-array name="profile_edit_field_spin">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+    <string-array name="profile_edit_location_spin">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+
 </resources>

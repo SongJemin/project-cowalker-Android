@@ -1,259 +1,291 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InviteActivity">
+    tools:context=".Jemin.Activity.InviteActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#f8f8f8">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="21dp"
-        android:layout_marginTop="38dp"
-        android:text="모집하기"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textSize="18sp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginTop="29dp"
-        android:textSize="16sp"
-        android:text="모집 역할"
-        android:layout_marginLeft="19dp"
-        android:textStyle="bold"
-        />
-
-
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:columnCount="2"
-        android:rowCount="5"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/invite_pm_btn"
-            android:layout_width="163dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="14dp"
-            android:background="@drawable/selector"
-            android:text="PM"/>
-        <Button
-            android:id="@+id/invite_planner_btn"
-            android:layout_width="163dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/selector"
-            android:layout_marginLeft="6dp"
-            android:layout_marginRight="14dp"
-            android:text="기획"/>
-
-        <Button
-            android:id="@+id/invite_designer_btn"
-            android:text="디자인"
-            android:layout_width="163dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginLeft="14dp"
-            android:background="@drawable/selector"
-            />
-        <Button
-            android:id="@+id/invite_developer_btn"
-            android:text="개발"
-            android:layout_width="163dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="9dp"
-            android:background="@drawable/selector"
-            android:layout_marginLeft="6dp"
-            android:layout_marginRight="14dp"
-            />
-
-        <Button
-            android:id="@+id/invite_etc_btn"
-            android:text="기타"
-            android:layout_width="163dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginLeft="14dp"
-            android:background="@drawable/selector"
-            />
-
-
-    </GridLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_marginTop="32dp"
-        android:textSize="16sp"
-        android:text="모집 기간"
-        android:layout_marginLeft="19dp"
-        android:textStyle="bold"
-        />
-        
-        <Button
-            android:id="@+id/invite_range_tv"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="날짜 선택"
-            android:background="@color/colorAccent"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:layout_marginTop="27dp"
-            android:textSize="16sp"
-            android:text="모집 인원"
-            android:layout_marginLeft="19dp"
-            android:textStyle="bold"
-            />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:orientation="horizontal">
-            
-            <EditText
-                android:id="@+id/invite_number_edit"
-                android:layout_width="295dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginLeft="19dp"
-                android:gravity="right"
-                android:paddingTop="11dp"
-                android:paddingRight="9dp"
-                android:paddingBottom="5dp"
-                android:background="#eeeeee"
+            android:layout_height="141dp"
+            android:background="#f8f8f8">
+
+            <View
+                android:id="@+id/invite1_line1_view"
+                android:layout_width="27dp"
+                android:layout_height="3dp"
+                android:background="#c5c5c5"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="37dp"
+                android:layout_toLeftOf="@+id/invite1_progress2_img"
+                android:layout_marginRight="2dp"
+                />
+
+            <View
+                android:id="@+id/invite1_line2_view"
+                android:layout_width="27dp"
+                android:layout_height="3dp"
+                android:background="#c5c5c5"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="37dp"
+                />
+
+            <View
+                android:id="@+id/invite1_line3_view"
+                android:layout_width="27dp"
+                android:layout_height="3dp"
+                android:background="#c5c5c5"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="37dp"
+                android:layout_toRightOf="@+id/invite1_progress3_img"
+                android:layout_marginLeft="2dp"
+                />
+
+
+            <ImageView
+                android:id="@+id/invite1_progress1_img"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_toLeftOf="@+id/invite1_line1_view"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/progress_1_active"
+                />
+
+            <ImageView
+                android:id="@+id/invite1_progress2_img"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_toLeftOf="@+id/invite1_line2_view"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/progress_2"
+                />
+
+            <ImageView
+                android:id="@+id/invite1_progress3_img"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignTop="@+id/invite1_progress2_img"
+                android:layout_toRightOf="@+id/invite1_line2_view"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/progress_3"
+                />
+
+            <ImageView
+                android:id="@+id/invite1_progress4_img"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_toRightOf="@+id/invite1_line3_view"
+                android:layout_marginLeft="2dp"
+                android:layout_alignTop="@+id/invite1_progress3_img"
+                android:background="@drawable/progress_4"
                 />
 
             <TextView
-                android:layout_width="14dp"
-                android:layout_height="19dp"
-                android:text="명"
-                android:layout_toRightOf="@+id/invite_number_edit"
-                android:layout_alignBottom="@+id/invite_number_edit"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="누구와 함께할 건가요?"
+                android:textSize="26sp"
                 android:textColor="#444444"
+                android:layout_marginLeft="20dp"
+                android:textStyle="bold"
+                android:layout_marginTop="35dp"
+                android:layout_below="@+id/invite1_progress1_img"
                 />
+
 
         </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:text="활동"
-            android:textStyle="bold"
-            android:layout_marginTop="32dp"
-            android:layout_marginLeft="19dp"
-            />
-        
-        <EditText
-            android:layout_width="336dp"
-            android:layout_height="105dp"
-            android:gravity="top"
-            android:background="#eeeeee"
-            android:textSize="16sp"
-            android:paddingTop="13dp"
-            android:paddingLeft="17dp"
-            android:paddingRight="66dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginLeft="11dp"
-            android:layout_marginRight="13dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="172dp"
+            android:background="#f8f8f8"
+            android:orientation="vertical"
+            >
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:text="활동 시간 및 기간"
-            android:textStyle="bold"
-            android:layout_marginTop="32dp"
-            android:layout_marginLeft="19dp"
-            />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="163dp"
+                android:background="#ffffff">
 
-        <EditText
-            android:layout_width="336dp"
-            android:layout_height="105dp"
-            android:gravity="top"
-            android:background="#eeeeee"
-            android:textSize="16sp"
-            android:paddingTop="14dp"
-            android:paddingLeft="13dp"
-            android:paddingRight="61dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginLeft="11dp"
-            android:layout_marginRight="13dp"/>
+                <TextView
+                    android:id="@+id/invite_role_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:text="역할"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="20dp"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginTop="13dp"
+                    />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:text="혜택 및 보상"
-            android:textStyle="bold"
-            android:layout_marginTop="49dp"
-            android:layout_marginLeft="19dp"
-            />
+                <Button
+                    android:id="@+id/invite_pm_btn"
+                    android:layout_width="89dp"
+                    android:layout_height="41dp"
+                    android:background="@drawable/selector"
+                    android:text="PM"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_below="@+id/invite_role_tv"
+                    />
 
-        <EditText
-            android:layout_width="336dp"
-            android:layout_height="105dp"
-            android:gravity="top"
-            android:background="#eeeeee"
-            android:textSize="16sp"
-            android:paddingTop="15dp"
-            android:paddingLeft="13dp"
-            android:paddingRight="17dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginLeft="11dp"
-            android:layout_marginRight="13dp"/>
+                <Button
+                    android:id="@+id/invite_planner_btn"
+                    android:layout_width="104dp"
+                    android:layout_height="41dp"
+                    android:background="@drawable/selector"
+                    android:text="기획자"
+                    android:layout_toRightOf="@+id/invite_pm_btn"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_below="@+id/invite_role_tv"
+                    />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:text="활동 위치 (상세주소)"
-            android:textStyle="bold"
-            android:layout_marginTop="49dp"
-            android:layout_marginLeft="19dp"
-            />
+                <Button
+                    android:id="@+id/invite_designer_btn"
+                    android:layout_width="117dp"
+                    android:layout_height="41dp"
+                    android:background="@drawable/selector"
+                    android:text="디자이너"
+                    android:layout_toRightOf="@+id/invite_planner_btn"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_below="@+id/invite_role_tv"
+                    />
 
-        <EditText
-            android:layout_width="336dp"
-            android:layout_height="40dp"
-            android:paddingLeft="13dp"
-            android:paddingTop="11dp"
-            android:paddingBottom="5dp"
-            android:gravity="top"
-            android:textSize="16sp"
-            android:background="#eeeeee"
-            android:layout_marginTop="13dp"
-            android:layout_marginLeft="11dp"
-            android:layout_marginRight="13dp"/>
+                <Button
+                    android:id="@+id/invite_developer_btn"
+                    android:layout_width="89dp"
+                    android:layout_height="41dp"
+                    android:background="@drawable/selector"
+                    android:text="개발자"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="85dp"
+                    android:layout_below="@+id/invite_pm_btn"
+                    />
 
+                <Button
+                    android:id="@+id/invite_etc_btn"
+                    android:layout_width="89dp"
+                    android:layout_height="41dp"
+                    android:background="@drawable/selector"
+                    android:text="기타"
+                    android:layout_toRightOf="@+id/invite_developer_btn"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_below="@+id/invite_pm_btn"
+                    />
+
+
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="118dp"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/invite_range_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:text="모집 기간"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                />
+
+            <Button
+                android:id="@+id/invite_range_btn"
+                android:layout_width="319dp"
+                android:layout_height="46dp"
+                android:text="날짜 선택"
+                android:layout_gravity="center"
+                android:layout_marginTop="18dp"
+                />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:layout_marginTop="9dp"
+            android:background="#ffffff">
+
+            <TextView
+                android:id="@+id/invite_personnel_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:text="모집 인원"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                />
+
+
+            <EditText
+                android:id="@+id/invite_personnel_edit"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="예) 0명, 00명, 1명~최대 1000명"
+                android:layout_marginLeft="20dp"
+                android:layout_below="@+id/invite_personnel_tv"
+                android:layout_marginTop="18dp"
+                android:backgroundTint="@color/Transparent"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:text="명"
+                android:layout_toRightOf="@id/invite_personnel_edit"
+                android:layout_marginTop="25dp"
+                android:layout_below="@id/invite_personnel_tv"
+                android:textColor="#444444"
+                android:layout_marginLeft="2dp"
+                />
+
+
+
+
+        </RelativeLayout>
 
         <Button
-            android:id="@+id/invite_next_btn"
-            android:layout_width="268dp"
-            android:layout_height="54dp"
-            android:layout_marginTop="46dp"
-            android:layout_marginBottom="32dp"
-            android:textStyle="bold"
-            android:textColor="#444444"
-            android:background="@drawable/invite_select_btn"
-            android:layout_gravity="center"
-            />
+            android:id="@+id/invite1_next_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="22dp"
+            android:text="다음"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="#ffffff"
+            android:background="#64dfff"/>
+
+
 
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

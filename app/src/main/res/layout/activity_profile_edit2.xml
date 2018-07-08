@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="#f8f8f8">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="내 소개 수정"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#444444"
+        android:layout_gravity="center"
+        android:layout_marginTop="33dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="소개 이미지"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="35dp"
+        android:textColor="#444444"
+        android:layout_marginTop="35dp"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="9dp"
+        android:src="@drawable/add_pic"
+        android:background="@android:color/transparent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="대표 이미지"
+        android:textSize="12sp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="7dp"
+        android:textColor="#444444"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="231dp"
+        android:background="#ffffff"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="내 소개"
+            android:textStyle="bold"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"/>
+        <EditText
+            android:inputType="textMultiLine|textNoSuggestions"
+            android:lines="5"
+            android:minLines="1"
+            android:maxLines="10"
+            android:scrollbars="vertical"
+            android:layout_width="340dp"
+            android:layout_height="96dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="19.63dp"
+            android:layout_marginTop="15dp"
+            android:textSize="16sp"
+            android:hint="자신을 어필해보세요.
+
+예) 좌우명, 본인의 장점, 관심사, 만들고자 하는 세상"
+            android:textColorHint="#c5c5c5"
+            android:background="#ffffff"/>
+    </LinearLayout>
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="52dp"
+        android:src="@drawable/okbtn"/>
+</LinearLayout>

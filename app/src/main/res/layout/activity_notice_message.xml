@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.Notice_messageActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#f8f8f8">
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,10 +17,16 @@
 
     <EditText
         android:id="@+id/notice_message_ed"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="29dp"
-        android:layout_width="336dp"
-        android:layout_height="148dp"
-        android:background="@color/colorAccent"
+        android:layout_marginTop="23dp"
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:background="#ffffff"
         />
+    <ImageView
+        android:id="@+id/notice_message_iv"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="130dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/send_ok_btn" />
 </LinearLayout>
