@@ -74,9 +74,14 @@ interface NetworkService {
             @Path("partner_id") partner_id : String
     ) : Call<GetMessageLookResponse>
 
-
     @GET("/api/mypage")
     fun getMypage(
             @Header("authorization") authorization: String
     ) : Call<GetMypageResponse>
+
+    @GET("/api/mypage/{user_idx}")
+    fun getMypageOther(
+            @Header("authorization") authorization: String,
+            @Path("user_idx") user_id: String
+    ) : Call<GetMypageOtherResponse>
 }
