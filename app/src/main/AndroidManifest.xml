@@ -42,7 +42,6 @@
         <activity android:name=".Hyunmin.Activity.MypageProjectlistActivity" />
         <activity android:name=".Hyunmin.Activity.MypageProfileEditActivity" />
         <activity android:name=".Hyunmin.Activity.ProjectIntroActivity" />
-        <activity android:name=".Hyunmin.Activity.ProfileEditActivity"></activity>
         <activity android:name=".Nuri.Activity.MessageActivity"></activity>
     </application>
 

@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
@@ -28,6 +27,12 @@ class MypageTab : Fragment(),View.OnClickListener {
     override fun onClick(v: View?) {
         when(v)
         {
+            logout_btn -> {
+                val pref = v!!.context.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+                val editor = pref.edit()
+                editor.clear()
+                editor.commit()
+            }
             mypage_project_btn ->{
                 val intent = Intent(activity, MypageProjectlistActivity::class.java)
                 startActivity(intent)
@@ -49,6 +54,9 @@ class MypageTab : Fragment(),View.OnClickListener {
 
         networkService = ApplicationController.instance.networkSerVice
         requestManager = Glide.with(this)
+        logout_btn.setOnClickListener(this)
+        mypage_project_btn.setOnClickListener(this)
+        mypage_edit_btn.setOnClickListener(this)
 
         get(view)
 
@@ -56,9 +64,10 @@ class MypageTab : Fragment(),View.OnClickListener {
     }
 
     fun get(v : View)
-    {val pref = v.context.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+    {
+        val pref = v.context.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
-        var getMypageResponse = networkService.getMypage("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzEwNTQyNzMsImV4cCI6MTUzMzY0NjI3M30.u4q4AqwHgfD8SSswhGWJmoqUHNOKFMWduNK5NUNLXlM")
+        var getMypageResponse = networkService.getMypage("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA5NTE1ODMsImV4cCI6MTUzMzU0MzU4M30.90d2qcRcikydx8R-lMMyLgcYGcAxY0Poi61a-NGpujY")
 
         getMypageResponse.enqueue(object : Callback<GetMypageResponse>{
             override fun onFailure(call: Call<GetMypageResponse>?, t: Throwable?) {
