@@ -13,13 +13,27 @@
             android:layout_width="match_parent"
             android:layout_height="177dp"
             android:background="@drawable/boyoung"/>
-        <ImageView
+
+        <RelativeLayout
             android:layout_width="81dp"
             android:layout_height="81dp"
-            android:background="@drawable/profile_default"
             android:layout_marginTop="137dp"
-            android:layout_marginLeft="20dp"
-            />
+            android:layout_marginLeft="20dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="74dp"
+                android:layout_height="74dp"
+                android:layout_centerInParent="true"
+                android:src="@android:color/white"
+                />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/mypage_profile_img"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/profile_default"
+                />
+        </RelativeLayout>
         <Button
             android:layout_width="29dp"
             android:layout_height="29dp"
@@ -29,6 +43,7 @@
             android:background="@drawable/oval"
             />
         <Button
+            android:id="@+id/mypage_camera_btn"
             android:layout_width="29dp"
             android:layout_height="29dp"
             android:layout_marginTop="189dp"
@@ -97,14 +112,18 @@
             android:textColor="#444444"
             />
 
-        <Button
-            android:id="@+id/mypage_link_btn"
+        <TextView
+            android:id="@+id/mypage_link_tv"
             android:layout_width="118dp"
             android:layout_height="30dp"
-            android:background="@drawable/btn_profile_link"
-            android:layout_below="@id/mypage_summary_tv"
             android:layout_marginLeft="30dp"
-            />
+            android:layout_below="@id/mypage_summary_tv"
+            android:background="#eeeeee"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:text="fjsdj"
+            android:textSize="14sp"
+            android:textColor="#444444"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/mypage_intro_btn"
@@ -113,14 +132,14 @@
             android:text="더 보기>"
             android:layout_alignParentRight="true"
             android:textColor="#c5c5c5"
-            android:layout_alignBottom="@+id/mypage_link_btn"
+            android:layout_alignBottom="@+id/mypage_link_tv"
             android:layout_marginRight="25dp"
             />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_below="@+id/mypage_link_btn"
+            android:layout_below="@+id/mypage_link_tv"
             android:layout_marginTop="14dp"
             android:background="#eeeeee"
             />
@@ -130,7 +149,7 @@
             android:layout_width="match_parent"
             android:layout_height="37dp"
             android:orientation="horizontal"
-            android:layout_below="@id/mypage_link_btn"
+            android:layout_below="@id/mypage_link_tv"
             android:layout_marginTop="15dp">
 
 
@@ -146,6 +165,7 @@
                 />
 
             <TextView
+                android:id="@+id/mypage_aim_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="17dp"
                 android:text="공모전참여"
@@ -166,6 +186,7 @@
                 />
 
             <TextView
+                android:id="@+id/mypage_department_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="17dp"
                 android:text="콘텐츠"
@@ -186,6 +207,7 @@
                 />
 
             <TextView
+                android:id="@+id/mypage_area_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="17dp"
                 android:text="서울"

@@ -1,9 +1,6 @@
 package com.jemcom.cowalker.Network
 
-import com.jemcom.cowalker.Network.Get.Response.GetApplyResponse
-import com.jemcom.cowalker.Network.Get.Response.GetMessageLookResponse
-import com.jemcom.cowalker.Network.Get.Response.GetMessageResponse
-import com.jemcom.cowalker.Network.Get.Response.GetSignupResponse
+import com.jemcom.cowalker.Network.Get.Response.*
 import com.jemcom.cowalker.Network.Post.*
 import com.jemcom.cowalker.Network.Post.Response.*
 import okhttp3.MultipartBody
@@ -77,4 +74,9 @@ interface NetworkService {
             @Path("partner_id") partner_id : String
     ) : Call<GetMessageLookResponse>
 
+
+    @GET("/api/mypage")
+    fun getMypage(
+            @Header("authorization") authorization: String
+    ) : Call<GetMypageResponse>
 }
