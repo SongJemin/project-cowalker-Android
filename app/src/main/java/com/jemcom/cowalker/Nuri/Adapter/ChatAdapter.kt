@@ -15,6 +15,7 @@ class ChatAdapter(private var chatItems : ArrayList<ChatItem>) : RecyclerView.Ad
 
     fun setOnItemClickListener(I : View.OnClickListener)
     {
+        //
         onItemClick = I
     }
 
