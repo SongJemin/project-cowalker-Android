@@ -49,7 +49,8 @@
         <activity android:name=".Jemin.Activity.ProjectChange2Activity" />
         <activity android:name=".Jemin.Activity.ProjectIntroWaitActivity" />
         <activity android:name=".Jemin.Activity.ProjectIntroParticipActivity" />
-        <activity android:name=".Jemin.Activity.Test2Activity"></activity>
+        <activity android:name=".Jemin.Activity.Test2Activity" />
+        <activity android:name=".Jemin.Activity.ProjectMemberActivity"></activity>
     </application>
 
 </manifest>

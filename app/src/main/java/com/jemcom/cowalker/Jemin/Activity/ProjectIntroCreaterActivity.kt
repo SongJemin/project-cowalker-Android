@@ -92,7 +92,7 @@ class ProjectIntroCreaterActivity : AppCompatActivity() {
 
 
         introcreate_invite_Tv.setOnClickListener{
-            val intent = Intent(this@ProjectIntroCreaterActivity, Test2Activity::class.java)
+            val intent = Intent(this@ProjectIntroCreaterActivity, ProjectMemberActivity::class.java)
             intent.putExtra("project_idx", project_idx)
             startActivity(intent)
         }

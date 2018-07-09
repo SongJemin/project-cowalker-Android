@@ -1,4 +1,4 @@
-package com.jemcom.cowalker.Network.Get
+package com.jemcom.cowalker.Jemin.Item
 
 data class ProjectDetailItem (
         var title : String,

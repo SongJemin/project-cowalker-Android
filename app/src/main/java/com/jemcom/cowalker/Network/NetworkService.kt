@@ -2,6 +2,7 @@ package com.jemcom.cowalker.Network
 
 
 import com.jemcom.cowalker.Network.Delete.DeleteProjectResponse
+import com.jemcom.cowalker.Network.Get.GetSearchResponse
 import com.jemcom.cowalker.Network.Get.Response.*
 import com.jemcom.cowalker.Network.Post.*
 import com.jemcom.cowalker.Network.Post.Response.*
@@ -78,6 +79,8 @@ interface NetworkService {
     ) : Call<GetMessageLookResponse>
 
 
+
+
     @GET("/api/home")
     fun getProject(
             @Header("authorization") authorization : String
@@ -123,5 +126,11 @@ interface NetworkService {
             @Header("authorization") authorization: String,
             @Path("user_idx") user_id: String
     ) : Call<GetMypageOtherResponse>
+
+    @GET("/api/search")
+    fun getSearch(
+            @Query("aim") aim : String
+
+    ) : Call<GetSearchResponse>
 
 }
