@@ -42,8 +42,14 @@
         <activity android:name=".Hyunmin.Activity.MypageProjectlistActivity" />
         <activity android:name=".Hyunmin.Activity.MypageProfileEditActivity" />
         <activity android:name=".Hyunmin.Activity.ProjectIntroActivity" />
-        <activity android:name=".Hyunmin.Activity.ProfileEditActivity"></activity>
-        <activity android:name=".Nuri.Activity.MessageActivity"></activity>
+        <activity android:name=".Hyunmin.Activity.ProfileEditActivity" />
+        <activity android:name=".Nuri.Activity.MessageActivity" />
+        <activity android:name=".Jemin.Activity.ProjectIntroCreaterActivity" />
+        <activity android:name=".Jemin.Activity.ProjectChangeActivity" />
+        <activity android:name=".Jemin.Activity.ProjectChange2Activity" />
+        <activity android:name=".Jemin.Activity.ProjectIntroWaitActivity" />
+        <activity android:name=".Jemin.Activity.ProjectIntroParticipActivity" />
+        <activity android:name=".Jemin.Activity.Test2Activity"></activity>
     </application>
 
 </manifest>

@@ -10,13 +10,15 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.NetworkService
-import com.jemcom.cowalker.Network.Post.Response.PostProjectResponse
+import com.jemcom.cowalker.Network.Put.Response.PutProjectChangeResponse
 import com.jemcom.cowalker.R
-import kotlinx.android.synthetic.main.activity_project_create2.*
+import kotlinx.android.synthetic.main.activity_project_change2.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -29,7 +31,7 @@ import java.io.InputStream
 import java.util.ArrayList
 
 
-class ProjectCreate2Activity : AppCompatActivity() {
+class ProjectChange2Activity : AppCompatActivity() {
 
     lateinit var networkService: NetworkService
     internal lateinit var CropIntent: Intent
@@ -50,6 +52,7 @@ class ProjectCreate2Activity : AppCompatActivity() {
     internal var areaValue:String? = null
     internal var explainValue:String? = null
 
+    lateinit var project_idx: String
 
     private var imgList : ArrayList<MultipartBody.Part?> = ArrayList()
     //private var img : ArrayList<MultipartBody.Part>
@@ -57,7 +60,7 @@ class ProjectCreate2Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_project_create2)
+        setContentView(R.layout.activity_project_change2)
 
         val intent = intent
         titleValue = intent.getStringExtra("title")
@@ -65,17 +68,18 @@ class ProjectCreate2Activity : AppCompatActivity() {
         aimValue = intent.getStringExtra("aim")
         departmentValue = intent.getStringExtra("department")
         areaValue = intent.getStringExtra("area")
+        project_idx = intent.getStringExtra("project_idx")
 
         networkService = ApplicationController.instance.networkSerVice
 
-        val pref = applicationContext.getSharedPreferences("auto",Activity.MODE_PRIVATE)
+        val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         token = pref.getString("token","")
         Log.v("TAG","생성 액티비티 토큰 값 = " + token);
 
-        mLayout = findViewById<View>(R.id.create_project2_layout) as LinearLayout
+        mLayout = findViewById<View>(R.id.projectchange2_project2_layout) as LinearLayout
         context = this
 
-        create2_plus_btn.setOnClickListener {
+        projectchange2_plus_btn.setOnClickListener {
 
             btn = ImageView(context)
 
@@ -92,9 +96,9 @@ class ProjectCreate2Activity : AppCompatActivity() {
 
 
 
-        create2_confirm_btn.setOnClickListener {
-            explainValue = create2_explain_edit.getText().toString()
-            postBoard()
+        projectchange2_confirm_btn.setOnClickListener {
+            explainValue = projectchange2_explain_edit.getText().toString()
+            changeBoard()
             //val intent = Intent(this@ProjectCreate2Activity, InviteActivity::class.java)
             //startActivity(intent)
         }
@@ -153,7 +157,7 @@ class ProjectCreate2Activity : AppCompatActivity() {
 
     }
 
-    fun postBoard() {
+    fun changeBoard() {
         Log.v("TAG","토큰 확인 = " + token);
         val title = RequestBody.create(MediaType.parse("text.plain"), titleValue)
         val summary = RequestBody.create(MediaType.parse("text.plain"), summaryValue)
@@ -161,32 +165,26 @@ class ProjectCreate2Activity : AppCompatActivity() {
         val department = RequestBody.create(MediaType.parse("text.plain"), departmentValue)
         val aim = RequestBody.create(MediaType.parse("text.plain"), aimValue)
         val explain = RequestBody.create(MediaType.parse("text.plain"), explainValue)
-        val postProjectResponse = networkService.uploadProject("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzExMjQxMDYsImV4cCI6MTUzMzcxNjEwNn0.XVaXhAV6dqRSyG0VCXDAsWoWVvgg3aFJpbLsJx87M544", title, summary, area, department, aim, explain, imgList)
+        val putProjectChangeResponse = networkService.putChangeProject(project_idx, title, summary, area, department, aim, explain, imgList)
 
-        Log.v("TAG", "서버 전송 : 토큰 = " + token + ", 제목 = " + titleValue + ", 요약 소개 = " + summaryValue
+        Log.v("TAG", "수정 부분 전송 : 플젝넘버 = " + project_idx + ", 제목 = " + titleValue + ", 요약 소개 = " + summaryValue
                 + ", 지역 = " + areaValue + ", 분야 = " + departmentValue + ", 목적 = " + aimValue + ", 설명 = " + explainValue + ", img = " + imgList)
 
-        postProjectResponse.enqueue(object : retrofit2.Callback<PostProjectResponse>{
+        putProjectChangeResponse.enqueue(object : retrofit2.Callback<PutProjectChangeResponse>{
 
-            override fun onResponse(call: Call<PostProjectResponse>, response: Response<PostProjectResponse>) {
+            override fun onResponse(call: Call<PutProjectChangeResponse>, response: Response<PutProjectChangeResponse>) {
                 Log.v("TAG", "통신 성공")
                 if(response.isSuccessful){
                     var message = response!!.body()
-                    Log.v("TAG","idx = " + message.project_idx)
-                    val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
-                    val editor = pref.edit()
-                    editor.putString("project_idx", message.project_idx)
 
-                    editor.commit()
-
-                    Log.v("TAG", "값 전달 성공")
+                    Log.v("TAG", "수정 성공")
                     var intent = Intent(applicationContext, MainActivity::class.java)
                     startActivity(intent)
                 }
             }
 
-            override fun onFailure(call: Call<PostProjectResponse>, t: Throwable?) {
-                Toast.makeText(applicationContext,"서버 연결 실패",Toast.LENGTH_SHORT).show()
+            override fun onFailure(call: Call<PutProjectChangeResponse>, t: Throwable?) {
+                Toast.makeText(applicationContext,"서버 연결 실패", Toast.LENGTH_SHORT).show()
             }
 
         })

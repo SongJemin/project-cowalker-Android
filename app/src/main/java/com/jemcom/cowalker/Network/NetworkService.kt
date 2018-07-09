@@ -1,11 +1,10 @@
 package com.jemcom.cowalker.Network
 
-import com.jemcom.cowalker.Network.Get.Response.GetApplyResponse
-import com.jemcom.cowalker.Network.Get.Response.GetMessageLookResponse
-import com.jemcom.cowalker.Network.Get.Response.GetMessageResponse
-import com.jemcom.cowalker.Network.Get.Response.GetSignupResponse
+import com.jemcom.cowalker.Network.Delete.DeleteProjectResponse
+import com.jemcom.cowalker.Network.Get.Response.*
 import com.jemcom.cowalker.Network.Post.*
 import com.jemcom.cowalker.Network.Post.Response.*
+import com.jemcom.cowalker.Network.Put.Response.PutProjectChangeResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -76,5 +75,35 @@ interface NetworkService {
             @Header("authorization") authorization: String,
             @Path("partner_id") partner_id : String
     ) : Call<GetMessageLookResponse>
+
+    @GET("/api/home")
+    fun getProject(
+            @Header("authorization") authorization : String
+    ) : Call<GetProjectResponse>
+
+    @Multipart
+    @PUT("/api/project/{project_idx}")
+    fun putChangeProject(
+            @Path("project_idx") project_idx : String,
+            @Part("title") title : RequestBody,
+            @Part("summary") summary : RequestBody,
+            @Part("area") area: RequestBody,
+            @Part("department") department : RequestBody,
+            @Part("aim") aim : RequestBody,
+            @Part("explain") explain : RequestBody,
+            @Part img : ArrayList<MultipartBody.Part?>
+    ) : Call<PutProjectChangeResponse>
+
+    @GET("/api/project/{project_idx}")
+    fun getDetailProject(
+            @Header("authorization") authorization: String,
+            @Path("project_idx") project_idx : String
+    ) : Call<GetProjectDetailResponse>
+
+    @DELETE("/api/project/{project_idx}")
+    fun deleteProject(
+            @Path("project_idx") project_idx : String
+    ) : Call<DeleteProjectResponse>
+
 
 }
