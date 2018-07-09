@@ -21,7 +21,7 @@
             android:value="@string/kakao_app_key" />
 
         <activity android:name=".Jemin.Activity.MainActivity" />
-        <activity android:name=".Jemin.Activity.SplashActivity">
+        <activity android:name=".Nuri.Activity.RecruitDetailActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,7 +42,8 @@
         <activity android:name=".Hyunmin.Activity.MypageProjectlistActivity" />
         <activity android:name=".Hyunmin.Activity.MypageProfileEditActivity" />
         <activity android:name=".Hyunmin.Activity.ProjectIntroActivity" />
-        <activity android:name=".Nuri.Activity.MessageActivity"></activity>
+        <activity android:name=".Nuri.Activity.MessageActivity" />
+        <activity android:name=".Jemin.Activity.SplashActivity"></activity>
     </application>
 
 </manifest>

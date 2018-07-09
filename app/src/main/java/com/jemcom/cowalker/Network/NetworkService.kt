@@ -84,4 +84,12 @@ interface NetworkService {
             @Header("authorization") authorization: String,
             @Path("user_idx") user_id: String
     ) : Call<GetMypageOtherResponse>
+
+    @GET("/api/project/{project_idx}/recruit/{recruit_idx}")
+    fun getRecruitDetail(
+            @Header("authorization") authorization: String,
+            @Path("project_idx") project_idx: String,
+            @Path("recruit_idx") recruit_idx: String
+    ) : Call<GetRecruitDetailResponse>
+
 }

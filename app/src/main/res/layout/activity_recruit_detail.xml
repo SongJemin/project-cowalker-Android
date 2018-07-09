@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#f8f8f8">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="모집 상세"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/notosanscjkkr_bold"
+            android:textSize="24dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginTop="19dp"
+            android:orientation="vertical"
+            android:background="@drawable/layout_design">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="19dp"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginTop="20dp"
+                    android:text="개발자"
+                    android:textColor="#666666"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="19dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="1명"
+                    android:textColor="#666666" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="19dp"
+                    android:layout_marginLeft="166dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#64dfff"
+                    android:gravity="center"
+                    android:text="D-9"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+                <TextView
+                    android:layout_width="106dp"
+                    android:layout_height="19dp"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginTop="5dp"
+                    android:text="웹앱 서비스 개발"
+                    android:textColor="#666666"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+        <LinearLayout
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="129dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="65dp"
+                    android:layout_height="27dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="5dp"
+                    android:text="역할"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/recruit_detail_position_tv"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="개발자"
+                    android:textSize="16sp"
+                    android:textColor="#626262"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="65dp"
+                    android:layout_height="27dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:text="모집 기간"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/recruit_detail_date_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:textSize="16sp"
+                    android:text="2018.07.01 ~ 2018.08.04"
+                    android:textColor="#626262"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="65dp"
+                    android:layout_height="27dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="5dp"
+                    android:text="모집 인원"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/recruit_detail_num_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:textColor="#626262"
+                    android:textSize="16sp"
+                    android:text="3명"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:paddingBottom="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="271dp"
+            android:layout_marginTop="30dp"
+            android:text="활동"
+            android:fontFamily="@font/notosanscjkkr_bold"
+            android:textSize="16sp"
+            android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/recruit_detail_task_tv"
+                android:layout_width="305dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="19dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="250dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:text="웹앱 서비스 개발"
+                android:textColor="#626262"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="187dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="315dp"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:text="활동 기간 및 시간"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/recruit_detail_time_tv"
+                android:layout_width="305dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="19dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="271dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:text="node.js에 능해야 함"
+                android:textColor="#626262"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="154dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="315dp"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:text="활동 위치"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        <TextView
+            android:id="@+id/recruit_detail_area_tv"
+            android:layout_width="305dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="250dp"
+            android:layout_marginBottom="19dp"
+            android:text="강남"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:textSize="16sp"
+            android:textColor="#626262"/>
+
+            <TextView
+                android:layout_width="138dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="315dp"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:text="혜택 및 보상"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/recruit_detail_reward_tv"
+                android:layout_width="305dp"
+                android:layout_height="28dp"
+                android:layout_marginBottom="19dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="271dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:text="상금 분배"
+                android:textColor="#626262"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="271dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:text="필요 역량 및 기술"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/recruit_detail_ability_tv"
+                android:layout_width="305dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="19dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="250dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:text="node.js에 능해야 함"
+                android:textColor="#626262"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="187dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="315dp"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:text="경력 및 경험"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/recruit_detail_career_tv"
+                android:layout_width="305dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="19dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="271dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:inputType="textImeMultiLine"
+                android:text="경력 무관"
+                android:textColor="#626262"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="154dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="315dp"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:text="우대 사항"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/recruit_detail_preference_tv"
+                android:layout_width="305dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="250dp"
+                android:layout_marginBottom="19dp"
+                android:text="이더리움 기반 암호화폐 개발 역량"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:textSize="16sp"
+                android:textColor="#626262"/>
+
+            <TextView
+                android:layout_width="138dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="315dp"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:text="코멘트"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/recruit_detail_comment_tv"
+                android:layout_width="305dp"
+                android:layout_height="28dp"
+                android:layout_marginBottom="19dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="271dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:inputType="textImeMultiLine"
+                android:text="팀워크를 중시 여기며, 훌륭하고 열정적인 분과 함께하고 싶습니다."
+                android:textColor="#626262"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/recruit_detail_recommend"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:background="@drawable/layout_design">
+            <ImageView
+                android:layout_marginLeft="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/doc_darkgray"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="8dp"
+                android:layout_gravity="center"
+                android:textSize="14sp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:text="추천 멤버"
+                android:textColor="@color/colorPrimaryDark"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="7"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:textColor="#868686"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:background="@drawable/layout_design">
+
+            <ImageView
+                android:layout_marginLeft="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/withmember_darkgray"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="8dp"
+                android:layout_gravity="center"
+                android:textSize="14sp"
+                android:text="지원 멤버"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:textColor="@color/colorPrimaryDark"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#868686"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:text="5"/>
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:orientation="horizontal"
+            android:background="#f8f8f8"
+            android:gravity="center_vertical"
+            android:weightSum="4"
+            android:paddingLeft="15dp">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/recommend_darkgray"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="추천하기"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/sharebtn"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="공유하기"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/recruit_detail_btn"
+                android:layout_marginRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="2"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:text="참여하기"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:background="@color/colorPrimary"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
