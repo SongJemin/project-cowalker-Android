@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:background="#ffffffff"
         android:orientation="vertical"
-        tools:context=".Hyunmin.Activity.ProjectIntroActivity">
+        tools:context=".Hyunmin.Activity.ProjectIntroParticipActivity">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/image_swipe"
@@ -254,14 +254,36 @@
             android:background="@drawable/edit_design"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="30dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="24dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="17dp"
-                android:text="모집"
-                android:textColor="#444444"
-                android:textSize="16sp" />
+                android:layout_marginTop="17dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="모집"
+                    android:textColor="#444444"
+                    android:textSize="16sp" />
+                <Button
+                    android:id="@+id/introcreate_delete_btn"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="230dp"
+                    android:background="@drawable/delete_gray"
+                    />
+
+                <Button
+                    android:id="@+id/introcreate_add_btn"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/addbtn"
+                    />
+
+            </LinearLayout>
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -390,14 +412,15 @@
                     android:layout_marginLeft="11dp"
                     android:layout_marginTop="17dp"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/recommend_darkgray" />
+                    android:src="@drawable/choice_darkgray" />
 
                 <TextView
                     android:layout_width="41dp"
                     android:layout_height="wrap_content"
                     android:textSize="11sp"
+                    android:layout_marginLeft="3dp"
                     android:layout_marginTop="3dp"
-                    android:text="추천하기"
+                    android:text="찜하기"
                     android:textColor="#000000"/>
 
 
@@ -426,16 +449,15 @@
                     android:textSize="11sp"/>
 
             </LinearLayout>
-
             <Button
-                android:id="@+id/btn_join"
+                android:id="@+id/introcreate_change_btn"
                 android:layout_width="206dp"
                 android:layout_height="50dp"
                 android:layout_marginBottom="7dp"
                 android:layout_marginLeft="29dp"
                 android:layout_marginTop="10dp"
                 android:background="#64dfff"
-                android:text="참여하기"
+                android:text="프로젝트 관리"
                 android:textColor="#ffffff" />
         </LinearLayout>
     </LinearLayout>

@@ -67,6 +67,7 @@ class MessageTab: Fragment(),View.OnClickListener {
                 if(response!!.isSuccessful)
                 {
                     data = response.body().result
+
                     for(i in 0..data.size-1)
                     {
 //                        data[i].partner_profile_url

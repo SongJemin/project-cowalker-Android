@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:background="#ffffffff"
         android:orientation="vertical"
-        tools:context=".Hyunmin.Activity.ProjectIntroActivity">
+        tools:context=".Hyunmin.Activity.ProjectIntroWaitActivity">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/image_swipe"
@@ -402,7 +402,7 @@
 
 
             </LinearLayout>
-
+            
             <LinearLayout
                 android:layout_width="41dp"
                 android:layout_height="match_parent"
@@ -427,6 +427,7 @@
 
             </LinearLayout>
 
+
             <Button
                 android:id="@+id/btn_join"
                 android:layout_width="206dp"
@@ -435,8 +436,8 @@
                 android:layout_marginLeft="29dp"
                 android:layout_marginTop="10dp"
                 android:background="#64dfff"
-                android:text="참여하기"
-                android:textColor="#ffffff" />
+                android:text="참여대기 "
+                android:textColor="#eeeeee" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
