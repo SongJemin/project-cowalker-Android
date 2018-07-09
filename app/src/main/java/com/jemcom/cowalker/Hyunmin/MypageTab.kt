@@ -15,6 +15,7 @@ import com.jemcom.cowalker.Hyunmin.Activity.ProfileEditActivity
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Get.Response.GetMypageResponse
 import com.jemcom.cowalker.Network.NetworkService
+import com.jemcom.cowalker.Nuri.Activity.LoginActivity
 import com.jemcom.cowalker.R
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import kotlinx.android.synthetic.main.fragment_mypage.view.*
@@ -32,6 +33,8 @@ class MypageTab : Fragment(),View.OnClickListener {
                 val editor = pref.edit()
                 editor.clear()
                 editor.commit()
+                val intent = Intent(activity, LoginActivity::class.java)
+                startActivity(intent)
             }
             mypage_project_btn ->{
                 val intent = Intent(activity, MypageProjectlistActivity::class.java)
@@ -54,9 +57,9 @@ class MypageTab : Fragment(),View.OnClickListener {
 
         networkService = ApplicationController.instance.networkSerVice
         requestManager = Glide.with(this)
-        logout_btn.setOnClickListener(this)
-        mypage_project_btn.setOnClickListener(this)
-        mypage_edit_btn.setOnClickListener(this)
+        view.logout_btn.setOnClickListener(this)
+        view.mypage_project_btn.setOnClickListener(this)
+        view.mypage_edit_btn.setOnClickListener(this)
 
         get(view)
 

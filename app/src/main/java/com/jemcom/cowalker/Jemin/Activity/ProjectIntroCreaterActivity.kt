@@ -18,6 +18,7 @@ import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Delete.DeleteProjectResponse
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.R
+import com.jemcom.cowalker.R.id.introcreate_invite_Tv
 import kotlinx.android.synthetic.main.activity_project_intro_creater.*
 import retrofit2.Call
 import retrofit2.Callback
