@@ -36,13 +36,13 @@ class ProjectIntroCreaterActivity : AppCompatActivity() {
      lateinit var explainTv: TextView
      lateinit var nameTv: TextView
      lateinit var backgroundImg: ImageView
-     var title: String = ""
+    var title: String = ""
      var summary: String = ""
       var aim: String = ""
       var department: String = ""
       var area: String = ""
       var explain: String = ""
-      var name: String = ""
+        var name: String = ""
       var img_url: String = ""
       var project_idx: String = ""
      lateinit    var requestManager: RequestManager
@@ -92,6 +92,7 @@ class ProjectIntroCreaterActivity : AppCompatActivity() {
 
         introcreate_invite_Tv.setOnClickListener{
             val intent = Intent(this@ProjectIntroCreaterActivity, Test2Activity::class.java)
+            intent.putExtra("project_idx", project_idx)
             startActivity(intent)
         }
 

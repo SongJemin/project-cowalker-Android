@@ -105,5 +105,9 @@ interface NetworkService {
             @Path("project_idx") project_idx : String
     ) : Call<DeleteProjectResponse>
 
+    @GET("/api/project/team/{project_idx}")
+    fun getMemberProject(
+            @Path("project_idx") project_idx : String
+    ) : Call<GetProjectMemberResponse>
 
 }

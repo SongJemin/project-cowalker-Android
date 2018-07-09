@@ -206,17 +206,17 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 if(response!!.isSuccessful)
                 {
                     Log.v("TAG","값 갖고오기 성공")
-                   data = response.body().result
+                    data = response.body().result
                     test = data.toString()
                     Log.v("TAG","데이터 값"+ test)
                     for(i in 0..2)
                     {
-                            Log.v("TAG","위치 = "+i)
-                            Log.v("TAG", "테스트 = " + data[i].img_url[0]+data[i].title+data[i].area+data[i].department+data[i].aim)
-                            Log.v("TAG", "데이터크기 = "  + data.size)
-                            //projectItems.add(ProjectItem(  "https://project-cowalker.s3.ap-northeast-2.amazonaws.com/1530802712097.jpg","asdf","asdg","ASDf","asdf"))
-                            projectItems.add(ProjectItem( data[i].img_url[0],data[i].title!!,data[i].area!!,data[i].department!!,data[i].aim!!))
-                            projectAdapter = ProjectAdapter(projectItems,requestManager)
+                        Log.v("TAG","위치 = "+i)
+                        Log.v("TAG", "테스트 = " + data[i].img_url[0]+data[i].title+data[i].area+data[i].department+data[i].aim)
+                        Log.v("TAG", "데이터크기 = "  + data.size)
+                        //projectItems.add(ProjectItem(  "https://project-cowalker.s3.ap-northeast-2.amazonaws.com/1530802712097.jpg","asdf","asdg","ASDf","asdf"))
+                        projectItems.add(ProjectItem( data[i].img_url[0],data[i].title!!,data[i].area!!,data[i].department!!,data[i].aim!!))
+                        projectAdapter = ProjectAdapter(projectItems,requestManager)
 
 
                     }
