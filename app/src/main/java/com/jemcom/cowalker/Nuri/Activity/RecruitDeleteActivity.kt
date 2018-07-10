@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.jemcom.cowalker.Jemin.Activity.ProjectIntroParticipActivity
@@ -25,7 +26,7 @@ import com.jemcom.cowalker.Network.Delete.DeleteRecruitResponse
 class RecruitDeleteActivity : AppCompatActivity(),View.OnClickListener {
 
     lateinit var networkService: NetworkService
-    var recruitListItems : ArrayList<RecruitListItem> = ArrayList()
+    lateinit var recruitListItems: ArrayList<RecruitListItem>
     lateinit var recruitListAdapter : RecruitListAdapter
     lateinit var project_idx : String
     var check = 0
@@ -60,18 +61,24 @@ class RecruitDeleteActivity : AppCompatActivity(),View.OnClickListener {
         setContentView(R.layout.activity_recruit_delete)
 
         networkService = ApplicationController.instance.networkSerVice
+
+        recruitListItems = ArrayList()
+
         activity = this
 
         delete_cancel_tv.setOnClickListener(this)
         delete_ok_tv.setOnClickListener(this)
+
 
         get()
     }
 
     fun get()
     {
+
         project_idx = "2"
         var getRecruitListResponse = networkService.getRecruitList(project_idx)
+
 
         getRecruitListResponse.enqueue(object : Callback<GetRecruitListResponse>{
             override fun onFailure(call: Call<GetRecruitListResponse>?, t: Throwable?) {
@@ -79,11 +86,16 @@ class RecruitDeleteActivity : AppCompatActivity(),View.OnClickListener {
             }
 
             override fun onResponse(call: Call<GetRecruitListResponse>?, response: Response<GetRecruitListResponse>?) {
+                Log.v("TAG","모집 리스트 통신")
                 if(response!!.isSuccessful)
                 {
+                    Log.v("TAG","모집 리스트 받아오기")
                     var data = response.body().result
+                    Log.v("TAG","모집 리스트 값 = "+data.toString())
+
                     for(i in 0..data.size-1)
                     {
+
                         recruitListItems.add(RecruitListItem(data[i].position,data[i].number,data[i].task,data[i].dday))
                     }
                     recruitListAdapter = RecruitListAdapter(recruitListItems)

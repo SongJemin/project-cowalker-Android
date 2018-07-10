@@ -225,7 +225,7 @@
             />
 
         <EditText
-            android:id="@+id/apply_portfolio_url_edit"
+            android:id="@+id/apply_portfolio_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="예) www.mypage.com"

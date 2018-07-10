@@ -1,10 +1,10 @@
 package com.jemcom.cowalker.Jemin.Activity
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -16,15 +16,19 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Delete.DeleteProjectResponse
+import com.jemcom.cowalker.Network.Get.Response.GetRecruitListResponse
 import com.jemcom.cowalker.Network.NetworkService
+import com.jemcom.cowalker.Nuri.Adapter.RecruitListAdapter
+import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
+import com.jemcom.cowalker.Nuri.Item.RecruitListItem
 import com.jemcom.cowalker.R
-import com.jemcom.cowalker.R.id.introcreate_invite_Tv
 import kotlinx.android.synthetic.main.activity_project_intro_creater.*
+import kotlinx.android.synthetic.main.activity_recruit_delete.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ProjectIntroCreaterActivity : AppCompatActivity() {
+class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var networkService: NetworkService
     lateinit var addBtn: Button
@@ -37,6 +41,10 @@ class ProjectIntroCreaterActivity : AppCompatActivity() {
      lateinit var explainTv: TextView
      lateinit var nameTv: TextView
      lateinit var backgroundImg: ImageView
+
+    lateinit var recruitListItems: ArrayList<RecruitListItem>
+    lateinit var recruitListGetAdapter : RecruitListGetAdapter
+
     var title: String = ""
      var summary: String = ""
       var aim: String = ""
@@ -47,6 +55,13 @@ class ProjectIntroCreaterActivity : AppCompatActivity() {
       var img_url: String = ""
       var project_idx: String = ""
      lateinit    var requestManager: RequestManager
+
+    override fun onClick(v: View?) {
+        val index : Int = recruit_list_recyclerview.getChildAdapterPosition(v)
+
+        recruit_list_recyclerview.getChildViewHolder(v)
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +80,10 @@ class ProjectIntroCreaterActivity : AppCompatActivity() {
         nameTv = findViewById<View>(R.id.introcreate_name_tv) as TextView
         backgroundImg = findViewById<View>(R.id.introcreate_background_img) as ImageView
 
+        recruitListItems = ArrayList()
+
+
+
         val intent = intent
         if(intent != null) {
             if(intent.getStringExtra("title") != null) title = intent.getStringExtra("title")
@@ -77,7 +96,8 @@ class ProjectIntroCreaterActivity : AppCompatActivity() {
             if(intent.getStringExtra("img_url") != null) img_url = intent.getStringExtra("img_url")
             if(intent.getStringExtra("project_idx") != null) project_idx = intent.getStringExtra("project_idx")
         }
-
+        Log.v("TAG","테스트 개설자 화면 프로젝트넘버 = "+project_idx)
+        getList()
         titleTv.text = title
         summaryTv.text = summary
         aimTv.text = aim
@@ -99,6 +119,7 @@ class ProjectIntroCreaterActivity : AppCompatActivity() {
 
         addBtn.setOnClickListener {
             val intent = Intent(this@ProjectIntroCreaterActivity, InviteActivity::class.java)
+            intent.putExtra("project_idx", project_idx)
             startActivity(intent)
         }
 
@@ -112,6 +133,7 @@ class ProjectIntroCreaterActivity : AppCompatActivity() {
                 // 프로젝트 수정
                 if (items[id] === "프로젝트 수정") {
                     val intent = Intent(this@ProjectIntroCreaterActivity, ProjectChangeActivity::class.java)
+
                     intent.putExtra("project_idx", project_idx)
                     startActivity(intent)
 
@@ -153,6 +175,40 @@ class ProjectIntroCreaterActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext,"서버 연결 실패", Toast.LENGTH_SHORT).show()
             }
 
+        })
+    }
+
+    fun getList()
+    {
+        //var project_idx = "2"
+        var getRecruitListResponse = networkService.getRecruitList(project_idx)
+        //var getRecruitListResponse = networkService.getRecruitList(project_idx)
+
+        getRecruitListResponse.enqueue(object : Callback<GetRecruitListResponse>{
+            override fun onFailure(call: Call<GetRecruitListResponse>?, t: Throwable?) {
+                Toast.makeText(applicationContext,"서버 연결 실패", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<GetRecruitListResponse>?, response: Response<GetRecruitListResponse>?) {
+                Log.v("TAG","모집 리스트 통신")
+                if(response!!.isSuccessful)
+                {
+                    Log.v("TAG","모집 리스트 받아오기")
+                    var data = response.body().result
+                    Log.v("TAG","모집 리스트 값 = "+data.toString())
+
+                    for(i in 0..data.size-1)
+                    {
+
+                        recruitListItems.add(RecruitListItem(data[i].position,data[i].number,data[i].task,data[i].dday))
+                    }
+                    recruitListGetAdapter = RecruitListGetAdapter(recruitListItems)
+                    recruitListGetAdapter.setOnItemClickListener(this@ProjectIntroCreaterActivity)
+                    recruit_list_recyclerview.layoutManager = LinearLayoutManager(applicationContext)
+                    recruit_list_recyclerview.adapter = recruitListGetAdapter
+                }
+               // else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()
+            }
         })
     }
 

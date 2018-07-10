@@ -14,6 +14,7 @@ import android.widget.Toast
 import com.jemcom.cowalker.Hyunmin.MypageTab
 import com.jemcom.cowalker.R
 import com.jemcom.cowalker.Jemin.Fragment.SearchFragment
+import com.jemcom.cowalker.Nuri.Activity.RecruitDeleteActivity
 import com.jemcom.cowalker.Nuri.Fragment.OtherpageTab
 
 
@@ -97,7 +98,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.search_tab_btn ->{
                 // '탐색 버튼' 클릭 시 '탐색 프래그먼트' 호출
-               callFragment(FRAGMENT2)
+                val intent = Intent(applicationContext, RecruitDeleteActivity::class.java)
+                startActivity(intent)
+                //callFragment(FRAGMENT2)
             }
             R.id.create_tab_btn -> {
                 // '방생성 버튼' 클릭 시 '방생성 액티비티' 호출

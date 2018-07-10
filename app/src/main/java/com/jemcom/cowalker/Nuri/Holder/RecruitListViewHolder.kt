@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.jemcom.cowalker.R
 
+
 class RecruitListViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
     var check : ImageView = itemView.findViewById(R.id.recruit_delete_check)
     var postion : TextView = itemView.findViewById(R.id.recruit_list_position_tv)

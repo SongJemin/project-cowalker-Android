@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,9 +24,9 @@ public class Invite2Activity extends AppCompatActivity {
     private Button nextBtn;
     int count;
 
-    // 두 번째 화면 값
     String task, activity, area, reward;
     EditText taskEdit, activityEdit, areaEdit, rewardEdit;
+    String project_idx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,8 @@ public class Invite2Activity extends AppCompatActivity {
         areaEdit = (EditText) findViewById(R.id.invite2_area_edit);
         rewardEdit = (EditText) findViewById(R.id.invite2_reward_edit);
 
-
+        Intent getProjectIdxintent = getIntent();
+        project_idx = getProjectIdxintent.getStringExtra("project_idx");
 
 
         View view = getWindow().getDecorView();
@@ -73,7 +75,8 @@ public class Invite2Activity extends AppCompatActivity {
                 editor.commit();
 
                 Intent intent = new Intent(Invite2Activity.this, Invite3Activity.class);
-
+                Log.v("TAG","초대2화면 플젝넘버 = "+project_idx);
+                intent.putExtra("project_idx", project_idx);
                 startActivity(intent);
             }
         });
