@@ -20,6 +20,7 @@
         android:background="#eeeeee"
         android:gravity="center_vertical">
         <TextView
+            android:id="@+id/delete_cancel_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="취소"
@@ -28,6 +29,7 @@
             android:layout_marginRight="80dp"
             android:layout_alignParentRight="true"/>
         <TextView
+            android:id="@+id/delete_ok_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="삭제"
