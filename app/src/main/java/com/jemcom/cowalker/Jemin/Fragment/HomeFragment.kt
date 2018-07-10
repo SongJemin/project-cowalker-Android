@@ -265,9 +265,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             override fun onFailure(call: Call<GetProjectResponse>?, t: Throwable?) {
                 Log.v("TAG","통신 실패")
             }
-
         })
-
     }
 
 

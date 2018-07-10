@@ -2,6 +2,7 @@ package com.jemcom.cowalker.Network
 
 
 import com.jemcom.cowalker.Network.Delete.DeleteProjectResponse
+import com.jemcom.cowalker.Network.Delete.DeleteRecruitResponse
 import com.jemcom.cowalker.Network.Get.Response.GetSearchResponse
 import com.jemcom.cowalker.Network.Get.Response.*
 import com.jemcom.cowalker.Network.Post.*
@@ -127,6 +128,24 @@ interface NetworkService {
             @Path("user_idx") user_id: String
     ) : Call<GetMypageOtherResponse>
 
+    @GET("/api/project/{project_idx}/recruit/{recruit_idx}")
+    fun getRecruitDetail(
+            @Header("authorization") authorization: String,
+            @Path("project_idx") project_idx: String,
+            @Path("recruit_idx") recruit_idx: String
+    ) : Call<GetRecruitDetailResponse>
+
+
+    @DELETE("/api/project/{project_idx}/recruit/{recruit_idx}")
+    fun deleteRecruit(
+            @Path("project_idx") project_idx : String,
+            @Path("recruit_idx") recruit_idx : String
+    ) : Call<DeleteRecruitResponse>
+
+    @GET("/api/project/{project_idx}/recruit")
+    fun getRecruitList(
+            @Path("project_idx") project_idx: String
+    ) : Call<GetRecruitListResponse>
     @GET("/api/search")
     fun getSearch(
             @Query("aim") aim : String,
