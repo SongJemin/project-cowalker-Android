@@ -10,18 +10,11 @@ import com.jemcom.cowalker.R
 
 class NewsAdapter(private var newsItems : ArrayList<NewsItem>) : RecyclerView.Adapter<NewsViewHolder>() {
 
-    private lateinit var onItemClick : View.OnClickListener
-
-    fun setOnItemClickListener(I : View.OnClickListener)
-    {
-        onItemClick = I
-    }
 
     //내가 쓸 뷰홀더가 뭔지를 적어준다.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val mainView : View = LayoutInflater.from(parent.context)
                 .inflate(R.layout.news_item, parent, false)
-        mainView.setOnClickListener(onItemClick)
         return NewsViewHolder(mainView)
     }
 
@@ -29,7 +22,6 @@ class NewsAdapter(private var newsItems : ArrayList<NewsItem>) : RecyclerView.Ad
 
     //데이터클래스와 뷰홀더를 이어준다.
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        holder.newsProfile.setImageResource(newsItems[position].profile)
         holder.newsName.text = newsItems[position].name
         holder.newsPreview.text = newsItems[position].preView
         holder.newsDate.text = newsItems[position].date
