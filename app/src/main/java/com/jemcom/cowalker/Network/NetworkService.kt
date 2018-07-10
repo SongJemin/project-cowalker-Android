@@ -1,8 +1,13 @@
 package com.jemcom.cowalker.Network
 
 import com.jemcom.cowalker.Network.Get.Response.*
+
+import com.jemcom.cowalker.Network.Delete.DeleteProjectResponse
+import com.jemcom.cowalker.Network.Delete.DeleteRecruitResponse
+import com.jemcom.cowalker.Network.Get.Response.GetSearchResponse
 import com.jemcom.cowalker.Network.Post.*
 import com.jemcom.cowalker.Network.Post.Response.*
+import com.jemcom.cowalker.Network.Put.Response.PutProjectChangeResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -68,7 +73,6 @@ interface NetworkService {
     fun getMessage(
             @Header("authorization") authorization: String
     ) : Call<GetMessageResponse>
-
     @GET("/api/message/{partner_id}")
     fun getMessageLook(
             @Header("authorization") authorization: String,
@@ -95,5 +99,81 @@ interface NetworkService {
 //    fun deleteIntro(
 //            @Path("intro_idx") intro_idx : String
 //    ) : Call<DeleteIntroResponse>
+
+
+
+
+    @GET("/api/home")
+    fun getProject(
+            @Header("authorization") authorization : String
+    ) : Call<GetProjectResponse>
+
+    @Multipart
+    @PUT("/api/project/{project_idx}")
+    fun putChangeProject(
+            @Path("project_idx") project_idx : String,
+            @Part("title") title : RequestBody,
+            @Part("summary") summary : RequestBody,
+            @Part("area") area: RequestBody,
+            @Part("department") department : RequestBody,
+            @Part("aim") aim : RequestBody,
+            @Part("explain") explain : RequestBody,
+            @Part img : ArrayList<MultipartBody.Part?>
+    ) : Call<PutProjectChangeResponse>
+
+    @GET("/api/project/{project_idx}")
+    fun getDetailProject(
+            @Header("authorization") authorization: String,
+            @Path("project_idx") project_idx : String
+    ) : Call<GetProjectDetailResponse>
+
+    @DELETE("/api/project/{project_idx}")
+    fun deleteProject(
+            @Path("project_idx") project_idx : String
+    ) : Call<DeleteProjectResponse>
+
+    @GET("/api/project/team/{project_idx}")
+    fun getMemberProject(
+            @Path("project_idx") project_idx : String
+    ) : Call<GetProjectMemberResponse>
+
+
+    @GET("/api/mypage")
+    fun getMypage(
+            @Header("authorization") authorization: String
+    ) : Call<GetMypageResponse>
+
+    @GET("/api/mypage/{user_idx}")
+    fun getMypageOther(
+            @Header("authorization") authorization: String,
+            @Path("user_idx") user_id: String
+    ) : Call<GetMypageOtherResponse>
+
+    @GET("/api/project/{project_idx}/recruit/{recruit_idx}")
+    fun getRecruitDetail(
+            @Header("authorization") authorization: String,
+            @Path("project_idx") project_idx: String,
+            @Path("recruit_idx") recruit_idx: String
+    ) : Call<GetRecruitDetailResponse>
+
+
+    @DELETE("/api/project/{project_idx}/recruit/{recruit_idx}")
+    fun deleteRecruit(
+            @Path("project_idx") project_idx : String,
+            @Path("recruit_idx") recruit_idx : String
+    ) : Call<DeleteRecruitResponse>
+
+    @GET("/api/project/{project_idx}/recruit")
+    fun getRecruitList(
+            @Path("project_idx") project_idx: String
+    ) : Call<GetRecruitListResponse>
+    @GET("/api/search")
+    fun getSearch(
+            @Query("aim") aim : String,
+            @Query("area") area : String,
+            @Query("position") position : String,
+            @Query("department") department : String,
+            @Query("keyword") keyword : String
+    ) : Call<GetSearchResponse>
 
 }

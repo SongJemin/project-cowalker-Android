@@ -56,7 +56,6 @@ class MessageTab: Fragment(),View.OnClickListener {
     fun get(v : View)
     {
 
-        System.out.println("here")
         var getMessageResponse = networkService.getMessage("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA5NTE1ODMsImV4cCI6MTUzMzU0MzU4M30.90d2qcRcikydx8R-lMMyLgcYGcAxY0Poi61a-NGpujY")
         getMessageResponse.enqueue(object : Callback<GetMessageResponse> {
             override fun onFailure(call: Call<GetMessageResponse>?, t: Throwable?) {
@@ -67,6 +66,7 @@ class MessageTab: Fragment(),View.OnClickListener {
                 if(response!!.isSuccessful)
                 {
                     data = response.body().result
+
                     for(i in 0..data.size-1)
                     {
 //                        data[i].partner_profile_url

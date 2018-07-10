@@ -1,9 +1,13 @@
 package com.jemcom.cowalker.Jemin.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +28,7 @@ public class InviteActivity extends AppCompatActivity {
     String start_date, end_date;
     String position;
     int number;
+    String project_idx;
 
     EditText numberEdit;
 
@@ -31,6 +36,9 @@ public class InviteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite);
+
+        Intent getProjectIdxintent = getIntent();
+        project_idx = getProjectIdxintent.getStringExtra("project_idx");
 
         View view = getWindow().getDecorView();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -63,6 +71,8 @@ public class InviteActivity extends AppCompatActivity {
                 number = Integer.parseInt(numberEdit.getText().toString());
 
                 Intent intent = new Intent(InviteActivity.this, Invite2Activity.class);
+                Log.v("TAG","초대1화면 플젝넘버 = "+project_idx);
+                intent.putExtra("project_idx", project_idx);
 
                 SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
@@ -236,4 +246,6 @@ public class InviteActivity extends AppCompatActivity {
         });
 
     }
+
+
 }

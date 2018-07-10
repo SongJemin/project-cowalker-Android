@@ -35,10 +35,10 @@
             android:background="#ffffff">
 
             <TextView
-                android:id="@+id/filter_purpose_tv"
+                android:id="@+id/filter_aim_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
-                android:text="역할"
+                android:text="목적"
                 android:textColor="#000000"
                 android:layout_marginLeft="20dp"
                 android:textStyle="bold"
@@ -46,89 +46,82 @@
                 android:layout_marginTop="10dp"
                 />
 
-            <ToggleButton
-                android:id="@+id/filter_purposeall_btn"
+            <Button
+                android:id="@+id/filter_aimall_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="전체"
-                android:textOn="전체"
+                android:background="@drawable/selector"
+                android:text="전체"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@+id/filter_purpose_tv"
+                android:layout_below="@+id/filter_aim_tv"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_startup_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="창업"
-                android:textOn="창업"
-                android:layout_toRightOf="@+id/filter_purposeall_btn"
+                android:background="@drawable/selector"
+                android:text="창업"
+                android:layout_toRightOf="@+id/filter_aimall_btn"
                 android:layout_marginLeft="6dp"
-                android:layout_alignTop="@+id/filter_purposeall_btn"
+                android:layout_alignTop="@+id/filter_aimall_btn"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_contest_btn"
                 android:layout_width="121dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="공모전 참여"
-                android:textOn="공모전 참여"
+                android:background="@drawable/selector"
+                android:text="공모전 참여"
                 android:layout_toRightOf="@+id/filter_startup_btn"
                 android:layout_marginLeft="6dp"
-                android:layout_alignTop="@+id/filter_purposeall_btn"
-                android:layout_below="@+id/filter_purpose_tv"
+                android:layout_alignTop="@+id/filter_aimall_btn"
+                android:layout_below="@+id/filter_aim_tv"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_study_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="스터디"
-                android:textOn="스터디"
+                android:background="@drawable/selector"
+                android:text="스터디"
                 android:layout_marginTop="6dp"
                 android:layout_marginLeft="58dp"
-                android:layout_below="@+id/filter_purposeall_btn"
+                android:layout_below="@+id/filter_aimall_btn"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_side_btn"
                 android:layout_width="151dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="사이드 프로젝트"
-                android:textOn="사이드 프로젝트"
+                android:background="@drawable/selector"
+                android:text="사이드 프로젝트"
                 android:layout_marginLeft="6dp"
                 android:layout_toRightOf="@+id/filter_study_btn"
                 android:layout_alignTop="@+id/filter_study_btn"
                 />
 
-            <ToggleButton
-                android:id="@+id/filter_startup2_btn"
+            <Button
+                android:id="@+id/filter_creative_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="창업"
-                android:textOn="창업"
+                android:background="@drawable/selector"
+                android:text="창작"
                 android:layout_marginTop="6dp"
                 android:layout_marginLeft="93dp"
                 android:layout_below="@+id/filter_study_btn"
                 />
 
-            <ToggleButton
-                android:id="@+id/filter_purposeetc_btn"
+            <Button
+                android:id="@+id/filter_aimetc_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="기타"
-                android:textOn="기타"
+                android:background="@drawable/selector"
+                android:text="기타"
                 android:layout_marginLeft="6dp"
-                android:layout_alignTop="@+id/filter_startup2_btn"
-                android:layout_toRightOf="@+id/filter_startup2_btn"
+                android:layout_alignTop="@+id/filter_creative_btn"
+                android:layout_toRightOf="@+id/filter_creative_btn"
                 />
 
         </RelativeLayout>
@@ -139,7 +132,7 @@
             android:background="#ffffff">
 
             <TextView
-                android:id="@+id/filter_field_tv"
+                android:id="@+id/filter_department_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
                 android:text="분야"
@@ -150,88 +143,81 @@
                 android:layout_marginTop="10dp"
                 />
 
-            <ToggleButton
-                android:id="@+id/filter_fieldall_btn"
+            <Button
+                android:id="@+id/filter_departmentall_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="전체"
-                android:textOn="전체"
+                android:background="@drawable/selector"
+                android:text="전체"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@+id/filter_field_tv"
+                android:layout_below="@+id/filter_department_tv"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_chain_btn"
                 android:layout_width="117dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="블록체인"
-                android:textOn="블록체인"
-                android:layout_toRightOf="@+id/filter_fieldall_btn"
+                android:background="@drawable/selector"
+                android:text="블록체인"
+                android:layout_toRightOf="@+id/filter_departmentall_btn"
                 android:layout_marginLeft="6dp"
-                android:layout_alignTop="@+id/filter_fieldall_btn"
+                android:layout_alignTop="@+id/filter_departmentall_btn"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_iot_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="IoT"
-                android:textOn="IoT"
+                android:background="@drawable/selector"
+                android:text="IoT"
                 android:layout_toRightOf="@+id/filter_chain_btn"
                 android:layout_marginLeft="6dp"
-                android:layout_alignTop="@+id/filter_fieldall_btn"
+                android:layout_alignTop="@+id/filter_departmentall_btn"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_ai_btn"
                 android:layout_width="117dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="인공지능"
-                android:textOn="인공지능"
+                android:background="@drawable/selector"
+                android:text="인공지능"
                 android:layout_marginTop="6dp"
                 android:layout_marginLeft="79dp"
-                android:layout_below="@+id/filter_fieldall_btn"
+                android:layout_below="@+id/filter_departmentall_btn"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_design_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="디자인"
-                android:textOn="디자인"
+                android:background="@drawable/selector"
+                android:text="디자인"
                 android:layout_marginLeft="6dp"
                 android:layout_toRightOf="@+id/filter_ai_btn"
                 android:layout_alignTop="@+id/filter_ai_btn"
                 />
 
-            <ToggleButton
-                android:id="@+id/filter_contents_btn"
+            <Button
+                android:id="@+id/filter_departstartup_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="창업"
-                android:textOn="창업"
+                android:background="@drawable/selector"
+                android:text="창업"
                 android:layout_marginTop="6dp"
                 android:layout_marginLeft="99dp"
                 android:layout_below="@+id/filter_ai_btn"
                 />
 
-            <ToggleButton
-                android:id="@+id/filter_fieldetc_btn"
+            <Button
+                android:id="@+id/filter_departmentetc_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="기타"
-                android:textOn="기타"
+                android:background="@drawable/selector"
+                android:text="기타"
                 android:layout_marginLeft="6dp"
-                android:layout_alignTop="@+id/filter_contents_btn"
-                android:layout_toRightOf="@+id/filter_contents_btn"
+                android:layout_alignTop="@+id/filter_departstartup_btn"
+                android:layout_toRightOf="@+id/filter_departstartup_btn"
                 />
 
 
@@ -243,7 +229,7 @@
             android:background="#ffffff">
 
             <TextView
-                android:id="@+id/filter_role_tv"
+                android:id="@+id/filter_position_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
                 android:text="역할"
@@ -254,74 +240,68 @@
                 android:layout_marginTop="10dp"
                 />
 
-            <ToggleButton
-                android:id="@+id/filter_roleall_btn"
+            <Button
+                android:id="@+id/filter_positionall_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="전체"
-                android:textOn="전체"
+                android:background="@drawable/selector"
+                android:text="전체"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@+id/filter_role_tv"
+                android:layout_below="@+id/filter_position_tv"
                 />
 
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_pm_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="PM"
-                android:textOn="PM"
-                android:layout_toRightOf="@+id/filter_roleall_btn"
+                android:background="@drawable/selector"
+                android:text="PM"
+                android:layout_toRightOf="@+id/filter_positionall_btn"
                 android:layout_marginLeft="6dp"
-                android:layout_alignTop="@+id/filter_roleall_btn"
+                android:layout_alignTop="@+id/filter_positionall_btn"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_planner_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="기획자"
-                android:textOn="기획자"
+                android:background="@drawable/selector"
+                android:text="기획자"
                 android:layout_toRightOf="@+id/filter_pm_btn"
                 android:layout_marginLeft="6dp"
                 android:layout_alignTop="@+id/filter_pm_btn"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_designer_btn"
                 android:layout_width="117dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="디자이너"
-                android:textOn="디자이너"
+                android:background="@drawable/selector"
+                android:text="디자이너"
                 android:layout_marginTop="6dp"
                 android:layout_marginLeft="24dp"
-                android:layout_below="@+id/filter_roleall_btn"
+                android:layout_below="@+id/filter_positionall_btn"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_developer_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="개발자"
-                android:textOn="개발자"
+                android:background="@drawable/selector"
+                android:text="개발자"
                 android:layout_marginLeft="6dp"
                 android:layout_toRightOf="@+id/filter_designer_btn"
                 android:layout_alignTop="@+id/filter_designer_btn"
                 />
 
-            <ToggleButton
-                android:id="@+id/filter_roleetc_btn"
+            <Button
+                android:id="@+id/filter_positionetc_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="기타"
-                android:textOn="기타"
+                android:background="@drawable/selector"
+                android:text="기타"
                 android:layout_marginLeft="6dp"
                 android:layout_toRightOf="@+id/filter_developer_btn"
                 android:layout_alignTop="@+id/filter_developer_btn"
@@ -335,7 +315,7 @@
             android:background="#ffffff">
 
             <TextView
-                android:id="@+id/filter_location_tv"
+                android:id="@+id/filter_area_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
                 android:text="장소"
@@ -346,109 +326,100 @@
                 android:layout_marginTop="10dp"
                 />
 
-            <ToggleButton
-                android:id="@+id/filter_locationall_btn"
+            <Button
+                android:id="@+id/filter_areaall_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="전체"
-                android:textOn="전체"
+                android:background="@drawable/selector"
+                android:text="전체"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@+id/filter_location_tv"
+                android:layout_below="@+id/filter_area_tv"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_seoul_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="서울"
-                android:textOn="서울"
-                android:layout_toRightOf="@+id/filter_locationall_btn"
+                android:background="@drawable/selector"
+                android:text="서울"
+                android:layout_toRightOf="@+id/filter_areaall_btn"
                 android:layout_marginLeft="6dp"
-                android:layout_alignTop="@+id/filter_locationall_btn"
+                android:layout_alignTop="@+id/filter_areaall_btn"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_gyeonggi_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="경기도"
-                android:textOn="경기도"
+                android:background="@drawable/selector"
+                android:text="경기도"
                 android:layout_toRightOf="@+id/filter_seoul_btn"
                 android:layout_marginLeft="6dp"
                 android:layout_alignTop="@+id/filter_seoul_btn"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_incheon_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="인천"
-                android:textOn="인천"
+                android:background="@drawable/selector"
+                android:text="인천"
                 android:layout_marginTop="6dp"
                 android:layout_marginLeft="49dp"
-                android:layout_below="@+id/filter_locationall_btn"
+                android:layout_below="@+id/filter_areaall_btn"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_gangwon_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="강원도"
-                android:textOn="강원도"
+                android:background="@drawable/selector"
+                android:text="강원도"
                 android:layout_marginLeft="6dp"
                 android:layout_toRightOf="@+id/filter_incheon_btn"
                 android:layout_alignTop="@+id/filter_incheon_btn"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_chungcheong_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="충청도"
-                android:textOn="충청도"
+                android:background="@drawable/selector"
+                android:text="충청도"
                 android:layout_marginLeft="6dp"
                 android:layout_toRightOf="@+id/filter_gangwon_btn"
                 android:layout_alignTop="@+id/filter_incheon_btn"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_jeolla_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="전라도"
-                android:textOn="전라도"
+                android:background="@drawable/selector"
+                android:text="전라도"
                 android:layout_marginTop="6dp"
                 android:layout_marginLeft="37dp"
                 android:layout_below="@+id/filter_incheon_btn"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_gyeongsang_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="경상도"
-                android:textOn="경상도"
+                android:background="@drawable/selector"
+                android:text="경상도"
                 android:layout_marginLeft="6dp"
                 android:layout_toRightOf="@+id/filter_jeolla_btn"
                 android:layout_alignTop="@+id/filter_jeolla_btn"
                 />
 
-            <ToggleButton
+            <Button
                 android:id="@+id/filter_jeju_btn"
                 android:layout_width="89dp"
                 android:layout_height="41dp"
-                android:background="@drawable/round_button"
-                android:textOff="제주도"
-                android:textOn="제주도"
+                android:background="@drawable/selector"
+                android:text="제주도"
                 android:layout_marginLeft="6dp"
                 android:layout_toRightOf="@+id/filter_gyeongsang_btn"
                 android:layout_alignTop="@+id/filter_jeolla_btn"

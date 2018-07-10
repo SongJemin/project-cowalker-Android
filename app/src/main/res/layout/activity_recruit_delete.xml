@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/recruit_detail_layout">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recruitList_rv"
+        android:layout_width="match_parent"
+        android:layout_height="523dp"
+        android:layout_above="@+id/main_tab"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"></android.support.v7.widget.RecyclerView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="#eeeeee"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/delete_cancel_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="취소"
+            android:fontFamily="@font/notosanscjkkr_bold"
+            android:textColor="@android:color/black"
+            android:layout_marginRight="80dp"
+            android:layout_alignParentRight="true"/>
+        <TextView
+            android:id="@+id/delete_ok_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="삭제"
+            android:fontFamily="@font/notosanscjkkr_bold"
+            android:textColor="@android:color/black"
+            android:layout_marginRight="30dp"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+</RelativeLayout>

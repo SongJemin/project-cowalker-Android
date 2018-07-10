@@ -11,9 +11,11 @@ import android.widget.ImageButton
 import com.jemcom.cowalker.Jemin.Fragment.HomeFragment
 import com.jemcom.cowalker.Nuri.Fragment.NoticeTab
 import android.widget.Toast
-import com.jemcom.cowalker.Hyunmin.Activity.ProfileEditActivity.MypageFragment
+import com.jemcom.cowalker.Hyunmin.MypageTab
 import com.jemcom.cowalker.R
 import com.jemcom.cowalker.Jemin.Fragment.SearchFragment
+import com.jemcom.cowalker.Nuri.Activity.RecruitDeleteActivity
+import com.jemcom.cowalker.Nuri.Fragment.OtherpageTab
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private val FRAGMENT2 = 2
     private val FRAGMENT4 = 4
     private val FRAGMENT5 = 5
+    private val FRAGMENT6 = 6
     private var homeTabBtn: ImageButton? = null
     private var searchTabBtn: ImageButton? = null
     private var createTabBtn: ImageButton? = null
@@ -76,8 +79,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         mypageTabBtn!!.setOnClickListener(this)
 
         // 임의로 액티비티 호출 시점에 어느 프레그먼트를 프레임레이아웃에 띄울 것인지를 정함
-        callFragment(FRAGMENT1)
-
+        if(intent != null) {
+            var status = intent.getStringExtra("status")
+            if(status != null) {
+                if (status.equals("mypage")) callFragment(FRAGMENT5)
+                else callFragment(FRAGMENT6)
+            }
+            else callFragment(FRAGMENT1)
+        }
+        else callFragment(FRAGMENT1)
     }
 
     override fun onClick(v: View) {
@@ -86,10 +96,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 // '홈 버튼' 클릭 시 '홈 프래그먼트' 호출
                 callFragment(FRAGMENT1)
 
-            R.id.search_tab_btn ->
+            R.id.search_tab_btn ->{
                 // '탐색 버튼' 클릭 시 '탐색 프래그먼트' 호출
-                callFragment(FRAGMENT2)
-
+                val intent = Intent(applicationContext, RecruitDeleteActivity::class.java)
+                startActivity(intent)
+                //callFragment(FRAGMENT2)
+            }
             R.id.create_tab_btn -> {
                 // '방생성 버튼' 클릭 시 '방생성 액티비티' 호출
                 val intent = Intent(applicationContext, ProjectCreateActivity::class.java)
@@ -137,8 +149,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             5 -> {
                 // '마이페이지 프래그먼트' 호출
-                val mypageFragment = MypageFragment()
+                val mypageFragment = MypageTab()
                 transaction.replace(R.id.fragment_container, mypageFragment)
+                transaction.commit()
+            }
+            6 -> {
+                // '타인의 마이페이지 프래그먼트' 호출
+                val otherpageFragment = OtherpageTab()
+                transaction.replace(R.id.fragment_container, otherpageFragment)
                 transaction.commit()
             }
         }
