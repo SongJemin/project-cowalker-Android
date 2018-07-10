@@ -15,6 +15,7 @@ import com.jemcom.cowalker.Hyunmin.Activity.ProfileEditActivity
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Get.Response.GetMypageOtherResponse
 import com.jemcom.cowalker.Network.NetworkService
+import com.jemcom.cowalker.Nuri.Activity.OtherpageProjectlistActivity
 import com.jemcom.cowalker.R
 import kotlinx.android.synthetic.main.fragment_otherpage.*
 import kotlinx.android.synthetic.main.fragment_otherpage.view.*
@@ -28,7 +29,7 @@ class OtherpageTab : Fragment(), View.OnClickListener {
         when(v)
         {
             otherpage_project_btn ->{
-                val intent = Intent(activity, MypageProjectlistActivity::class.java)
+                val intent = Intent(activity, OtherpageProjectlistActivity::class.java)
                 startActivity(intent)
             }
         }
@@ -43,6 +44,7 @@ class OtherpageTab : Fragment(), View.OnClickListener {
 
         networkService = ApplicationController.instance.networkSerVice
         requestManager = Glide.with(this)
+        otherpage_project_btn.setOnClickListener(this)
 
         get(view)
 
@@ -62,6 +64,7 @@ class OtherpageTab : Fragment(), View.OnClickListener {
             }
 
             override fun onResponse(call: Call<GetMypageOtherResponse>?, response: Response<GetMypageOtherResponse>?) {
+
                 if(response!!.isSuccessful)
                 {
                     var data = response.body().data

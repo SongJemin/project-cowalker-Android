@@ -146,6 +146,12 @@ interface NetworkService {
     fun getRecruitList(
             @Path("project_idx") project_idx: String
     ) : Call<GetRecruitListResponse>
+
+    @GET("/api/alarm")
+    fun getAlarm(
+            @Header("authorization") authorization: String
+    ) : Call<GetAlarmResponse>
+
     @GET("/api/search")
     fun getSearch(
             @Query("aim") aim : String,
@@ -155,4 +161,30 @@ interface NetworkService {
             @Query("keyword") keyword : String
     ) : Call<GetSearchResponse>
 
+    @GET("/api/user/project")
+    fun getProjectMine(
+            @Header("authorization") authorization: String
+    ) : Call<GetProjectMineResponse>
+
+    @GET("/api/apply/enter_project")
+    fun getProjectMineParticipate(
+            @Header("authorization") authorization: String
+    ) : Call<GetProjectMineParticipateResponse>
+
+    @GET("/api/apply/apply_project")
+    fun getProjectMineApply(
+            @Header("authorization") authorization: String
+    ) : Call<GetProjectMineApplyResponse>
+
+    @GET("/api/user/project/{user_idx}")
+    fun getProjectOther(
+            @Header("authorization") authorization: String,
+            @Path("user_idx") user_idx : String
+    ) : Call<GetProjectMineResponse>
+
+    @GET("/api/apply/enter_project/{user_idx}")
+    fun getProjectOtherParticipate(
+            @Header("authorization") authorization: String,
+            @Path("user_idx") user_idx : String
+    ) : Call<GetProjectMineParticipateResponse>
 }

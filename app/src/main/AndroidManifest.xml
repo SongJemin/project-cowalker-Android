@@ -51,9 +51,10 @@
         <activity android:name=".Jemin.Activity.ProjectIntroParticipActivity" />
         <activity android:name=".Jemin.Activity.Test2Activity" />
         <activity android:name=".Nuri.Activity.RecruitDetailActivity" />
-        <activity android:name=".Nuri.Activity.RecruitDeleteActivity"></activity>
+        <activity android:name=".Nuri.Activity.RecruitDeleteActivity" />
         <activity android:name=".Jemin.Activity.ProjectMemberActivity" />
-        <activity android:name=".Jemin.Activity.ApplyActivity"></activity>
+        <activity android:name=".Jemin.Activity.ApplyActivity" />
+        <activity android:name=".Nuri.Activity.OtherpageProjectlistActivity"></activity>
     </application>
 
 </manifest>

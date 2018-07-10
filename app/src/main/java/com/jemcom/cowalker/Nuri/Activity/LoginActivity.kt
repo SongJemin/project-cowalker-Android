@@ -6,7 +6,9 @@ import android.content.SharedPreferences
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import com.jemcom.cowalker.Jemin.Activity.MainActivity
@@ -23,8 +25,8 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() , View.OnClickListener {
 
     lateinit var networkService: NetworkService
-    lateinit var email : String
-    lateinit var password : String
+    var email : String = ""
+    var password : String = ""
     var auto : Boolean = false
 
     override fun onClick(v: View?) {
@@ -41,16 +43,12 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
             }
 
             login_ok_btn -> {
-                email = login_email_ed.text.toString()
-                password = login_pw_ed.text.toString()
-                login_ok_btn.isSelected = true
                 if(email.length > 0 && password.length > 0) {
                     post()
                 }
                 else
                 {
                     Toast.makeText(applicationContext,"정보를 모두 입력해주세요.",Toast.LENGTH_SHORT).show()
-                    login_ok_btn.isSelected = false
                 }
             }
 
@@ -67,8 +65,6 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
                     auto=false
                 }
             }
-
-
         }
     }
 
@@ -85,14 +81,48 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
         networkService = ApplicationController.instance.networkSerVice
         val pref = applicationContext.getSharedPreferences("auto",Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
-        Log.v("TAG","토큰 값 = " + token);
 
         if(token.length > 0)
         {
-            var intent = Intent(applicationContext, MainActivity::class.java)
+            var intent = Intent(applicationContext,MainActivity::class.java)
             startActivity(intent)
             finish()
         }
+
+        login_ok_btn.setOnTouchListener(object :View.OnTouchListener{
+            override fun onTouch(p0: View?, event: MotionEvent?): Boolean {
+                var action = event!!.action
+
+                if(action == MotionEvent.ACTION_DOWN)
+                {
+                    login_ok_btn.setImageResource(R.drawable.login_press)
+                }
+                else if(action == MotionEvent.ACTION_UP)
+                {
+                    login_ok_btn.setImageResource(R.drawable.login_btn)
+                }
+                return false
+            }
+        })
+
+        login_pw_ed.addTextChangedListener(object : TextWatcher{
+
+            override fun afterTextChanged(p0: Editable?) {
+                email = login_email_ed.text.toString()
+                password = login_pw_ed.text.toString()
+                if(email.length > 0 && password.length > 0)
+                {
+                    login_ok_btn.isSelected =true
+                }
+                else login_ok_btn.isSelected = false
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
     }
 
     fun post()
@@ -119,7 +149,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
                             autoLogin.commit()
                         }
 
-                        var intent = Intent(applicationContext, MainActivity::class.java)
+                        var intent = Intent(applicationContext,MainActivity::class.java)
                         startActivity(intent)
                         finish()
                     }

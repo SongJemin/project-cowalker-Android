@@ -16,6 +16,7 @@ import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Get.Response.GetMypageResponse
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.Nuri.Activity.LoginActivity
+import com.jemcom.cowalker.Nuri.Activity.OtherpageProjectlistActivity
 import com.jemcom.cowalker.R
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import kotlinx.android.synthetic.main.fragment_mypage.view.*

@@ -36,7 +36,7 @@ class RecruitDetailActivity : AppCompatActivity() {
         val token = pref.getString("token","")
         val project_idx = "5b3dd2387172d402215033d2"
         val recruit_idx = "5b3ecc11ca5c3444e4f802f1"
-        val getRecruitDetailResponse = networkService.getRecruitDetail("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMDYsImlhdCI6MTUzMTA3OTA5MywiZXhwIjoxNTMzNjcxMDkzfQ.ZWdFvvvkoW9wnD5wBUT8zvKlpks0krr_Z-DMgfl8qPI",project_idx,recruit_idx)
+        val getRecruitDetailResponse = networkService.getRecruitDetail("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA2NzAxNTMsImV4cCI6MTUzMzI2MjE1M30.BdRb0yary7AY8_yi8MDRDXuXrW19QSqRJI-9Xin3SXs",project_idx,recruit_idx)
 
         getRecruitDetailResponse.enqueue(object : Callback<GetRecruitDetailResponse>{
             override fun onFailure(call: Call<GetRecruitDetailResponse>?, t: Throwable?) {
