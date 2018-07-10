@@ -56,6 +56,9 @@ class Invite4Activity : AppCompatActivity() {
         val linearLayout: LinearLayout
         editText = arrayOfNulls(10)
 
+        val getProjectIdxintent = intent
+        project_idx = getProjectIdxintent.getStringExtra("project_idx")
+
         networkService = ApplicationController.instance.networkSerVice
 
 
@@ -64,7 +67,7 @@ class Invite4Activity : AppCompatActivity() {
         val pref2 = applicationContext.getSharedPreferences("auto",Activity.MODE_PRIVATE)
         token = pref2.getString("token","")
         // project_idx 값
-        project_idx = pref.getString("project_idx", "")
+        //project_idx = pref.getString("project_idx", "")
 
         // 첫 번째 화면 값
         position = pref.getString("position", "")
@@ -171,12 +174,13 @@ class Invite4Activity : AppCompatActivity() {
 
 
     fun postBoard() {
+        Log.v("TAG","초대4화면 플젝넘버 = "+project_idx);
         var data = PostInvite(project_idx, position, start_date, end_date, number, task, activity, reward, area, ability, career, preference, comment, question_ㅣist)
         var postInviteResponse = networkService.postInvite(token,data)
 
      //   Log.v("TAG", "서버 전송 : 토큰 = " + token + ", 제목 = " + titleValue + ", 요약 소개 = " + summaryValue
        //         + ", 지역 = " + areaValue + ", 분야 = " + departmentValue + ", 목적 = " + aimValue + ", 설명 = " + explainValue + ", img = " + imgList)
-        Log.v("TAG", "최종 토큰 = " + token + ", 프로젝트넘버 = " + project_idx + ", 역할 = " + position + ", 시작날짜 = " + start_date + ", 끝날짜 = " + end_date
+        Log.v("TAG", "최종 토큰 = " + token + ", 최종프로젝트넘버 = " + project_idx + ", 역할 = " + position + ", 시작날짜 = " + start_date + ", 끝날짜 = " + end_date
                 + ", 사람수 = " + number + "명, 활동 = " + activity + ", 활동기간 = " + activity + ", 위치 = " + area
                 + ", 혜택 = " + reward + ", 역량 = " + task + ", 경력 = " + career + ", 우대사항 = " + preference + ", 코멘트 = " + comment + ", 질문리스트 = " + question_ㅣist)
 

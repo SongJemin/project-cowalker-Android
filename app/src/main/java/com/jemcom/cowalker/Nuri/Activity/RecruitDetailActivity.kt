@@ -20,13 +20,17 @@ import java.text.SimpleDateFormat
 class RecruitDetailActivity : AppCompatActivity() {
 
     lateinit var networkService: NetworkService
+    var project_idx : String = ""
+    var recruit_idx : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recruit_detail)
 
         networkService = ApplicationController.instance.networkSerVice
-
+        val getRecruitintent = intent
+        project_idx = getRecruitintent.getStringExtra("project_idx")
+        recruit_idx = getRecruitintent.getStringExtra("recruit_idx")
         get()
     }
 
@@ -34,9 +38,9 @@ class RecruitDetailActivity : AppCompatActivity() {
     {
         val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
-        val project_idx = "5b3dd2387172d402215033d2"
-        val recruit_idx = "5b3ecc11ca5c3444e4f802f1"
-        val getRecruitDetailResponse = networkService.getRecruitDetail("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMDYsImlhdCI6MTUzMTA3OTA5MywiZXhwIjoxNTMzNjcxMDkzfQ.ZWdFvvvkoW9wnD5wBUT8zvKlpks0krr_Z-DMgfl8qPI",project_idx,recruit_idx)
+        //val project_idx = "5b3dd2387172d402215033d2"
+        //val recruit_idx = "5b3ecc11ca5c3444e4f802f1"
+        val getRecruitDetailResponse = networkService.getRecruitDetail("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTE3MzIzOSwiZXhwIjoxNTMzNzY1MjM5fQ.taqF_rP7P2DzGiSTT234wv3dqjjsTBLA0J01K-PDlxk",project_idx,recruit_idx)
 
         getRecruitDetailResponse.enqueue(object : Callback<GetRecruitDetailResponse>{
             override fun onFailure(call: Call<GetRecruitDetailResponse>?, t: Throwable?) {
@@ -57,6 +61,7 @@ class RecruitDetailActivity : AppCompatActivity() {
 //                    recruit_detail_date_tv.setText(date)
                     recruit_detail_num_tv.setText(data[0].number)
                     recruit_detail_task_tv.setText(data[0].task)
+                    recruit_detail_activity_tv.setText(data[0].activity)
 //                    recruit_detail_time_tv.setText(date)
                     recruit_detail_area_tv.setText(data[0].area)
                     recruit_detail_reward_tv.setText(data[0].reward)
@@ -73,7 +78,7 @@ class RecruitDetailActivity : AppCompatActivity() {
                     }
                     if(!btnResult.equals("개발자"))
                     {
-                        recruit_detail_recommend.setVisibility(View.GONE)
+                        //recruit_detail_recommend.setVisibility(View.GONE)
                     }
                 }
                 else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()

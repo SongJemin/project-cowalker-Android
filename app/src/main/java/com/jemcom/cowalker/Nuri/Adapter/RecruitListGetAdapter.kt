@@ -8,7 +8,7 @@ import com.jemcom.cowalker.Nuri.Holder.RecruitListViewHolder
 import com.jemcom.cowalker.Nuri.Item.RecruitListItem
 import com.jemcom.cowalker.R
 
-class RecruitListAdapter (private var recruitlistItems : ArrayList<RecruitListItem>) : RecyclerView.Adapter<RecruitListViewHolder>() {
+class RecruitListGetAdapter (private var recruitlistItems : ArrayList<RecruitListItem>) : RecyclerView.Adapter<RecruitListViewHolder>() {
 
     private lateinit var onItemClick : View.OnClickListener
 

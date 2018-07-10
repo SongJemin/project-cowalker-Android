@@ -42,7 +42,7 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener {
     fun post()
     {
         var introduce = apply_introduce_edit.text.toString()
-        var portfolio = apply_portfolio_url_edit.text.toString()
+        var portfolio = apply_portfolio_edit.text.toString()
         var recruit_idx = "5b3e2ee66e351c1db0b33450"
         var answers : ArrayList<String> = ArrayList()
         var phone = apply_phone_edit.text.toString()
