@@ -10,6 +10,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import com.jemcom.cowalker.Hyunmin.Adapter.ImageAdapter
+import com.jemcom.cowalker.Jemin.Activity.ApplyActivity
 import com.jemcom.cowalker.Jemin.Activity.MainActivity
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Get.Response.GetMypageOtherResponse

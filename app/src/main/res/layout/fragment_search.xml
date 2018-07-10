@@ -30,7 +30,7 @@
                 android:id="@+id/search_filter_btn"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:background="@drawable/darkgray"
+                android:background="@drawable/filter_btn"
                 android:layout_marginRight="27dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"/>
@@ -44,6 +44,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/search_keyword_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="프로젝트, 분야, 역할 검색"
@@ -53,6 +54,7 @@
                 android:textSize="20sp" />
 
             <Button
+                android:id="@+id/search_keyword_btn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/gray"
@@ -70,7 +72,7 @@
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/search_recyclerview"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"

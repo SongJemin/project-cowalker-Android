@@ -1,7 +1,7 @@
 package com.jemcom.cowalker.Network.Get
 
 data class GetProjectMessage (
-    var img_url :ArrayList<String?>?,
+    var img_url :ArrayList<String>?,
     var _id : String?,
     var title : String?,
     var summary : String?,

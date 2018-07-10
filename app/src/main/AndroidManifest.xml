@@ -50,7 +50,8 @@
         <activity android:name=".Jemin.Activity.ProjectIntroWaitActivity" />
         <activity android:name=".Jemin.Activity.ProjectIntroParticipActivity" />
         <activity android:name=".Jemin.Activity.Test2Activity" />
-        <activity android:name=".Jemin.Activity.ProjectMemberActivity"></activity>
+        <activity android:name=".Jemin.Activity.ProjectMemberActivity" />
+        <activity android:name=".Jemin.Activity.ApplyActivity"></activity>
     </application>
 
 </manifest>

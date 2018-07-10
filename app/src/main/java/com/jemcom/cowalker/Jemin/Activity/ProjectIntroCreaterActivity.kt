@@ -156,5 +156,10 @@ class ProjectIntroCreaterActivity : AppCompatActivity() {
         })
     }
 
+    override fun onBackPressed() {
+        val intent = Intent(this@ProjectIntroCreaterActivity, MainActivity::class.java)
+        startActivity(intent)
+    }
+
 
 }

@@ -2,7 +2,7 @@ package com.jemcom.cowalker.Network
 
 
 import com.jemcom.cowalker.Network.Delete.DeleteProjectResponse
-import com.jemcom.cowalker.Network.Get.GetSearchResponse
+import com.jemcom.cowalker.Network.Get.Response.GetSearchResponse
 import com.jemcom.cowalker.Network.Get.Response.*
 import com.jemcom.cowalker.Network.Post.*
 import com.jemcom.cowalker.Network.Post.Response.*
@@ -129,8 +129,11 @@ interface NetworkService {
 
     @GET("/api/search")
     fun getSearch(
-            @Query("aim") aim : String
-
+            @Query("aim") aim : String,
+            @Query("area") area : String,
+            @Query("position") position : String,
+            @Query("department") department : String,
+            @Query("keyword") keyword : String
     ) : Call<GetSearchResponse>
 
 }

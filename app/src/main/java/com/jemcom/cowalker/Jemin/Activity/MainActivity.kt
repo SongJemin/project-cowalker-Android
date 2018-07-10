@@ -95,10 +95,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 // '홈 버튼' 클릭 시 '홈 프래그먼트' 호출
                 callFragment(FRAGMENT1)
 
-            R.id.search_tab_btn ->
+            R.id.search_tab_btn ->{
                 // '탐색 버튼' 클릭 시 '탐색 프래그먼트' 호출
-                callFragment(FRAGMENT2)
-
+               callFragment(FRAGMENT2)
+            }
             R.id.create_tab_btn -> {
                 // '방생성 버튼' 클릭 시 '방생성 액티비티' 호출
                 val intent = Intent(applicationContext, ProjectCreateActivity::class.java)

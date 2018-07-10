@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.jemcom.cowalker.Hyunmin.Activity.ProjectIntroActivity
 
 
 import com.jemcom.cowalker.Jemin.Activity.ProjectIntroCreaterActivity
@@ -45,7 +46,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     var detailimgUrl : ArrayList<String> = ArrayList()
     lateinit var requestManager : RequestManager // 이미지를 불러올 때 처리하는 변수
     lateinit var project_idx : String
-    lateinit var user : String
+    var userResult : String = ""
     var projectTitle : String = ""
     var projectSummary : String = ""
     var projectArea : String = ""
@@ -96,8 +97,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
         Log.v("TAG", "선택한 프로젝트 idx = "+project_idx)
         Log.v("TAG", "토큰 = "+ token)
 
-
-
         getProjectDetail();
 
         val intent = Intent(v.context, ProjectIntroCreaterActivity::class.java)
@@ -109,18 +108,23 @@ class HomeFragment : Fragment(), View.OnClickListener {
     fun getProjectDetail()
     {
         Log.v("TAG","플젝넘버=" + project_idx)
-        var getProjectDetailResponse = networkService.getDetailProject("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMDYsImlhdCI6MTUzMTA3OTA5MywiZXhwIjoxNTMzNjcxMDkzfQ.ZWdFvvvkoW9wnD5wBUT8zvKlpks0krr_Z-DMgfl8qPI22", project_idx) // 네트워크 서비스의 getContent 함수를 받아옴
+        var getProjectDetailResponse = networkService.getDetailProject("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTE3MzIzOSwiZXhwIjoxNTMzNzY1MjM5fQ.taqF_rP7P2DzGiSTT234wv3dqjjsTBLA0J01K-PDlxk", project_idx) // 네트워크 서비스의 getContent 함수를 받아옴
         getProjectDetailResponse.enqueue(object : Callback<GetProjectDetailResponse> {
             override fun onResponse(call: Call<GetProjectDetailResponse>?, response: Response<GetProjectDetailResponse>?) {
                 Log.v("TAG","세부 사항 GET 통신 성공")
                 if(response!!.isSuccessful)
                 {
-                    user = response.body().user
-                    Log.v("TAG", "유저 상태 = " + user)
+                    userResult = response.body().user
+                    Log.v("TAG", "유저 상태 = " + userResult)
                     Log.v("TAG","세부 사항 값 갖고오기 성공")
                     detailData = response.body().result
 
                     projectTitle = detailData[0].title
+
+                    if(detailData[0].summary == null)
+                    {
+                        detailData[0].summary = "null"
+                    }
                     projectSummary = detailData[0].summary
                     if(detailData[0].area == null)
                     {
@@ -156,7 +160,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
 
 
-                    if(user=="개발자")
+                    if(userResult=="개설자")
                     {
                         val intent = Intent(getActivity(), ProjectIntroCreaterActivity::class.java)
                         intent.putExtra("title", projectTitle)
@@ -170,10 +174,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         intent.putExtra("project_idx", project_idx)
                         startActivity(intent)
                     }
-                    else if(user=="참여하기")
-                    {
+                    else if(userResult=="참여하기")
+                    { val intent = Intent(getActivity(), ProjectIntroActivity::class.java)
                         //val intent = Intent(getActivity(), ProjectIntroActivity::class.java)
-                        val intent = Intent(getActivity(), ProjectIntroCreaterActivity::class.java)
+                        //val intent = Intent(getActivity(), ProjectIntroActivity::class.java)
                         intent.putExtra("title", projectTitle)
                         intent.putExtra("summary", projectSummary)
                         intent.putExtra("area", projectArea)
@@ -185,7 +189,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         intent.putExtra("project_idx", project_idx)
                         startActivity(intent)
                     }
-                    else if(user=="참여대기")
+                    else if(userResult=="참여대기")
                     {
                         val intent = Intent(getActivity(), ProjectIntroWaitActivity::class.java)
                         startActivity(intent)
@@ -249,10 +253,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         projectItems.add(ProjectItem(data[i].img_url!![0], data[i].title, data[i].area, data[i].department, data[i].aim))
                         //projectItems.add(ProjectItem("https://project-cowalker.s3.ap-northeast-2.amazonaws.com/1531113346984.jpg", "ㅁㄴㅇㅎ", "ㅁㄴㅇㄹㄴㅁㅇㅎ", "ㅁㄴㅇㄹ", "ㅇㅎㅁㄴㅇㄹ"))
                         projectAdapter = ProjectAdapter(projectItems,requestManager)
-
-
                     }
-
 
                     projectAdapter.setOnItemClickListener(this@HomeFragment)
                     v.recyclerview.layoutManager = GridLayoutManager(v.context, 2)
@@ -263,7 +264,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
             override fun onFailure(call: Call<GetProjectResponse>?, t: Throwable?) {
                 Log.v("TAG","통신 실패")
-
             }
 
         })

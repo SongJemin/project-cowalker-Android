@@ -3,11 +3,13 @@ package com.jemcom.cowalker.Jemin.Activity
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -121,7 +123,7 @@ class ProjectCreate2Activity : AppCompatActivity() {
                     val baos = ByteArrayOutputStream()
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
                     val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
-                    val img = File(this.data.toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
+                    val img = File(getRealPathFromURI(context,this.data).toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
 
                     ///RequestBody photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray());
                     // MultipartBody.Part 실제 파일의 이름을 보내기 위해 사용!!
@@ -143,7 +145,18 @@ class ProjectCreate2Activity : AppCompatActivity() {
         }
     }
 
-
+    fun getRealPathFromURI(context: Context, contentUri: Uri): String {
+        var cursor: Cursor? = null
+        try {
+            val proj = arrayOf(MediaStore.Images.Media.DATA)
+            cursor = context.contentResolver.query(contentUri, proj, null, null, null)
+            val column_index = cursor!!.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+            cursor.moveToFirst()
+            return cursor.getString(column_index)
+        } finally {
+            cursor?.close()
+        }
+    }
 
     fun changeImage(){
         val intent = Intent(Intent.ACTION_PICK)
@@ -161,7 +174,7 @@ class ProjectCreate2Activity : AppCompatActivity() {
         val department = RequestBody.create(MediaType.parse("text.plain"), departmentValue)
         val aim = RequestBody.create(MediaType.parse("text.plain"), aimValue)
         val explain = RequestBody.create(MediaType.parse("text.plain"), explainValue)
-        val postProjectResponse = networkService.uploadProject("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzExMjQxMDYsImV4cCI6MTUzMzcxNjEwNn0.XVaXhAV6dqRSyG0VCXDAsWoWVvgg3aFJpbLsJx87M544", title, summary, area, department, aim, explain, imgList)
+        val postProjectResponse = networkService.uploadProject("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTE3MzIzOSwiZXhwIjoxNTMzNzY1MjM5fQ.taqF_rP7P2DzGiSTT234wv3dqjjsTBLA0J01K-PDlxk", title, summary, area, department, aim, explain, imgList)
 
         Log.v("TAG", "서버 전송 : 토큰 = " + token + ", 제목 = " + titleValue + ", 요약 소개 = " + summaryValue
                 + ", 지역 = " + areaValue + ", 분야 = " + departmentValue + ", 목적 = " + aimValue + ", 설명 = " + explainValue + ", img = " + imgList)
