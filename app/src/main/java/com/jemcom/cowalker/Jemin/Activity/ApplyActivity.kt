@@ -16,6 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+// 지원서 액티비티
 class ApplyActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
