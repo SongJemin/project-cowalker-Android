@@ -5,8 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
-import com.jemcom.cowalker.Jemin.Adapter.ProjectViewHolder
-import com.jemcom.cowalker.Network.Get.ProjectItem
+import com.jemcom.cowalker.Jemin.Item.ProjectItem
 import com.jemcom.cowalker.R
 
 class ProjectAdapter(private var projectItems : ArrayList<ProjectItem>, var requestManager : RequestManager) : RecyclerView.Adapter<ProjectViewHolder>() {

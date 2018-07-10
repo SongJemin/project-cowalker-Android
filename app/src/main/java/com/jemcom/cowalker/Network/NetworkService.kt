@@ -1,7 +1,9 @@
 package com.jemcom.cowalker.Network
 
+
 import com.jemcom.cowalker.Network.Delete.DeleteProjectResponse
 import com.jemcom.cowalker.Network.Delete.DeleteRecruitResponse
+import com.jemcom.cowalker.Network.Get.Response.GetSearchResponse
 import com.jemcom.cowalker.Network.Get.Response.*
 import com.jemcom.cowalker.Network.Post.*
 import com.jemcom.cowalker.Network.Post.Response.*
@@ -27,40 +29,6 @@ interface NetworkService {
     fun postLogin(
             @Body login : PostLogin
     ) : Call<PostLoginResponse>
-
-    @GET("/api/project/{project_idx}")
-    fun getDetailProject(
-            @Header("authorization") authorization: String,
-            @Path("project_idx") project_idx : String
-    ) : Call<GetProjectDetailResponse>
-
-    @GET("/api/home")
-    fun getProject(
-            @Header("authorization") authorization : String
-    ) : Call<GetProjectResponse>
-
-    @DELETE("/api/project/{project_idx}")
-    fun deleteProject(
-            @Path("project_idx") project_idx : String
-    ) : Call<DeleteProjectResponse>
-
-    @GET("/api/project/team/{project_idx}")
-    fun getMemberProject(
-            @Path("project_idx") project_idx : String
-    ) : Call<GetProjectMemberResponse>
-
-    @Multipart
-    @PUT("/api/project/{project_idx}")
-    fun putChangeProject(
-            @Path("project_idx") project_idx : String,
-            @Part("title") title : RequestBody,
-            @Part("summary") summary : RequestBody,
-            @Part("area") area: RequestBody,
-            @Part("department") department : RequestBody,
-            @Part("aim") aim : RequestBody,
-            @Part("explain") explain : RequestBody,
-            @Part img : ArrayList<MultipartBody.Part?>
-    ) : Call<PutProjectChangeResponse>
 
     @Multipart
     @POST("/api/project")
@@ -111,6 +79,44 @@ interface NetworkService {
             @Path("partner_id") partner_id : String
     ) : Call<GetMessageLookResponse>
 
+
+
+
+    @GET("/api/home")
+    fun getProject(
+            @Header("authorization") authorization : String
+    ) : Call<GetProjectResponse>
+
+    @Multipart
+    @PUT("/api/project/{project_idx}")
+    fun putChangeProject(
+            @Path("project_idx") project_idx : String,
+            @Part("title") title : RequestBody,
+            @Part("summary") summary : RequestBody,
+            @Part("area") area: RequestBody,
+            @Part("department") department : RequestBody,
+            @Part("aim") aim : RequestBody,
+            @Part("explain") explain : RequestBody,
+            @Part img : ArrayList<MultipartBody.Part?>
+    ) : Call<PutProjectChangeResponse>
+
+    @GET("/api/project/{project_idx}")
+    fun getDetailProject(
+            @Header("authorization") authorization: String,
+            @Path("project_idx") project_idx : String
+    ) : Call<GetProjectDetailResponse>
+
+    @DELETE("/api/project/{project_idx}")
+    fun deleteProject(
+            @Path("project_idx") project_idx : String
+    ) : Call<DeleteProjectResponse>
+
+    @GET("/api/project/team/{project_idx}")
+    fun getMemberProject(
+            @Path("project_idx") project_idx : String
+    ) : Call<GetProjectMemberResponse>
+
+
     @GET("/api/mypage")
     fun getMypage(
             @Header("authorization") authorization: String
@@ -140,4 +146,13 @@ interface NetworkService {
     fun getRecruitList(
             @Path("project_idx") project_idx: String
     ) : Call<GetRecruitListResponse>
+    @GET("/api/search")
+    fun getSearch(
+            @Query("aim") aim : String,
+            @Query("area") area : String,
+            @Query("position") position : String,
+            @Query("department") department : String,
+            @Query("keyword") keyword : String
+    ) : Call<GetSearchResponse>
+
 }

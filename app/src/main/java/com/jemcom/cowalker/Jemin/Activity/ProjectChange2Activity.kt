@@ -3,11 +3,13 @@ package com.jemcom.cowalker.Jemin.Activity
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -125,12 +127,17 @@ class ProjectChange2Activity : AppCompatActivity() {
                     val baos = ByteArrayOutputStream()
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
                     val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
-                    val img = File(this.data.toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
+                    val img = File(getRealPathFromURI(context,this.data).toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
 
-                    ///RequestBody photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray());
+                    //RequestBody photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray());
                     // MultipartBody.Part 실제 파일의 이름을 보내기 위해 사용!!
 
                     imgList.add(MultipartBody.Part.createFormData("img", img.name, photoBody))
+
+                    Log.v("TAG","궁금 = "+ img.name)
+                    Log.v("TAG","궁금2 = "+ photoBody)
+                    Log.v("TAG","궁금3 = "+ this.data.toString())
+
 
                     //body = MultipartBody.Part.createFormData("image", photo.getName(), profile_pic);
 
@@ -155,6 +162,19 @@ class ProjectChange2Activity : AppCompatActivity() {
         intent.data = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         startActivityForResult(intent, REQ_CODE_SELECT_IMAGE)
 
+    }
+
+    fun getRealPathFromURI(context: Context, contentUri: Uri): String {
+        var cursor: Cursor? = null
+        try {
+            val proj = arrayOf(MediaStore.Images.Media.DATA)
+            cursor = context.contentResolver.query(contentUri, proj, null, null, null)
+            val column_index = cursor!!.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+            cursor.moveToFirst()
+            return cursor.getString(column_index)
+        } finally {
+            cursor?.close()
+        }
     }
 
     fun changeBoard() {

@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Jemin.Activity.ApplyActivity"
+    android:background="#f8f8f8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:text="참여하기"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textColor="#444444"
+        android:textSize="18sp"
+        
+        />
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:text="참여하고자 하는 역할을 선택해주세요"
+        android:textColor="#666666"
+        android:textSize="16sp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="26dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginTop="8dp"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="88dp">
+
+                <TextView
+                    android:id="@+id/apply_position1_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:text="기획자"
+                    android:textSize="16sp"
+                    android:textColor="#444444"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="23dp"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:text="1명"
+                    android:textSize="16sp"
+                    android:textColor="#666666"
+                    android:layout_toRightOf="@id/apply_position1_tv"
+                    android:layout_alignTop="@+id/apply_position1_tv"
+                    android:layout_marginLeft="22dp"
+                    android:textStyle="bold"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:text="D-9"
+                    android:background="#45b6ff"
+                    android:layout_alignTop="@+id/apply_position1_tv"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/apply_summary1_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:text="홍보 기획하기"
+                    android:textSize="16sp"
+                    android:textColor="#666666"
+                    android:layout_alignLeft="@+id/apply_position1_tv"
+                    android:layout_below="@id/apply_position1_tv"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    />
+
+
+            </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginTop="8dp"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="88dp">
+
+                <TextView
+                    android:id="@+id/apply_position2_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:text="디자이너"
+                    android:textSize="16sp"
+                    android:textColor="#444444"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="23dp"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:text="1명"
+                    android:textSize="16sp"
+                    android:textColor="#666666"
+                    android:layout_toRightOf="@id/apply_position2_tv"
+                    android:layout_alignTop="@+id/apply_position2_tv"
+                    android:layout_marginLeft="22dp"
+                    android:textStyle="bold"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:text="D-9"
+                    android:background="#45b6ff"
+                    android:layout_alignTop="@+id/apply_position2_tv"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/apply_summary2_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:text="홍보 포스터 및 게임 아이템 디자인"
+                    android:textSize="16sp"
+                    android:textColor="#666666"
+                    android:layout_alignLeft="@+id/apply_position2_tv"
+                    android:layout_below="@id/apply_position2_tv"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="166dp"
+        android:layout_marginTop="25dp"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:text="자기 소개"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            />
+        <EditText
+            android:id="@+id/apply_introduce_edit"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="top"
+            android:hint="자신을 어필해보세요.
+
+예) 참여했던 프로젝트, 평소 관심있게 공부한 주제, 잘하는 것, 장점과 단점"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="20dp"
+            android:textSize="16sp"
+            android:backgroundTint="@color/Transparent"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:text="이력서, 포트폴리오 링크"
+            android:textSize="16sp"
+            android:textColor="#444444"
+            android:textStyle="bold"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <EditText
+            android:id="@+id/apply_portfolio_url_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="예) www.mypage.com"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="7dp"
+            android:textSize="16sp"
+            android:backgroundTint="@color/Transparent"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:text="연락처"
+            android:textSize="16sp"
+            android:textColor="#444444"
+            android:textStyle="bold"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <EditText
+            android:id="@+id/apply_phone_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="예) 010 1234 5678"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="7dp"
+            android:textSize="16sp"
+            android:backgroundTint="@color/Transparent"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="178dp"
+        android:layout_marginTop="25dp"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:text="질문 (선택)"
+            android:textSize="16sp"
+            android:textColor="#444444"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <TextView
+            android:id="@+id/apply_question1_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:text="1. 시간을 얼마나 할애할 수 있습니까?"
+            android:textColor="#000000"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            />
+        
+        <EditText
+            android:id="@+id/apply_question1_edit"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:hint="답변을 작성해주세요."
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="14dp"
+            android:backgroundTint="@color/Transparent"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="178dp"
+        android:layout_marginTop="1dp"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/apply_question2_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:text="2. 어떤 기술을 구현해보고 싶습니까?"
+            android:textColor="#000000"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <EditText
+            android:id="@+id/apply_question2_edit"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:hint="답변을 작성해주세요."
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="14dp"
+            android:backgroundTint="@color/Transparent"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/apply_apply_btn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="참여하기"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:background="#45b6ff"
+        />
+    </LinearLayout>
+</ScrollView>
