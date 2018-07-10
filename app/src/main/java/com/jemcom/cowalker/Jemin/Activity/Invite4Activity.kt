@@ -99,7 +99,7 @@ class Invite4Activity : AppCompatActivity() {
         }
 
         confirmBtn.setOnClickListener {
-            for (i in 0 until count) {
+                for (i in 0 until count) {
                 question_ㅣist.add(editText[i]!!.text.toString())
                 Log.d("Value ", "Val " + editText[i]!!.text + ", Size = " + question_ㅣist.size)
 

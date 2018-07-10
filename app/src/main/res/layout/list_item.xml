@@ -13,7 +13,7 @@
         android:layout_height="154dp">
 
         <ImageView
-            android:id="@+id/item_background_image"
+            android:id="@+id/item_imgurl_img"
             android:layout_width="match_parent"
             android:layout_height="154dp"
             android:background="@drawable/default_img"
@@ -43,7 +43,7 @@
 
 
         <TextView
-            android:id="@+id/item_purpose_tv"
+            android:id="@+id/item_aim_tv"
             android:layout_width="wrap_content"
             android:layout_height="15dp"
             android:layout_below="@+id/item_title_tv"
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="15dp"
             android:layout_marginBottom="10dp"
-            android:layout_toRightOf="@+id/item_purpose_tv"
+            android:layout_toRightOf="@+id/item_aim_tv"
             android:textSize="10sp"
             android:layout_below="@+id/item_title_tv"
             android:layout_marginLeft="3dp"
@@ -66,7 +66,7 @@
             android:textColor="#444444" />
 
         <TextView
-            android:id="@+id/item_field_tv"
+            android:id="@+id/item_department_tv"
             android:layout_width="wrap_content"
             android:layout_height="15dp"
             android:layout_marginBottom="10dp"
@@ -83,14 +83,14 @@
             android:layout_height="15dp"
             android:layout_below="@+id/item_title_tv"
             android:layout_marginBottom="10dp"
-            android:layout_toRightOf="@+id/item_field_tv"
+            android:layout_toRightOf="@+id/item_department_tv"
             android:textSize="10sp"
             android:layout_marginLeft="3dp"
             android:text="·"
             android:textColor="#444444" />
 
         <TextView
-            android:id="@+id/item_location_tv"
+            android:id="@+id/item_area_tv"
             android:layout_width="wrap_content"
             android:layout_height="15dp"
             android:layout_marginBottom="10dp"
