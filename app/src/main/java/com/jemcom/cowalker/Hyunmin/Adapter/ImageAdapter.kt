@@ -24,7 +24,8 @@ class ImageAdapter internal constructor(internal var context: Context, var reque
         val v = inflater.inflate(R.layout.profile_more_item, null)
         val image_container = v.findViewById(R.id.image_container) as ImageView
 
-        Glide.with(context).load(data[position]).into(image_container)
+//        Glide.with(context).load(data[position]).override(360,200).into(image_container)
+        Glide.with(context).load(data[position]).centerCrop().into(image_container)
         container.addView(v)
 
         return v
