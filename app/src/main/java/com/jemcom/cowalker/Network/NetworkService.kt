@@ -79,17 +79,17 @@ interface NetworkService {
             @Path("partner_id") partner_id : String
     ) : Call<GetMessageLookResponse>
 
-    @GET("api/intro/{user_idx}") // GET할 때, 경로 앞에 api를 붙이고 시작해야한다. 그 뒤는 그대로 적기!
+    @GET("/api/intro/{user_idx}") // GET할 때, 경로 앞에 api를 붙이고 시작해야한다. 그 뒤는 그대로 적기!
     fun getIntroOther( // 맞춘 형식으로 get~~~ 함수 이름 생성해주기
             @Path("user_idx") user_idx : String // @Path는 외우기, { } 안에 있는 거 value값으로 하고! 변수 이름과 타입 적기. {}있으면 보통 Path.
     ) : Call<GetIntroOtherResponse> // 반환 해주기, Response에다가 만들기!
 
-    @GET("api/intro")
+    @GET("/api/intro")
     fun getIntroMine(
             @Header("Authorization") authorization : String
-    ) : Call<GetIntroMineResponse>
+    ) : Call<GetIntroOtherResponse>
 
-    @PUT("api/intro")
+    @PUT("/api/intro")
     fun putIntroEdit(
             @Header("Authorization") authorization: String,
             @Body introEdit : PutEdit
