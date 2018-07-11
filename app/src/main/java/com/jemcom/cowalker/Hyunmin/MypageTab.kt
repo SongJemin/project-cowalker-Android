@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.jemcom.cowalker.Hyunmin.Activity.MypageProjectlistActivity
 import com.jemcom.cowalker.Hyunmin.Activity.ProfileEditActivity
+import com.jemcom.cowalker.Hyunmin.Activity.ProfileMore2Activity
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Get.Response.GetMypageResponse
 import com.jemcom.cowalker.Network.NetworkService
@@ -46,6 +47,11 @@ class MypageTab : Fragment(),View.OnClickListener {
                 val intent = Intent(activity, ProfileEditActivity::class.java)
                 startActivity(intent)
             }
+
+            mypage_intro_btn -> {
+                val intent = Intent(activity, ProfileMore2Activity::class.java)
+                startActivity(intent)
+            }
         }
     }
 
@@ -61,7 +67,7 @@ class MypageTab : Fragment(),View.OnClickListener {
         view.logout_btn.setOnClickListener(this)
         view.mypage_project_btn.setOnClickListener(this)
         view.mypage_edit_btn.setOnClickListener(this)
-
+        view.mypage_intro_btn.setOnClickListener(this)
         get(view)
 
         return view

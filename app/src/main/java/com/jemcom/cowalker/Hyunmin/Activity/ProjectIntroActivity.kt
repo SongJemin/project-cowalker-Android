@@ -70,10 +70,6 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
        // intro_title_tv.setText(title)
 
        intro_title_tv.text = intent.getStringExtra("title")
-
-        val viewPager = findViewById<ViewPager>(R.id.image_swipe)
-        val adapter = ImageAdapter(this)
-        viewPager.adapter = adapter
         networkService = ApplicationController.instance.networkSerVice
         recruitListItems = ArrayList()
 
