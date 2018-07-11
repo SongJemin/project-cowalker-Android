@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.jemcom.cowalker.Jemin.Activity.ApplyDetailActivity
+import com.jemcom.cowalker.Jemin.Activity.ApplyMemberActivity
 import com.jemcom.cowalker.Jemin.Activity.MainActivity
 import com.jemcom.cowalker.Jemin.Activity.ProjectMemberActivity
 import com.jemcom.cowalker.Network.ApplicationController
@@ -38,6 +39,12 @@ class RecruitDetailActivity : AppCompatActivity() {
         project_idx = getRecruitintent.getStringExtra("project_idx")
         recruit_idx = getRecruitintent.getStringExtra("recruit_idx")
         get()
+
+        recruit_detail_applymember_linear.setOnClickListener{
+            var intent = Intent(applicationContext, ApplyMemberActivity::class.java)
+            intent.putExtra("recruit_idx",recruit_idx)
+            startActivity(intent)
+        }
 
         recruit_detail_participmember_linear.setOnClickListener{
             var intent = Intent(applicationContext, ProjectMemberActivity::class.java)

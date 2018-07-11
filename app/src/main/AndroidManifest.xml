@@ -68,9 +68,8 @@
         <activity android:name=".Nuri.Activity.RecruitDeleteActivity" />
         <activity android:name=".Jemin.Activity.ProjectMemberActivity" />
         <activity android:name=".Jemin.Activity.ApplyActivity" />
-        <activity android:name=".Jemin.Activity.ApplyDetailActivity">
-
-        </activity>
+        <activity android:name=".Jemin.Activity.ApplyDetailActivity"></activity>
+        <activity android:name=".Jemin.Activity.ApplyMemberActivity"></activity>
     </application>
 
 </manifest>

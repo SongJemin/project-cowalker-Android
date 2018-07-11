@@ -160,4 +160,10 @@ interface NetworkService {
             @Path("recruit_idx") recruit_idx: String
     ) : Call<GetQuestionListResponse>
 
+    @GET("/api/apply/{recruit_idx}")
+    fun getApplyMemberList(
+            @Header("authorization") authorization: String,
+            @Path("recruit_idx") recruit_idx: String
+    ) : Call<GetApplyMemberResponse>
+
 }
