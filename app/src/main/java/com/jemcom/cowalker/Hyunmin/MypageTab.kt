@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.jemcom.cowalker.Hyunmin.Activity.MypageProfileEditActivity
 import com.jemcom.cowalker.Hyunmin.Activity.MypageProjectlistActivity
 import com.jemcom.cowalker.Hyunmin.Activity.ProfileEditActivity
 import com.jemcom.cowalker.Hyunmin.Activity.ProfileMore2Activity
@@ -44,7 +45,7 @@ class MypageTab : Fragment(),View.OnClickListener {
             }
 
             mypage_edit_btn -> {
-                val intent = Intent(activity, ProfileEditActivity::class.java)
+                val intent = Intent(activity, MypageProfileEditActivity::class.java)
                 startActivity(intent)
             }
 

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f8f8f8">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="내 소개 수정"
+        android:textSize="18sp"
+        android:textColor="#444444"
+        android:layout_gravity="center"
+        android:layout_marginTop="23dp"/>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/my_info_edit_img_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="9dp"
+                    android:orientation="horizontal">
+
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/my_info_edit_plus_btn"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/project_default_img"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="대표 이미지"
+                android:textSize="12sp"
+                android:textColor="#444444"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="67dp"
+                />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="15dp"
+        android:text="소개 이미지"
+        android:textColor="#444444"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="#ffffff"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="내 소개"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"/>
+        <EditText
+            android:id="@+id/my_info_edit_explain_et"
+            android:inputType="textMultiLine|textNoSuggestions"
+            android:lines="5"
+            android:minLines="1"
+            android:maxLines="10"
+            android:scrollbars="vertical"
+            android:layout_width="340dp"
+            android:layout_height="96dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="19.63dp"
+            android:layout_marginTop="15dp"
+            android:textSize="16sp"
+            android:hint="자신을 어필해보세요.
+
+예) 좌우명, 본인의 장점, 관심사, 만들고자 하는 세상"
+            android:textColorHint="#c5c5c5"
+            android:background="#ffffff"/>
+    </LinearLayout>
+    <ImageButton
+        android:id="@+id/my_info_edit_ok_ib"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="13dp"
+        android:src="@drawable/okbtn"/>
+</LinearLayout>

@@ -7,6 +7,7 @@ import com.jemcom.cowalker.Network.Delete.DeleteRecruitResponse
 import com.jemcom.cowalker.Network.Get.Response.GetSearchResponse
 import com.jemcom.cowalker.Network.Post.*
 import com.jemcom.cowalker.Network.Post.Response.*
+import com.jemcom.cowalker.Network.Put.Response.PutMyPageResponse
 import com.jemcom.cowalker.Network.Put.Response.PutProjectChangeResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -89,10 +90,12 @@ interface NetworkService {
             @Header("Authorization") authorization : String
     ) : Call<GetIntroOtherResponse>
 
+    @Multipart
     @PUT("/api/intro")
     fun putIntroEdit(
             @Header("Authorization") authorization: String,
-            @Body introEdit : PutEdit
+            @Part("contents") contents : String,
+            @Part img : ArrayList<MultipartBody.Part?>
     ) : Call<PutIntroEditResponse>
 
 //    @DELETE("api/intro/{intro_idx}")
@@ -120,6 +123,22 @@ interface NetworkService {
             @Part("explain") explain : RequestBody,
             @Part img : ArrayList<MultipartBody.Part?>
     ) : Call<PutProjectChangeResponse>
+
+    @Multipart
+    @PUT("/api/mypage")
+    fun putMypage(
+            @Header("authorization") authorization : String,
+            @Part profile_img : MultipartBody.Part?,
+            @Part background_img : MultipartBody.Part?,
+//            @Part("name") name:String,
+            @Part("position") position:String,
+            @Part("introduce") introduce:String,
+//            @Part("introduce_detail") introduce_detail:String,
+            @Part("portfolio_url") portfolio_url : String,
+            @Part("aim") aim : String,
+            @Part("department") department : String,
+            @Part("area") area : String
+    ) : Call<PutMyPageResponse>
 
     @GET("/api/project/{project_idx}")
     fun getDetailProject(
