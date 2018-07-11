@@ -7,6 +7,7 @@ import com.jemcom.cowalker.Network.Get.Response.GetSearchResponse
 import com.jemcom.cowalker.Network.Get.Response.*
 import com.jemcom.cowalker.Network.Post.*
 import com.jemcom.cowalker.Network.Post.Response.*
+import com.jemcom.cowalker.Network.Put.Response.PutCreaterDecideResponse
 import com.jemcom.cowalker.Network.Put.Response.PutProjectChangeResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -173,4 +174,11 @@ interface NetworkService {
             @Path("applicant_idx") applicant_idx : String
     ) : Call<GetApplyPaperResponse>
 
+    @PUT("/api/apply/{apply_idx}/{applicant_idx}/join/{join}")
+    fun putCreaterDecide(
+            @Header("authorization") authorization: String,
+            @Path("apply_idx") apply_idx : String,
+            @Path("applicant_idx") applicant_idx : String,
+            @Path("join") join : String
+    ) : Call<PutCreaterDecideResponse>
 }

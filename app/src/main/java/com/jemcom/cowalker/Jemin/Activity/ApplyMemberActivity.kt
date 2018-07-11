@@ -42,14 +42,22 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
     var applicant_idx : String = ""
     var apply_idx : String = ""
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apply_member)
+        applyMemberActivity = this
         val intent = intent
         recruit_idx = intent.getStringExtra("recruit_idx")
         networkService = ApplicationController.instance.networkSerVice // 어플리케이션을 실행하자마자 어플리케이션 콘트롤러가 실행되는데 그 때 사용?
         requestManager = Glide.with(this)
         getMember()
+    }
+
+    companion object {
+        lateinit var applyMemberActivity: ApplyMemberActivity
+        //일종의 스태틱
     }
 
     fun getMember()

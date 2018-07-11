@@ -9,10 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
-import com.jemcom.cowalker.Jemin.Activity.ApplyPaperActivity
-import com.jemcom.cowalker.Jemin.Activity.MainActivity
-import com.jemcom.cowalker.Jemin.Activity.ProjectChange2Activity
-import com.jemcom.cowalker.Jemin.Activity.ProjectMemberActivity
+import com.jemcom.cowalker.Jemin.Activity.*
 import com.jemcom.cowalker.Network.Get.GetApplyMemberMessage
 import com.jemcom.cowalker.Network.Get.Response.GetApplyMemberResponse
 import com.jemcom.cowalker.R
@@ -24,6 +21,7 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
     var apply_idx : ArrayList<String> = ArrayList<String>()
     var applicant_idxList : ArrayList<Int> = ArrayList<Int>()
     var applicant_idx : String = ""
+    var recruit_idx : String = ""
 
     //내가 쓸 뷰홀더가 뭔지를 적어준다.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApplyMemberViewHolder {
@@ -49,10 +47,14 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
             Log.v("Adapter", "지원 번호 = " + apply_idx[position])
             Log.v("Adapter", "지원자 번호 = " + applicant_idxList[position])
 
+            recruit_idx = ApplyMemberActivity.applyMemberActivity.recruit_idx
+
             applicant_idx = applicant_idxList[position].toString()
             var intent = Intent(mContext, ApplyPaperActivity::class.java)
             intent.putExtra("apply_idx",apply_idx[position])
             intent.putExtra("applicant_idx",applicant_idx)
+            intent.putExtra("recruit_idx",recruit_idx)
+            Log.v("Adapter", "지원서로 보내는 모집 번호 = "+ recruit_idx)
             mContext.startActivity(intent)
 
                     //mContext.startActivity(Intent(mContext, MainActivity::class.java)
