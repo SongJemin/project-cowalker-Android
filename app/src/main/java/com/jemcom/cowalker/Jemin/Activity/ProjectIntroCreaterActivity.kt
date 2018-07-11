@@ -22,6 +22,15 @@ import com.jemcom.cowalker.Nuri.Adapter.RecruitListAdapter
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
 import com.jemcom.cowalker.Nuri.Item.RecruitListItem
 import com.jemcom.cowalker.R
+import com.kakao.kakaolink.v2.KakaoLinkResponse
+import com.kakao.kakaolink.v2.KakaoLinkService
+import com.kakao.message.template.ButtonObject
+import com.kakao.message.template.ContentObject
+import com.kakao.message.template.FeedTemplate
+import com.kakao.message.template.LinkObject
+import com.kakao.network.ErrorResult
+import com.kakao.network.callback.ResponseCallback
+import com.kakao.util.helper.log.Logger
 import kotlinx.android.synthetic.main.activity_project_intro_creater.*
 import kotlinx.android.synthetic.main.activity_recruit_delete.*
 import retrofit2.Call
@@ -45,6 +54,8 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var recruitListItems: ArrayList<RecruitListItem>
     lateinit var recruitListGetAdapter : RecruitListGetAdapter
 
+    var url = "https://cdn.xl.thumbs.canstockphoto.com/computer-generated-3d-image-cooperation-stock-illustrations_csp2074347.jpg"
+
     var title: String = ""
      var summary: String = ""
       var aim: String = ""
@@ -58,7 +69,6 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         val index : Int = recruit_list_recyclerview.getChildAdapterPosition(v)
-
         recruit_list_recyclerview.getChildViewHolder(v)
 
     }
@@ -121,6 +131,10 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
             val intent = Intent(this@ProjectIntroCreaterActivity, InviteActivity::class.java)
             intent.putExtra("project_idx", project_idx)
             startActivity(intent)
+        }
+
+        introcreate_recommend_btn.setOnClickListener {
+            sendLink()
         }
 
         changeBtn.setOnClickListener {
@@ -210,6 +224,38 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
                // else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+
+    private fun sendLink() {
+        val params = FeedTemplate
+                .newBuilder(ContentObject.newBuilder("공공서비스 어플리케이션 공모전",
+                        url,
+                        LinkObject.newBuilder().setWebUrl("")
+                                .setMobileWebUrl("").build())
+                        .setDescrption("이충엽님이 당신을 추천하셨습니다. 함께 해주세요!")
+                        .build())
+
+                .addButton(ButtonObject("깅스앱으로 열기", LinkObject.newBuilder()
+
+                        .setWebUrl("'https://developers.kakao.com")
+                        .setMobileWebUrl("'https://developers.kakao.com")
+                        .setAndroidExecutionParams("key1=value1")
+                        .setIosExecutionParams("key1=value1")
+                        .build()))
+                .build()
+
+        KakaoLinkService.getInstance().sendDefault(this, params, object : ResponseCallback<KakaoLinkResponse>() {
+
+            override fun onFailure(errorResult: ErrorResult) {
+
+                Logger.e(errorResult.toString())
+            }
+
+            override fun onSuccess(result: KakaoLinkResponse) {}
+        })
+
+
     }
 
     override fun onBackPressed() {

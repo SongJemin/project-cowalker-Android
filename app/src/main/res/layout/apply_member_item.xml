@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:layout_marginBottom="3dp"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/apply_member_profile_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:src="@color/colorPrimary"
+            />
+
+            <TextView
+                android:id="@+id/apply_member_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:text="이충엽"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:layout_toRightOf="@+id/apply_member_profile_img"
+                android:layout_marginLeft="12dp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                />
+            <TextView
+                android:id="@+id/apply_memeber_position_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@+id/apply_member_profile_img"
+                android:layout_below="@+id/apply_member_name_tv"
+                android:textSize="16sp"
+                android:textColor="#c5c5c5"
+                android:layout_marginTop="2dp"
+                />
+    
+            <Button
+                android:id="@+id/apply_memeber_content_btn"
+                android:layout_width="30dp"
+                android:layout_height="42dp"
+                android:background="@drawable/applydetail"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="15dp"
+                />
+    
+            <Button
+                android:layout_width="125dp"
+                android:layout_height="36dp"
+                android:layout_below="@+id/apply_member_name_tv"
+                android:text="거절"
+                android:layout_toLeftOf="@+id/apply_member_accept_btn"
+                android:background="#eeeeee"
+                android:textColor="#c5c5c5"
+                android:layout_marginRight="11dp"
+                android:layout_marginTop="42dp"
+                />
+
+    <Button
+        android:id="@+id/apply_member_accept_btn"
+        android:layout_width="125dp"
+        android:layout_height="36dp"
+        android:layout_alignRight="@+id/apply_memeber_content_btn"
+        android:layout_below="@+id/apply_member_name_tv"
+        android:layout_marginTop="42dp"
+        android:text="수락"
+        android:textColor="#ffffff"
+        android:background="#45b6ff"
+        />
+
+</RelativeLayout>

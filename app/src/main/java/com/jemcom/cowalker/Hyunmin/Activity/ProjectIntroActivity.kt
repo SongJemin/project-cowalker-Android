@@ -25,6 +25,15 @@ import com.jemcom.cowalker.Nuri.Activity.RecruitDetailActivity
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
 import com.jemcom.cowalker.Nuri.Item.RecruitListItem
 import com.jemcom.cowalker.R
+import com.kakao.kakaolink.v2.KakaoLinkResponse
+import com.kakao.kakaolink.v2.KakaoLinkService
+import com.kakao.message.template.ButtonObject
+import com.kakao.message.template.ContentObject
+import com.kakao.message.template.FeedTemplate
+import com.kakao.message.template.LinkObject
+import com.kakao.network.ErrorResult
+import com.kakao.network.callback.ResponseCallback
+import com.kakao.util.helper.log.Logger
 import kotlinx.android.synthetic.main.activity_project_intro.*
 import kotlinx.android.synthetic.main.activity_project_intro_creater.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -48,11 +57,12 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
     var img_url: String = ""
     var project_idx: String = ""
     var recruit_idx: String = ""
+    var url = "https://cdn.xl.thumbs.canstockphoto.com/computer-generated-3d-image-cooperation-stock-illustrations_csp2074347.jpg"
 
     override fun onClick(v: View) {
         var idx = recruit_list_recyclerview2!!.getChildAdapterPosition(v)
         recruit_idx = recruitData!![idx].recruit_idx!!
-        Log.v("TAG", "선택한 모집번호 = "+ recruit_idx)
+        Log.v("TAG", "참여하기 선택한 모집번호 = "+ recruit_idx)
 
         val intent = Intent(v.context, RecruitDetailActivity::class.java)
         intent.putExtra("project_idx", project_idx)
@@ -99,7 +109,8 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
         projectIntro_profile_iv.setOnClickListener(this)
 
         btn_join.setOnClickListener{
-            val nextIntent = Intent(this, MainActivity::class.java)
+            val nextIntent = Intent(this, ApplyActivity::class.java)
+            nextIntent.putExtra("project_idx", project_idx)
             startActivity(nextIntent)
         }
         see_more.setOnClickListener  {
@@ -131,6 +142,10 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
 
         projectIntro_name_tv.setOnClickListener {
             get()
+        }
+
+        intro_recommend_btn.setOnClickListener {
+            sendLink()
         }
 
     }
@@ -202,10 +217,44 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
         })
     }
 
+    private fun sendLink() {
+        val params = FeedTemplate
+                .newBuilder(ContentObject.newBuilder("공공서비스 어플리케이션 공모전",
+                        url,
+                        LinkObject.newBuilder().setWebUrl("")
+                                .setMobileWebUrl("").build())
+                        .setDescrption("이충엽님이 당신을 추천하셨습니다. 함께 해주세요!")
+                        .build())
+
+                .addButton(ButtonObject("깅스앱으로 열기", LinkObject.newBuilder()
+
+                        .setWebUrl("'https://developers.kakao.com")
+                        .setMobileWebUrl("'https://developers.kakao.com")
+                        .setAndroidExecutionParams("key1=value1")
+                        .setIosExecutionParams("key1=value1")
+                        .build()))
+                .build()
+
+        KakaoLinkService.getInstance().sendDefault(this, params, object : ResponseCallback<KakaoLinkResponse>() {
+
+            override fun onFailure(errorResult: ErrorResult) {
+
+                Logger.e(errorResult.toString())
+            }
+
+            override fun onSuccess(result: KakaoLinkResponse) {}
+        })
+
+
+    }
+
+
     override fun onBackPressed() {
         val intent = Intent(this@ProjectIntroActivity, MainActivity::class.java)
         startActivity(intent)
     }
+
+
 
 
 }

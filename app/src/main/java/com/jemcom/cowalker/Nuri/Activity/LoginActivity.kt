@@ -90,6 +90,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
         if(token.length > 0)
         {
             var intent = Intent(applicationContext, MainActivity::class.java)
+            intent.putExtra("token",token)
             startActivity(intent)
             finish()
         }
@@ -115,7 +116,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
                         {
                             val pref = applicationContext.getSharedPreferences("auto",Activity.MODE_PRIVATE)
                             var autoLogin : SharedPreferences.Editor = pref.edit()
-                            autoLogin.putString("token", message.token)
+                            autoLogin.putString("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTE3MzIzOSwiZXhwIjoxNTMzNzY1MjM5fQ.taqF_rP7P2DzGiSTT234wv3dqjjsTBLA0J01K-PDlxk")
                             autoLogin.commit()
                         }
 

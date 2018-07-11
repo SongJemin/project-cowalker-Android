@@ -155,4 +155,9 @@ interface NetworkService {
             @Query("keyword") keyword : String
     ) : Call<GetSearchResponse>
 
+    @GET("/api/question/{recruit_idx}")
+    fun getQuestionList(
+            @Path("recruit_idx") recruit_idx: String
+    ) : Call<GetQuestionListResponse>
+
 }

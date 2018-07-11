@@ -324,12 +324,13 @@
                 android:orientation="vertical">
 
                 <ImageButton
+                    android:id="@+id/introcreate_recommend_btn"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="11dp"
                     android:layout_marginTop="17dp"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/choice_darkgray" />
+                    android:src="@drawable/recommend_darkgray" />
 
                 <TextView
                     android:layout_width="41dp"
@@ -337,7 +338,7 @@
                     android:textSize="11sp"
                     android:layout_marginLeft="3dp"
                     android:layout_marginTop="3dp"
-                    android:text="찜하기"
+                    android:text="추천하기"
                     android:textColor="#000000"/>
 
 

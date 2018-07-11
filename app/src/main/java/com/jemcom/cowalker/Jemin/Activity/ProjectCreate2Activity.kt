@@ -174,9 +174,9 @@ class ProjectCreate2Activity : AppCompatActivity() {
         val department = RequestBody.create(MediaType.parse("text.plain"), departmentValue)
         val aim = RequestBody.create(MediaType.parse("text.plain"), aimValue)
         val explain = RequestBody.create(MediaType.parse("text.plain"), explainValue)
-        val postProjectResponse = networkService.uploadProject("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTE3MzIzOSwiZXhwIjoxNTMzNzY1MjM5fQ.taqF_rP7P2DzGiSTT234wv3dqjjsTBLA0J01K-PDlxk", title, summary, area, department, aim, explain, imgList)
+        val postProjectResponse = networkService.uploadProject(token, title, summary, area, department, aim, explain, imgList)
 
-        Log.v("TAG", "서버 전송 : 토큰 = " + token + ", 제목 = " + titleValue + ", 요약 소개 = " + summaryValue
+        Log.v("TAG", "프로젝트 생성 전송 : 토큰 = " + token + ", 제목 = " + titleValue + ", 요약 소개 = " + summaryValue
                 + ", 지역 = " + areaValue + ", 분야 = " + departmentValue + ", 목적 = " + aimValue + ", 설명 = " + explainValue + ", img = " + imgList)
 
         postProjectResponse.enqueue(object : retrofit2.Callback<PostProjectResponse>{

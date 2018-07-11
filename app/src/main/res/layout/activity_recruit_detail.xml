@@ -22,59 +22,9 @@
             android:textSize="24dp" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="88dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="17dp"
-            android:layout_marginRight="17dp"
-            android:layout_marginTop="19dp"
-            android:orientation="vertical"
-            android:background="@drawable/layout_design">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="19dp"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginTop="20dp"
-                    android:text="개발자"
-                    android:textColor="#666666"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="19dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="8dp"
-                    android:text="1명"
-                    android:textColor="#666666" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="19dp"
-                    android:layout_marginLeft="166dp"
-                    android:layout_marginTop="20dp"
-                    android:background="#64dfff"
-                    android:gravity="center"
-                    android:text="D-9"
-                    android:textColor="#ffffff" />
-            </LinearLayout>
-                <TextView
-                    android:layout_width="106dp"
-                    android:layout_height="19dp"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginTop="5dp"
-                    android:text="웹앱 서비스 개발"
-                    android:textColor="#666666"
-                    android:textSize="15sp" />
-
-            </LinearLayout>
         <RelativeLayout
+            android:layout_marginTop="20dp"
             android:background="#ffffff"
             android:layout_width="match_parent"
             android:layout_height="129dp"
@@ -343,7 +293,7 @@
 
 
         <LinearLayout
-            android:id="@+id/recruit_detail_recommend"
+            android:id="@+id/recruit_detail_applymember_linear"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -374,6 +324,7 @@
                 android:textColor="#868686"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/recruit_detail_participmember_linear"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
