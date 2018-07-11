@@ -166,4 +166,11 @@ interface NetworkService {
             @Path("recruit_idx") recruit_idx: String
     ) : Call<GetApplyMemberResponse>
 
+    @GET("/api/apply/{apply_idx}/{applicant_idx}")
+    fun getApplyPaper(
+            @Header("authorization") authorization: String,
+            @Path("apply_idx") apply_idx : String,
+            @Path("applicant_idx") applicant_idx : String
+    ) : Call<GetApplyPaperResponse>
+
 }

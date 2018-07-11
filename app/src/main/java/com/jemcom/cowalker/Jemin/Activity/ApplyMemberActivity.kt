@@ -1,5 +1,6 @@
 package com.jemcom.cowalker.Jemin.Activity
 
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -10,9 +11,7 @@ import com.bumptech.glide.RequestManager
 import com.jemcom.cowalker.Jemin.Adapter.ApplyMemberAdapter
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Get.GetApplyMemberMessage
-import com.jemcom.cowalker.Network.Get.GetProjectMemberMessage
 import com.jemcom.cowalker.Network.Get.Response.GetApplyMemberResponse
-import com.jemcom.cowalker.Network.Get.Response.GetProjectMemberResponse
 import com.jemcom.cowalker.Network.NetworkService
 
 import com.jemcom.cowalker.R
@@ -22,6 +21,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
+
+    private val context: Context = this
 
     override fun onClick(v: View?) {
         Log.v("TAG","지원자 멤버 클릭")
@@ -63,8 +64,7 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
                     applyMemberData = response.body().result
 
 
-                    applyMemberAdapter = ApplyMemberAdapter(applyMemberData,requestManager)
-                    applyMemberAdapter.setOnItemClickListener(this@ApplyMemberActivity)
+                    applyMemberAdapter = ApplyMemberAdapter(this@ApplyMemberActivity, applyMemberData,requestManager)
                     apply_member_list_recyclerview.layoutManager = LinearLayoutManager( this@ApplyMemberActivity)
                     apply_member_list_recyclerview.adapter = applyMemberAdapter
 

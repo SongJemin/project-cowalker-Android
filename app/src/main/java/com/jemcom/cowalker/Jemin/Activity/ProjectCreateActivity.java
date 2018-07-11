@@ -125,8 +125,6 @@ public class ProjectCreateActivity extends AppCompatActivity {
                 }
             }
 
-
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
