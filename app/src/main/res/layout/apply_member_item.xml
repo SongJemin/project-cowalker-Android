@@ -52,6 +52,7 @@
                 />
     
             <Button
+                android:id="@+id/apply_member_reject_btn"
                 android:layout_width="125dp"
                 android:layout_height="36dp"
                 android:layout_below="@+id/apply_member_name_tv"

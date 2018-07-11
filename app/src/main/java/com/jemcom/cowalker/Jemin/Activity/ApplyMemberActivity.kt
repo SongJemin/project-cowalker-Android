@@ -1,11 +1,13 @@
 package com.jemcom.cowalker.Jemin.Activity
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.jemcom.cowalker.Jemin.Adapter.ApplyMemberAdapter
@@ -13,9 +15,14 @@ import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Get.GetApplyMemberMessage
 import com.jemcom.cowalker.Network.Get.Response.GetApplyMemberResponse
 import com.jemcom.cowalker.Network.NetworkService
+import com.jemcom.cowalker.Network.Put.Response.PutCreaterDecideResponse
+import com.jemcom.cowalker.Network.Put.Response.PutProjectChangeResponse
 
 import com.jemcom.cowalker.R
 import kotlinx.android.synthetic.main.activity_apply_member.*
+import kotlinx.android.synthetic.main.activity_apply_paper.*
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,7 +48,7 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
     var applicant_idx_result : Int = 0
     var applicant_idx : String = ""
     var apply_idx : String = ""
-
+    var join : String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +60,9 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
         networkService = ApplicationController.instance.networkSerVice // 어플리케이션을 실행하자마자 어플리케이션 콘트롤러가 실행되는데 그 때 사용?
         requestManager = Glide.with(this)
         getMember()
+
+
+
     }
 
     companion object {
@@ -71,7 +81,6 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
                     Log.v("TAG","지원 멤버값 갖고오기 성공")
                     applyMemberData = response.body().result
 
-
                     applyMemberAdapter = ApplyMemberAdapter(this@ApplyMemberActivity, applyMemberData,requestManager)
                     apply_member_list_recyclerview.layoutManager = LinearLayoutManager( this@ApplyMemberActivity)
                     apply_member_list_recyclerview.adapter = applyMemberAdapter
@@ -87,4 +96,6 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
 
         })
     }
+
+
 }

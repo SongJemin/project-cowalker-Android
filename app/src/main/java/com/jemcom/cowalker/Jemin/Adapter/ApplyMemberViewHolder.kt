@@ -12,5 +12,7 @@ class ApplyMemberViewHolder ( itemView : View) : RecyclerView.ViewHolder(itemVie
     var applyMemberPosition : TextView = itemView.findViewById(R.id.apply_member_position_tv);
     var applyMemberProfileImage : ImageView = itemView.findViewById(R.id.apply_member_profile_img)
     var applyMemberContentBtn : Button = itemView.findViewById(R.id.apply_memeber_content_btn)
+    var applyMemberApproveBtn : Button = itemView.findViewById(R.id.apply_memeber_content_btn)
+    var applyMemberRejectBtn : Button = itemView.findViewById(R.id.apply_member_reject_btn)
 
 }

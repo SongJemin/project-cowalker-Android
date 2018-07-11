@@ -18,6 +18,7 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.NetworkService
+import com.jemcom.cowalker.Network.Put.Response.PutCreaterDecideResponse
 import com.jemcom.cowalker.Network.Put.Response.PutProjectChangeResponse
 import com.jemcom.cowalker.R
 import kotlinx.android.synthetic.main.activity_project_change2.*
@@ -209,6 +210,8 @@ class ProjectChange2Activity : AppCompatActivity() {
 
         })
     }
+
+
 
 
 
