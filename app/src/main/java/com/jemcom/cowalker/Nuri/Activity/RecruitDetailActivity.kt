@@ -124,9 +124,10 @@ class RecruitDetailActivity : AppCompatActivity() {
     fun get()
     {
 
-        Log.v("TAG","모집 세부사항 모집번호= " + recruit_idx)
         val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
+        val project_idx = "5b3dd2387172d402215033d2"
+        val recruit_idx = "5b3ecc11ca5c3444e4f802f1"
 
         //val project_idx = "5b3dd2387172d402215033d2"
         //val recruit_idx = "5b3ecc11ca5c3444e4f802f1"
@@ -142,6 +143,7 @@ class RecruitDetailActivity : AppCompatActivity() {
                 {
                     var data = response.body().result
                     var btnResult = response.body().btnResult
+
 //                    var sdf = SimpleDateFormat("yyyy.MM.dd")
 //                    var start = sdf.format("2018-07-03T00:00:00.000Z")
 //                    var end = sdf.format("2018-07-20T00:00:00.000Z")

@@ -136,12 +136,10 @@
                     android:id="@+id/invite_pm_btn"
                     android:layout_width="89dp"
                     android:layout_height="41dp"
+                    android:layout_alignStart="@+id/invite_role_tv"
+                    android:layout_centerVertical="true"
                     android:background="@drawable/selector"
-                    android:text="PM"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginLeft="18dp"
-                    android:layout_below="@+id/invite_role_tv"
-                    />
+                    android:text="PM" />
 
                 <Button
                     android:id="@+id/invite_planner_btn"

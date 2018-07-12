@@ -25,10 +25,10 @@ import retrofit2.http.Multipart
 class MypageProfileEditActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var networkService: NetworkService
-    internal var projectPosition = ""
-    internal var projectAim = ""
-    internal var projectDepartment = ""
-    internal var projectArea = ""
+    var projectPosition = ""
+    var projectAim = ""
+    var projectDepartment = ""
+    var projectArea = ""
 
     override fun onClick(v: View?) {
         when(v)
