@@ -21,7 +21,7 @@
             android:value="@string/kakao_app_key" />
 
         <activity android:name=".Jemin.Activity.MainActivity" />
-        <activity android:name=".Nuri.Activity.ApplyModifyActivity">
+        <activity android:name=".Jemin.Activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -69,14 +69,19 @@
         <activity android:name=".Jemin.Activity.ApplyActivity" />
         <activity android:name=".Jemin.Activity.ApplyDetailActivity" />
         <activity android:name=".Jemin.Activity.ApplyMemberActivity" />
-        <activity android:name=".Jemin.Activity.ApplyPaperActivity"></activity>
+        <activity android:name=".Jemin.Activity.ApplyPaperActivity" />
         <activity android:name=".Nuri.Activity.OtherpageProjectlistActivity" />
-        <activity android:name=".Nuri.Activity.MyInfoEditActivity"></activity>
-        <activity android:name=".Jemin.Activity.SplashActivity"></activity>
-        <activity android:name=".Nuri.Activity.ApplyModify2Activity"></activity>
-        <activity android:name=".Nuri.Activity.ApplyModify3Activity"></activity>
-        <activity android:name=".Nuri.Activity.ApplyModify4Activity"></activity>
-        <activity android:name=".Hyunmin.Activity.MypageProjectlistActivity"></activity>
+        <activity android:name=".Nuri.Activity.MyInfoEditActivity" />
+        <activity android:name=".Nuri.Activity.ApplyModifyActivity" />
+        <activity android:name=".Nuri.Activity.ApplyModify2Activity" />
+        <activity android:name=".Nuri.Activity.ApplyModify3Activity" />
+        <activity android:name=".Nuri.Activity.ApplyModify4Activity" />
+        <activity android:name=".Hyunmin.Activity.MypageProjectlistActivity" />
+        <activity
+            android:name=".Nuri.Activity.RecommendActivity"
+            android:theme="@style/Transparent" />
+        <activity android:name=".Nuri.Activity.PopupActivity"
+            android:theme="@style/Transparent" ></activity>
     </application>
 
 </manifest>

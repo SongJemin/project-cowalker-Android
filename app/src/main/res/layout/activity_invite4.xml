@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Jemin.Activity.Invite4Activity">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="600dp">
 
 
     <LinearLayout
@@ -128,13 +130,16 @@
 
         </LinearLayout>
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/apply_paper_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
         <LinearLayout
             android:id="@+id/invite4_question_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-
         </LinearLayout>
 
         <Button
@@ -146,20 +151,20 @@
             android:layout_gravity="center"
             />
 
-
     </LinearLayout>
 
     <Button
         android:id="@+id/invite4_confirm_btn"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="확인"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:textColor="#ffffff"
-        android:background="#64dfff"
         android:layout_alignParentBottom="true"
-        />
-
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="34dp"
+        android:background="#64dfff"
+        android:gravity="center"
+        android:text="확인"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
 
 </RelativeLayout>
+</ScrollView>

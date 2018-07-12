@@ -53,6 +53,11 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
                 }
             }
 
+            login_title_tv -> {
+                val intent = Intent(applicationContext,RecommendActivity::class.java)
+                startActivity(intent)
+            }
+
             login_auto_txt -> {
                 if(login_auto_txt.textColors.defaultColor != Color.parseColor("#444444")) {
                     login_check_btn.setVisibility(View.VISIBLE)
@@ -78,6 +83,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
         login_ok_btn.setOnClickListener(this)
         login_signup_btn.setOnClickListener(this)
         login_nonmem_tv.setOnClickListener(this)
+        login_title_tv.setOnClickListener(this)
 
         networkService = ApplicationController.instance.networkSerVice
         val pref = applicationContext.getSharedPreferences("auto",Activity.MODE_PRIVATE)
