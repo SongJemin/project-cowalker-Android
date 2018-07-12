@@ -59,7 +59,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     lateinit var projectUserName : String
     var projectUserPofileUrl : String? = null
 
-    var token :String? =null
+    var token :String = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -68,8 +68,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         networkService = ApplicationController.instance.networkSerVice // 어플리케이션을 실행하자마자 어플리케이션 콘트롤러가 실행되는데 그 때 사용?
         requestManager = Glide.with(this)
-        val pref = this.activity!!.getSharedPreferences("pref", Activity.MODE_PRIVATE)
+
+        val pref = view.context.getSharedPreferences("auto",Activity.MODE_PRIVATE)
         token = pref.getString("token","")
+        Log.v("Home Fragment","홈에서 토큰 값 = " + token);
         get(view)
 
 
@@ -99,16 +101,15 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         getProjectDetail();
 
-        val intent = Intent(v.context, ProjectIntroCreaterActivity::class.java)
-       // intent.putExtra("title", title)
-        startActivity(intent)
+
     }
 
 
     fun getProjectDetail()
     {
         Log.v("TAG","플젝넘버=" + project_idx)
-        var getProjectDetailResponse = networkService.getDetailProject("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTE3MzIzOSwiZXhwIjoxNTMzNzY1MjM5fQ.taqF_rP7P2DzGiSTT234wv3dqjjsTBLA0J01K-PDlxk", project_idx) // 네트워크 서비스의 getContent 함수를 받아옴
+        Log.v("TAG","홈 플젝 세부사항 조회 토큰 =" + token)
+        var getProjectDetailResponse = networkService.getDetailProject(token, project_idx) // 네트워크 서비스의 getContent 함수를 받아옴
         getProjectDetailResponse.enqueue(object : Callback<GetProjectDetailResponse> {
             override fun onResponse(call: Call<GetProjectDetailResponse>?, response: Response<GetProjectDetailResponse>?) {
                 Log.v("TAG","세부 사항 GET 통신 성공")
@@ -194,10 +195,19 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         val intent = Intent(getActivity(), ProjectIntroWaitActivity::class.java)
                         startActivity(intent)
                     }
-                    // 참여 멤버
+                    // 참여 완료 멤버
                     else
                     {
                         val intent = Intent(getActivity(), ProjectIntroParticipActivity::class.java)
+                        intent.putExtra("title", projectTitle)
+                        intent.putExtra("summary", projectSummary)
+                        intent.putExtra("area", projectArea)
+                        intent.putExtra("department", projectDepartment)
+                        intent.putExtra("aim", projectAim)
+                        intent.putExtra("explain", projectExplain)
+                        intent.putExtra("name", projectUserName)
+                        intent.putExtra("img_url", projectTestUrl)
+                        intent.putExtra("project_idx", project_idx)
                         startActivity(intent)
                     }
 

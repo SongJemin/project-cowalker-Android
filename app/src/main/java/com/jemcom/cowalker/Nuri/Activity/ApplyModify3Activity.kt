@@ -31,7 +31,7 @@ class ApplyModify3Activity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_invite2)
+        setContentView(R.layout.activity_invite3)
 
         networkService = ApplicationController.instance.networkSerVice
         invite3_next_btn.setOnClickListener(this)

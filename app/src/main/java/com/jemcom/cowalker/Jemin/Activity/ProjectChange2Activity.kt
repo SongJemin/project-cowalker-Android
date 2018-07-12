@@ -18,6 +18,7 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.NetworkService
+import com.jemcom.cowalker.Network.Put.Response.PutCreaterDecideResponse
 import com.jemcom.cowalker.Network.Put.Response.PutProjectChangeResponse
 import com.jemcom.cowalker.R
 import kotlinx.android.synthetic.main.activity_project_change2.*
@@ -44,7 +45,6 @@ class ProjectChange2Activity : AppCompatActivity() {
     private var btn: ImageView? = null
     internal lateinit var context: Context
     internal var count = 0
-    lateinit var token : String
     internal var uri: Uri? = null
 
     internal var titleValue: String? = null
@@ -73,10 +73,6 @@ class ProjectChange2Activity : AppCompatActivity() {
         project_idx = intent.getStringExtra("project_idx")
 
         networkService = ApplicationController.instance.networkSerVice
-
-        val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
-        token = pref.getString("token","")
-        Log.v("TAG","생성 액티비티 토큰 값 = " + token);
 
         mLayout = findViewById<View>(R.id.projectchange2_project2_layout) as LinearLayout
         context = this
@@ -178,7 +174,7 @@ class ProjectChange2Activity : AppCompatActivity() {
     }
 
     fun changeBoard() {
-        Log.v("TAG","토큰 확인 = " + token);
+
         val title = RequestBody.create(MediaType.parse("text.plain"), titleValue)
         val summary = RequestBody.create(MediaType.parse("text.plain"), summaryValue)
         val area = RequestBody.create(MediaType.parse("text.plain"), areaValue)
@@ -209,6 +205,8 @@ class ProjectChange2Activity : AppCompatActivity() {
 
         })
     }
+
+
 
 
 

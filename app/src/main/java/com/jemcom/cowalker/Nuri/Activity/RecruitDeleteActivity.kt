@@ -28,8 +28,9 @@ class RecruitDeleteActivity : AppCompatActivity(),View.OnClickListener {
     lateinit var networkService: NetworkService
     lateinit var recruitListItems: ArrayList<RecruitListItem>
     lateinit var recruitListAdapter : RecruitListAdapter
-    lateinit var project_idx : String
     var check = 0
+    var project_idx : String = ""
+    var recruit_idx : String = ""
 
     companion object {
         lateinit var activity: RecruitDeleteActivity
@@ -61,7 +62,9 @@ class RecruitDeleteActivity : AppCompatActivity(),View.OnClickListener {
         setContentView(R.layout.activity_recruit_delete)
 
         networkService = ApplicationController.instance.networkSerVice
-
+        val getRecruitintent = intent
+        project_idx = getRecruitintent.getStringExtra("project_idx")
+        recruit_idx = getRecruitintent.getStringExtra("recruit_idx")
         recruitListItems = ArrayList()
 
         activity = this
@@ -76,7 +79,6 @@ class RecruitDeleteActivity : AppCompatActivity(),View.OnClickListener {
     fun get()
     {
 
-        project_idx = "2"
         var getRecruitListResponse = networkService.getRecruitList(project_idx)
 
 
@@ -109,8 +111,7 @@ class RecruitDeleteActivity : AppCompatActivity(),View.OnClickListener {
 
     fun delete()
     {
-        project_idx = "2"
-        var recruit_idx = "1"
+
         var deleteRecruitResponse = networkService.deleteRecruit(project_idx,recruit_idx)
 
         deleteRecruitResponse.enqueue(object : Callback<DeleteRecruitResponse>{

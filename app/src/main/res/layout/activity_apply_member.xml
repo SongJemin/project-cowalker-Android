@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Jemin.Activity.ProjectMemberActivity"
+    android:background="#f8f8f8"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:text="지원 멤버"
+        android:textSize="26sp"
+        android:textColor="#444444"
+        android:textStyle="bold"
+        android:layout_marginTop="29dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/apply_member_list_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        >
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

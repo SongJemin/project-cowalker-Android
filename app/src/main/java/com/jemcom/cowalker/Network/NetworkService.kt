@@ -7,6 +7,7 @@ import com.jemcom.cowalker.Network.Delete.DeleteRecruitResponse
 import com.jemcom.cowalker.Network.Get.Response.GetSearchResponse
 import com.jemcom.cowalker.Network.Post.*
 import com.jemcom.cowalker.Network.Post.Response.*
+import com.jemcom.cowalker.Network.Put.Response.PutCreaterDecideResponse
 import com.jemcom.cowalker.Network.Put.Response.PutMyPageResponse
 import com.jemcom.cowalker.Network.Put.Response.PutProjectChangeResponse
 import okhttp3.MultipartBody
@@ -201,6 +202,44 @@ interface NetworkService {
             @Query("keyword") keyword : String
     ) : Call<GetSearchResponse>
 
+    @GET("/api/question/{recruit_idx}")
+    fun getQuestionList(
+            @Path("recruit_idx") recruit_idx: String
+    ) : Call<GetQuestionListResponse>
+
+    @GET("/api/apply/{recruit_idx}")
+    fun getApplyMemberList(
+            @Header("authorization") authorization: String,
+            @Path("recruit_idx") recruit_idx: String
+    ) : Call<GetApplyMemberResponse>
+
+    @GET("/api/apply/{apply_idx}/{applicant_idx}")
+    fun getApplyPaper(
+            @Header("authorization") authorization: String,
+            @Path("apply_idx") apply_idx : String,
+            @Path("applicant_idx") applicant_idx : String
+    ) : Call<GetApplyPaperResponse>
+
+    @PUT("/api/apply/{apply_idx}/{applicant_idx}/join/{join}")
+    fun putCreaterDecide(
+            @Header("authorization") authorization: String,
+            @Path("apply_idx") apply_idx : String,
+            @Path("applicant_idx") applicant_idx : String,
+            @Path("join") join : Int
+    ) : Call<PutCreaterDecideResponse>
+
+    @POST("/api/share")
+    fun postShareProject(
+            @Header("authorization") authorization : String,
+            @Body join : PostShareProject
+    ) : Call<PostShareResponse>
+
+    @POST("/api/share")
+    fun postShareRecruit(
+            @Header("authorization") authorization : String,
+            @Body join : PostShareRecruit
+    ) : Call<PostShareResponse>
+
     @GET("/api/user/project")
     fun getProjectMine(
             @Header("authorization") authorization: String
@@ -227,4 +266,5 @@ interface NetworkService {
             @Header("authorization") authorization: String,
             @Path("user_idx") user_idx : String
     ) : Call<GetProjectMineParticipateResponse>
+
 }

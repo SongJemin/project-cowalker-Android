@@ -296,6 +296,7 @@
                 android:orientation="vertical">
 
                 <ImageButton
+                    android:id="@+id/intro_recommend_btn"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="11dp"
@@ -321,6 +322,7 @@
                 android:orientation="vertical">
 
                 <ImageButton
+                    android:id="@+id/intro_share_btn"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="7dp"

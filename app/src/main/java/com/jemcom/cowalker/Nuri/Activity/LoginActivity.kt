@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
@@ -81,6 +82,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
         networkService = ApplicationController.instance.networkSerVice
         val pref = applicationContext.getSharedPreferences("auto",Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
+        Log.v("TAG","시작할 때 토큰 값 = " + token);
 
         if(token.length > 0)
         {
@@ -145,7 +147,11 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
                         {
                             val pref = applicationContext.getSharedPreferences("auto",Activity.MODE_PRIVATE)
                             var autoLogin : SharedPreferences.Editor = pref.edit()
+                            // 임의값
+                            // autoLogin.putString("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTE3MzIzOSwiZXhwIjoxNTMzNzY1MjM5fQ.taqF_rP7P2DzGiSTT234wv3dqjjsTBLA0J01K-PDlxk")
                             autoLogin.putString("token", message.token)
+                            Log.v("TAG","자동 로그인 시 토큰 값 = " + message.token);
+
                             autoLogin.commit()
                         }
 

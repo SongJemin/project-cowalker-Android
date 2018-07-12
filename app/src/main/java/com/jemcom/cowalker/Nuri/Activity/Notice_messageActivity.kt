@@ -46,7 +46,7 @@ class Notice_messageActivity : AppCompatActivity(), View.OnClickListener {
         var user_id = intent.getStringExtra("partner_id")
         val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
-        var postMessageSend = networkService.postMessage("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA5NTE1ODMsImV4cCI6MTUzMzU0MzU4M30.90d2qcRcikydx8R-lMMyLgcYGcAxY0Poi61a-NGpujY",content,user_id)
+        var postMessageSend = networkService.postMessage(token,content,user_id)
 
         postMessageSend.enqueue(object : Callback<PostMessageResponse>{
             override fun onFailure(call: Call<PostMessageResponse>?, t: Throwable?) {
