@@ -55,12 +55,15 @@ class SearchFragment : Fragment(), View.OnClickListener  {
         search_filter_btn.setOnClickListener {
             val intent = Intent(activity, SearchFilterActivity::class.java)
            // startActivity(intent)
+            Log.v("TAG", "필터시작")
             startActivityForResult(intent,27)
 
         }
         search_keyword_btn.setOnClickListener{
+            Log.v("TAG", "탐색시작")
             keyword = search_keyword_edit.text.toString()
-            searchBoard()
+            Log.v("TAG", "탐색시작")
+            searchKeyword()
         }
     }
 
@@ -75,6 +78,7 @@ class SearchFragment : Fragment(), View.OnClickListener  {
             Log.v("TAG","분야 반환 값 ="+ department)
             Log.v("TAG","역할 반환 값 ="+ position)
             Log.v("TAG","장소 값 ="+ area)
+            searchKeyword()
 
         }
     }
@@ -100,8 +104,8 @@ class SearchFragment : Fragment(), View.OnClickListener  {
         token = pref.getString("token","")
         view.search_filter_btn.setOnClickListener(this)
         view.search_keyword_btn.setOnClickListener(this)
-        get(view)
-
+       // get(view)
+        defaultSearch(view)
         return view
     }
 
@@ -117,7 +121,7 @@ class SearchFragment : Fragment(), View.OnClickListener  {
 
     }
 
-
+/*
 
     fun get(v : View)
     {
@@ -150,6 +154,14 @@ class SearchFragment : Fragment(), View.OnClickListener  {
                             searchData[i].area=="null"
                         }
                         searchItems.add(ProjectItem(searchData[i].img_url, searchData[i].title, searchData[i].area, searchData[i].department, searchData[i].aim))
+
+                        //searchItems.add(ProjectItem(searchData[i].img_url, "ㅁㄴㅇㄹ", "ㅁㄴㅇㄹ","ㅁㄴㅇ", "ㅊㅍ")
+                        Log.v("TAG","배열 검색 [ "+ i + "] 이미지주소 = " + searchData[i].img_url)
+                        Log.v("TAG","제목 [ "+ i + "]  = " + searchData[i].title)
+                        Log.v("TAG","장소 [ "+ i + "]  = " + searchData[i].area)
+                        Log.v("TAG","분야 [ "+ i + "]  = " + searchData[i].department)
+                        Log.v("TAG","목적 [ "+ i + "]  = " + searchData[i].aim)
+                        Log.v("TAG", "검색 시 배열 사이즈 = " + searchItems.size)
                         //projectItems.add(ProjectItem("https://project-cowalker.s3.ap-northeast-2.amazonaws.com/1531113346984.jpg", "ㅁㄴㅇㅎ", "ㅁㄴㅇㄹㄴㅁㅇㅎ", "ㅁㄴㅇㄹ", "ㅇㅎㅁㄴㅇㄹ"))
                         projectAdapter = ProjectAdapter(searchItems,requestManager)
                     }
@@ -168,17 +180,25 @@ class SearchFragment : Fragment(), View.OnClickListener  {
         })
 
     }
-
-    fun searchBoard()
+*/
+    fun defaultSearch(v : View)
     {
+
         var getSearchResponse = networkService.getSearch(aim,area,position,department,keyword) // 네트워크 서비스의 getContent 함수를 받아옴
         getSearchResponse.enqueue(object : Callback<GetSearchResponse> {
             override fun onResponse(call: Call<GetSearchResponse>?, response: Response<GetSearchResponse>?) {
                 Log.v("TAG","검색 GET 통신 성공")
                 if(response!!.isSuccessful)
                 {
-                    Log.v("TAG","검색값 갖고오기 성공")
+                    Log.v("TAG","썰치 탐색 aim = "+ aim)
+                    Log.v("TAG","area = "+ area)
+                    Log.v("TAG","position = "+ position)
+                    Log.v("TAG","department = "+ department)
+                    Log.v("TAG","keyword = "+ keyword)
+                    searchItems.clear()
+                    Log.v("TAG","요기 검색값 갖고오기 성공")
                     searchData = response.body().result
+                    Log.v("검색탭", searchData.toString())
                     for(i in 0..searchData.size-1) {
 
                         if (searchData[i].department == null){
@@ -200,6 +220,78 @@ class SearchFragment : Fragment(), View.OnClickListener  {
                             searchData[i].area=="null"
                         }
                         searchItems.add(ProjectItem(searchData[i].img_url, searchData[i].title, searchData[i].area, searchData[i].department, searchData[i].aim))
+                        Log.v("TAG","초기 배열 검색 [ "+ i + "] 이미지주소 = " + searchData[i].img_url)
+                        Log.v("TAG","제목 [ "+ i + "]  = " + searchData[i].title)
+                        Log.v("TAG","장소 [ "+ i + "]  = " + searchData[i].area)
+                        Log.v("TAG","분야 [ "+ i + "]  = " + searchData[i].department)
+                        Log.v("TAG","목적 [ "+ i + "]  = " + searchData[i].aim)
+                        Log.v("TAG", "초기 배열 사이즈 = " + searchItems.size)
+
+                        //projectItems.add(ProjectItem("https://project-cowalker.s3.ap-northeast-2.amazonaws.com/1531113346984.jpg", "ㅁㄴㅇㅎ", "ㅁㄴㅇㄹㄴㅁㅇㅎ", "ㅁㄴㅇㄹ", "ㅇㅎㅁㄴㅇㄹ"))
+                        projectAdapter = ProjectAdapter(searchItems,requestManager)
+                    }
+
+                    projectAdapter.setOnItemClickListener(this@SearchFragment)
+                    search_recyclerview.layoutManager = GridLayoutManager(context, 2)
+                    search_recyclerview.adapter = projectAdapter
+
+                }
+            }
+
+            override fun onFailure(call: Call<GetSearchResponse>?, t: Throwable?) {
+                Log.v("TAG","검색 통신 실패")
+            }
+
+        })
+
+    }
+
+    fun searchKeyword()
+    {
+
+        var getSearchResponse = networkService.getSearch(aim,area,position,department,keyword) // 네트워크 서비스의 getContent 함수를 받아옴
+        getSearchResponse.enqueue(object : Callback<GetSearchResponse> {
+            override fun onResponse(call: Call<GetSearchResponse>?, response: Response<GetSearchResponse>?) {
+                Log.v("TAG","검색 GET 통신 성공")
+                if(response!!.isSuccessful)
+                {
+                    Log.v("TAG","썰치 탐색 aim = "+ aim)
+                    Log.v("TAG","area = "+ area)
+                    Log.v("TAG","position = "+ position)
+                    Log.v("TAG","department = "+ department)
+                    Log.v("TAG","keyword = "+ keyword)
+                    searchItems.clear()
+                    Log.v("TAG","요기 검색값 갖고오기 성공")
+                    searchData = response.body().result
+                    Log.v("검색탭", searchData.toString())
+                    for(i in 0..searchData.size-1) {
+
+                        if (searchData[i].department == null){
+                            searchData[i].department= " "
+                            Log.v("TAG","널값 발견")
+                        }
+
+                        if (searchData[i].img_url == null){
+                            searchData[i].img_url="https://project-cowalker.s3.ap-northeast-2.amazonaws.com/1531124962614.png"
+                        }
+
+                        if(searchData[i].aim == null){
+                            searchData[i].aim=="null"
+                        }
+                        else if(searchData[i].title == null){
+                            searchData[i].title=="null"
+                        }
+                        else if(searchData[i].area == null){
+                            searchData[i].area=="null"
+                        }
+                        searchItems.add(ProjectItem(searchData[i].img_url, searchData[i].title, searchData[i].area, searchData[i].department, searchData[i].aim))
+                        Log.v("TAG","초기 배열 검색 [ "+ i + "] 이미지주소 = " + searchData[i].img_url)
+                        Log.v("TAG","제목 [ "+ i + "]  = " + searchData[i].title)
+                        Log.v("TAG","장소 [ "+ i + "]  = " + searchData[i].area)
+                        Log.v("TAG","분야 [ "+ i + "]  = " + searchData[i].department)
+                        Log.v("TAG","목적 [ "+ i + "]  = " + searchData[i].aim)
+                        Log.v("TAG", "초기 배열 사이즈 = " + searchItems.size)
+
                         //projectItems.add(ProjectItem("https://project-cowalker.s3.ap-northeast-2.amazonaws.com/1531113346984.jpg", "ㅁㄴㅇㅎ", "ㅁㄴㅇㄹㄴㅁㅇㅎ", "ㅁㄴㅇㄹ", "ㅇㅎㅁㄴㅇㄹ"))
                         projectAdapter = ProjectAdapter(searchItems,requestManager)
                     }

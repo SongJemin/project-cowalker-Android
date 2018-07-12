@@ -53,7 +53,7 @@ class ApplyModify4Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_invite4)
-
+        editText = arrayOfNulls(10)
         networkService = ApplicationController.instance.networkSerVice
         dynamicLayout = findViewById(R.id.invite4_question_layout) as LinearLayout
         val intent = intent
@@ -85,7 +85,6 @@ class ApplyModify4Activity : AppCompatActivity() {
     fun get()
     {
         val getApplyPaperResponse = networkService.getApplyPaper(token, apply_idx, applicant_idx)
-
 
         getApplyPaperResponse.enqueue(object : Callback<GetApplyPaperResponse> {
 

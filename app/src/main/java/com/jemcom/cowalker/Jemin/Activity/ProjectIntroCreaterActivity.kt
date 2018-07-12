@@ -19,6 +19,7 @@ import com.bumptech.glide.RequestManager
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Delete.DeleteProjectResponse
 import com.jemcom.cowalker.Network.Get.GetRecruitList
+import com.jemcom.cowalker.Network.Get.Response.GetMypageOtherResponse
 import com.jemcom.cowalker.Network.Get.Response.GetRecruitListResponse
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.Network.Post.PostShareProject
@@ -56,14 +57,6 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var networkService: NetworkService
     lateinit var addBtn: Button
     lateinit var changeBtn: Button
-    lateinit var titleTv: TextView
-    lateinit var summaryTv: TextView
-    lateinit var aimTv: TextView
-     lateinit var departmentTv: TextView
-     lateinit var areaTv: TextView
-     lateinit var explainTv: TextView
-     lateinit var nameTv: TextView
-     lateinit var backgroundImg: ImageView
 
     lateinit var recruitListItems: ArrayList<RecruitListItem>
     lateinit var recruitListGetAdapter : RecruitListGetAdapter
@@ -79,8 +72,11 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
         var name: String = ""
       var img_url: String = ""
       var project_idx: String = ""
+      var project_user_profile_url: String = ""
+      var user_idx: String = ""
      lateinit    var requestManager: RequestManager
     var recruit_idx : String = ""
+
 
     override fun onClick(v: View) {
 
@@ -99,20 +95,12 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_project_intro_creater)
         networkService = ApplicationController.instance.networkSerVice // 어플리케이션을 실행하자마자 어플리케이션 콘트롤러가 실행되는데 그 때 사용?
-        addBtn = findViewById<View>(R.id.introcreate_add_btn) as Button
-        changeBtn = findViewById<View>(R.id.introcreate_change_btn) as Button
+        addBtn = findViewById<View>(R.id.introcreater_add_btn) as Button
+        changeBtn = findViewById<View>(R.id.introcreater_change_btn) as Button
         val alertDialogBuilder = AlertDialog.Builder(this)
 
-        titleTv = findViewById<View>(R.id.introcreater_title_tv) as TextView
-        summaryTv = findViewById<View>(R.id.introcreate_summary_tv) as TextView
-        aimTv = findViewById<View>(R.id.introcreate_aim_tv) as TextView
-        departmentTv = findViewById<View>(R.id.introcreate_department_tv) as TextView
-        areaTv = findViewById<View>(R.id.introcreate_area_tv) as TextView
-        explainTv = findViewById<View>(R.id.introcreate_explain_tv) as TextView
-        nameTv = findViewById<View>(R.id.introcreate_name_tv) as TextView
-        backgroundImg = findViewById<View>(R.id.introcreate_background_img) as ImageView
-
         recruitListItems = ArrayList()
+
 
 
 
@@ -127,23 +115,29 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
             if(intent.getStringExtra("name") != null) name = intent.getStringExtra("name")
             if(intent.getStringExtra("img_url") != null) img_url = intent.getStringExtra("img_url")
             if(intent.getStringExtra("project_idx") != null) project_idx = intent.getStringExtra("project_idx")
+            if(intent.getStringExtra("project_idx") != null) project_user_profile_url = intent.getStringExtra("project_user_profile_url")
+            if(intent.getStringExtra("user_idx") != null) user_idx = intent.getStringExtra("user_idx")
         }
         Log.v("TAG","테스트 개설자 화면 프로젝트넘버 = "+project_idx)
         getList()
-        titleTv.text = title
-        summaryTv.text = summary
-        aimTv.text = aim
-        departmentTv.text = department
-        areaTv.text = area
-        explainTv.text = explain
-        nameTv.text = name
+        introcreater_title_tv.text = title
+        introcreater_summary_tv.text = summary
+        introcreater_aim_tv.text = aim
+        introcreater_department_tv.text = department
+        introcreater_area_tv.text = area
+        introcreater_explain_tv.text = explain
+        introcreater_name_tv.text = name
 
         requestManager = Glide.with(this)
         // 사진 크기 조절이 안되서 일단 주석 처리
-        // requestManager.load(img_url).into(backgroundImg);
+         requestManager.load(project_user_profile_url).into(introcreater_profile_iv);
+
+        introcreater_see_more.setOnClickListener(this)
+        introcreater_see_close.setOnClickListener(this)
+        introcreater_profile_iv.setOnClickListener(this)
 
 
-        introcreate_invite_Tv.setOnClickListener{
+        introcreater_invite_Tv.setOnClickListener{
             val intent = Intent(this@ProjectIntroCreaterActivity, ProjectMemberActivity::class.java)
             intent.putExtra("project_idx", project_idx)
             startActivity(intent)
@@ -155,10 +149,30 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
         }
 
-        introcreate_recommend_btn.setOnClickListener {
+        introcreater_recommend_btn.setOnClickListener {
 
             postShareProject()
 
+        }
+
+        introcreater_profile_iv.setOnClickListener {
+            get()
+        }
+
+        introcreater_name_tv.setOnClickListener {
+            get()
+        }
+
+        introcreater_see_more.setOnClickListener  {
+            introcreater_see_more.visibility = View.GONE
+            introcreater_see_close.visibility = View.VISIBLE
+            introcreater_explain_tv.maxLines = Integer.MAX_VALUE
+        }
+
+        introcreater_see_close.setOnClickListener {
+            introcreater_see_close.visibility = View.GONE
+            introcreater_see_more.visibility = View.VISIBLE
+            introcreater_explain_tv.maxLines = 2
         }
 
         changeBtn.setOnClickListener {
@@ -301,6 +315,40 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
 
         })
     }
+
+    fun get()
+    {
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+        Log.v("TAG", "creater 유저번호=" + user_idx)
+        var getMypageOtherResponse = networkService.getMypageOther(token,user_idx)
+        getMypageOtherResponse.enqueue(object : Callback<GetMypageOtherResponse>{
+            override fun onFailure(call: Call<GetMypageOtherResponse>?, t: Throwable?) {
+            }
+
+            override fun onResponse(call: Call<GetMypageOtherResponse>?, response: Response<GetMypageOtherResponse>?) {
+                if(response!!.isSuccessful)
+                {
+                    var data = response.body()
+                    if(data.user_status.equals("타인의 페이지"))
+                    {
+                        var intent = Intent(this@ProjectIntroCreaterActivity,MainActivity::class.java)
+                        intent.putExtra("status","otherpage")
+                        startActivity(intent)
+                    }
+                    else
+                    {
+                        var intent = Intent(this@ProjectIntroCreaterActivity,MainActivity::class.java)
+                        intent.putExtra("status","mypage")
+                        startActivity(intent)
+                    }
+                }
+                else Toast.makeText(this@ProjectIntroCreaterActivity
+                        ,"실패",Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
 
 
     override fun onBackPressed() {

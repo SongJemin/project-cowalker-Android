@@ -85,7 +85,7 @@ class RecruitDetailActivity : AppCompatActivity() {
                 ) { dialog, id ->
                     // 프로젝트 수정
                     if (items[id] === "모집 수정") {
-                        val intent = Intent(this@RecruitDetailActivity, MainActivity::class.java)
+                        val intent = Intent(this@RecruitDetailActivity, ApplyModifyActivity::class.java)
                         startActivity(intent)
 
                     } else if (items[id] === "모집 삭제") {
@@ -126,8 +126,6 @@ class RecruitDetailActivity : AppCompatActivity() {
 
         val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
-        val project_idx = "5b3dd2387172d402215033d2"
-        val recruit_idx = "5b3ecc11ca5c3444e4f802f1"
 
         //val project_idx = "5b3dd2387172d402215033d2"
         //val recruit_idx = "5b3ecc11ca5c3444e4f802f1"

@@ -73,7 +73,12 @@ class ApplyPaperActivity : AppCompatActivity() {
 
     fun get()
     {
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
         val getApplyPaperResponse = networkService.getApplyPaper(token, apply_idx, applicant_idx)
+        Log.v("TAG", "토큰 = "+token)
+        Log.v("TAG", "지원서번호 = "+apply_idx)
+        Log.v("TAG", "지원자번호 = "+applicant_idx)
 
 
         getApplyPaperResponse.enqueue(object : Callback<GetApplyPaperResponse> {
@@ -106,6 +111,7 @@ class ApplyPaperActivity : AppCompatActivity() {
 
     fun getQuestionList()
     {
+
         val getQuestionListResponse = networkService.getQuestionList(recruit_idx)
 
 
@@ -113,6 +119,7 @@ class ApplyPaperActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<GetQuestionListResponse>, response: Response<GetQuestionListResponse>) {
                 Log.v("TAG", "질문리스트 통신 성공")
+                Log.v("TAG", "지원서액티비티 모집 번호 = "+ recruit_idx)
                 if(response.isSuccessful){
                     var data = response!!.body().result
                     for(i in 0..data.size-1) {

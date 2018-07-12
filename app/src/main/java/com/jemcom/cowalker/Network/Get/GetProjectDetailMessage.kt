@@ -10,5 +10,6 @@ data class GetProjectDetailMessage (
         var create_at : String,
         var img_url : ArrayList<String>,
         var project_user_name : String,
-        var project_user_profile_url : String?
+        var project_user_profile_url : String?,
+        var user_idx : String
 )

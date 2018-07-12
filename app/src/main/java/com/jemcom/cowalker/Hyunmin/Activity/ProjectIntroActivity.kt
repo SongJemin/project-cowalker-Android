@@ -11,6 +11,8 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import com.jemcom.cowalker.Hyunmin.Adapter.ImageAdapter
 import com.jemcom.cowalker.Jemin.Activity.ApplyActivity
 import com.jemcom.cowalker.Jemin.Activity.MainActivity
@@ -59,7 +61,10 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
     var img_url: String = ""
     var project_idx: String = ""
     var recruit_idx: String = ""
+    var project_user_profile_url: String = ""
+    var user_idx: String = ""
     var url = "https://cdn.xl.thumbs.canstockphoto.com/computer-generated-3d-image-cooperation-stock-illustrations_csp2074347.jpg"
+    lateinit    var requestManager: RequestManager
 
     override fun onClick(v: View) {
         var idx = recruit_list_recyclerview2!!.getChildAdapterPosition(v)
@@ -96,14 +101,33 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
             if(intent.getStringExtra("name") != null) name = intent.getStringExtra("name")
             if(intent.getStringExtra("img_url") != null) img_url = intent.getStringExtra("img_url")
             if(intent.getStringExtra("project_idx") != null) project_idx = intent.getStringExtra("project_idx")
+            if(intent.getStringExtra("project_idx") != null) project_user_profile_url = intent.getStringExtra("project_user_profile_url")
+            if(intent.getStringExtra("user_idx") != null) user_idx = intent.getStringExtra("user_idx")
         }
+
+        if(project_user_profile_url != "default"){
+            Log.v("TAG","사진 디폴트 ㄴㄴ")
+            requestManager = Glide.with(this)
+            // 사진 크기 조절이 안되서 일단 주석 처리
+            requestManager.load(project_user_profile_url).into(projectIntro_profile_iv);
+                }
         Log.v("TAG","참여자 화면 프로젝트넘버 = "+project_idx)
 
         getList()
+
+        intro_title_tv.text= title
+        intro_summary_tv.text = summary
+        intro_aim_tv.text = aim
+        intro_department_tv.text = department
+        intro_area_tv.text = area
+        intro_explain_tv.text = explain
+        intro_name_tv.text = name
+
+
+
         btn_join.setOnClickListener(this)
-        see_more.setOnClickListener(this)
-        see_close.setOnClickListener(this)
-        scrap_btn.setOnClickListener(this)
+        intro_see_more.setOnClickListener(this)
+        intro_see_close.setOnClickListener(this)
         projectIntro_profile_iv.setOnClickListener(this)
 
         btn_join.setOnClickListener{
@@ -111,34 +135,25 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
             nextIntent.putExtra("project_idx", project_idx)
             startActivity(nextIntent)
         }
-        see_more.setOnClickListener  {
-            see_more.visibility = View.GONE
-            see_close.visibility = View.VISIBLE
-            tv_short.maxLines = Integer.MAX_VALUE
+        intro_see_more.setOnClickListener  {
+            intro_see_more.visibility = View.GONE
+            intro_see_close.visibility = View.VISIBLE
+            intro_explain_tv.maxLines = Integer.MAX_VALUE
         }
 
-        see_close.setOnClickListener {
-            see_close.visibility = View.GONE
-            see_more.visibility = View.VISIBLE
-            tv_short.maxLines = 2
+        intro_see_close.setOnClickListener {
+            intro_see_close.visibility = View.GONE
+            intro_see_more.visibility = View.VISIBLE
+            intro_explain_tv.maxLines = 2
         }
 
-        scrap_btn.setOnClickListener {
-            if(CHECK_NUM == 0) {
-                scrap_btn.isSelected = true
-                CHECK_NUM = 1
-            }
-            else {
-                scrap_btn.isSelected = false
-                CHECK_NUM = 0
-            }
-        }
+
 
         projectIntro_profile_iv.setOnClickListener {
             get()
         }
 
-        projectIntro_name_tv.setOnClickListener {
+        intro_name_tv.setOnClickListener {
             get()
         }
 
@@ -156,7 +171,7 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
     {
         val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
-        val user_idx = "2"
+        Log.v("TAG", "particip 유저번호=" + user_idx)
         var getMypageOtherResponse = networkService.getMypageOther(token,user_idx)
         getMypageOtherResponse.enqueue(object : Callback<GetMypageOtherResponse>{
             override fun onFailure(call: Call<GetMypageOtherResponse>?, t: Throwable?) {
@@ -170,12 +185,14 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
                     {
                         var intent = Intent(this@ProjectIntroActivity,MainActivity::class.java)
                         intent.putExtra("status","otherpage")
+                        intent.putExtra("user_idx", user_idx)
                         startActivity(intent)
                     }
                     else
                     {
                         var intent = Intent(this@ProjectIntroActivity,MainActivity::class.java)
                         intent.putExtra("status","mypage")
+
                         startActivity(intent)
                     }
                 }

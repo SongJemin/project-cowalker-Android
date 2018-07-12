@@ -22,7 +22,7 @@ class ApplyModify3Activity : AppCompatActivity(), View.OnClickListener {
         when(v)
         {
             invite3_next_btn -> {
-                var intent = Intent(applicationContext,ApplyModify4Activity::class.java)
+                var intent = Intent(applicationContext, ApplyModify4Activity::class.java)
                 startActivity(intent)
             }
         }

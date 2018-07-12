@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -78,6 +79,7 @@ class MypageTab : Fragment(),View.OnClickListener {
     {
         val pref = v.context.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
+        Log.v("TAG","마이페이지 토큰 = " + token)
         var getMypageResponse = networkService.getMypage(token)
 
         getMypageResponse.enqueue(object : Callback<GetMypageResponse>{
@@ -91,9 +93,13 @@ class MypageTab : Fragment(),View.OnClickListener {
                 {
                     var data = response.body().data
                     v.mypage_name_tv.setText(data[0].name)
+                    Log.v("MyPageTab", "이름 = " + data[0].name)
                     v.mypage_role_tv.setText(data[0].position)
+                    Log.v("MyPageTab", "포지션 = " + data[0].position)
                     v.mypage_summary_tv.setText(data[0].introduce)
+                    Log.v("MyPageTab", "소개 = " + data[0].introduce)
                     v.mypage_aim_tv.setText(data[0].aim)
+                    Log.v("MyPageTab", "목적 = " + data[0].aim)
                     v.mypage_department_tv.setText(data[0].department)
                     v.mypage_area_tv.setText(data[0].area)
                     v.mypage_link_tv.setText(data[0].portfolio_url)

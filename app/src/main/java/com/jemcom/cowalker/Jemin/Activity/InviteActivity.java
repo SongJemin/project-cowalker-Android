@@ -32,6 +32,8 @@ public class InviteActivity extends AppCompatActivity {
 
     EditText numberEdit;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

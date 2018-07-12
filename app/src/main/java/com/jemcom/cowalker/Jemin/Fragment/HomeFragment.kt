@@ -57,7 +57,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
     var projectCreateAt : String = ""
     lateinit var projectTestUrl : String
     lateinit var projectUserName : String
-    var projectUserPofileUrl : String? = null
+    var projectUserPofileUrl : String? = ""
+    var userIdx : String? = ""
 
     var token :String = ""
 
@@ -150,10 +151,18 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     projectExplain = detailData[0].explain
 
                     projectCreateAt = detailData[0].create_at
+
+                    if(detailData[0].img_url.size==0){
+                        detailData[0].img_url.add("noImage")
+                    }
                     projectTestUrl =  detailData[0].img_url[0]
 
                     projectUserName = detailData[0].project_user_name
-                    projectUserPofileUrl = detailData[0].title
+                    if(detailData[0].project_user_profile_url==null){
+                        detailData[0].project_user_profile_url = "default"
+                    }
+                    projectUserPofileUrl = detailData[0].project_user_profile_url
+                    userIdx = detailData[0].user_idx
 
                     Log.v("TAG", "세부 사항 제목 = "+ projectTitle + ", 요약 = " + projectSummary + ", 지역 = " + projectArea + ", 분야 = " + projectDepartment
                             + ", 목적 = " + projectAim + ", 설명 = " + projectExplain + ", 만든 날짜 = " + projectCreateAt + ", 이미지주소 = " + projectTestUrl + ", 유저명 = "
@@ -173,6 +182,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         intent.putExtra("name", projectUserName)
                         intent.putExtra("img_url", projectTestUrl)
                         intent.putExtra("project_idx", project_idx)
+                        intent.putExtra("project_user_profile_url", projectUserPofileUrl)
+                        intent.putExtra("user_idx", userIdx)
                         startActivity(intent)
                     }
                     else if(userResult=="참여하기")
@@ -188,14 +199,27 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         intent.putExtra("name", projectUserName)
                         intent.putExtra("img_url", projectTestUrl)
                         intent.putExtra("project_idx", project_idx)
+                        intent.putExtra("project_user_profile_url", projectUserPofileUrl)
+                        intent.putExtra("user_idx", userIdx)
                         startActivity(intent)
                     }
                     else if(userResult=="참여대기")
                     {
                         val intent = Intent(getActivity(), ProjectIntroWaitActivity::class.java)
+                        intent.putExtra("title", projectTitle)
+                        intent.putExtra("summary", projectSummary)
+                        intent.putExtra("area", projectArea)
+                        intent.putExtra("department", projectDepartment)
+                        intent.putExtra("aim", projectAim)
+                        intent.putExtra("explain", projectExplain)
+                        intent.putExtra("name", projectUserName)
+                        intent.putExtra("img_url", projectTestUrl)
+                        intent.putExtra("project_idx", project_idx)
+                        intent.putExtra("project_user_profile_url", projectUserPofileUrl)
+                        intent.putExtra("user_idx", userIdx)
                         startActivity(intent)
                     }
-                    // 참여 완료 멤버
+                    // 참여 멤버
                     else
                     {
                         val intent = Intent(getActivity(), ProjectIntroParticipActivity::class.java)
@@ -208,6 +232,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         intent.putExtra("name", projectUserName)
                         intent.putExtra("img_url", projectTestUrl)
                         intent.putExtra("project_idx", project_idx)
+                        intent.putExtra("project_user_profile_url", projectUserPofileUrl)
+                        intent.putExtra("user_idx", userIdx)
                         startActivity(intent)
                     }
 
@@ -235,13 +261,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     test = data.toString()
                     Log.v("TAG","데이터 값"+ test)
                     for(i in 0..data.size-1) {
-                      //  Log.v("TAG", "위치 = " + i)
-                       // Log.v("TAG","테스트 제목 = " + data[i].title)
-                       // Log.v("TAG", "장소 = " + data[i].area)
-                       // Log.v("TAG", "분야 = " + data[i].department)
-                      //  Log.v("TAG", "역할 = " + data[i].aim)
-                        //Log.v("TAG", "imgurl = " + data[i].img_url[0])
-                        //projectItems.add(ProjectItem(  "https://project-cowalker.s3.ap-northeast-2.amazonaws.com/1530802712097.jpg","asdf","asdg","ASDf","asdf"))
+
                         if (data[i].department == null){
                             data[i].department= " "
                             Log.v("TAG","널값 발견")

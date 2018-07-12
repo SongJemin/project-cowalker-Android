@@ -8,9 +8,11 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Get.GetRecruitList
+import com.jemcom.cowalker.Network.Get.Response.GetMypageOtherResponse
 import com.jemcom.cowalker.Network.Get.Response.GetRecruitListResponse
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.Network.Post.PostShareProject
@@ -31,6 +33,7 @@ import com.kakao.network.ErrorResult
 import com.kakao.network.callback.ResponseCallback
 import com.kakao.util.helper.log.Logger
 import kotlinx.android.synthetic.main.activity_project_intro_creater.*
+import kotlinx.android.synthetic.main.activity_project_intro_particip.*
 import kotlinx.android.synthetic.main.activity_project_intro_particip.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -65,6 +68,12 @@ class ProjectIntroParticipActivity : AppCompatActivity(), View.OnClickListener {
     var project_idx: String = ""
     lateinit var requestManager: RequestManager
     var recruit_idx : String = ""
+    var project_user_profile_url: String = ""
+    var user_idx: String = ""
+    companion object {
+        lateinit var createrActivity : ProjectIntroCreaterActivity
+        //일종의 스태틱
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,11 +94,49 @@ class ProjectIntroParticipActivity : AppCompatActivity(), View.OnClickListener {
             if(intent.getStringExtra("name") != null) name = intent.getStringExtra("name")
             if(intent.getStringExtra("img_url") != null) img_url = intent.getStringExtra("img_url")
             if(intent.getStringExtra("project_idx") != null) project_idx = intent.getStringExtra("project_idx")
-            getList()
+            if(intent.getStringExtra("project_user_profile_url") != null) project_user_profile_url = intent.getStringExtra("project_user_profile_url")
+            if(intent.getStringExtra("user_idx") != null) user_idx = intent.getStringExtra("user_idx")
+            
         }
+        getList()
 
+        intro_particip_title_tv.text = title
+        intro_particip_summary_tv.text = summary
+        intro_particip_aim_tv.text = aim
+        intro_particip_department_tv.text = department
+        intro_particip_area_tv.text = area
+        intro_particip_explain_tv.text = explain
+        intro_particip_name_tv.text = name
+
+        requestManager = Glide.with(this)
+        // 사진 크기 조절이 안되서 일단 주석 처리
+        requestManager.load(project_user_profile_url).into(intro_particip_profile_iv);
+
+        intro_particip_see_more.setOnClickListener(this)
+        intro_particip_see_close.setOnClickListener(this)
+        intro_particip_profile_iv.setOnClickListener(this)
+        
         intro_particip_share_btn.setOnClickListener {
             postShareProject()
+        }
+        intro_particip_profile_iv.setOnClickListener {
+            get()
+        }
+
+        intro_particip_name_tv.setOnClickListener {
+            get()
+        }
+
+        intro_particip_see_more.setOnClickListener  {
+            intro_particip_see_more.visibility = View.GONE
+            intro_particip_see_close.visibility = View.VISIBLE
+            intro_particip_explain_tv.maxLines = Integer.MAX_VALUE
+        }
+
+        intro_particip_see_close.setOnClickListener {
+            intro_particip_see_close.visibility = View.GONE
+            intro_particip_see_more.visibility = View.VISIBLE
+            intro_particip_explain_tv.maxLines = 2
         }
     }
 
@@ -122,6 +169,40 @@ class ProjectIntroParticipActivity : AppCompatActivity(), View.OnClickListener {
                     recruit_list_recyclerview3.adapter = recruitListGetAdapter
                 }
                 // else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun get()
+    {
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+        var getMypageOtherResponse = networkService.getMypageOther(token,user_idx)
+        Log.v("TAG", "particip 유저번호=" + user_idx)
+        getMypageOtherResponse.enqueue(object : Callback<GetMypageOtherResponse>{
+            override fun onFailure(call: Call<GetMypageOtherResponse>?, t: Throwable?) {
+            }
+
+            override fun onResponse(call: Call<GetMypageOtherResponse>?, response: Response<GetMypageOtherResponse>?) {
+                if(response!!.isSuccessful)
+                {
+                    var data = response.body()
+                    if(data.user_status.equals("타인의 페이지"))
+                    {
+                        var intent = Intent(this@ProjectIntroParticipActivity,MainActivity::class.java)
+                        intent.putExtra("status","otherpage")
+                        intent.putExtra("user_idx", user_idx)
+                        startActivity(intent)
+                    }
+                    else
+                    {
+                        var intent = Intent(this@ProjectIntroParticipActivity,MainActivity::class.java)
+                        intent.putExtra("status","mypage")
+                        startActivity(intent)
+                    }
+                }
+                else Toast.makeText(this@ProjectIntroParticipActivity
+                        ,"실패",Toast.LENGTH_SHORT).show()
             }
         })
     }

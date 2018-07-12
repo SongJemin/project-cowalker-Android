@@ -13,7 +13,7 @@
         tools:context=".Hyunmin.Activity.ProjectIntroActivity">
 
         <ImageView
-            android:id="@+id/introcreate_background_img"
+            android:id="@+id/introcreater_background_img"
             android:layout_width="match_parent"
             android:layout_height="172dp"
             android:background="@drawable/boyoung"
@@ -29,13 +29,16 @@
                 android:layout_height="94dp"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/profile_img"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/introcreater_profile_iv"
                     android:layout_width="52dp"
                     android:layout_height="52dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_centerInParent="true"
                     android:layout_marginTop="22dp"
-                    android:src="@drawable/profile_default" />
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/profile_default"
+                    />
+
 
                 <TextView
                     android:id="@+id/introcreater_title_tv"
@@ -63,7 +66,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/introcreate_name_tv"
+                    android:id="@+id/introcreater_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginLeft="2dp"
@@ -89,18 +92,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/scrap_btn2"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginLeft="277dp"
-                        android:background="@drawable/scrap" />
-
-                    <ImageButton
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="25dp"
-                        android:background="@drawable/intro_range_btn" />
+                  
                 </LinearLayout>
 
                 <LinearLayout
@@ -108,21 +100,7 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="34dp"
-                        android:layout_height="18dp"
-                        android:layout_marginLeft="275dp"
-                        android:text="스크랩"
-                        android:textColor="#444444"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="23dp"
-                        android:layout_height="18dp"
-                        android:layout_marginLeft="18dp"
-                        android:text="여정"
-                        android:textColor="#444444"
-                        android:textSize="12sp" />
+                   
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -152,7 +130,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/introcreate_aim_tv"
+                    android:id="@+id/introcreater_aim_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginTop="20dp"
@@ -171,7 +149,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/introcreate_department_tv"
+                    android:id="@+id/introcreater_department_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginLeft="12dp"
@@ -190,7 +168,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/introcreate_area_tv"
+                    android:id="@+id/introcreater_area_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginLeft="12dp"
@@ -201,7 +179,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/introcreate_summary_tv"
+                android:id="@+id/introcreater_summary_tv"
                 android:layout_width="335dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
@@ -232,7 +210,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/introcreate_explain_tv"
+                android:id="@+id/introcreater_explain_tv"
                 android:layout_width="328dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
@@ -243,7 +221,7 @@
                 android:textColor="#666666" />
 
             <ImageButton
-                android:id="@+id/see_more2"
+                android:id="@+id/introcreater_see_more"
                 android:layout_width="73dp"
                 android:layout_height="16dp"
                 android:layout_marginBottom="16dp"
@@ -254,7 +232,7 @@
                 android:clickable="true"/>
 
             <ImageButton
-                android:id="@+id/see_close2"
+                android:id="@+id/introcreater_see_close"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="200dp"
@@ -274,7 +252,7 @@
                 android:layout_height="24dp"
                 android:layout_marginTop="17dp">
                 <TextView
-                    android:id="@+id/introcreate_invite_Tv"
+                    android:id="@+id/introcreater_invite_Tv"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:layout_marginLeft="20dp"
@@ -282,7 +260,7 @@
                     android:textColor="#444444"
                     android:textSize="16sp" />
                 <Button
-                    android:id="@+id/introcreate_delete_btn"
+                    android:id="@+id/introcreater_delete_btn"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="230dp"
@@ -290,7 +268,7 @@
                     />
 
                 <Button
-                    android:id="@+id/introcreate_add_btn"
+                    android:id="@+id/introcreater_add_btn"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="20dp"
@@ -324,7 +302,7 @@
                 android:orientation="vertical">
 
                 <ImageButton
-                    android:id="@+id/introcreate_recommend_btn"
+                    android:id="@+id/introcreater_recommend_btn"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="11dp"
@@ -368,7 +346,7 @@
 
             </LinearLayout>
             <Button
-                android:id="@+id/introcreate_change_btn"
+                android:id="@+id/introcreater_change_btn"
                 android:layout_width="206dp"
                 android:layout_height="50dp"
                 android:layout_marginBottom="7dp"
