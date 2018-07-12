@@ -204,13 +204,13 @@
                 android:layout_marginTop="20dp"
                 android:textSize="16sp"
                 />
-            
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/apply_paper_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="282dp">
 
-                
+
             </android.support.v7.widget.RecyclerView>
 
 

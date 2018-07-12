@@ -7,9 +7,7 @@ import com.jemcom.cowalker.Network.Delete.DeleteRecruitResponse
 import com.jemcom.cowalker.Network.Get.Response.GetSearchResponse
 import com.jemcom.cowalker.Network.Post.*
 import com.jemcom.cowalker.Network.Post.Response.*
-import com.jemcom.cowalker.Network.Put.Response.PutCreaterDecideResponse
-import com.jemcom.cowalker.Network.Put.Response.PutMyPageResponse
-import com.jemcom.cowalker.Network.Put.Response.PutProjectChangeResponse
+import com.jemcom.cowalker.Network.Put.Response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -176,6 +174,13 @@ interface NetworkService {
             @Path("recruit_idx") recruit_idx: String
     ) : Call<GetRecruitDetailResponse>
 
+    @PUT("/api/project/{project_idx}/recruit/{recruit_idx}")
+    fun putApplyModify(
+            @Header("authorization") authorization: String,
+            @Path("project_idx") project_idx: String,
+            @Path("recruit_idx") recruit_idx: String,
+            @Body contents : PutApplyModify
+    ) : Call<PutApplyModifyResponse>
 
     @DELETE("/api/project/{project_idx}/recruit/{recruit_idx}")
     fun deleteRecruit(
@@ -267,4 +272,9 @@ interface NetworkService {
             @Path("user_idx") user_idx : String
     ) : Call<GetProjectMineParticipateResponse>
 
+    @POST("/api/recommend")
+    fun postRecommend(
+            @Header("authorization") authorization: String,
+            @Body recommend : PostRecommend
+    ) : Call<PostRecommendResponse>
 }
