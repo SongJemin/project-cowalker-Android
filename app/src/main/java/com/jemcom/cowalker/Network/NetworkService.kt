@@ -181,4 +181,16 @@ interface NetworkService {
             @Path("applicant_idx") applicant_idx : String,
             @Path("join") join : Int
     ) : Call<PutCreaterDecideResponse>
+
+    @POST("/api/share")
+    fun postShareProject(
+            @Header("authorization") authorization : String,
+            @Body join : PostShareProject
+    ) : Call<PostShareResponse>
+
+    @POST("/api/share")
+    fun postShareRecruit(
+            @Header("authorization") authorization : String,
+            @Body join : PostShareRecruit
+    ) : Call<PostShareResponse>
 }

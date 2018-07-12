@@ -1,5 +1,7 @@
 package com.jemcom.cowalker.Jemin.Activity
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -19,6 +21,12 @@ import com.jemcom.cowalker.Network.Delete.DeleteProjectResponse
 import com.jemcom.cowalker.Network.Get.GetRecruitList
 import com.jemcom.cowalker.Network.Get.Response.GetRecruitListResponse
 import com.jemcom.cowalker.Network.NetworkService
+import com.jemcom.cowalker.Network.Post.PostShareProject
+import com.jemcom.cowalker.Network.Post.PostSignup
+import com.jemcom.cowalker.Network.Post.Response.PostProjectResponse
+import com.jemcom.cowalker.Network.Post.Response.PostShareResponse
+import com.jemcom.cowalker.Network.Post.Response.PostSignupResponse
+import com.jemcom.cowalker.Nuri.Activity.LoginActivity
 import com.jemcom.cowalker.Nuri.Activity.RecruitDetailActivity
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListAdapter
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
@@ -36,6 +44,8 @@ import com.kakao.util.helper.log.Logger
 import kotlinx.android.synthetic.main.activity_project_intro.*
 import kotlinx.android.synthetic.main.activity_project_intro_creater.*
 import kotlinx.android.synthetic.main.activity_recruit_delete.*
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -146,7 +156,9 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         introcreate_recommend_btn.setOnClickListener {
-            sendLink()
+
+            postShareProject()
+
         }
 
         changeBtn.setOnClickListener {
@@ -204,11 +216,10 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
         })
     }
 
+
     fun getList()
     {
-        //var project_idx = "2"
         var getRecruitListResponse = networkService.getRecruitList(project_idx)
-        //var getRecruitListResponse = networkService.getRecruitList(project_idx)
 
         getRecruitListResponse.enqueue(object : Callback<GetRecruitListResponse>{
             override fun onFailure(call: Call<GetRecruitListResponse>?, t: Throwable?) {
@@ -240,9 +251,6 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
 
 
     private fun sendLink() {
-
-
-
         val params = FeedTemplate
                 .newBuilder(ContentObject.newBuilder("공공서비스 어플리케이션 공모전",
                         url,
@@ -266,12 +274,34 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
 
                 Logger.e(errorResult.toString())
             }
-
             override fun onSuccess(result: KakaoLinkResponse) {}
         })
-
-
     }
+
+
+    fun postShareProject()
+    {
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+        var data = PostShareProject(project_idx)
+        var postShareResponse = networkService.postShareProject(token,data)
+
+        postShareResponse.enqueue(object : retrofit2.Callback<PostShareResponse>{
+
+            override fun onResponse(call: Call<PostShareResponse>, response: Response<PostShareResponse>) {
+                if(response.isSuccessful){
+                    Log.v("TAG","프로젝트 공유 성공")
+                    sendLink()
+                }
+            }
+
+            override fun onFailure(call: Call<PostShareResponse>, t: Throwable?) {
+                Toast.makeText(applicationContext,"서버 연결 실패",Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
 
     override fun onBackPressed() {
         val intent = Intent(this@ProjectIntroCreaterActivity, MainActivity::class.java)

@@ -1,5 +1,6 @@
 package com.jemcom.cowalker.Jemin.Activity
 
+import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -12,11 +13,22 @@ import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Get.GetRecruitList
 import com.jemcom.cowalker.Network.Get.Response.GetRecruitListResponse
 import com.jemcom.cowalker.Network.NetworkService
+import com.jemcom.cowalker.Network.Post.PostShareProject
+import com.jemcom.cowalker.Network.Post.Response.PostShareResponse
 import com.jemcom.cowalker.Nuri.Activity.RecruitDetailActivity
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
 import com.jemcom.cowalker.Nuri.Item.RecruitListItem
 
 import com.jemcom.cowalker.R
+import com.kakao.kakaolink.v2.KakaoLinkResponse
+import com.kakao.kakaolink.v2.KakaoLinkService
+import com.kakao.message.template.ButtonObject
+import com.kakao.message.template.ContentObject
+import com.kakao.message.template.FeedTemplate
+import com.kakao.message.template.LinkObject
+import com.kakao.network.ErrorResult
+import com.kakao.network.callback.ResponseCallback
+import com.kakao.util.helper.log.Logger
 import kotlinx.android.synthetic.main.activity_project_intro_particip.*
 import kotlinx.android.synthetic.main.activity_project_intro_wait.*
 import retrofit2.Call
@@ -36,7 +48,7 @@ class ProjectIntroWaitActivity : AppCompatActivity(), View.OnClickListener  {
     }
     var data : java.util.ArrayList<GetRecruitList> = java.util.ArrayList<GetRecruitList>()
     lateinit var networkService: NetworkService
-
+    var url = "https://cdn.xl.thumbs.canstockphoto.com/computer-generated-3d-image-cooperation-stock-illustrations_csp2074347.jpg"
     lateinit var recruitListItems: ArrayList<RecruitListItem>
     lateinit var recruitListGetAdapter : RecruitListGetAdapter
 
@@ -72,6 +84,10 @@ class ProjectIntroWaitActivity : AppCompatActivity(), View.OnClickListener  {
             if(intent.getStringExtra("project_idx") != null) project_idx = intent.getStringExtra("project_idx")
             getList()
         }
+
+        intro_wait_share_btn.setOnClickListener {
+            postShareProject()
+        }
     }
 
     fun getList()
@@ -106,6 +122,57 @@ class ProjectIntroWaitActivity : AppCompatActivity(), View.OnClickListener  {
                 }
                 // else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()
             }
+        })
+    }
+
+    fun postShareProject()
+    {
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+        var data = PostShareProject(project_idx)
+        var postShareResponse = networkService.postShareProject(token,data)
+
+        postShareResponse.enqueue(object : retrofit2.Callback<PostShareResponse>{
+
+            override fun onResponse(call: Call<PostShareResponse>, response: Response<PostShareResponse>) {
+                if(response.isSuccessful){
+                    Log.v("TAG","프로젝트 공유 성공")
+                    sendLink()
+                }
+            }
+
+            override fun onFailure(call: Call<PostShareResponse>, t: Throwable?) {
+                Toast.makeText(applicationContext,"서버 연결 실패",Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun sendLink() {
+        val params = FeedTemplate
+                .newBuilder(ContentObject.newBuilder("공공서비스 어플리케이션 공모전",
+                        url,
+                        LinkObject.newBuilder().setWebUrl("")
+                                .setMobileWebUrl("").build())
+                        .setDescrption("이충엽님이 당신을 추천하셨습니다. 함께 해주세요!")
+                        .build())
+
+                .addButton(ButtonObject("깅스앱으로 열기", LinkObject.newBuilder()
+
+                        .setWebUrl("'https://developers.kakao.com")
+                        .setMobileWebUrl("'https://developers.kakao.com")
+                        .setAndroidExecutionParams("key1=value1")
+                        .setIosExecutionParams("key1=value1")
+                        .build()))
+                .build()
+
+        KakaoLinkService.getInstance().sendDefault(this, params, object : ResponseCallback<KakaoLinkResponse>() {
+
+            override fun onFailure(errorResult: ErrorResult) {
+
+                Logger.e(errorResult.toString())
+            }
+            override fun onSuccess(result: KakaoLinkResponse) {}
         })
     }
 }

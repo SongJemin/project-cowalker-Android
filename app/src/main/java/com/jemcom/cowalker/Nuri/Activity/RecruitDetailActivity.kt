@@ -14,7 +14,19 @@ import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Get.Response.GetMypageOtherResponse
 import com.jemcom.cowalker.Network.Get.Response.GetRecruitDetailResponse
 import com.jemcom.cowalker.Network.NetworkService
+import com.jemcom.cowalker.Network.Post.PostShareProject
+import com.jemcom.cowalker.Network.Post.PostShareRecruit
+import com.jemcom.cowalker.Network.Post.Response.PostShareResponse
 import com.jemcom.cowalker.R
+import com.kakao.kakaolink.v2.KakaoLinkResponse
+import com.kakao.kakaolink.v2.KakaoLinkService
+import com.kakao.message.template.ButtonObject
+import com.kakao.message.template.ContentObject
+import com.kakao.message.template.FeedTemplate
+import com.kakao.message.template.LinkObject
+import com.kakao.network.ErrorResult
+import com.kakao.network.callback.ResponseCallback
+import com.kakao.util.helper.log.Logger
 import kotlinx.android.synthetic.main.activity_recruit_detail.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,7 +39,7 @@ class RecruitDetailActivity : AppCompatActivity() {
     var project_idx : String = ""
     var recruit_idx : String = ""
     var position : String = ""
-
+    var url = "https://cdn.xl.thumbs.canstockphoto.com/computer-generated-3d-image-cooperation-stock-illustrations_csp2074347.jpg"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +63,10 @@ class RecruitDetailActivity : AppCompatActivity() {
             intent.putExtra("project_idx",project_idx)
             intent.putExtra("recruit_idx",recruit_idx)
             startActivity(intent)
+        }
+
+        recruit_detail_share_btn.setOnClickListener {
+            postShareRecruit()
         }
 
         recruit_detail_btn.setOnClickListener {
@@ -159,6 +175,60 @@ class RecruitDetailActivity : AppCompatActivity() {
                 }
                 else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()
             }
+        })
+    }
+
+    private fun sendLink() {
+        val params = FeedTemplate
+                .newBuilder(ContentObject.newBuilder("공공서비스 어플리케이션 공모전",
+                        url,
+                        LinkObject.newBuilder().setWebUrl("")
+                                .setMobileWebUrl("").build())
+                        .setDescrption("이충엽님이 당신을 추천하셨습니다. 함께 해주세요!")
+                        .build())
+
+                .addButton(ButtonObject("깅스앱으로 열기", LinkObject.newBuilder()
+
+                        .setWebUrl("'https://developers.kakao.com")
+                        .setMobileWebUrl("'https://developers.kakao.com")
+                        .setAndroidExecutionParams("key1=value1")
+                        .setIosExecutionParams("key1=value1")
+                        .build()))
+                .build()
+
+        KakaoLinkService.getInstance().sendDefault(this, params, object : ResponseCallback<KakaoLinkResponse>() {
+
+            override fun onFailure(errorResult: ErrorResult) {
+
+                Logger.e(errorResult.toString())
+            }
+
+            override fun onSuccess(result: KakaoLinkResponse) {}
+        })
+
+
+    }
+
+    fun postShareRecruit()
+    {
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+        var data = PostShareRecruit(recruit_idx)
+        var postShareResponse = networkService.postShareRecruit(token,data)
+
+        postShareResponse.enqueue(object : retrofit2.Callback<PostShareResponse>{
+
+            override fun onResponse(call: Call<PostShareResponse>, response: Response<PostShareResponse>) {
+                if(response.isSuccessful){
+                    Log.v("TAG","모집 공유 성공")
+                    sendLink()
+                }
+            }
+
+            override fun onFailure(call: Call<PostShareResponse>, t: Throwable?) {
+                Toast.makeText(applicationContext,"서버 연결 실패",Toast.LENGTH_SHORT).show()
+            }
+
         })
     }
 }

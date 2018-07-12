@@ -340,6 +340,7 @@
                 android:orientation="vertical">
 
                 <ImageButton
+                    android:id="@+id/intro_wait_share_btn"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="7dp"

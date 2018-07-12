@@ -21,6 +21,8 @@ import com.jemcom.cowalker.Network.Get.GetRecruitList
 import com.jemcom.cowalker.Network.Get.Response.GetMypageOtherResponse
 import com.jemcom.cowalker.Network.Get.Response.GetRecruitListResponse
 import com.jemcom.cowalker.Network.NetworkService
+import com.jemcom.cowalker.Network.Post.PostShareProject
+import com.jemcom.cowalker.Network.Post.Response.PostShareResponse
 import com.jemcom.cowalker.Nuri.Activity.RecruitDetailActivity
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
 import com.jemcom.cowalker.Nuri.Item.RecruitListItem
@@ -145,7 +147,11 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
         }
 
         intro_recommend_btn.setOnClickListener {
-            sendLink()
+
+        }
+
+        intro_share_btn.setOnClickListener {
+            postShareProject()
         }
 
     }
@@ -248,13 +254,35 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
 
     }
 
+    fun postShareProject()
+    {
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+        var data = PostShareProject(project_idx)
+        var postShareResponse = networkService.postShareProject(token,data)
+
+        postShareResponse.enqueue(object : retrofit2.Callback<PostShareResponse>{
+
+            override fun onResponse(call: Call<PostShareResponse>, response: Response<PostShareResponse>) {
+                if(response.isSuccessful){
+                    Log.v("TAG","프로젝트 공유 성공")
+                    sendLink()
+                }
+            }
+
+            override fun onFailure(call: Call<PostShareResponse>, t: Throwable?) {
+                Toast.makeText(applicationContext,"서버 연결 실패",Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+
 
     override fun onBackPressed() {
         val intent = Intent(this@ProjectIntroActivity, MainActivity::class.java)
         startActivity(intent)
     }
-
-
 
 
 }
