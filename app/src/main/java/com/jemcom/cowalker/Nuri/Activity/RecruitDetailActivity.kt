@@ -17,6 +17,8 @@ import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.Network.Post.PostShareProject
 import com.jemcom.cowalker.Network.Post.PostShareRecruit
 import com.jemcom.cowalker.Network.Post.Response.PostShareResponse
+import com.jemcom.cowalker.Nuri.Adapter.RecruitListAdapter
+import com.jemcom.cowalker.Nuri.Item.RecruitListItem
 import com.jemcom.cowalker.R
 import com.kakao.kakaolink.v2.KakaoLinkResponse
 import com.kakao.kakaolink.v2.KakaoLinkService
@@ -36,6 +38,8 @@ import java.text.SimpleDateFormat
 class RecruitDetailActivity : AppCompatActivity() {
 
     lateinit var networkService: NetworkService
+    lateinit var recruitListItems: ArrayList<RecruitListItem>
+    lateinit var recruitListAdapter : RecruitListAdapter
     var project_idx : String = ""
     var recruit_idx : String = ""
     var position : String = ""
@@ -47,7 +51,9 @@ class RecruitDetailActivity : AppCompatActivity() {
         val alertDialogBuilder = AlertDialog.Builder(this)
 
         networkService = ApplicationController.instance.networkSerVice
-
+        val getRecruitintent = intent
+        project_idx = getRecruitintent.getStringExtra("project_idx")
+        recruit_idx = getRecruitintent.getStringExtra("recruit_idx")
         get()
 
         recruit_detail_applymember_linear.setOnClickListener{

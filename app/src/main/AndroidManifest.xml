@@ -72,6 +72,7 @@
         <activity android:name=".Jemin.Activity.ApplyPaperActivity"></activity>
         <activity android:name=".Nuri.Activity.OtherpageProjectlistActivity" />
         <activity android:name=".Nuri.Activity.MyInfoEditActivity"></activity>
+        <activity android:name=".Hyunmin.Activity.MypageProjectlistActivity"></activity>
     </application>
 
 </manifest>
