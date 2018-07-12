@@ -3,7 +3,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="88dp"
+    android:layout_height="95dp"
     android:layout_marginBottom="10dp"
     android:orientation="vertical">
 
@@ -14,24 +14,24 @@
         android:layout_marginRight="17dp"
         android:background="@drawable/layout_design">
 
-
             <TextView
                 android:id="@+id/recruitlist_position_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="23dp"
                 android:layout_marginTop="20dp"
                 android:text="개발자"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:textColor="#666666"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/recruitlist_number_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:text="1"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 android:layout_toRightOf="@+id/recruitlist_position_tv"
                 android:layout_alignTop="@+id/recruitlist_position_tv"
                 android:textColor="#666666" />
@@ -39,9 +39,10 @@
         <TextView
             android:id="@+id/recruitlist_personnel_tv"
             android:layout_width="wrap_content"
-            android:layout_height="19dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
             android:text="명"
+            android:fontFamily="@font/notosanscjkkr_regular"
             android:layout_toRightOf="@+id/recruitlist_number_tv"
             android:layout_alignTop="@+id/recruitlist_number_tv"
             android:textColor="#666666" />
@@ -51,7 +52,7 @@
                 android:layout_width="42dp"
                 android:layout_height="19dp"
                 android:layout_marginTop="15dp"
-                android:background="#64dfff"
+                android:background="#45b6ff"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="15dp"
                 android:text="D-9"
@@ -60,11 +61,12 @@
 
         <TextView
             android:id="@+id/recruitlist_task_tv"
-            android:layout_width="106dp"
-            android:layout_height="19dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="웹앱 서비스 개발"
             android:textColor="#666666"
+            android:fontFamily="@font/notosanscjkkr_regular"
             android:layout_below="@+id/recruitlist_position_tv"
             android:layout_alignLeft="@+id/recruitlist_position_tv"
             android:textSize="15sp" />

@@ -17,6 +17,7 @@
             android:layout_marginLeft="180dp"
             android:text="내 소개"
             android:textColor="#444444"
+            android:fontFamily="@font/notosanscjkkr_bold"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -42,6 +43,7 @@
             android:text="저는 건국대학교 문화콘텐츠학과에 재학중인 대학생 이충엽 입니다. 저는 사회의 문제점을 파악하고, 이를 해결하기 위해 창업을 꿈꾸고 있습니다.
 저와 함께 새로운 질서를 만들고 싶으신 분들은 함께 여정을 떠나봅시다."
             android:textColor="#444444"
+            android:fontFamily="@font/notosanscjkkr_regular"
             android:textSize="14sp" />
     </LinearLayout>
 </LinearLayout>

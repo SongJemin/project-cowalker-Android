@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -34,11 +33,11 @@
                 android:id="@+id/login_title_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="26sp"
+                android:textSize="30sp"
                 android:textColor="@color/colorPrimaryDark"
                 android:fontFamily="@font/notosanscjkkr_bold"
-                android:layout_marginTop="50dp"
-                android:layout_marginLeft="46dp"
+                android:layout_marginTop="70dp"
+                android:layout_marginLeft="76dp"
                 android:text="@string/login"
                 />
 
@@ -46,17 +45,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:fontFamily="@font/notosansmonocjkkr_bold"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="48dp"
+                android:layout_marginLeft="78dp"
                 android:text="이메일" />
 
             <EditText
                 android:id="@+id/login_email_ed"
-                android:layout_width="269dp"
-                android:layout_height="39dp"
-                android:layout_marginLeft="46dp"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="65dp"
                 android:theme="@style/EditTextStyle"
                 />
 
@@ -64,25 +63,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:fontFamily="@font/notosansmonocjkkr_bold"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="48dp"
+                android:layout_marginLeft="78dp"
                 android:text="비밀번호" />
 
             <EditText
                 android:id="@+id/login_pw_ed"
-                android:layout_width="269dp"
-                android:layout_height="39dp"
-                android:layout_marginLeft="46dp"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="65dp"
                 android:inputType="textPassword"
                 android:theme="@style/EditTextStyle"/>
 
             <ImageButton
                 android:id="@+id/login_ok_btn"
-                android:layout_width="268dp"
-                android:layout_height="54dp"
-                android:layout_marginLeft="46dp"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="55dp"
                 android:layout_marginTop="40dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/login_inactive"/>
@@ -97,10 +96,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorinfo"
-                    android:textSize="16sp"
+                    android:textSize="17sp"
                     android:fontFamily="@font/notosanscjkkr_bold"
                     android:layout_marginTop="8dp"
-                    android:layout_marginLeft="141dp"
+                    android:layout_marginLeft="169dp"
                     android:text="자동 로그인" />
 
                 <ImageView
@@ -119,13 +118,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="99.5dp">
+                android:layout_marginLeft="129.5dp">
                 <TextView
                     android:id="@+id/login_signup_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="16sp"
+                    android:textSize="17sp"
                     android:fontFamily="@font/notosansmonocjkkr_bold"
                     android:text="회원가입"/>
 
@@ -142,7 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="16sp"
+                    android:textSize="17sp"
                     android:fontFamily="@font/notosansmonocjkkr_bold"
                     android:text="둘러보기"/>
             </LinearLayout>

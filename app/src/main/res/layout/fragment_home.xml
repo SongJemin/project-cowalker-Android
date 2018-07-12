@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f8f8f8">
@@ -14,19 +12,20 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:text="멋진 멤버들과 함께 여행을 떠나보세요."
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:gravity="center_vertical"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="33dp"
+            android:fontFamily="@font/notosanscjkkr_bold"
             android:textColor="#666666"
             android:textStyle="bold"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview"
             android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

@@ -22,11 +22,13 @@
         android:layout_height="256dp"
         android:background="#ffffff"
         />
-    <ImageView
+    <Button
         android:id="@+id/notice_message_iv"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:layout_marginTop="130dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/send_ok_btn" />
+        android:background="#45b6ff"
+        android:text="전송"
+        android:textColor="#ffffff"
+        android:fontFamily="@font/notosanscjkkr_bold"/>
 </LinearLayout>

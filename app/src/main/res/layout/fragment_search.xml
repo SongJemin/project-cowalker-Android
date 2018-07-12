@@ -18,13 +18,13 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="38dp"
+                android:layout_height="wrap_content"
                 android:text="탐색"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:textSize="26sp"
                 android:layout_centerVertical="true"
                 android:textColor="#444444"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="40dp"/>
             
             <Button
                 android:id="@+id/search_filter_btn"
@@ -48,8 +48,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="프로젝트, 분야, 역할 검색"
-                android:textStyle="bold"
-                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="40dp"
                 android:backgroundTint="@color/Transparent"
                 android:textSize="20sp" />
 
@@ -74,7 +75,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/search_recyclerview"
         android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginRight="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

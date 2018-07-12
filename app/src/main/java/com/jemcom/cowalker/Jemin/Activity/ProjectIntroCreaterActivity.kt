@@ -7,10 +7,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
@@ -31,7 +28,7 @@ import retrofit2.Response
 class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var networkService: NetworkService
-    lateinit var addBtn: Button
+    lateinit var addBtn: ImageButton
     lateinit var changeBtn: Button
     lateinit var titleTv: TextView
     lateinit var summaryTv: TextView
@@ -67,7 +64,7 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_project_intro_creater)
         networkService = ApplicationController.instance.networkSerVice // 어플리케이션을 실행하자마자 어플리케이션 콘트롤러가 실행되는데 그 때 사용?
-        addBtn = findViewById<View>(R.id.introcreate_add_btn) as Button
+        addBtn = findViewById<View>(R.id.introcreate_add_btn) as ImageButton
         changeBtn = findViewById<View>(R.id.introcreate_change_btn) as Button
         val alertDialogBuilder = AlertDialog.Builder(this)
 

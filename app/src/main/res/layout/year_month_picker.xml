@@ -16,7 +16,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="시작"/>
+            android:text="시작"
+            android:fontFamily="@font/notosanscjkkr_regular"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="종료"
-
+            android:fontFamily="@font/notosanscjkkr_regular"
             />
 
         <LinearLayout
@@ -113,6 +114,7 @@
             android:layout_weight="1"
             android:textAllCaps="false"
             android:text="취소"
+            android:fontFamily="@font/notosanscjkkr_regular"
             />
 
         <Button
@@ -122,6 +124,7 @@
             android:layout_height="45dp"
             android:textAllCaps="false"
             android:text="확인"
+            android:fontFamily="@font/notosanscjkkr_regular"
             />
 
     </LinearLayout>

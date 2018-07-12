@@ -12,11 +12,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="26sp"
+        android:textSize="28sp"
         android:textColor="@color/colorPrimaryDark"
         android:fontFamily="@font/notosanscjkkr_bold"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="46dp"
+        android:layout_marginLeft="66dp"
         android:text="@string/signup"
         />
 
@@ -24,22 +24,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:fontFamily="@font/notosansmonocjkkr_bold"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="48dp"
+        android:layout_marginLeft="68dp"
         android:text="이메일" />
 
     <RelativeLayout
         android:layout_width="269dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="46dp">
+        android:layout_marginLeft="66dp">
         <EditText
             android:id="@+id/signup_email_ed"
             android:theme="@style/EditTextStyle"
-            android:layout_width="269dp"
-            android:layout_height="39dp"
-            />
+            android:layout_width="280dp"
+            android:layout_height="45dp" />
         <TextView
             android:id="@+id/signup_emailcheck_tv"
             android:layout_alignParentRight="true"
@@ -52,11 +51,11 @@
 
     <TextView
         android:id="@+id/signup_email_tv"
-        android:layout_marginLeft="58dp"
+        android:layout_marginLeft="78dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorinfo"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:text="영문자,숫자 조합 7글자 이상 입력해주세요."/>
 
@@ -64,26 +63,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:fontFamily="@font/notosansmonocjkkr_bold"
-        android:layout_marginLeft="48dp"
+        android:layout_marginLeft="68dp"
         android:text="비밀번호" />
 
         <EditText
             android:id="@+id/signup_pw_ed"
-            android:layout_marginLeft="46dp"
+            android:layout_marginLeft="66dp"
             android:theme="@style/EditTextStyle"
-            android:layout_width="269dp"
-            android:layout_height="39dp"
+            android:layout_width="280dp"
+            android:layout_height="45dp"
             android:inputType="textPassword"
             />
     <TextView
         android:id="@+id/signup_pw_tv"
-        android:layout_marginLeft="58dp"
+        android:layout_marginLeft="78dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorinfo"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:text="영문자,숫자 조합 7글자 이상 입력해주세요."/>
 
@@ -91,62 +90,61 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:fontFamily="@font/notosansmonocjkkr_bold"
-        android:layout_marginLeft="48dp"
+        android:layout_marginLeft="68dp"
         android:text="비밀번호 확인" />
 
         <EditText
             android:id="@+id/signup_pwcheck_ed"
-            android:layout_marginLeft="46dp"
+            android:layout_marginLeft="66dp"
             android:theme="@style/EditTextStyle"
-            android:layout_width="269dp"
-            android:layout_height="39dp"
+            android:layout_width="280dp"
+            android:layout_height="45dp"
             android:inputType="textPassword"
             />
 
     <TextView
         android:id="@+id/signup_pwcheck_tv"
-        android:layout_marginLeft="58dp"
+        android:layout_marginLeft="78dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorinfo"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:text="영문자,숫자 조합 7글자 이상 입력해주세요."/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:fontFamily="@font/notosansmonocjkkr_bold"
-        android:layout_marginLeft="48dp"
+        android:layout_marginLeft="68dp"
         android:text="이름" />
 
-        <EditText
-            android:id="@+id/signup_name_ed"
-            android:layout_marginLeft="46dp"
-            android:theme="@style/EditTextStyle"
-            android:layout_width="269dp"
-            android:layout_height="39dp"
-            />
+    <EditText
+        android:id="@+id/signup_name_ed"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="66dp"
+        android:theme="@style/EditTextStyle" />
 
     <TextView
         android:id="@+id/signup_name_tv"
-        android:layout_marginLeft="58dp"
+        android:layout_marginLeft="78dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorinfo"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:text="영문자,숫자 조합 7글자 이상 입력해주세요."/>
 
     <ImageButton
         android:id="@+id/signup_ok_btn"
-        android:layout_width="268dp"
+        android:layout_width="300dp"
         android:layout_height="54dp"
-        android:layout_marginLeft="46dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="0dp"
         android:background="@android:color/transparent"
         android:src="@drawable/signup_btn"/>
 </LinearLayout>

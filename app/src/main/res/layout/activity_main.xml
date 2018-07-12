@@ -1,8 +1,6 @@
 <?xml version="1.0"
     encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -33,7 +31,7 @@
             android:background="#00000000"
             android:padding="7sp"
             android:scaleType="fitCenter"
-            android:src="@drawable/main_home_btn" />
+            android:src="@drawable/icons_tabbar_1_home" />
 
         <ImageButton
             android:id="@+id/search_tab_btn"
@@ -43,7 +41,7 @@
             android:background="#00000000"
             android:padding="6sp"
             android:scaleType="fitCenter"
-            android:src="@drawable/search_tab_btn" />
+            android:src="@drawable/icons_tabbar_2_search" />
 
         <ImageButton
             android:id="@+id/create_tab_btn"
@@ -53,7 +51,7 @@
             android:background="#00000000"
             android:padding="2sp"
             android:scaleType="fitCenter"
-            android:src="@drawable/create_tab_btn" />
+            android:src="@drawable/icons_tabbar_3_create" />
 
         <ImageButton
             android:id="@+id/alarm_tab_btn"
@@ -63,7 +61,7 @@
             android:background="#00000000"
             android:padding="7sp"
             android:scaleType="fitCenter"
-            android:src="@drawable/alarm_tab_btn" />
+            android:src="@drawable/icons_tabbar_4_alarm" />
 
         <ImageButton
             android:id="@+id/mypage_tab_btn"
@@ -73,8 +71,6 @@
             android:background="#00000000"
             android:padding="7sp"
             android:scaleType="fitCenter"
-            android:src="@drawable/mypage_tab_btn" />
-
+            android:src="@drawable/icons_tabbar_5_mypage" />
     </LinearLayout>
-
 </RelativeLayout>

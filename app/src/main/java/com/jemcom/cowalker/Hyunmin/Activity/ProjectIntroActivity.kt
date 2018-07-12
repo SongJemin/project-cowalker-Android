@@ -95,11 +95,10 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
         btn_join.setOnClickListener(this)
         see_more.setOnClickListener(this)
         see_close.setOnClickListener(this)
-        scrap_btn.setOnClickListener(this)
         projectIntro_profile_iv.setOnClickListener(this)
 
         btn_join.setOnClickListener{
-            val nextIntent = Intent(this, MainActivity::class.java)
+            val nextIntent = Intent(this, RecruitDetailActivity::class.java)
             startActivity(nextIntent)
         }
         see_more.setOnClickListener  {
@@ -112,17 +111,6 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
             see_close.visibility = View.GONE
             see_more.visibility = View.VISIBLE
             tv_short.maxLines = 2
-        }
-
-        scrap_btn.setOnClickListener {
-            if(CHECK_NUM == 0) {
-                scrap_btn.isSelected = true
-                CHECK_NUM = 1
-            }
-            else {
-                scrap_btn.isSelected = false
-                CHECK_NUM = 0
-            }
         }
 
         projectIntro_profile_iv.setOnClickListener {
