@@ -78,7 +78,7 @@ class MypageTab : Fragment(),View.OnClickListener {
     {
         val pref = v.context.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
-        var getMypageResponse = networkService.getMypage("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA5NTE1ODMsImV4cCI6MTUzMzU0MzU4M30.90d2qcRcikydx8R-lMMyLgcYGcAxY0Poi61a-NGpujY")
+        var getMypageResponse = networkService.getMypage("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTE3MzIzOSwiZXhwIjoxNTMzNzY1MjM5fQ.taqF_rP7P2DzGiSTT234wv3dqjjsTBLA0J01K-PDlxk")
 
         getMypageResponse.enqueue(object : Callback<GetMypageResponse>{
             override fun onFailure(call: Call<GetMypageResponse>?, t: Throwable?) {
