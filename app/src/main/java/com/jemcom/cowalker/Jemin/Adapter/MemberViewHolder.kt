@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.jemcom.cowalker.R
 
 class MemberViewHolder ( itemView : View) : RecyclerView.ViewHolder(itemView) {
-    var memberNumber : TextView = itemView.findViewById(R.id.member_name_tv)
+    var memberName : TextView = itemView.findViewById(R.id.member_name_tv)
     var memberPosition : TextView = itemView.findViewById(R.id.member_position_tv);
     var memberProfileImage : ImageView = itemView.findViewById(R.id.memberitem_profile_img)
 

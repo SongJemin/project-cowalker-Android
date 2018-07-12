@@ -71,7 +71,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         val pref = view.context.getSharedPreferences("auto",Activity.MODE_PRIVATE)
         token = pref.getString("token","")
-        Log.v("TAG","홈에서 토큰 값 = " + token);
+        Log.v("Home Fragment","홈에서 토큰 값 = " + token);
         get(view)
 
 
@@ -101,9 +101,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         getProjectDetail();
 
-        val intent = Intent(v.context, ProjectIntroCreaterActivity::class.java)
-       // intent.putExtra("title", title)
-        startActivity(intent)
+
     }
 
 
@@ -165,7 +163,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
                     if(userResult=="개설자")
                     {
-                        val intent = Intent(getActivity(), ProjectIntroActivity::class.java)
+                        val intent = Intent(getActivity(), ProjectIntroCreaterActivity::class.java)
                         intent.putExtra("title", projectTitle)
                         intent.putExtra("summary", projectSummary)
                         intent.putExtra("area", projectArea)
@@ -197,10 +195,19 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         val intent = Intent(getActivity(), ProjectIntroWaitActivity::class.java)
                         startActivity(intent)
                     }
-                    // 참여 멤버
+                    // 참여 완료 멤버
                     else
                     {
                         val intent = Intent(getActivity(), ProjectIntroParticipActivity::class.java)
+                        intent.putExtra("title", projectTitle)
+                        intent.putExtra("summary", projectSummary)
+                        intent.putExtra("area", projectArea)
+                        intent.putExtra("department", projectDepartment)
+                        intent.putExtra("aim", projectAim)
+                        intent.putExtra("explain", projectExplain)
+                        intent.putExtra("name", projectUserName)
+                        intent.putExtra("img_url", projectTestUrl)
+                        intent.putExtra("project_idx", project_idx)
                         startActivity(intent)
                     }
 

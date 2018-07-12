@@ -155,7 +155,7 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
         val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
         val user_idx = "2"
-        var getMypageOtherResponse = networkService.getMypageOther(" eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMDYsImlhdCI6MTUzMTA3OTA5MywiZXhwIjoxNTMzNjcxMDkzfQ.ZWdFvvvkoW9wnD5wBUT8zvKlpks0krr_Z-DMgfl8qPI",user_idx)
+        var getMypageOtherResponse = networkService.getMypageOther(token,user_idx)
         getMypageOtherResponse.enqueue(object : Callback<GetMypageOtherResponse>{
             override fun onFailure(call: Call<GetMypageOtherResponse>?, t: Throwable?) {
             }

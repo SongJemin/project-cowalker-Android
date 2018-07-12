@@ -1,5 +1,6 @@
 package com.jemcom.cowalker.Jemin.Activity
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -19,6 +20,7 @@ import com.jemcom.cowalker.Network.Put.Response.PutCreaterDecideResponse
 import com.jemcom.cowalker.Network.Put.Response.PutProjectChangeResponse
 
 import com.jemcom.cowalker.R
+import com.jemcom.cowalker.R.id.apply_member_list_recyclerview
 import kotlinx.android.synthetic.main.activity_apply_member.*
 import kotlinx.android.synthetic.main.activity_apply_paper.*
 import okhttp3.MediaType
@@ -48,12 +50,13 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
     var applicant_idx_result : Int = 0
     var applicant_idx : String = ""
     var apply_idx : String = ""
-    var join : String = ""
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apply_member)
+        val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         applyMemberActivity = this
         val intent = intent
         recruit_idx = intent.getStringExtra("recruit_idx")
@@ -72,15 +75,18 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
 
     fun getMember()
     {
-        var getApplyMemberResponse = networkService.getApplyMemberList("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTE3MzIzOSwiZXhwIjoxNTMzNzY1MjM5fQ.taqF_rP7P2DzGiSTT234wv3dqjjsTBLA0J01K-PDlxk" ,recruit_idx) // 네트워크 서비스의 getContent 함수를 받아옴
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+        var getApplyMemberResponse = networkService.getApplyMemberList(token ,recruit_idx) // 네트워크 서비스의 getContent 함수를 받아옴
         getApplyMemberResponse.enqueue(object : Callback<GetApplyMemberResponse> {
             override fun onResponse(call: Call<GetApplyMemberResponse>?, response: Response<GetApplyMemberResponse>?) {
                 Log.v("TAG","지원 멤버 통신 성공")
                 if(response!!.isSuccessful)
                 {
-                    Log.v("TAG","지원 멤버값 갖고오기 성공")
-                    applyMemberData = response.body().result
 
+
+
+                    applyMemberData = response.body().result
                     applyMemberAdapter = ApplyMemberAdapter(this@ApplyMemberActivity, applyMemberData,requestManager)
                     apply_member_list_recyclerview.layoutManager = LinearLayoutManager( this@ApplyMemberActivity)
                     apply_member_list_recyclerview.adapter = applyMemberAdapter

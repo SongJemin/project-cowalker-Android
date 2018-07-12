@@ -179,6 +179,6 @@ interface NetworkService {
             @Header("authorization") authorization: String,
             @Path("apply_idx") apply_idx : String,
             @Path("applicant_idx") applicant_idx : String,
-            @Path("join") join : String
+            @Path("join") join : Int
     ) : Call<PutCreaterDecideResponse>
 }

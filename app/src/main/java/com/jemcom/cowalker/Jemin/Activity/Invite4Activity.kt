@@ -33,7 +33,6 @@ class Invite4Activity : AppCompatActivity() {
     internal lateinit var editText: Array<EditText?>
 
     // 통신을 위한 변수 값
-    lateinit var token : String
     lateinit var project_idx: String
     lateinit var position: String
     lateinit var start_date: String
@@ -64,8 +63,8 @@ class Invite4Activity : AppCompatActivity() {
 
         dynamicLayout = findViewById<View>(R.id.invite4_question_layout) as LinearLayout
         val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
-        val pref2 = applicationContext.getSharedPreferences("auto",Activity.MODE_PRIVATE)
-        token = pref2.getString("token","")
+
+
         // project_idx 값
         //project_idx = pref.getString("project_idx", "")
 
@@ -175,6 +174,8 @@ class Invite4Activity : AppCompatActivity() {
 
     fun postBoard() {
         Log.v("TAG","초대4화면 플젝넘버 = "+project_idx);
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
         var data = PostInvite(project_idx, position, start_date, end_date, number, task, activity, reward, area, ability, career, preference, comment, question_ㅣist)
         var postInviteResponse = networkService.postInvite(token,data)
 

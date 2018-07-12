@@ -85,12 +85,12 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
         networkService = ApplicationController.instance.networkSerVice
         val pref = applicationContext.getSharedPreferences("auto",Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
-        Log.v("TAG","토큰 값 = " + token);
+        Log.v("TAG","시작할 때 토큰 값 = " + token);
 
         if(token.length > 0)
         {
             var intent = Intent(applicationContext, MainActivity::class.java)
-            intent.putExtra("token",token)
+            //intent.putExtra("token",token)
             startActivity(intent)
             finish()
         }
@@ -116,7 +116,11 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
                         {
                             val pref = applicationContext.getSharedPreferences("auto",Activity.MODE_PRIVATE)
                             var autoLogin : SharedPreferences.Editor = pref.edit()
-                            autoLogin.putString("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTE3MzIzOSwiZXhwIjoxNTMzNzY1MjM5fQ.taqF_rP7P2DzGiSTT234wv3dqjjsTBLA0J01K-PDlxk")
+                            // 임의값
+                            // autoLogin.putString("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTE3MzIzOSwiZXhwIjoxNTMzNzY1MjM5fQ.taqF_rP7P2DzGiSTT234wv3dqjjsTBLA0J01K-PDlxk")
+                            autoLogin.putString("token", message.token)
+                            Log.v("TAG","자동 로그인 시 토큰 값 = " + message.token);
+
                             autoLogin.commit()
                         }
 

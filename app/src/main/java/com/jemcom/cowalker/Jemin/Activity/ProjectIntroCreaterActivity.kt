@@ -16,8 +16,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Delete.DeleteProjectResponse
+import com.jemcom.cowalker.Network.Get.GetRecruitList
 import com.jemcom.cowalker.Network.Get.Response.GetRecruitListResponse
 import com.jemcom.cowalker.Network.NetworkService
+import com.jemcom.cowalker.Nuri.Activity.RecruitDetailActivity
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListAdapter
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
 import com.jemcom.cowalker.Nuri.Item.RecruitListItem
@@ -31,6 +33,7 @@ import com.kakao.message.template.LinkObject
 import com.kakao.network.ErrorResult
 import com.kakao.network.callback.ResponseCallback
 import com.kakao.util.helper.log.Logger
+import kotlinx.android.synthetic.main.activity_project_intro.*
 import kotlinx.android.synthetic.main.activity_project_intro_creater.*
 import kotlinx.android.synthetic.main.activity_recruit_delete.*
 import retrofit2.Call
@@ -39,6 +42,7 @@ import retrofit2.Response
 
 class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
 
+    var data : java.util.ArrayList<GetRecruitList> = java.util.ArrayList<GetRecruitList>()
     lateinit var networkService: NetworkService
     lateinit var addBtn: Button
     lateinit var changeBtn: Button
@@ -66,10 +70,18 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
       var img_url: String = ""
       var project_idx: String = ""
      lateinit    var requestManager: RequestManager
+    var recruit_idx : String = ""
 
-    override fun onClick(v: View?) {
-        val index : Int = recruit_list_recyclerview.getChildAdapterPosition(v)
-        recruit_list_recyclerview.getChildViewHolder(v)
+    override fun onClick(v: View) {
+
+        var idx = recruit_list_recyclerview.getChildAdapterPosition(v)
+        recruit_idx = data!![idx].recruit_idx!!
+        Log.v("TAG", "참여하기 선택한 모집번호 = "+ recruit_idx)
+
+        val intent = Intent(v.context, RecruitDetailActivity::class.java)
+        intent.putExtra("project_idx", project_idx)
+        intent.putExtra("recruit_idx", recruit_idx)
+        startActivity(intent)
 
     }
 
@@ -208,7 +220,7 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
                 if(response!!.isSuccessful)
                 {
                     Log.v("TAG","모집 리스트 받아오기")
-                    var data = response.body().result
+                    data = response.body().result
                     Log.v("TAG","모집 리스트 값 = "+data.toString())
 
                     for(i in 0..data.size-1)
@@ -228,6 +240,9 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
 
 
     private fun sendLink() {
+
+
+
         val params = FeedTemplate
                 .newBuilder(ContentObject.newBuilder("공공서비스 어플리케이션 공모전",
                         url,

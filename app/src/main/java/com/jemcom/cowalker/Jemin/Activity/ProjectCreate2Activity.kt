@@ -42,7 +42,6 @@ class ProjectCreate2Activity : AppCompatActivity() {
     private var btn: ImageView? = null
     internal lateinit var context: Context
     internal var count = 0
-    lateinit var token : String
     internal var uri: Uri? = null
 
     internal var titleValue: String? = null
@@ -70,9 +69,7 @@ class ProjectCreate2Activity : AppCompatActivity() {
 
         networkService = ApplicationController.instance.networkSerVice
 
-        val pref = applicationContext.getSharedPreferences("auto",Activity.MODE_PRIVATE)
-        token = pref.getString("token","")
-        Log.v("TAG","생성 액티비티 토큰 값 = " + token);
+
 
         mLayout = findViewById<View>(R.id.create_project2_layout) as LinearLayout
         context = this
@@ -167,6 +164,8 @@ class ProjectCreate2Activity : AppCompatActivity() {
     }
 
     fun postBoard() {
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
         Log.v("TAG","토큰 확인 = " + token);
         val title = RequestBody.create(MediaType.parse("text.plain"), titleValue)
         val summary = RequestBody.create(MediaType.parse("text.plain"), summaryValue)
