@@ -1,13 +1,14 @@
 package com.jemcom.cowalker.Network
 
+import com.jemcom.cowalker.Network.Get.Response.*
 
 import com.jemcom.cowalker.Network.Delete.DeleteProjectResponse
 import com.jemcom.cowalker.Network.Delete.DeleteRecruitResponse
 import com.jemcom.cowalker.Network.Get.Response.GetSearchResponse
-import com.jemcom.cowalker.Network.Get.Response.*
 import com.jemcom.cowalker.Network.Post.*
 import com.jemcom.cowalker.Network.Post.Response.*
 import com.jemcom.cowalker.Network.Put.Response.PutCreaterDecideResponse
+import com.jemcom.cowalker.Network.Put.Response.PutMyPageResponse
 import com.jemcom.cowalker.Network.Put.Response.PutProjectChangeResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -80,6 +81,29 @@ interface NetworkService {
             @Path("partner_id") partner_id : String
     ) : Call<GetMessageLookResponse>
 
+    @GET("/api/intro/{user_idx}") // GET할 때, 경로 앞에 api를 붙이고 시작해야한다. 그 뒤는 그대로 적기!
+    fun getIntroOther( // 맞춘 형식으로 get~~~ 함수 이름 생성해주기
+            @Path("user_idx") user_idx : String // @Path는 외우기, { } 안에 있는 거 value값으로 하고! 변수 이름과 타입 적기. {}있으면 보통 Path.
+    ) : Call<GetIntroOtherResponse> // 반환 해주기, Response에다가 만들기!
+
+    @GET("/api/intro")
+    fun getIntroMine(
+            @Header("Authorization") authorization : String
+    ) : Call<GetIntroOtherResponse>
+
+    @Multipart
+    @PUT("/api/intro")
+    fun putIntroEdit(
+            @Header("Authorization") authorization: String,
+            @Part("contents") contents : String,
+            @Part img : ArrayList<MultipartBody.Part?>
+    ) : Call<PutIntroEditResponse>
+
+//    @DELETE("api/intro/{intro_idx}")
+//    fun deleteIntro(
+//            @Path("intro_idx") intro_idx : String
+//    ) : Call<DeleteIntroResponse>
+
 
 
 
@@ -100,6 +124,22 @@ interface NetworkService {
             @Part("explain") explain : RequestBody,
             @Part img : ArrayList<MultipartBody.Part?>
     ) : Call<PutProjectChangeResponse>
+
+    @Multipart
+    @PUT("/api/mypage")
+    fun putMypage(
+            @Header("authorization") authorization : String,
+            @Part profile_img : MultipartBody.Part?,
+            @Part background_img : MultipartBody.Part?,
+//            @Part("name") name:String,
+            @Part("position") position:String,
+            @Part("introduce") introduce:String,
+//            @Part("introduce_detail") introduce_detail:String,
+            @Part("portfolio_url") portfolio_url : String,
+            @Part("aim") aim : String,
+            @Part("department") department : String,
+            @Part("area") area : String
+    ) : Call<PutMyPageResponse>
 
     @GET("/api/project/{project_idx}")
     fun getDetailProject(
@@ -147,6 +187,12 @@ interface NetworkService {
     fun getRecruitList(
             @Path("project_idx") project_idx: String
     ) : Call<GetRecruitListResponse>
+
+    @GET("/api/alarm")
+    fun getAlarm(
+            @Header("authorization") authorization: String
+    ) : Call<GetAlarmResponse>
+
     @GET("/api/search")
     fun getSearch(
             @Query("aim") aim : String,
@@ -193,4 +239,32 @@ interface NetworkService {
             @Header("authorization") authorization : String,
             @Body join : PostShareRecruit
     ) : Call<PostShareResponse>
+
+    @GET("/api/user/project")
+    fun getProjectMine(
+            @Header("authorization") authorization: String
+    ) : Call<GetProjectMineResponse>
+
+    @GET("/api/apply/enter_project")
+    fun getProjectMineParticipate(
+            @Header("authorization") authorization: String
+    ) : Call<GetProjectMineParticipateResponse>
+
+    @GET("/api/apply/apply_project")
+    fun getProjectMineApply(
+            @Header("authorization") authorization: String
+    ) : Call<GetProjectMineApplyResponse>
+
+    @GET("/api/user/project/{user_idx}")
+    fun getProjectOther(
+            @Header("authorization") authorization: String,
+            @Path("user_idx") user_idx : String
+    ) : Call<GetProjectMineResponse>
+
+    @GET("/api/apply/enter_project/{user_idx}")
+    fun getProjectOtherParticipate(
+            @Header("authorization") authorization: String,
+            @Path("user_idx") user_idx : String
+    ) : Call<GetProjectMineParticipateResponse>
+
 }

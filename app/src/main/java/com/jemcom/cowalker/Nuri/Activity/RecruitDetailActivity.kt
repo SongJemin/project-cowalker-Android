@@ -47,9 +47,7 @@ class RecruitDetailActivity : AppCompatActivity() {
         val alertDialogBuilder = AlertDialog.Builder(this)
 
         networkService = ApplicationController.instance.networkSerVice
-        val getRecruitintent = intent
-        project_idx = getRecruitintent.getStringExtra("project_idx")
-        recruit_idx = getRecruitintent.getStringExtra("recruit_idx")
+
         get()
 
         recruit_detail_applymember_linear.setOnClickListener{
@@ -123,6 +121,7 @@ class RecruitDetailActivity : AppCompatActivity() {
         Log.v("TAG","모집 세부사항 모집번호= " + recruit_idx)
         val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
+
         //val project_idx = "5b3dd2387172d402215033d2"
         //val recruit_idx = "5b3ecc11ca5c3444e4f802f1"
         val getRecruitDetailResponse = networkService.getRecruitDetail(token,project_idx,recruit_idx)
@@ -146,7 +145,6 @@ class RecruitDetailActivity : AppCompatActivity() {
 //                    recruit_detail_date_tv.setText(date)
                     recruit_detail_num_tv.setText(data[0].number)
                     recruit_detail_task_tv.setText(data[0].task)
-                    recruit_detail_activity_tv.setText(data[0].activity)
 //                    recruit_detail_time_tv.setText(date)
                     recruit_detail_area_tv.setText(data[0].area)
                     recruit_detail_reward_tv.setText(data[0].reward)
@@ -168,7 +166,6 @@ class RecruitDetailActivity : AppCompatActivity() {
                     }
                     if(btnResult.equals("모집 관리"))
                     {
-
 
                         //recruit_detail_recommend.setVisibility(View.GONE)
                     }

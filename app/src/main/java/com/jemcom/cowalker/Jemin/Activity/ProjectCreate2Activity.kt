@@ -34,13 +34,12 @@ import java.util.ArrayList
 class ProjectCreate2Activity : AppCompatActivity() {
 
     lateinit var networkService: NetworkService
-    internal lateinit var CropIntent: Intent
     private var mLayout: LinearLayout? = null
-    private var imgButton: ImageView? = null
     private val REQ_CODE_SELECT_IMAGE = 100
     lateinit var data : Uri
     private var btn: ImageView? = null
     internal lateinit var context: Context
+
     internal var count = 0
     internal var uri: Uri? = null
 
