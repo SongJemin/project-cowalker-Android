@@ -1,5 +1,6 @@
 package com.jemcom.cowalker.Hyunmin.Activity
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -184,9 +185,11 @@ class MypageProfileEditActivity : AppCompatActivity(), View.OnClickListener {
     }
     fun putEdit()
     {
+        val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
         val profile_img : MultipartBody.Part? = null
         val background_img : MultipartBody.Part? =null
-        var putEditResponse = networkService.putMypage("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTE3MzIzOSwiZXhwIjoxNTMzNzY1MjM5fQ.taqF_rP7P2DzGiSTT234wv3dqjjsTBLA0J01K-PDlxk",
+        var putEditResponse = networkService.putMypage(token,
                 profile_img,background_img,projectPosition,profile_edit_intro_et.text.toString(),profile_edit_url_et.text.toString(),projectAim,projectDepartment,projectArea);
 
         putEditResponse.enqueue(object : Callback<PutMyPageResponse>{

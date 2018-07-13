@@ -92,9 +92,9 @@ class MypageTab : Fragment(),View.OnClickListener {
                     var data = response.body().data
                     v.mypage_name_tv.setText(data[0].name)
                     v.mypage_role_tv.setText(data[0].position)
+                    v.mypage_department_tv.setText(data[0].department)
                     v.mypage_summary_tv.setText(data[0].introduce)
                     v.mypage_aim_tv.setText(data[0].aim)
-                    v.mypage_department_tv.setText(data[0].department)
                     v.mypage_area_tv.setText(data[0].area)
                     v.mypage_link_tv.setText(data[0].portfolio_url)
                     requestManager.load(data[0].profile_url).into(v.mypage_profile_img)

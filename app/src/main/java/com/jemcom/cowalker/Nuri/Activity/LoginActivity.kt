@@ -59,7 +59,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
             }
 
             login_auto_txt -> {
-                if(login_auto_txt.textColors.defaultColor != Color.parseColor("#444444")) {
+                if(auto == false) {
                     login_check_btn.setVisibility(View.VISIBLE)
                     login_auto_txt.setTextColor(Color.parseColor("#444444"))
                     auto = true
@@ -87,10 +87,9 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
 
         networkService = ApplicationController.instance.networkSerVice
         val pref = applicationContext.getSharedPreferences("auto",Activity.MODE_PRIVATE)
-        val token = pref.getString("token","")
-        Log.v("TAG","시작할 때 토큰 값 = " + token);
+        val autoLogin = pref.getString("auto","")
 
-        if(token.length > 0)
+        if(autoLogin.length > 0)
         {
             var intent = Intent(applicationContext,MainActivity::class.java)
             startActivity(intent)
@@ -149,32 +148,26 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
                 {
                     if(message.message.equals("login success"))
                     {
+                        val pref = applicationContext.getSharedPreferences("auto",Activity.MODE_PRIVATE)
+                        var autoLogin : SharedPreferences.Editor = pref.edit()
                         if(auto == true)
                         {
-                            val pref = applicationContext.getSharedPreferences("auto",Activity.MODE_PRIVATE)
-                            var autoLogin : SharedPreferences.Editor = pref.edit()
-                            // 임의값
-                            // autoLogin.putString("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTE3MzIzOSwiZXhwIjoxNTMzNzY1MjM5fQ.taqF_rP7P2DzGiSTT234wv3dqjjsTBLA0J01K-PDlxk")
-                            autoLogin.putString("token", message.token)
-                            Log.v("TAG","자동 로그인 시 토큰 값 = " + message.token);
-
+                            autoLogin.putString("auto",message.token)
                             autoLogin.commit()
+                            login_ok_btn.isSelected = true
                         }
+                        autoLogin.putString("token",message.token)
+                        autoLogin.commit()
 
                         var intent = Intent(applicationContext,MainActivity::class.java)
                         startActivity(intent)
                         finish()
                     }
-                    else if(message.message.equals("wrong password"))
-                    {
-                        Toast.makeText(applicationContext,"비밀번호가 틀렸습니다",Toast.LENGTH_SHORT).show()
-                        login_ok_btn.isSelected = false
-                    }
-                    else if(message.message.equals("wrong email"))
-                    {
-                        Toast.makeText(applicationContext,"이메일이 틀렸습니다",Toast.LENGTH_SHORT).show()
-                        login_ok_btn.isSelected = false
-                    }
+                }
+                else
+                {
+                    Toast.makeText(applicationContext,"정보가 일치하지 않습니다",Toast.LENGTH_SHORT).show()
+                    login_ok_btn.isSelected = false
                 }
             }
         })
