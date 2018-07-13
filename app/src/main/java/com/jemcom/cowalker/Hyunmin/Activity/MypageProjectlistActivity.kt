@@ -40,8 +40,7 @@ class MypageProjectlistActivity : AppCompatActivity() {
 
         networkService = ApplicationController.instance.networkSerVice
         requestManager = Glide.with(this)
-        pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
-        token  = pref.getString("token","")
+
 
         getCreate()
         getParticipate()
@@ -51,7 +50,9 @@ class MypageProjectlistActivity : AppCompatActivity() {
 
     fun getCreate()
     {
-        var getProjectMine = networkService.getProjectMine("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA2NzAxNTMsImV4cCI6MTUzMzI2MjE1M30.BdRb0yary7AY8_yi8MDRDXuXrW19QSqRJI-9Xin3SXs")
+        pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        token  = pref.getString("token","")
+        var getProjectMine = networkService.getProjectMine(token)
 
         getProjectMine.enqueue(object : Callback<GetProjectMineResponse>{
             override fun onFailure(call: Call<GetProjectMineResponse>?, t: Throwable?) {
@@ -74,14 +75,16 @@ class MypageProjectlistActivity : AppCompatActivity() {
                     projectlist_create_rv.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.HORIZONTAL, false)
                     projectlist_create_rv.adapter = projectMineAdapter
                 }
-                else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()
+                else Toast.makeText(applicationContext,"개설방실패",Toast.LENGTH_SHORT).show()
             }
         })
     }
 
     fun getParticipate()
     {
-        var getParticipateResponse = networkService.getProjectMineParticipate("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA2NzAxNTMsImV4cCI6MTUzMzI2MjE1M30.BdRb0yary7AY8_yi8MDRDXuXrW19QSqRJI-9Xin3SXs")
+        pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        token  = pref.getString("token","")
+        var getParticipateResponse = networkService.getProjectMineParticipate(token)
 
         getParticipateResponse.enqueue(object : Callback<GetProjectMineParticipateResponse>{
             override fun onFailure(call: Call<GetProjectMineParticipateResponse>?, t: Throwable?) {
@@ -104,14 +107,16 @@ class MypageProjectlistActivity : AppCompatActivity() {
                     projectlist_participate_rv.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.HORIZONTAL, false)
                     projectlist_participate_rv.adapter = projectMineAdapter
                 }
-                else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()
+                else Toast.makeText(applicationContext,"참여방실패",Toast.LENGTH_SHORT).show()
             }
         })
     }
 
     fun getApply()
     {
-        var getApplyResponse = networkService.getProjectMineApply("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA2NzAxNTMsImV4cCI6MTUzMzI2MjE1M30.BdRb0yary7AY8_yi8MDRDXuXrW19QSqRJI-9Xin3SXs")
+        pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        token  = pref.getString("token","")
+        var getApplyResponse = networkService.getProjectMineApply(token)
 
         getApplyResponse.enqueue(object : Callback<GetProjectMineApplyResponse>{
             override fun onFailure(call: Call<GetProjectMineApplyResponse>?, t: Throwable?) {
@@ -134,7 +139,7 @@ class MypageProjectlistActivity : AppCompatActivity() {
                     projectlist_apply_rv.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.HORIZONTAL, false)
                     projectlist_apply_rv.adapter = projectMineAdapter
                 }
-                else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()
+                else Toast.makeText(applicationContext,"내가지원실패",Toast.LENGTH_SHORT).show()
             }
         })
     }

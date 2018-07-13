@@ -11,16 +11,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
-import com.jemcom.cowalker.Hyunmin.Activity.ProjectIntroActivity
+import com.jemcom.cowalker.Jemin.Activity.ProjectDetailActivity
 
 
-import com.jemcom.cowalker.Jemin.Activity.ProjectIntroCreaterActivity
 import com.jemcom.cowalker.Jemin.Adapter.ProjectAdapter
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Get.GetProjectDetailMessage
 import com.jemcom.cowalker.Network.Get.GetProjectMessage
 import com.jemcom.cowalker.Jemin.Item.ProjectItem
-import com.jemcom.cowalker.Network.Get.Response.GetProjectDetailResponse
 import com.jemcom.cowalker.Network.Get.Response.GetProjectResponse
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.R
@@ -31,9 +29,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 import java.util.ArrayList
-import com.jemcom.cowalker.Jemin.Activity.ProjectIntroParticipActivity
-import com.jemcom.cowalker.Jemin.Activity.ProjectIntroWaitActivity
-import com.jemcom.cowalker.Jemin.Item.ProjectDetailItem
 
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -100,153 +95,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
         Log.v("TAG", "선택한 프로젝트 idx = "+project_idx)
         Log.v("TAG", "토큰 = "+ token)
 
-        getProjectDetail();
-
+        val intent = Intent(getActivity(), ProjectDetailActivity::class.java)
+        intent.putExtra("project_idx", project_idx)
+        startActivity(intent)
 
     }
 
-
-    fun getProjectDetail()
-    {
-        Log.v("TAG","플젝넘버=" + project_idx)
-        Log.v("TAG","홈 플젝 세부사항 조회 토큰 =" + token)
-        var getProjectDetailResponse = networkService.getDetailProject(token, project_idx) // 네트워크 서비스의 getContent 함수를 받아옴
-        getProjectDetailResponse.enqueue(object : Callback<GetProjectDetailResponse> {
-            override fun onResponse(call: Call<GetProjectDetailResponse>?, response: Response<GetProjectDetailResponse>?) {
-                Log.v("TAG","세부 사항 GET 통신 성공")
-                if(response!!.isSuccessful)
-                {
-                    userResult = response.body().user
-                    Log.v("TAG", "유저 상태 = " + userResult)
-                    Log.v("TAG","세부 사항 값 갖고오기 성공")
-                    detailData = response.body().result
-
-                    projectTitle = detailData[0].title
-
-                    if(detailData[0].summary == null)
-                    {
-                        detailData[0].summary = "null"
-                    }
-                    projectSummary = detailData[0].summary
-                    if(detailData[0].area == null)
-                    {
-                        detailData[0].area = "null"
-                    }
-                    projectArea = detailData[0].area
-
-                    if(detailData[0].department==null)
-                    {
-                        detailData[0].department="null"
-                    }
-                    projectDepartment = detailData[0].department
-
-                    if(detailData[0].aim==null){
-                        detailData[0].aim = "null"
-                    }
-                    projectAim = detailData[0].aim
-
-                    if(detailData[0].explain==null){
-                        detailData[0].explain = "null"
-                    }
-                    projectExplain = detailData[0].explain
-
-                    projectCreateAt = detailData[0].create_at
-
-                    if(detailData[0].img_url.size==0){
-                        detailData[0].img_url.add("noImage")
-                    }
-                    projectTestUrl =  detailData[0].img_url[0]
-
-                    projectUserName = detailData[0].project_user_name
-                    if(detailData[0].project_user_profile_url==null){
-                        detailData[0].project_user_profile_url = "default"
-                    }
-                    projectUserPofileUrl = detailData[0].project_user_profile_url
-                    userIdx = detailData[0].user_idx
-
-                    Log.v("TAG", "세부 사항 제목 = "+ projectTitle + ", 요약 = " + projectSummary + ", 지역 = " + projectArea + ", 분야 = " + projectDepartment
-                            + ", 목적 = " + projectAim + ", 설명 = " + projectExplain + ", 만든 날짜 = " + projectCreateAt + ", 이미지주소 = " + projectTestUrl + ", 유저명 = "
-                            + projectUserName + ", 프로필 주소 = " + projectUserPofileUrl)
-
-
-
-                    if(userResult=="개설자")
-                    {
-                        val intent = Intent(getActivity(), ProjectIntroCreaterActivity::class.java)
-                        intent.putExtra("title", projectTitle)
-                        intent.putExtra("summary", projectSummary)
-                        intent.putExtra("area", projectArea)
-                        intent.putExtra("department", projectDepartment)
-                        intent.putExtra("aim", projectAim)
-                        intent.putExtra("explain", projectExplain)
-                        intent.putExtra("name", projectUserName)
-                        intent.putExtra("img_url", projectTestUrl)
-                        intent.putExtra("project_idx", project_idx)
-                        intent.putExtra("project_user_profile_url", projectUserPofileUrl)
-                        intent.putExtra("user_idx", userIdx)
-                        startActivity(intent)
-                    }
-                    else if(userResult=="참여하기")
-                    { val intent = Intent(getActivity(), ProjectIntroActivity::class.java)
-                        //val intent = Intent(getActivity(), ProjectIntroActivity::class.java)
-                        //val intent = Intent(getActivity(), ProjectIntroActivity::class.java)
-                        intent.putExtra("title", projectTitle)
-                        intent.putExtra("summary", projectSummary)
-                        intent.putExtra("area", projectArea)
-                        intent.putExtra("department", projectDepartment)
-                        intent.putExtra("aim", projectAim)
-                        intent.putExtra("explain", projectExplain)
-                        intent.putExtra("name", projectUserName)
-                        intent.putExtra("img_url", projectTestUrl)
-                        intent.putExtra("project_idx", project_idx)
-                        intent.putExtra("project_user_profile_url", projectUserPofileUrl)
-                        intent.putExtra("user_idx", userIdx)
-                        startActivity(intent)
-                    }
-                    else if(userResult=="참여대기")
-                    {
-                        val intent = Intent(getActivity(), ProjectIntroWaitActivity::class.java)
-                        intent.putExtra("title", projectTitle)
-                        intent.putExtra("summary", projectSummary)
-                        intent.putExtra("area", projectArea)
-                        intent.putExtra("department", projectDepartment)
-                        intent.putExtra("aim", projectAim)
-                        intent.putExtra("explain", projectExplain)
-                        intent.putExtra("name", projectUserName)
-                        intent.putExtra("img_url", projectTestUrl)
-                        intent.putExtra("project_idx", project_idx)
-                        intent.putExtra("project_user_profile_url", projectUserPofileUrl)
-                        intent.putExtra("user_idx", userIdx)
-                        startActivity(intent)
-                    }
-                    // 참여 멤버
-                    else
-                    {
-                        val intent = Intent(getActivity(), ProjectIntroParticipActivity::class.java)
-                        intent.putExtra("title", projectTitle)
-                        intent.putExtra("summary", projectSummary)
-                        intent.putExtra("area", projectArea)
-                        intent.putExtra("department", projectDepartment)
-                        intent.putExtra("aim", projectAim)
-                        intent.putExtra("explain", projectExplain)
-                        intent.putExtra("name", projectUserName)
-                        intent.putExtra("img_url", projectTestUrl)
-                        intent.putExtra("project_idx", project_idx)
-                        intent.putExtra("project_user_profile_url", projectUserPofileUrl)
-                        intent.putExtra("user_idx", userIdx)
-                        startActivity(intent)
-                    }
-
-                }
-            }
-
-            override fun onFailure(call: Call<GetProjectDetailResponse>?, t: Throwable?) {
-                Log.v("TAG","세부사항 통신 실패")
-
-            }
-
-        })
-    }
 
     fun get(v : View)
     {

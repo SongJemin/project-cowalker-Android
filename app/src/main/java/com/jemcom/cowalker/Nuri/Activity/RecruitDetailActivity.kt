@@ -3,6 +3,7 @@ package com.jemcom.cowalker.Nuri.Activity
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
@@ -43,7 +44,18 @@ class RecruitDetailActivity : AppCompatActivity() {
     var project_idx : String = ""
     var recruit_idx : String = ""
     var position : String = ""
+    var num : String = ""
+    var task : String = ""
     var url = "https://cdn.xl.thumbs.canstockphoto.com/computer-generated-3d-image-cooperation-stock-illustrations_csp2074347.jpg"
+
+    override fun onNewIntent(intent: Intent) {
+        // super.onNewIntent(intent);
+        setIntent(intent)
+    }
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,14 +63,39 @@ class RecruitDetailActivity : AppCompatActivity() {
         val alertDialogBuilder = AlertDialog.Builder(this)
 
         networkService = ApplicationController.instance.networkSerVice
-        val getRecruitintent = intent
-        project_idx = getRecruitintent.getStringExtra("project_idx")
-        recruit_idx = getRecruitintent.getStringExtra("recruit_idx")
-        get()
+
+        var test : Uri? = null
+        test = intent.data
+        if (test != null) {
+            val project_id = test.getQueryParameter("project_idx")
+            Log.v("TAG","까똑 = " + test)
+            Log.v("TAG","테스트 값 = " + test.toString())
+            recruit_idx = test.getQueryParameter("recruit_idx")
+            Log.v("TAG", "카카오톡 프로젝트 넘버 = " + test.getQueryParameter("project_idx"))
+            get()
+
+        }
+        else{
+
+            Log.v("TAG","인텐트로 넘어온 화면")
+            val getRecruitintent = intent
+            project_idx = getRecruitintent.getStringExtra("project_idx")
+            recruit_idx = getRecruitintent.getStringExtra("recruit_idx")
+            get()
+        }
+
+        Log.v("TAG","까똑2 = " + test)
+
+
+
+
+
 
         recruit_detail_applymember_linear.setOnClickListener{
             var intent = Intent(applicationContext, ApplyMemberActivity::class.java)
             intent.putExtra("recruit_idx",recruit_idx)
+            intent.putExtra("num",num)
+            intent.putExtra("task",task)
             startActivity(intent)
         }
 
@@ -70,6 +107,7 @@ class RecruitDetailActivity : AppCompatActivity() {
         }
 
         recruit_detail_share_btn.setOnClickListener {
+            Log.v("asdf","로그 = " + project_idx + ", "+ recruit_idx)
             postShareRecruit()
         }
 
@@ -150,8 +188,11 @@ class RecruitDetailActivity : AppCompatActivity() {
                     recruit_detail_position_tv.setText(data[0].position)
 //                    recruit_detail_date_tv.setText(date)
                     recruit_detail_num_tv.setText(data[0].number)
+                    num = data[0].number
                     recruit_detail_task_tv.setText(data[0].task)
+                    task = data[0].task
 //                    recruit_detail_time_tv.setText(date)
+                    recruit_detail_activity_tv.setText(data[0].activity)
                     recruit_detail_area_tv.setText(data[0].area)
                     recruit_detail_reward_tv.setText(data[0].reward)
                     recruit_detail_ability_tv.setText(data[0].ability)
@@ -181,7 +222,8 @@ class RecruitDetailActivity : AppCompatActivity() {
         })
     }
 
-    private fun sendLink() {
+    private fun sendLink(project_idx:String, recruit_idx :String) {
+        Log.v("TAG","모집 상세 프로젝트 숫자 ="+project_idx + "모집 번호 숫자 = " + recruit_idx)
         val params = FeedTemplate
                 .newBuilder(ContentObject.newBuilder("공공서비스 어플리케이션 공모전",
                         url,
@@ -192,10 +234,10 @@ class RecruitDetailActivity : AppCompatActivity() {
 
                 .addButton(ButtonObject("깅스앱으로 열기", LinkObject.newBuilder()
 
-                        .setWebUrl("'https://developers.kakao.com")
-                        .setMobileWebUrl("'https://developers.kakao.com")
-                        .setAndroidExecutionParams("key1=value1")
-                        .setIosExecutionParams("key1=value1")
+                        //.setWebUrl("'https://developers.kakao.com")
+                        //.setMobileWebUrl("http://bghgu.tk:3000/api/project/"+project_idx+"/recruit/"+recruit_idx)
+
+                        .setAndroidExecutionParams("project_idx="+project_idx+"&recruit_idx="+recruit_idx)
                         .build()))
                 .build()
 
@@ -212,6 +254,7 @@ class RecruitDetailActivity : AppCompatActivity() {
 
     }
 
+
     fun postShareRecruit()
     {
         val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
@@ -224,7 +267,7 @@ class RecruitDetailActivity : AppCompatActivity() {
             override fun onResponse(call: Call<PostShareResponse>, response: Response<PostShareResponse>) {
                 if(response.isSuccessful){
                     Log.v("TAG","모집 공유 성공")
-                    sendLink()
+                    sendLink(project_idx, recruit_idx)
                 }
             }
 

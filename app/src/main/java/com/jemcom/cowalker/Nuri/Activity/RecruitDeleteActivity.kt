@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.jemcom.cowalker.Jemin.Activity.ProjectIntroParticipActivity
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Get.Response.GetRecruitListResponse
 import com.jemcom.cowalker.Network.NetworkService
@@ -41,7 +40,7 @@ class RecruitDeleteActivity : AppCompatActivity(),View.OnClickListener {
         when(v)
         {
             delete_cancel_tv ->{
-                var intent = Intent(applicationContext,ProjectIntroParticipActivity::class.java)
+                var intent = Intent(applicationContext,LoginActivity::class.java)
                 startActivity(intent)
             }
             delete_ok_tv -> {
@@ -122,7 +121,7 @@ class RecruitDeleteActivity : AppCompatActivity(),View.OnClickListener {
             override fun onResponse(call: Call<DeleteRecruitResponse>?, response: Response<DeleteRecruitResponse>?) {
                 if(response!!.isSuccessful)
                 {
-                    var intent = Intent(applicationContext,ProjectIntroParticipActivity::class.java)
+                    var intent = Intent(applicationContext,LoginActivity::class.java)
                     startActivity(intent)
                 }
                 else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()

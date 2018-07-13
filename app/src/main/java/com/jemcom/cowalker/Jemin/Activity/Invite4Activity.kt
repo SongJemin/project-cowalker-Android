@@ -188,16 +188,22 @@ class Invite4Activity : AppCompatActivity() {
         postInviteResponse.enqueue(object : retrofit2.Callback<PostInviteResponse>{
 
             override fun onResponse(call: Call<PostInviteResponse>, response: Response<PostInviteResponse>) {
-                Log.v("TAG", "통신 성공")
+                Log.v("TAG", "모집하기통신 성공")
                 if(response.isSuccessful){
-                    Log.v("TAG", "값 전달 성공")
-                    var intent = Intent(applicationContext, LoginActivity::class.java)
+                    Log.v("TAG", "모집하기값 전달 성공")
+                    var intent = Intent(applicationContext,  LoginActivity::class.java)
+                 //   intent.putExtra("project_idx",project_idx)
+
                     startActivity(intent)
                 }
             }
 
             override fun onFailure(call: Call<PostInviteResponse>, t: Throwable?) {
-                Toast.makeText(applicationContext,"서버 연결 실패",Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,"모집하기 서버 연결 실패",Toast.LENGTH_SHORT).show()
+               // var intent = Intent(applicationContext, LoginActivity::class.java)
+             //   intent.putExtra("project_idx",project_idx)
+               // Log.v("asdf","프로젝트세부로 보낸 넘버 = "+ project_idx)
+               // startActivity(intent)
             }
 
         })
