@@ -3,6 +3,8 @@ package com.jemcom.cowalker.Jemin.Activity
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -58,12 +60,28 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apply_member)
+
+        val view = window.decorView
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (view != null) {
+                // 23 버전 이상일 때 상태바 하얀 색상에 회색 아이콘 색상을 설정
+                view.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                window.statusBarColor = Color.parseColor("#FFFFFF")
+            }
+        } else if (Build.VERSION.SDK_INT >= 21) {
+            // 21 버전 이상일 때
+            window.statusBarColor = Color.BLACK
+        }
         val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         applyMemberActivity = this
         val intent = intent
+        //Log.v("asdf","멤버액티비티 num = "+num)
         recruit_idx = intent.getStringExtra("recruit_idx")
-        num = intent.getStringExtra("num")
-        task = intent.getStringExtra("task")
+
+        //num = intent.getStringExtra("num")
+        //Log.v("asdf","멤버액티비티 num2 = "+num)
+      //  task = intent.getStringExtra("task")
+     //   Log.v("asdf","멤버액티비티 태스크 = "+task)
         networkService = ApplicationController.instance.networkSerVice // 어플리케이션을 실행하자마자 어플리케이션 콘트롤러가 실행되는데 그 때 사용?
         requestManager = Glide.with(this)
         getMember()
@@ -88,15 +106,11 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
                 if(response!!.isSuccessful)
                 {
 
-
-
                     applyMemberData = response.body().result
                     applyMemberAdapter = ApplyMemberAdapter(this@ApplyMemberActivity, applyMemberData,requestManager)
                     apply_member_list_recyclerview.layoutManager = LinearLayoutManager( this@ApplyMemberActivity)
                     apply_member_list_recyclerview.adapter = applyMemberAdapter
-
                 }
-
 
             }
 

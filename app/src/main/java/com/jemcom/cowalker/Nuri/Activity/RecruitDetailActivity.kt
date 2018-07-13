@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
@@ -61,7 +62,17 @@ class RecruitDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recruit_detail)
         val alertDialogBuilder = AlertDialog.Builder(this)
-
+        val view = window.decorView
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (view != null) {
+                // 23 버전 이상일 때 상태바 하얀 색상에 회색 아이콘 색상을 설정
+                view.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                window.statusBarColor = Color.parseColor("#FFFFFF")
+            }
+        } else if (Build.VERSION.SDK_INT >= 21) {
+            // 21 버전 이상일 때
+            window.statusBarColor = Color.BLACK
+        }
         networkService = ApplicationController.instance.networkSerVice
 
         var test : Uri? = null
@@ -79,6 +90,8 @@ class RecruitDetailActivity : AppCompatActivity() {
 
             Log.v("TAG","인텐트로 넘어온 화면")
             val getRecruitintent = intent
+            num = getRecruitintent.getStringExtra("num")
+            task = getRecruitintent.getStringExtra("task")
             project_idx = getRecruitintent.getStringExtra("project_idx")
             recruit_idx = getRecruitintent.getStringExtra("recruit_idx")
             get()
@@ -95,6 +108,7 @@ class RecruitDetailActivity : AppCompatActivity() {
             var intent = Intent(applicationContext, ApplyMemberActivity::class.java)
             intent.putExtra("recruit_idx",recruit_idx)
             intent.putExtra("num",num)
+            Log.v("tag","리쿠릇디테일에서 보내는 num"+num)
             intent.putExtra("task",task)
             startActivity(intent)
         }
@@ -186,10 +200,13 @@ class RecruitDetailActivity : AppCompatActivity() {
 //                    var date = start + " ~ " + end
                     position = data[0].position
                     recruit_detail_position_tv.setText(data[0].position)
+                    recruit_detail_positiontop_tv.setText(data[0].position)
 //                    recruit_detail_date_tv.setText(date)
                     recruit_detail_num_tv.setText(data[0].number)
                     num = data[0].number
                     recruit_detail_task_tv.setText(data[0].task)
+                    recruit_detail_numtop_tv.setText(data[0].number)
+                    recruit_detail_tasktop_tv.setText(data[0].task)
                     task = data[0].task
 //                    recruit_detail_time_tv.setText(date)
                     recruit_detail_activity_tv.setText(data[0].activity)

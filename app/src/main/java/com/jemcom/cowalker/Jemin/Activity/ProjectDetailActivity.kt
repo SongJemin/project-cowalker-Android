@@ -3,6 +3,7 @@ package com.jemcom.cowalker.Jemin.Activity
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -49,11 +50,15 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         var idx = project_detail_recyclerview.getChildAdapterPosition(v)
         recruit_idx = data!![idx].recruit_idx!!
+        num = data!![idx].number!!.toString()
+        task = data!![idx].task!!
         Log.v("TAG", "참여하기 선택한 모집번호 = "+ recruit_idx)
 
         val intent = Intent(v.context, RecruitDetailActivity::class.java)
         intent.putExtra("project_idx", project_idx)
         intent.putExtra("recruit_idx", recruit_idx)
+        intent.putExtra("num", num)
+        intent.putExtra("task", task)
         var userResult : String = ""
         startActivity(intent)
     }
@@ -78,6 +83,8 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
     var project_idx: String = ""
     lateinit var requestManager: RequestManager
     var recruit_idx : String = ""
+    var num : String = ""
+    var task : String = ""
     var project_user_profile_url: String = ""
     var user_idx : String = ""
     var createAt : String = ""
@@ -90,6 +97,17 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_project_detail)
+        val view = window.decorView
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (view != null) {
+                // 23 버전 이상일 때 상태바 하얀 색상에 회색 아이콘 색상을 설정
+                view.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                window.statusBarColor = Color.parseColor("#FFFFFF")
+            }
+        } else if (Build.VERSION.SDK_INT >= 21) {
+            // 21 버전 이상일 때
+            window.statusBarColor = Color.BLACK
+        }
         recruitListItems = ArrayList()
         val alertDialogBuilder = AlertDialog.Builder(this)
         networkService = ApplicationController.instance.networkSerVice // 어플리케이션을 실행하자마자 어플리케이션 콘트롤러가 실행되는데 그 때 사용?

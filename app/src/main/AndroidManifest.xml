@@ -11,8 +11,8 @@
     <application
         android:name=".Network.ApplicationController"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/launchericon"
+        android:label="코워커"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Jemin.Activity.ProjectCreateActivity" />
-        <activity android:name=".Jemin.Activity.InviteActivity" />
+        <activity android:name=".Jemin.Activity.InviteActivity"/>
         <activity android:name=".Jemin.Activity.Invite2Activity" />
         <activity android:name=".Jemin.Activity.ProjectCreate2Activity" />
         <activity android:name=".Nuri.Activity.SignupActivity" />

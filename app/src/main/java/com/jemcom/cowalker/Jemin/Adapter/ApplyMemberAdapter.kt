@@ -64,6 +64,8 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
             intent.putExtra("task",task)
             intent.putExtra("position",applyMemberItems[position].position)
             Log.v("Adapter", "지원서로 보내는 모집 번호 = "+ recruit_idx)
+            Log.v("Adapter", "지원서로 보내는 넘 = "+ num)
+            Log.v("Adapter", "지원서로 보내는 태스크 = "+ task)
             mContext.startActivity(intent)
 
                     //mContext.startActivity(Intent(mContext, MainActivity::class.java)

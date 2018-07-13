@@ -40,7 +40,7 @@ class NewsTab : Fragment() {
     {
         val pref = v.context.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
-        var getAlarmResponse = networkService.getAlarm("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA2NzAxNTMsImV4cCI6MTUzMzI2MjE1M30.BdRb0yary7AY8_yi8MDRDXuXrW19QSqRJI-9Xin3SXs")
+        var getAlarmResponse = networkService.getAlarm(token)
 
         getAlarmResponse.enqueue(object : Callback<GetAlarmResponse>
         {

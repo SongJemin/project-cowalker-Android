@@ -2,10 +2,13 @@ package com.jemcom.cowalker.Jemin.Activity
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.jemcom.cowalker.Jemin.Adapter.ApplyPaperListAdapter
 import com.jemcom.cowalker.Network.ApplicationController
@@ -32,6 +35,8 @@ class ApplyPaperActivity : AppCompatActivity() {
     var data : ArrayList<GetApplyPaperMessage> = ArrayList<GetApplyPaperMessage>()
     var question : String = ""
     var position : String = ""
+    var num : String = ""
+    var task : String = ""
     var questionList : ArrayList<String> = ArrayList<String>()
 
     var join : Int = 0
@@ -40,16 +45,32 @@ class ApplyPaperActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apply_paper)
+
+        val view = window.decorView
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (view != null) {
+                // 23 버전 이상일 때 상태바 하얀 색상에 회색 아이콘 색상을 설정
+                view.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                window.statusBarColor = Color.parseColor("#FFFFFF")
+            }
+        } else if (Build.VERSION.SDK_INT >= 21) {
+            // 21 버전 이상일 때
+            window.statusBarColor = Color.BLACK
+        }
         networkService = ApplicationController.instance.networkSerVice
         val intent = intent
         apply_idx = intent.getStringExtra("apply_idx")
         applicant_idx = intent.getStringExtra("applicant_idx")
         recruit_idx = intent.getStringExtra("recruit_idx")
         position = intent.getStringExtra("position")
+        num = intent.getStringExtra("num")
+        task = intent.getStringExtra("task")
         Log.v("TAG", "지원서액티비티 지원서 번호 = " + apply_idx)
         Log.v("TAG", "지원서액티비티 지원자 번호 = " + applicant_idx)
         Log.v("TAG", "지원서액티비티 모집 번호 = " + recruit_idx)
         apply_paper_position_tv.setText(position)
+        apply_paper_number_tv.setText(num)
+        apply_paper_task_tv.setText(task)
         get()
 
         apply_paper_approve_btn.setOnClickListener{
