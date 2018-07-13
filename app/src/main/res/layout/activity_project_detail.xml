@@ -21,7 +21,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="186dp"
+            android:layout_height="160dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -31,8 +31,8 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/project_detail_profile_iv"
-                    android:layout_width="52dp"
-                    android:layout_height="52dp"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="22dp"
                     android:layout_marginLeft="20dp"
@@ -44,41 +44,48 @@
                     android:id="@+id/project_detail_title_tv"
                     android:layout_width="254dp"
                     android:layout_height="76dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="28dp"
                     android:layout_marginTop="21dp"
                     android:text="KU석KU석 프로젝트      '사라진 친구를 찾아라'"
                     android:textColor="#444444"
+                    android:fontFamily="@font/notosanscjkkr_bold"
                     android:textSize="24sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="24dp"
+                android:layout_height="40dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
-                    android:layout_marginLeft="130dp"
+                    android:layout_marginLeft="109dp"
+                    android:layout_gravity="center"
                     android:layout_marginTop="0dp"
                     android:text="With "
                     android:textColor="#f8c930"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/project_detail_name_tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="2dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
                     android:layout_marginTop="0dp"
+                    android:layout_gravity="center"
                     android:text="이충엽"
                     android:textColor="#f8c930"
-                    android:textSize="14sp" />
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:textSize="16sp" />
 
                 <ImageButton
                     android:layout_width="20dp"
                     android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
                     android:layout_marginLeft="5dp"
+                    android:background="@android:color/transparent"
                     android:src="@drawable/message" />
             </LinearLayout>
 
@@ -112,7 +119,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="86dp"
+            android:layout_height="100dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -122,47 +129,52 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="15dp"
                     android:text="목적"
                     android:textColor="#c5c5c5"
+                    android:fontFamily="@font/notosanscjkkr_bold"
                     android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/project_detail_aim_tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="12dp"
                     android:text="공모전 참여"
+                    android:fontFamily="@font/notosanscjkkr_regular"
                     android:textColor="#444444"
                     android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="26dp"
                     android:text="분야"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="15dp"
                     android:textColor="#c5c5c5"
+                    android:fontFamily="@font/notosanscjkkr_bold"
                     android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/project_detail_department_tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="15dp"
                     android:text="콘텐츠"
+                    android:fontFamily="@font/notosanscjkkr_regular"
                     android:textColor="#444444"
                     android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="37dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/notosanscjkkr_bold"
                     android:text="지역"
                     android:textColor="#c5c5c5"
                     android:textSize="14sp" />
@@ -170,10 +182,11 @@
                 <TextView
                     android:id="@+id/project_detail_area_tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="15dp"
                     android:text="서울"
+                    android:fontFamily="@font/notosanscjkkr_regular"
                     android:textColor="#444444"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -182,9 +195,10 @@
                 android:id="@+id/project_detail_summary_tv"
                 android:layout_width="335dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="40dp"
                 android:layout_marginRight="5dp"
                 android:text="대학교에서 역사도 배우고 즐기는 야외 방탈출 게임"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 android:textColor="#444444"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -201,10 +215,11 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
                 android:layout_marginTop="16dp"
                 android:text="프로젝트 상세 소개"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:textStyle="bold"
                 android:textColor="#444444"
                 android:textSize="15sp" />
@@ -213,9 +228,10 @@
                 android:id="@+id/project_detail_explain_tv"
                 android:layout_width="328dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
+                android:layout_marginLeft="38dp"
                 android:layout_marginRight="14dp"
                 android:ellipsize="end"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 android:maxLines="2"
                 android:text="저희 크레용은 역사적 사실을 콘텐츠로 풀어내는 소셜 크리에이션 그룹입니다. 현재 KU석KU석 프로젝트를 진행하고 있으며 KU석KU석 프로젝트는 대학교에서 진행되는 야외방탈출 게임입니다. "
                 android:textColor="#666666" />
@@ -225,7 +241,7 @@
                 android:layout_width="73dp"
                 android:layout_height="16dp"
                 android:layout_marginBottom="16dp"
-                android:layout_marginLeft="146dp"
+                android:layout_marginLeft="166dp"
                 android:layout_marginTop="14dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/group_3"
@@ -233,11 +249,11 @@
 
             <ImageButton
                 android:id="@+id/project_detail_see_close"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="73dp"
+                android:layout_height="16dp"
                 android:layout_marginLeft="200dp"
                 android:clickable="true"
-                android:background="@drawable/blue_copy"
+                android:background="@drawable/foldingbtn"
                 android:visibility="gone"/>
         </LinearLayout>
 
@@ -249,13 +265,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="24dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="17dp">
                 <TextView
                     android:id="@+id/project_detail_invite_Tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="24dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:fontFamily="@font/notosanscjkkr_bold"
                     android:text="모집"
                     android:textColor="#444444"
                     android:textSize="16sp" />
@@ -264,8 +281,9 @@
                     android:id="@+id/project_detail_delete_btn"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_marginLeft="230dp"
-                    android:background="@drawable/delete_gray"
+                    android:layout_marginLeft="250dp"
+                    android:src="@drawable/delete_gray"
+                    android:background="@android:color/transparent"
                     />
 
                 <Button
@@ -273,7 +291,8 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/addbtn"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/addbtn"
                     />
 
             </LinearLayout>
@@ -300,7 +319,7 @@
                 android:id="@+id/project_detail_recommend_btn"
                 android:layout_width="41dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="23dp"
+                android:layout_marginLeft="43dp"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -317,6 +336,7 @@
                     android:textSize="11sp"
                     android:layout_marginLeft="3dp"
                     android:layout_marginTop="3dp"
+                    android:fontFamily="@font/notosanscjkkr_regular"
                     android:text="추천하기"
                     android:textColor="#000000"/>
 
@@ -342,6 +362,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="공유하기"
+                    android:fontFamily="@font/notosanscjkkr_regular"
                     android:layout_marginTop="3dp"
                     android:textColor="#000000"
                     android:textSize="11sp"/>
@@ -352,9 +373,10 @@
                 android:layout_width="206dp"
                 android:layout_height="50dp"
                 android:layout_marginBottom="7dp"
-                android:layout_marginLeft="29dp"
+                android:layout_marginLeft="40dp"
                 android:layout_marginTop="10dp"
                 android:background="#45b6ff"
+
                 android:text="프로젝트 관리"
                 android:textColor="#ffffff" />
         </LinearLayout>

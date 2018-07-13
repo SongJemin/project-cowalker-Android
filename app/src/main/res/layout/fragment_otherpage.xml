@@ -12,7 +12,7 @@
             android:id="@+id/otherpage_background_img"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@drawable/boyoung"/>
+            android:background="@drawable/cover_default"/>
 
         <RelativeLayout
             android:layout_width="81dp"

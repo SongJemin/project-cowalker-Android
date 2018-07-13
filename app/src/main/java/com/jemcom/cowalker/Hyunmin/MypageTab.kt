@@ -52,7 +52,7 @@ class MypageTab : Fragment(),View.OnClickListener {
     override fun onClick(v: View?) {
         when(v)
         {
-            mypage_background_chang_btn->{
+            mypage_background_img->{
                 status = "background"
                 changeImage()
                 put(v!!)
@@ -100,7 +100,7 @@ class MypageTab : Fragment(),View.OnClickListener {
         view.mypage_project_btn.setOnClickListener(this)
         view.mypage_edit_btn.setOnClickListener(this)
         view.mypage_intro_btn.setOnClickListener(this)
-        view.mypage_background_chang_btn.setOnClickListener(this)
+        view.mypage_background_img.setOnClickListener(this)
         view.mypage_profile_change_btn.setOnClickListener(this)
         get(view)
 

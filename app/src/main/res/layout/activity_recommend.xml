@@ -5,9 +5,9 @@
     android:background="@android:color/transparent"
     android:orientation="vertical">
     <LinearLayout
-        android:background="@android:color/white"
+        android:background="@drawable/pop_round"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="420dp"
         android:paddingLeft="39dp"
         android:paddingRight="39dp"
         android:layout_above="@id/recommend_ok_btn"
@@ -35,14 +35,18 @@
             android:id="@+id/recommend_rv"
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
+            android:layout_marginLeft="15dp"
             android:layout_height="130dp"></android.support.v7.widget.RecyclerView>
         <EditText
             android:id="@+id/recommend_ed"
             android:hint="추천 멘트를 입력해 주세요."
             android:textColor="@color/colorPrimaryDark"
             android:layout_width="match_parent"
-            android:textColorHint="@color/colorPrimaryDark"
+            android:background="@android:color/transparent"
+            android:textColorHint="#c5c5c5"
             android:layout_height="100dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="30dp"
             android:inputType="textImeMultiLine"/>
     </LinearLayout>
     <TextView
@@ -53,7 +57,7 @@
         android:background="@color/colorPrimary"
         android:id="@+id/recommend_ok_btn"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="60dp"
         android:text="추천하기"
         android:layout_alignParentBottom="true"/>
 </RelativeLayout>

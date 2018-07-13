@@ -207,6 +207,7 @@ class RecruitDetailActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
 
+
                 //일반적인 경우
                 else{
                     var intent = Intent(applicationContext, ApplyDetailActivity::class.java)
@@ -220,6 +221,15 @@ class RecruitDetailActivity : AppCompatActivity() {
 
                     startActivity(intent)
                 }
+
+                var intent = Intent(applicationContext, ApplyDetailActivity::class.java)
+                intent.putExtra("project_idx", project_idx)
+                intent.putExtra("recruit_idx", recruit_idx)
+
+                intent.putExtra("position", position)
+                Log.v("TAG", "리쿠릇에서 어플라이로 보내는 포지션 = " + position)
+
+                startActivity(intent)
             }
         }
 

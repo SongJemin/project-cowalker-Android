@@ -38,7 +38,6 @@
         <activity android:name=".Nuri.Activity.SignupActivity" />
         <activity android:name=".Nuri.Activity.Notice_messageActivity" />
         <activity android:name=".Nuri.Activity.LoginActivity" />
-        <activity android:name=".Jemin.Activity.TestActivity" />
         <activity android:name=".Jemin.Activity.Invite4Activity" />
         <activity android:name=".Jemin.Activity.Invite3Activity" />
         <activity android:name=".Nuri.Activity.ApplyModifyActivity" />
@@ -78,11 +77,13 @@
         <activity android:name=".Hyunmin.Activity.MypageProjectlistActivity" />
         <activity android:name=".Jemin.Activity.ProjectDetailActivity" />
         <activity
-            android:name=".Nuri.Activity.RecommendActivity"
-            android:theme="@style/Transparent" />
-        <activity
             android:name=".Nuri.Activity.PopupActivity"
             android:theme="@style/Transparent" />
+
+
+        <activity android:name=".Nuri.Activity.RecommendActivity"
+            android:theme="@style/Transparent" ></activity>
+
         <activity android:name=".Jemin.Activity.SearchFilterActivity" />
 
         <!-- FCM 관련 서비스 -->

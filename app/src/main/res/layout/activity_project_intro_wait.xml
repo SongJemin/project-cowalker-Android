@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -30,10 +31,10 @@
                     android:layout_width="52dp"
                     android:layout_height="52dp"
                     android:layout_marginTop="22dp"
-                    android:layout_marginLeft="40dp">
+                    android:layout_marginLeft="30dp">
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/projectIntro_profile_iv"
+                        android:id="@+id/intro_wait_profile_iv"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_centerInParent="true"
@@ -41,11 +42,11 @@
                 </RelativeLayout>
 
                 <TextView
-                    android:id="@+id/intro_title_tv"
+                    android:id="@+id/intro_wait_title_tv"
                     android:layout_width="254dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="14dp"
-                    android:layout_marginTop="21dp"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="15dp"
                     android:text="KU석KU석 프로젝트      '사라진 친구를 찾아라'"
                     android:textColor="#444444"
                     android:fontFamily="@font/notosanscjkkr_bold"
@@ -54,25 +55,33 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="40dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/projectIntro_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="110dp"
+                    android:text="With"
+                    android:textColor="#f8c930"
+                    android:layout_marginLeft="109dp"
+                    android:layout_gravity="center"
+                    android:textSize="16sp"
+                    />
+                <TextView
+                    android:id="@+id/intro_wait_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
                     android:fontFamily="@font/notosanscjkkr_regular"
-                    android:layout_marginTop="0dp"
-                    android:text="With 이충엽"
+                    android:text="이충엽"
                     android:textColor="#f8c930"
                     android:textSize="16sp" />
 
                 <ImageButton
-                    android:layout_width="20dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="7dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="@android:color/transparent"
                     android:layout_marginLeft="3dp"
                     android:src="@drawable/message" />
             </LinearLayout>
@@ -85,7 +94,7 @@
             android:background="#eeeeee" />
 
         <LinearLayout
-            android:id="@+id/mypage_subject_layout"
+            android:id="@+id/intro_wait_subject_layout"
             android:layout_width="match_parent"
             android:layout_height="37dp"
             android:orientation="horizontal"
@@ -103,7 +112,7 @@
                 />
 
             <TextView
-                android:id="@+id/mypage_area_tv"
+                android:id="@+id/intro_wait_area_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="서울"
@@ -124,7 +133,7 @@
                 />
 
             <TextView
-                android:id="@+id/mypage_aim_tv"
+                android:id="@+id/intro_wait_aim_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="공모전참여"
@@ -145,7 +154,7 @@
                 />
 
             <TextView
-                android:id="@+id/mypage_department_tv"
+                android:id="@+id/intro_wait_department_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="콘텐츠"

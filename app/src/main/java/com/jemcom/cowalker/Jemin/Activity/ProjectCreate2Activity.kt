@@ -104,6 +104,11 @@ class ProjectCreate2Activity : AppCompatActivity() {
 
 
         create2_confirm_btn.setOnClickListener {
+            if(create2_explain_edit.getText().toString().isEmpty()){
+                Toast.makeText(this@ProjectCreate2Activity, "프로젝트 소개말을 입력해주세요", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             explainValue = create2_explain_edit.getText().toString()
             postBoard()
             //val intent = Intent(this@ProjectCreate2Activity, InviteActivity::class.java)

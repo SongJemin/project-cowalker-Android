@@ -12,6 +12,7 @@
             android:id="@+id/mypage_background_img"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:layout_marginRight="2dp"
             android:background="@drawable/cover_default"/>
 
         <RelativeLayout
@@ -34,15 +35,7 @@
                 android:src="@drawable/profile_default"
                 />
         </RelativeLayout>
-        <Button
-            android:id="@+id/mypage_background_chang_btn"
-            android:layout_width="29dp"
-            android:layout_height="29dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="164dp"
-            android:layout_marginRight="11dp"
-            android:background="@drawable/camera"
-            />
+
         <Button
             android:id="@+id/mypage_profile_change_btn"
             android:layout_width="29dp"
@@ -83,23 +76,12 @@
             android:id="@+id/mypage_edit_btn"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_toLeftOf="@id/mypage_message_btn"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
-            android:layout_alignTop="@+id/mypage_name_tv"
-            android:background="@drawable/darkgray"
-            />
-
-        <Button
-            android:id="@+id/mypage_message_btn"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="27dp"
             android:layout_marginTop="12dp"
             android:layout_marginLeft="10dp"
             android:layout_alignTop="@+id/mypage_name_tv"
-            android:background="@drawable/message_gray"
+            android:background="@drawable/darkgray"
             />
 
         <TextView

@@ -13,7 +13,7 @@
             android:id="@+id/introcreate_background_img"
             android:layout_width="match_parent"
             android:layout_height="360dp"
-            android:background="@drawable/boyoung"
+            android:background="@drawable/cover_default"
             />
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                     android:layout_width="52dp"
                     android:layout_height="52dp"
                     android:layout_marginTop="22dp"
-                    android:layout_marginLeft="40dp">
+                    android:layout_marginLeft="30dp">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/projectIntrocre_profile_iv"
@@ -43,7 +43,7 @@
                     android:id="@+id/introcreater_title_tv"
                     android:layout_width="254dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="28dp"
                     android:layout_marginTop="15dp"
                     android:text="KU석KU석 프로젝트      '사라진 친구를 찾아라'"
                     android:textColor="#444444"
@@ -69,8 +69,7 @@
                     android:id="@+id/introcreate_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="4dp"
                     android:fontFamily="@font/notosanscjkkr_regular"
                     android:text="이충엽"
                     android:textColor="#f8c930"
@@ -79,7 +78,7 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="13dp"
+                    android:layout_marginTop="15dp"
                     android:background="@android:color/transparent"
                     android:layout_marginLeft="3dp"
                     android:src="@drawable/message" />
@@ -282,7 +281,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:layout_marginLeft="20dp">
+                android:layout_marginLeft="7dp">
             </android.support.v7.widget.RecyclerView>
 
 
@@ -295,6 +294,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/introcreate_recommend_layout"
                 android:layout_width="41dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="43dp"
@@ -321,6 +321,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/introcreate_share_layout"
                 android:layout_width="41dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
