@@ -26,6 +26,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ApplyPaperActivity : AppCompatActivity() {
+
     lateinit var applyPaperListAdapter : ApplyPaperListAdapter
     lateinit var networkService: NetworkService
     var apply_idx : String = ""
@@ -45,6 +46,8 @@ class ApplyPaperActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apply_paper)
+
+
 
         val view = window.decorView
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -192,5 +195,7 @@ class ApplyPaperActivity : AppCompatActivity() {
 
         })
     }
+
+
 
 }

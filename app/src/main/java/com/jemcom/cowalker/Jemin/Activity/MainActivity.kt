@@ -28,8 +28,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     //test
 
-    val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
-    val token = pref.getString("token","")
+
     private val FRAGMENT1 = 1
     private val FRAGMENT2 = 2
     private val FRAGMENT4 = 4
@@ -67,6 +66,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         setContentView(R.layout.activity_main)
 
+        val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
         val view = window.decorView
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (view != null) {
@@ -163,6 +164,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 mypage_tab_btn.visibility = View.VISIBLE
                 mypage_tab_selected_btn.visibility = View.GONE
 
+                val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+                val token = pref.getString("token","")
                 if(token.length > 0) {
                     val intent = Intent(applicationContext, ProjectCreateActivity::class.java)
                     startActivity(intent)
@@ -187,6 +190,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 create_tab_selected_btn.visibility = View.GONE
                 mypage_tab_btn.visibility = View.VISIBLE
                 mypage_tab_selected_btn.visibility = View.GONE
+                val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+                val token = pref.getString("token","")
                 if(token.length > 0) callFragment(FRAGMENT4)
                 else {
                     var intent = Intent(applicationContext,LoginActivity::class.java)
@@ -207,6 +212,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 create_tab_selected_btn.visibility = View.GONE
                 alarm_tab_btn.visibility = View.VISIBLE
                 alarm_tab_selected_btn.visibility = View.GONE
+                val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+                val token = pref.getString("token","")
                 if(token.length > 0) callFragment(FRAGMENT5)
                 else {
                     var intent = Intent(applicationContext,LoginActivity::class.java)

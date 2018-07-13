@@ -54,12 +54,17 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
     var apply_idx : String = ""
     var num : String = ""
     var task : String = ""
-
+    var token : String = ""
+    var flag : Int =1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apply_member)
+
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        token = pref.getString("token","")
+
 
         val view = window.decorView
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -72,11 +77,18 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
             // 21 버전 이상일 때
             window.statusBarColor = Color.BLACK
         }
-        val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+
         applyMemberActivity = this
         val intent = intent
+        flag=intent.getIntExtra("flag",0)
         //Log.v("asdf","멤버액티비티 num = "+num)
-        recruit_idx = intent.getStringExtra("recruit_idx")
+
+        // 흐름 순차적
+        if(flag==1)
+        {
+            recruit_idx = intent.getStringExtra("recruit_idx")
+        }
+
 
         //num = intent.getStringExtra("num")
         //Log.v("asdf","멤버액티비티 num2 = "+num)
@@ -124,6 +136,34 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
             }
 
         })
+    }
+
+    fun changeAdapterJoin(token2:String, apply_idx2:String, applicant_idx2:String, join2:Int ) {
+
+        var token : String = token2
+        var apply_idx : String = apply_idx2
+        var applicant_idx : String = applicant_idx2
+        var join : Int = join2
+        val putCreaterDecideResponse = networkService.putCreaterDecide(token, apply_idx, applicant_idx, join)
+
+        putCreaterDecideResponse.enqueue(object : retrofit2.Callback<PutCreaterDecideResponse>{
+
+            override fun onResponse(call: Call<PutCreaterDecideResponse>, response: Response<PutCreaterDecideResponse>) {
+                Log.v("TAG", "조인 통신 성공")
+                if(response.isSuccessful){
+
+                    Log.v("TAG", "조인 수정 성공")
+
+
+                }
+            }
+
+            override fun onFailure(call: Call<PutCreaterDecideResponse>, t: Throwable?) {
+                Toast.makeText(applicationContext,"서버 연결 실패", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
     }
 
 

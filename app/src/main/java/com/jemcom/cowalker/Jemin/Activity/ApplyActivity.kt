@@ -37,8 +37,7 @@ import retrofit2.Response
 // 지원서 액티비티
 class ApplyActivity : AppCompatActivity(), View.OnClickListener {
 
-    val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
-    val token = pref.getString("token","")
+
     lateinit var recruitListItems: ArrayList<RecruitListItem>
     lateinit var recruitListGetAdapter : RecruitListGetAdapter
     var recruitData : java.util.ArrayList<GetRecruitList> = java.util.ArrayList<GetRecruitList>()
@@ -94,6 +93,8 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener {
         apply_apply_btn.setOnClickListener(this)
 
         apply_apply_btn.setOnClickListener{
+            val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+            val token = pref.getString("token","")
               if(token.length > 0) post()
             else{
                   var intent = Intent(applicationContext,LoginActivity::class.java)

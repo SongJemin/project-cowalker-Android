@@ -25,6 +25,7 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
     var num : String = ""
     var task : String = ""
     var apply_idx_result : String = ""
+    var token : String = ""
 
     //내가 쓸 뷰홀더가 뭔지를 적어준다.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApplyMemberViewHolder {
@@ -73,26 +74,26 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
                     //)
         }
 
-        /*
+
         holder.applyMemberApproveBtn.setOnClickListener {
             Log.v("Adapter", "클릭 postion = " + position)
             Log.v("Adapter", "지원 번호 = " + apply_idx[position])
             Log.v("Adapter", "지원자 번호 = " + applicant_idxList[position])
 
             recruit_idx = ApplyMemberActivity.applyMemberActivity.recruit_idx
-
-            apply_idx_result = apply_idx[position]
+            token = ApplyMemberActivity.applyMemberActivity.token
             applicant_idx = applicant_idxList[position].toString()
-            var intent = Intent(mContext, ApplyPaperActivity::class.java)
-            intent.putExtra("apply_idx",apply_idx[position])
-            intent.putExtra("applicant_idx",applicant_idx)
-            intent.putExtra("recruit_idx",recruit_idx)
-            Log.v("Adapter", "지원서로 보내는 모집 번호 = "+ recruit_idx)
+            apply_idx_result = apply_idx[position]
+            Log.v("TAG", "지원리스트에서 승인, 토큰 = " + token)
+            Log.v("TAG", "지원리스트에서 승인, 지원자번호 = " + applicant_idx)
+            Log.v("TAG", "지원리스트에서 승인, 지원번호 = " + apply_idx_result)
+            var join = 1
+            ApplyMemberActivity.applyMemberActivity.changeAdapterJoin(token, apply_idx_result, applicant_idx, join)
+            var intent = Intent(mContext, ApplyMemberActivity::class.java)
+            intent.putExtra("flag",2)
             mContext.startActivity(intent)
 
-            //mContext.startActivity(Intent(mContext, MainActivity::class.java)
-            //.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            //)
+            Log.v("Adapter", "지원서로 보내는 모집 번호 = "+ recruit_idx)
         }
 
         holder.applyMemberRejectBtn.setOnClickListener {
@@ -101,19 +102,23 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
             Log.v("Adapter", "지원자 번호 = " + applicant_idxList[position])
 
             recruit_idx = ApplyMemberActivity.applyMemberActivity.recruit_idx
-
+            token = ApplyMemberActivity.applyMemberActivity.token
             applicant_idx = applicant_idxList[position].toString()
-            var intent = Intent(mContext, ApplyPaperActivity::class.java)
-            intent.putExtra("apply_idx",apply_idx[position])
-            intent.putExtra("applicant_idx",applicant_idx)
-            intent.putExtra("recruit_idx",recruit_idx)
-            Log.v("Adapter", "지원서로 보내는 모집 번호 = "+ recruit_idx)
+            apply_idx_result = apply_idx[position]
+            Log.v("TAG", "지원리스트에서 거절, 토큰 = " + token)
+            Log.v("TAG", "지원리스트에서 거절, 지원자번호 = " + applicant_idx)
+            Log.v("TAG", "지원리스트에서 거절, 지원번호 = " + apply_idx_result)
+            var join = 2
+            ApplyMemberActivity.applyMemberActivity.changeAdapterJoin(token, apply_idx_result, applicant_idx, join)
+            var intent = Intent(mContext, ApplyMemberActivity::class.java)
+            intent.putExtra("flag",2)
             mContext.startActivity(intent)
 
-            //mContext.startActivity(Intent(mContext, MainActivity::class.java)
-            //.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            //)
+            Log.v("Adapter", "지원서로 보내는 모집 번호 = "+ recruit_idx)
+
         }
-        */
+
     }
+
+
 }

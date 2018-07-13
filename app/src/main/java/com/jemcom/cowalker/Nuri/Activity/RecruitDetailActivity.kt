@@ -40,8 +40,7 @@ import java.text.SimpleDateFormat
 
 class RecruitDetailActivity : AppCompatActivity() {
 
-    val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
-    val token = pref.getString("token","")
+
     lateinit var networkService: NetworkService
     lateinit var recruitListItems: ArrayList<RecruitListItem>
     lateinit var recruitListAdapter : RecruitListAdapter
@@ -57,6 +56,7 @@ class RecruitDetailActivity : AppCompatActivity() {
     var recruit_idx_value : String = ""
     var sharer_idx_value : String = ""
     var sharer_idx : String = ""
+    var flag : Int = 0
 
 
     override fun onNewIntent(intent: Intent) {
@@ -114,9 +114,12 @@ class RecruitDetailActivity : AppCompatActivity() {
         Log.v("TAG","까똑2 = " + test)
 
         recruit_detail_applymember_linear.setOnClickListener{
+            val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+            val token = pref.getString("token","")
             if(token.length > 0) {
                 var intent = Intent(applicationContext, ApplyMemberActivity::class.java)
                 intent.putExtra("recruit_idx", recruit_idx)
+                intent.putExtra("flag", 1)
                 intent.putExtra("num", num)
                 Log.v("tag", "리쿠릇디테일에서 보내는 num" + num)
                 intent.putExtra("task", task)
@@ -188,13 +191,15 @@ class RecruitDetailActivity : AppCompatActivity() {
                 // 카카오톡에서 받은 사람이라면
                 if (test != null) {
                     var intent = Intent(applicationContext, ApplyDetailActivity::class.java)
-
+                    flag = 2
                     intent.putExtra("project_idx", project_idx)
                     intent.putExtra("recruit_idx", getRecruitIdx())
                     intent.putExtra("task", task)
+                    intent.putExtra("flag", 2)
                     intent.putExtra("position", position)
                     intent.putExtra("sharer_idx", getSharerIdx())
                     Log.v("TAG", "리쿠릇에서 어플라이로 보내는 공유자번호 = " + getSharerIdx())
+
                     Log.v("TAG", "리쿠릇에서 어플라이로 보내는 플젝번호 = " + project_idx)
 
                     Log.v("TAG", "리쿠릇에서 어플라이로 보내는 포지션 = " + position)
@@ -205,7 +210,8 @@ class RecruitDetailActivity : AppCompatActivity() {
                 //일반적인 경우
                 else{
                     var intent = Intent(applicationContext, ApplyDetailActivity::class.java)
-
+                    flag = 1
+                    intent.putExtra("flag", 1)
                     intent.putExtra("project_idx", project_idx)
                     intent.putExtra("recruit_idx", recruit_idx)
                     intent.putExtra("task", task)
