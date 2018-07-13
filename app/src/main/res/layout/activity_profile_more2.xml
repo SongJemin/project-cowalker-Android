@@ -7,16 +7,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="180dp"
+            android:layout_marginLeft="175dp"
             android:fontFamily="@font/notosanscjkkr_bold"
             android:text="내 소개"
+            android:layout_marginTop="5dp"
             android:textColor="#444444"
             android:textSize="18sp" />
 
@@ -25,7 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="130dp"
+            android:layout_marginLeft="145dp"
+            android:layout_marginTop="5dp"
             android:background="@android:color/transparent"
             android:src="@drawable/pen" />
     </LinearLayout>
@@ -33,11 +35,12 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/image_swipe"
         android:layout_width="match_parent"
-        android:layout_height="200dp"></android.support.v4.view.ViewPager>
+        android:layout_marginTop="10dp"
+        android:layout_height="300dp"></android.support.v4.view.ViewPager>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="233dp"
+        android:layout_height="300dp"
         android:layout_marginTop="7dp"
         android:background="#ffffff"
         android:orientation="vertical">
@@ -45,7 +48,7 @@
         <TextView
             android:id="@+id/profile_more_contents2_tv"
             android:layout_width="320dp"
-            android:layout_height="110dp"
+            android:layout_height="200dp"
             android:layout_gravity="center"
             android:layout_marginTop="39dp"
             android:fontFamily="@font/notosanscjkkr_regular"

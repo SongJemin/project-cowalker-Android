@@ -20,8 +20,7 @@
                 android:fontFamily="@font/notosanscjkkr_bold"
                 android:textColor="#444444"
                 android:textSize="18sp"
-                android:layout_marginTop="33dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginTop="29dp"
                 android:layout_gravity="center"
                 />
 
@@ -29,8 +28,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="198dp"
-            android:layout_marginLeft="20dp"
+            android:layout_height="210dp"
             android:background="#ffffff">
 
             <TextView
@@ -52,7 +50,7 @@
                 android:background="@drawable/selector"
                 android:text="전체"
                 android:layout_marginTop="8dp"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="47dp"
                 android:layout_below="@+id/filter_aim_tv"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 />
@@ -89,7 +87,7 @@
                 android:background="@drawable/selector"
                 android:text="스터디"
                 android:layout_marginTop="6dp"
-                android:layout_marginLeft="58dp"
+                android:layout_marginLeft="77dp"
                 android:layout_below="@+id/filter_aimall_btn"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 />
@@ -113,7 +111,7 @@
                 android:background="@drawable/selector"
                 android:text="창작"
                 android:layout_marginTop="6dp"
-                android:layout_marginLeft="93dp"
+                android:layout_marginLeft="113dp"
                 android:layout_below="@+id/filter_study_btn"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 />
@@ -133,8 +131,7 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="198dp"
-            android:layout_marginLeft="20dp"
+            android:layout_height="210dp"
             android:layout_marginTop="10dp"
             android:background="#ffffff">
 
@@ -157,7 +154,7 @@
                 android:background="@drawable/selector"
                 android:text="전체"
                 android:layout_marginTop="8dp"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="47dp"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:layout_below="@+id/filter_department_tv"
                 />
@@ -194,7 +191,7 @@
                 android:text="인공지능"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:layout_marginTop="6dp"
-                android:layout_marginLeft="79dp"
+                android:layout_marginLeft="95dp"
                 android:layout_below="@+id/filter_departmentall_btn"
                 />
 
@@ -218,7 +215,7 @@
                 android:text="창업"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:layout_marginTop="6dp"
-                android:layout_marginLeft="99dp"
+                android:layout_marginLeft="111dp"
                 android:layout_below="@+id/filter_ai_btn"
                 />
 
@@ -237,10 +234,9 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="152dp"
+            android:layout_height="175dp"
             android:layout_marginTop="10dp"
-            android:background="#ffffff"
-            android:layout_marginLeft="20dp">
+            android:background="#ffffff" >
 
             <TextView
                 android:id="@+id/filter_position_tv"
@@ -262,7 +258,7 @@
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:text="전체"
                 android:layout_marginTop="8dp"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="65dp"
                 android:layout_below="@+id/filter_position_tv"
                 />
 
@@ -299,7 +295,7 @@
                 android:text="디자이너"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:layout_marginTop="6dp"
-                android:layout_marginLeft="24dp"
+                android:layout_marginLeft="50dp"
                 android:layout_below="@+id/filter_positionall_btn"
                 />
 
@@ -332,7 +328,6 @@
             android:layout_width="match_parent"
             android:layout_height="221dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
             android:background="#ffffff">
 
             <TextView
@@ -354,7 +349,7 @@
                 android:background="@drawable/selector"
                 android:text="전체"
                 android:layout_marginTop="8dp"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="55dp"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:layout_below="@+id/filter_area_tv"
                 />
@@ -391,7 +386,7 @@
                 android:text="인천"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:layout_marginTop="6dp"
-                android:layout_marginLeft="49dp"
+                android:layout_marginLeft="75dp"
                 android:layout_below="@+id/filter_areaall_btn"
                 />
 
@@ -427,7 +422,7 @@
                 android:text="전라도"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:layout_marginTop="6dp"
-                android:layout_marginLeft="37dp"
+                android:layout_marginLeft="57dp"
                 android:layout_below="@+id/filter_incheon_btn"
                 />
 
@@ -464,7 +459,7 @@
             android:text="확인"
             android:fontFamily="@font/notosanscjkkr_bold"
             android:gravity="center"
-            android:textSize="20dp"
+            android:textSize="16dp"
             android:textColor="#ffffff"
             android:background="#45b6ff"
             android:layout_marginTop="10dp"

@@ -205,8 +205,7 @@
                 android:spinnerMode="dropdown"/>
 
             <Button
-            <ImageButton
-                android:id="@+id/profile_edit_ok_ib"
+                android:id="@+id/profile_edit_ok_btn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center"

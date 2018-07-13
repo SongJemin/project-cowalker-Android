@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants"
     android:background="#f8f8f8">
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="528dp"
+        android:src="@drawable/home_main"
+        android:focusable="true"
+        android:background="@android:color/transparent"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
 
         <TextView
             android:layout_width="match_parent"
@@ -16,19 +30,19 @@
             android:text="멋진 멤버들과 함께 여행을 떠나보세요."
             android:textSize="18sp"
             android:gravity="center_vertical"
-            android:layout_marginLeft="33dp"
+            android:layout_marginLeft="35dp"
             android:fontFamily="@font/notosanscjkkr_bold"
-            android:textColor="#666666"
-            android:textStyle="bold"/>
+            android:textColor="#666666" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="28dp"
             android:layout_marginRight="25dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="500dp">
         </android.support.v7.widget.RecyclerView>
+
     </LinearLayout>
 </LinearLayout>
+</ScrollView>

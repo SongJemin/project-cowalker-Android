@@ -15,7 +15,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="141dp"
+            android:layout_height="144dp"
             android:background="#f8f8f8">
 
             <View
@@ -24,7 +24,7 @@
                 android:layout_height="3dp"
                 android:background="#c5c5c5"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="37dp"
+                android:layout_marginTop="42dp"
                 android:layout_toLeftOf="@+id/invite1_progress2_img"
                 android:layout_marginRight="2dp"
                 />
@@ -35,7 +35,7 @@
                 android:layout_height="3dp"
                 android:background="#c5c5c5"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="37dp"
+                android:layout_marginTop="42dp"
                 />
 
             <View
@@ -44,7 +44,7 @@
                 android:layout_height="3dp"
                 android:background="#c5c5c5"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="37dp"
+                android:layout_marginTop="42dp"
                 android:layout_toRightOf="@+id/invite1_progress3_img"
                 android:layout_marginLeft="2dp"
                 />
@@ -54,7 +54,7 @@
                 android:id="@+id/invite1_progress1_img"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="30dp"
                 android:layout_toLeftOf="@+id/invite1_line1_view"
                 android:layout_marginRight="2dp"
                 android:layout_marginLeft="20dp"
@@ -67,7 +67,7 @@
                 android:layout_height="25dp"
                 android:layout_toLeftOf="@+id/invite1_line2_view"
                 android:layout_marginRight="2dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/progress_2"
                 />
 
@@ -99,7 +99,7 @@
                 android:textColor="#444444"
                 android:layout_marginLeft="40dp"
                 android:fontFamily="@font/notosanscjkkr_bold"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="26dp"
                 android:layout_below="@+id/invite1_progress1_img"
                 />
 
@@ -112,7 +112,7 @@
             >
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
+                android:layout_height="190dp"
                 android:background="#ffffff">
 
                 <TextView
@@ -135,7 +135,7 @@
                     android:text="PM"
                     android:fontFamily="@font/notosanscjkkr_regular"
                     android:layout_marginTop="18dp"
-                    android:layout_marginLeft="38dp"
+                    android:layout_marginLeft="43dp"
                     android:layout_below="@+id/invite_role_tv"
                     />
 
@@ -173,7 +173,7 @@
                     android:text="개발자"
                     android:fontFamily="@font/notosanscjkkr_regular"
                     android:layout_marginTop="8dp"
-                    android:layout_marginLeft="105dp"
+                    android:layout_marginLeft="110dp"
                     android:layout_below="@+id/invite_pm_btn"
                     />
 
@@ -197,7 +197,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="118dp"
+            android:layout_height="150dp"
             android:background="#ffffff"
             android:layout_marginTop="9dp"
             android:orientation="vertical">
@@ -217,18 +217,18 @@
             <Button
                 android:id="@+id/invite_range_btn"
                 android:layout_width="319dp"
-                android:layout_height="46dp"
+                android:layout_height="55dp"
                 android:text="날짜 선택"
-                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:layout_gravity="center"
                 android:layout_marginTop="18dp"
+                android:background="#eeeeee"
                 />
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="95dp"
+            android:layout_height="140dp"
             android:layout_marginTop="9dp"
             android:background="#ffffff">
 
@@ -243,15 +243,14 @@
                 android:fontFamily="@font/notosanscjkkr_bold"                android:textSize="16sp"
                 />
 
-
             <EditText
                 android:id="@+id/invite_personnel_edit"
-                android:layout_width="300dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="예) 0명, 00명, 1명~최대 1000명"
                 android:layout_marginLeft="40dp"
+                android:layout_marginTop="17dp"
                 android:layout_below="@+id/invite_personnel_tv"
-                android:layout_marginTop="18dp"
                 android:backgroundTint="@color/Transparent"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:textSize="14sp"
@@ -265,23 +264,22 @@
                 android:layout_marginTop="25dp"
                 android:layout_below="@id/invite_personnel_tv"
                 android:textColor="#444444"
+                android:layout_marginLeft="17dp"
                 android:fontFamily="@font/notosanscjkkr_regular"
-                android:layout_marginLeft="22dp"
                 />
 
         </RelativeLayout>
-
         <Button
             android:id="@+id/invite1_next_btn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="9dp"
             android:text="다음"
             android:gravity="center"
-            android:textSize="20dp"
+            android:textSize="16dp"
+            android:layout_marginBottom="0dp"
             android:textColor="#ffffff"
             android:fontFamily="@font/notosanscjkkr_bold"
             android:background="#45b6ff"/>
-
     </LinearLayout>
 </LinearLayout>

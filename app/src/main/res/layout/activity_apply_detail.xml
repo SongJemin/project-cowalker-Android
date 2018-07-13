@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Jemin.Activity.ApplyActivity"
     android:background="#f8f8f8">
 
     <LinearLayout
@@ -16,16 +13,14 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="27dp"
+            android:layout_height="wrap_content"
             android:text="참여하기"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/notosanscjkkr_bold"
             android:textColor="#444444"
             android:textSize="18sp"
-
             />
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,66 +34,67 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="88dp">
+                android:layout_height="95dp">
 
                 <TextView
                     android:id="@+id/apply_detail_position1_tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="24dp"
+                    android:layout_height="wrap_content"
                     android:text="기획자"
                     android:textSize="16sp"
                     android:textColor="#444444"
                     android:layout_marginTop="15dp"
+                    android:fontFamily="@font/notosanscjkkr_bold"
                     android:layout_marginLeft="23dp"
-                    android:textStyle="bold"
                     />
 
                 <TextView
                     android:id="@+id/apply_detail_personnel_tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="24dp"
+                    android:layout_height="wrap_content"
                     android:text="1"
                     android:textSize="16sp"
                     android:textColor="#666666"
                     android:layout_toRightOf="@id/apply_detail_position1_tv"
                     android:layout_alignTop="@+id/apply_detail_position1_tv"
                     android:layout_marginLeft="22dp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/notosanscjkkr_regular"
                     />
                 <TextView
                     android:id="@+id/apply_detail_myeong_tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="24dp"
+                    android:layout_height="wrap_content"
                     android:text="명"
                     android:textSize="16sp"
                     android:textColor="#666666"
                     android:layout_toRightOf="@id/apply_detail_personnel_tv"
                     android:layout_alignTop="@+id/apply_detail_position1_tv"
                     android:layout_marginLeft="1dp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/notosanscjkkr_regular"
                     />
 
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="18dp"
                     android:text="D-9"
                     android:background="#45b6ff"
                     android:layout_alignTop="@+id/apply_detail_position1_tv"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="8dp"
+                    android:textColor="#ffffff"
                     />
 
                 <TextView
                     android:id="@+id/apply_detail_summary_tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="24dp"
+                    android:layout_height="wrap_content"
                     android:text="홍보 기획하기"
                     android:textSize="16sp"
                     android:textColor="#666666"
                     android:layout_alignLeft="@+id/apply_detail_position1_tv"
                     android:layout_below="@id/apply_detail_position1_tv"
                     android:layout_marginTop="10dp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/notosanscjkkr_regular"
                     />
 
 
@@ -114,18 +110,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="166dp"
+            android:layout_height="180dp"
             android:layout_marginTop="25dp"
             android:background="#ffffff"
             android:orientation="vertical"
             >
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
+                android:layout_height="wrap_content"
                 android:text="자기 소개"
                 android:textSize="16sp"
                 android:textColor="#000000"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 />
@@ -148,7 +144,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="96dp"
+            android:layout_height="120dp"
             android:layout_marginTop="10dp"
             android:background="#ffffff"
             android:orientation="vertical"
@@ -156,11 +152,11 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
+                android:layout_height="wrap_content"
                 android:text="이력서, 포트폴리오 링크"
                 android:textSize="16sp"
                 android:textColor="#444444"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:layout_marginTop="18dp"
                 android:layout_marginLeft="20dp"
                 />
@@ -173,6 +169,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="7dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 android:textSize="16sp"
                 android:backgroundTint="@color/Transparent"
                 />
@@ -180,7 +177,7 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="96dp"
+            android:layout_height="120dp"
             android:layout_marginTop="10dp"
             android:background="#ffffff"
             android:orientation="vertical"
@@ -188,11 +185,11 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
+                android:layout_height="wrap_content"
                 android:text="연락처"
                 android:textSize="16sp"
                 android:textColor="#444444"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:layout_marginTop="18dp"
                 android:layout_marginLeft="20dp"
                 />
@@ -206,6 +203,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="7dp"
                 android:textSize="16sp"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 android:backgroundTint="@color/Transparent"
                 />
 
@@ -222,11 +220,11 @@
             
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:text="질문 (선택)"
                 android:textSize="16sp"
                 android:textColor="#444444"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 />
@@ -249,6 +247,7 @@
             android:text="참여하기"
             android:textColor="#ffffff"
             android:textSize="16sp"
+            android:fontFamily="@font/notosanscjkkr_bold"
             android:background="#45b6ff"
             />
     </LinearLayout>

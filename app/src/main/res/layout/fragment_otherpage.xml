@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ffffff">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -153,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:text="분야"
                 android:textColor="#c5c5c5"
-                android:layout_marginLeft="67dp"
+                android:layout_marginLeft="55dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/notosanscjkkr_bold"
                 />
@@ -174,7 +175,7 @@
                 android:layout_height="wrap_content"
                 android:text="지역"
                 android:textColor="#c5c5c5"
-                android:layout_marginLeft="67dp"
+                android:layout_marginLeft="55dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/notosanscjkkr_bold"
                 />

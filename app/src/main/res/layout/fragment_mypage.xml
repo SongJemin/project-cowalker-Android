@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ffffff">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -167,11 +168,11 @@
 
             <TextView
                 android:id="@+id/mypage_aim_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="공모전참여"
                 android:textColor="#444444"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 />
@@ -181,18 +182,18 @@
                 android:layout_height="wrap_content"
                 android:text="분야"
                 android:textColor="#c5c5c5"
-                android:layout_marginLeft="67dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/notosanscjkkr_bold"
                 />
 
             <TextView
                 android:id="@+id/mypage_department_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="콘텐츠"
                 android:textColor="#444444"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 />
@@ -202,18 +203,18 @@
                 android:layout_height="wrap_content"
                 android:text="지역"
                 android:textColor="#c5c5c5"
-                android:layout_marginLeft="67dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/notosanscjkkr_bold"
                 />
 
             <TextView
                 android:id="@+id/mypage_area_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="서울"
                 android:textColor="#444444"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 />
@@ -227,6 +228,7 @@
             android:layout_below="@+id/mypage_subject_layout"
             android:layout_marginTop="20dp"
             android:background="#f8f8f8"
+            android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -256,7 +258,6 @@
                 android:layout_gravity="center_vertical"
                 />
 
-
         </LinearLayout>
         <LinearLayout
             android:id="@+id/mypage_seed_layout"
@@ -264,6 +265,7 @@
             android:layout_below="@+id/mypage_project_layout"
             android:layout_height="50dp"
             android:background="#f8f8f8"
+            android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -302,7 +304,7 @@
         <LinearLayout
             android:id="@+id/mypage_logout_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_below="@+id/mypage_seed_layout"
             android:background="#f8f8f8"
             android:orientation="horizontal">

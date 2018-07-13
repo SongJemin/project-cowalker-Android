@@ -13,7 +13,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="38dp"
+            android:layout_height="50dp"
             android:layout_marginTop="29dp">
 
             <TextView
@@ -30,6 +30,7 @@
                 android:id="@+id/search_filter_btn"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+                android:gravity="center"
                 android:background="@drawable/filter_btn"
                 android:layout_marginRight="27dp"
                 android:layout_centerVertical="true"
@@ -39,7 +40,7 @@
         
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="54dp"
+            android:layout_height="65dp"
             android:layout_marginTop="28dp"
             android:orientation="horizontal">
 
@@ -50,7 +51,7 @@
                 android:hint="프로젝트, 분야, 역할 검색"
                 android:fontFamily="@font/notosanscjkkr_bold"
                 android:layout_marginBottom="5dp"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="33dp"
                 android:backgroundTint="@color/Transparent"
                 android:textSize="20sp" />
 
@@ -61,7 +62,7 @@
                 android:background="@drawable/gray"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="24dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 />
 
 
@@ -75,7 +76,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/search_recyclerview"
         android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

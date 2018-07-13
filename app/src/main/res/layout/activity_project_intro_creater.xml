@@ -12,7 +12,7 @@
         <ImageView
             android:id="@+id/introcreate_background_img"
             android:layout_width="match_parent"
-            android:layout_height="172dp"
+            android:layout_height="360dp"
             android:background="@drawable/boyoung"
             />
         <LinearLayout
@@ -58,27 +58,28 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="130dp"
-                    android:layout_marginTop="0dp"
-                    android:text="With "
+                    android:layout_height="wrap_content"
+                    android:text="With"
                     android:textColor="#f8c930"
-                    android:textSize="14sp" />
-
+                    android:layout_marginLeft="109dp"
+                    android:layout_gravity="center"
+                    android:textSize="16sp"
+                    />
                 <TextView
                     android:id="@+id/introcreate_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="110dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="5dp"
                     android:fontFamily="@font/notosanscjkkr_regular"
-                    android:text="With 이충엽"
+                    android:text="이충엽"
                     android:textColor="#f8c930"
                     android:textSize="16sp" />
 
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="13dp"
                     android:background="@android:color/transparent"
                     android:layout_marginLeft="3dp"
                     android:src="@drawable/message" />
@@ -110,7 +111,7 @@
 
             <TextView
                 android:id="@+id/introcreate_area_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="서울"
                 android:textColor="#444444"
@@ -124,18 +125,18 @@
                 android:layout_height="wrap_content"
                 android:text="목적"
                 android:textColor="#c5c5c5"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/notosanscjkkr_bold"
                 />
 
             <TextView
                 android:id="@+id/introcreate_aim_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:text="공모전참여"
+                android:text="공모전 참여"
                 android:textColor="#444444"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 />
@@ -145,14 +146,14 @@
                 android:layout_height="wrap_content"
                 android:text="분야"
                 android:textColor="#c5c5c5"
-                android:layout_marginLeft="53dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/notosanscjkkr_bold"
                 />
 
             <TextView
                 android:id="@+id/introcreate_department_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="콘텐츠"
                 android:textColor="#444444"
@@ -227,11 +228,11 @@
 
             <ImageButton
                 android:id="@+id/see_close2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="200dp"
                 android:clickable="true"
-                android:background="@drawable/blue_copy"
+                android:background="@drawable/foldingbtn"
                 android:visibility="gone"/>
         </LinearLayout>
 
@@ -260,6 +261,7 @@
                     android:src="@drawable/delete_gray"
                     android:layout_gravity="center"
                     android:layout_marginLeft="250dp"
+                    android:layout_marginTop="7dp"
                     android:background="@android:color/transparent"/>
                 <ImageButton
                     android:id="@+id/introcreate_add_btn"
@@ -267,6 +269,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="7dp"
                     android:background="@android:color/transparent"
                     android:src="@drawable/addbtn"/>
                     android:background="@drawable/addbtn"

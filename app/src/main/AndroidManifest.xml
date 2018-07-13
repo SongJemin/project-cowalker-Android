@@ -20,8 +20,7 @@
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
 
-        <activity android:name=".Jemin.Activity.MainActivity" />
-        <activity android:name=".Nuri.Activity.ApplyModifyActivity">
+        <activity android:name=".Jemin.Activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,7 +51,7 @@
         <activity android:name=".Jemin.Activity.TestActivity" />
         <activity android:name=".Jemin.Activity.Invite4Activity" />
         <activity android:name=".Jemin.Activity.Invite3Activity" />
-        <activity android:name=".Jemin.Activity.SearchFilterActivity" />
+        <activity android:name=".Nuri.Activity.ApplyModifyActivity" />
         <activity android:name=".Hyunmin.Activity.MypageProfileEditActivity" />
         <activity android:name=".Hyunmin.Activity.ProjectIntroActivity" />
         <activity android:name=".Hyunmin.Activity.ProfileEditActivity" />
@@ -77,6 +76,7 @@
         <activity android:name=".Nuri.Activity.ApplyModify3Activity"></activity>
         <activity android:name=".Nuri.Activity.ApplyModify4Activity"></activity>
         <activity android:name=".Hyunmin.Activity.MypageProjectlistActivity"></activity>
+        <activity android:name=".Jemin.Activity.SearchFilterActivity" />
     </application>
 
 </manifest>

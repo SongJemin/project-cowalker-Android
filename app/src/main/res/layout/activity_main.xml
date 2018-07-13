@@ -34,6 +34,18 @@
             android:src="@drawable/icons_tabbar_1_home" />
 
         <ImageButton
+            android:id="@+id/home_tab_selected_btn"
+            android:layout_width="46.08dp"
+            android:layout_height="46.04dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:background="#00000000"
+            android:padding="7sp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icons_tabbar_1_home_selected"
+            android:visibility="gone"/>
+
+        <ImageButton
             android:id="@+id/search_tab_btn"
             android:layout_width="46.08dp"
             android:layout_height="wrap_content"
@@ -42,6 +54,17 @@
             android:padding="6sp"
             android:scaleType="fitCenter"
             android:src="@drawable/icons_tabbar_2_search" />
+
+        <ImageButton
+            android:id="@+id/search_tab_selected_btn"
+            android:layout_width="46.08dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:padding="6sp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icons_tabbar_2_search_selected"
+            android:visibility="gone"/>
 
         <ImageButton
             android:id="@+id/create_tab_btn"
@@ -54,6 +77,17 @@
             android:src="@drawable/icons_tabbar_3_create" />
 
         <ImageButton
+            android:id="@+id/create_tab_selected_btn"
+            android:layout_width="41dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:padding="2sp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icons_tabbar_3_create_selected"
+            android:visibility="gone"/>
+
+        <ImageButton
             android:id="@+id/alarm_tab_btn"
             android:layout_width="46.08dp"
             android:layout_height="46.35dp"
@@ -64,6 +98,17 @@
             android:src="@drawable/icons_tabbar_4_alarm" />
 
         <ImageButton
+            android:id="@+id/alarm_tab_selected_btn"
+            android:layout_width="46.08dp"
+            android:layout_height="46.35dp"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:padding="7sp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icons_tabbar_4_alarm_selected"
+            android:visibility="gone"/>
+
+        <ImageButton
             android:id="@+id/mypage_tab_btn"
             android:layout_width="46.08dp"
             android:layout_height="46dp"
@@ -72,5 +117,16 @@
             android:padding="7sp"
             android:scaleType="fitCenter"
             android:src="@drawable/icons_tabbar_5_mypage" />
+
+        <ImageButton
+            android:id="@+id/mypage_tab_selected_btn"
+            android:layout_width="46.08dp"
+            android:layout_height="46dp"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:padding="7sp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icons_tabbar_5_mypage_selected"
+            android:visibility="gone"/>
     </LinearLayout>
 </RelativeLayout>

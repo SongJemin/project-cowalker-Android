@@ -111,8 +111,6 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
 
         recruitListItems = ArrayList()
 
-
-
         val intent = intent
         if(intent != null) {
             if(intent.getStringExtra("title") != null) title = intent.getStringExtra("title")
