@@ -14,6 +14,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 import com.jemcom.cowalker.R
 
@@ -37,6 +38,7 @@ class InviteActivity : AppCompatActivity() {
     lateinit var project_idx: String
 
     lateinit var numberEdit: EditText
+    var numberValue : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,24 +72,32 @@ class InviteActivity : AppCompatActivity() {
 
 
         nextBtn.setOnClickListener {
-            number = Integer.parseInt(numberEdit.text.toString())
+            if(numberEdit.text.toString() == "" || position == null || start_date == null || end_date == null )
+            {
+                Toast.makeText(getApplicationContext(), "공백 없이 입력해주세요", Toast.LENGTH_LONG).show();
 
-            val intent = Intent(this@InviteActivity, Invite2Activity::class.java)
-            Log.v("TAG", "초대1화면 플젝넘버 = $project_idx")
-            intent.putExtra("project_idx", project_idx)
+            }
+            else {
+                numberValue = Integer.parseInt(numberEdit.text.toString())
 
-            val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
-            val editor = pref.edit()
-            editor.putString("position", position)
-            editor.putString("start_date", start_date)
-            editor.putString("end_date", end_date)
-            editor.putInt("number", number)
-            editor.commit()
+                val intent = Intent(this@InviteActivity, Invite2Activity::class.java)
+                Log.v("TAG", "초대1화면 플젝넘버 = $project_idx")
+                intent.putExtra("project_idx", project_idx)
+
+                val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
+                val editor = pref.edit()
+                editor.putString("position", position)
+                editor.putString("start_date", start_date)
+                editor.putString("end_date", end_date)
+                editor.putInt("number", number)
+                editor.commit()
+                Log.v("TAG", "역할 = " + position + "시작 = " + start_date + "마지막 = " + end_date + "명 = " + number)
+
+                startActivity(intent)
+
+            }
 
 
-            Log.v("TAG", "역할 = " + position + "시작 = " + start_date + "마지막 = " + end_date + "명 = " + number)
-
-            startActivity(intent)
         }
 
         pmBtn.setOnClickListener {

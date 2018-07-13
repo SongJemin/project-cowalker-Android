@@ -1,5 +1,7 @@
 package com.jemcom.cowalker.Jemin.Activity
 
+import android.graphics.Color
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -44,6 +46,18 @@ class ProjectMemberActivity : AppCompatActivity() {
         networkService = ApplicationController.instance.networkSerVice // 어플리케이션을 실행하자마자 어플리케이션 콘트롤러가 실행되는데 그 때 사용?
         requestManager = Glide.with(this)
         setContentView(R.layout.activity_project_member)
+
+        val view = window.decorView
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (view != null) {
+                // 23 버전 이상일 때 상태바 하얀 색상에 회색 아이콘 색상을 설정
+                view.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                window.statusBarColor = Color.parseColor("#FFFFFF")
+            }
+        } else if (Build.VERSION.SDK_INT >= 21) {
+            // 21 버전 이상일 때
+            window.statusBarColor = Color.BLACK
+        }
         val intent = intent
         project_idx = intent.getStringExtra("project_idx")
 

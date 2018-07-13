@@ -2,6 +2,7 @@ package com.jemcom.cowalker.Jemin.Activity
 
 import android.app.Activity
 import android.graphics.Color
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -53,7 +54,7 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
 
         var idx = apply_list_recyclerview!!.getChildAdapterPosition(v)
-        //apply_list_recyclerview!!.getChildViewHolder(v).itemView.setBackgroundColor(Color.parseColor("#000000"))
+        3//apply_list_recyclerview!!.getChildViewHolder(v).itemView.setBackgroundColor(Color.parseColor("#000000"))
         recruit_idx = recruitData!![idx].recruit_idx!!
         position = recruitData!![idx].position!!
         Log.v("TAG", "지원서에서 클릭 모집번호 = "+ recruit_idx)
@@ -64,7 +65,17 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apply)
-
+        val view = window.decorView
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (view != null) {
+                // 23 버전 이상일 때 상태바 하얀 색상에 회색 아이콘 색상을 설정
+                view.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                window.statusBarColor = Color.parseColor("#FFFFFF")
+            }
+        } else if (Build.VERSION.SDK_INT >= 21) {
+            // 21 버전 이상일 때
+            window.statusBarColor = Color.BLACK
+        }
         activity = this
         val getintent = intent
         project_idx = getintent.getStringExtra("project_idx")

@@ -297,13 +297,13 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/project_detail_recommend_btn"
                 android:layout_width="41dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="23dp"
                 android:orientation="vertical">
 
                 <ImageButton
-                    android:id="@+id/project_detail_recommend_btn"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="11dp"
@@ -324,6 +324,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/project_detail_share_btn"
                 android:layout_width="41dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="18dp"

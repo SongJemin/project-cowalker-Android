@@ -44,13 +44,17 @@ public class ProjectCreateActivity extends AppCompatActivity {
 
                 Log.v("TAG", "title = " + projectTitle + ", summary = " + projectSummary + ", aim = "
                         + projectAim + ", department = " + projectDepartment + ", Area = " + projectArea);
-                Intent intent = new Intent(ProjectCreateActivity.this, ProjectCreate2Activity.class);
+                Intent intent = new Intent(ProjectCreateActivity.this, ShareActivity.class);
+
+                //Intent intent = new Intent(ProjectCreateActivity.this, ProjectCreate2Activity.class);
                 intent.putExtra("title",projectTitle);
                 intent.putExtra("summary",projectSummary);
                 intent.putExtra("aim",projectAim);
                 intent.putExtra("department",projectDepartment);
                 intent.putExtra("area",projectArea);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);
+
             }
         });
 

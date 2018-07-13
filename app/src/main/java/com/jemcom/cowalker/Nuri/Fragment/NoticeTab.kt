@@ -21,6 +21,7 @@ class NoticeTab : Fragment(), View.OnClickListener {
                 notice_message_tv.setTextColor(Color.BLACK)
                 replaceFragment(MessageTab())
             }
+
             notice_news_tv -> {
                 notice_news_tv.isSelected = true
                 notice_message_tv.isSelected = false

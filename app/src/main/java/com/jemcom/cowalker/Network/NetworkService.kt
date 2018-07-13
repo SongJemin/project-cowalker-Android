@@ -285,4 +285,9 @@ interface NetworkService {
             @Part profile_img : MultipartBody.Part?,
             @Part background_img : MultipartBody.Part?
     ) : Call<PutMypagePhotoResponse>
+    @POST("/api/share")
+    fun postSharedSns(
+            @Header("authorization") authorization : String,
+            @Body sharedsns : PostSharedSns
+    ) : Call<PostSharedSnsResponse>
 }

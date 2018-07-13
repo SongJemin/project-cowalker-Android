@@ -250,6 +250,7 @@
                 android:hint="예) 0명, 00명, 1명~최대 1000명"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="17dp"
+                android:gravity="right"
                 android:layout_below="@+id/invite_personnel_tv"
                 android:backgroundTint="@color/Transparent"
                 android:fontFamily="@font/notosanscjkkr_regular"

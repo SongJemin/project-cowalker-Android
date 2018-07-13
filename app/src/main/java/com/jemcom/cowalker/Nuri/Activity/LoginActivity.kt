@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -12,6 +13,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
+import com.google.firebase.iid.FirebaseInstanceId
 import com.jemcom.cowalker.Jemin.Activity.MainActivity
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.NetworkService
@@ -77,7 +79,17 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+        val view = window.decorView
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (view != null) {
+                // 23 버전 이상일 때 상태바 하얀 색상에 회색 아이콘 색상을 설정
+                view.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                window.statusBarColor = Color.parseColor("#FFFFFF")
+            }
+        } else if (Build.VERSION.SDK_INT >= 21) {
+            // 21 버전 이상일 때
+            window.statusBarColor = Color.BLACK
+        }
         login_check_btn.setVisibility(View.INVISIBLE)
         login_auto_txt.setOnClickListener(this)
         login_ok_btn.setOnClickListener(this)
@@ -134,7 +146,8 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
 
     fun post()
     {
-        var data = PostLogin(email,password)
+        var fcm_token = FirebaseInstanceId.getInstance().getToken();
+        var data = PostLogin(email,password,fcm_token)
         var postLoginResponse = networkService.postLogin(data)
 
         postLoginResponse.enqueue(object : Callback<PostLoginResponse>{
