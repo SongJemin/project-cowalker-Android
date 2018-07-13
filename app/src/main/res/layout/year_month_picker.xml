@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="500dp"
+    android:layout_height="530dp"
     android:orientation="vertical"
     android:layout_marginTop="20dp"
     >
@@ -16,7 +16,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="시작"/>
+            android:text="시작"
+            android:fontFamily="@font/notosanscjkkr_regular"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="종료"
-
+            android:fontFamily="@font/notosanscjkkr_regular"
             />
 
         <LinearLayout
@@ -104,6 +105,7 @@
         android:layout_gravity="bottom"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="4dp"
         >
 
         <Button
@@ -113,6 +115,11 @@
             android:layout_weight="1"
             android:textAllCaps="false"
             android:text="취소"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="2dp"
+            android:textColor="#ffffff"
+            android:background="#cccccc"
+            android:fontFamily="@font/notosanscjkkr_regular"
             />
 
         <Button
@@ -121,7 +128,12 @@
             android:layout_weight="1"
             android:layout_height="45dp"
             android:textAllCaps="false"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="4dp"
             android:text="확인"
+            android:textColor="#ffffff"
+            android:background="#45b6ff"
+            android:fontFamily="@font/notosanscjkkr_regular"
             />
 
     </LinearLayout>

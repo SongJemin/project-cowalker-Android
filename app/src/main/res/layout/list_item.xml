@@ -18,9 +18,7 @@
             android:layout_height="154dp"
             android:background="@drawable/default_img"
             android:scaleType="fitXY"
-            android:layout_marginRight="12dp"/>
-
-
+            android:layout_marginRight="12dp" />
 
     </RelativeLayout>
 

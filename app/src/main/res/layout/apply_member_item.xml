@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="150dp"
     android:layout_marginBottom="3dp"
     android:background="#ffffff"
     android:orientation="vertical">
@@ -20,13 +20,13 @@
             <TextView
                 android:id="@+id/apply_member_name_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
+                android:layout_height="wrap_content"
                 android:text="이충엽"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:layout_toRightOf="@+id/apply_member_profile_img"
                 android:layout_marginLeft="12dp"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:layout_marginTop="20dp"
                 />
             <TextView
@@ -57,11 +57,13 @@
                 android:layout_height="36dp"
                 android:layout_below="@+id/apply_member_name_tv"
                 android:text="거절"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 android:layout_toLeftOf="@+id/apply_member_accept_btn"
                 android:background="#eeeeee"
                 android:textColor="#c5c5c5"
                 android:layout_marginRight="11dp"
                 android:layout_marginTop="42dp"
+                android:gravity="center"
                 />
 
     <Button
@@ -73,6 +75,8 @@
         android:layout_marginTop="42dp"
         android:text="수락"
         android:textColor="#ffffff"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:gravity="center"
         android:background="#45b6ff"
         />
 

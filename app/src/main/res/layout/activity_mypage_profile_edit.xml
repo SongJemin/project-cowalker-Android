@@ -6,12 +6,10 @@
     android:orientation="vertical">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="#f8f8f8"
-        tools:context=".ProfileEditActivity">
+        android:background="#f8f8f8" >
 
         <TextView
             android:id="@+id/textView7"
@@ -22,22 +20,24 @@
             android:layout_marginTop="30dp"
             android:text="프로필 수정"
             android:textColor="#444444"
-            android:textSize="14sp" />
+            android:fontFamily="@font/notosanscjkkr_bold"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="135dp"
             android:orientation="vertical"
             android:background="#FFFFFF">
             <TextView
                 android:id="@+id/textView10"
-                android:layout_width="64dp"
-                android:layout_height="19dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="285dp"
                 android:layout_marginBottom="6dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="19dp"
                 android:text="역할"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:textColor="#000000"
                 android:textSize="16sp" />
             <Spinner
@@ -55,26 +55,27 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:background="#ffffff">
             <TextView
-                android:layout_width="115dp"
-                android:layout_height="19dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="271dp"
                 android:layout_marginTop="19dp"
                 android:layout_marginBottom="6dp"
                 android:text="한 줄 소개"
                 android:textSize="16sp"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:textColor="#000000"/>
 
             <EditText
                 android:id="@+id/profile_edit_intro_et"
                 android:inputType="textMultiLine|textNoSuggestions"
                 android:layout_width="311.37dp"
-                android:layout_height="24dp"
+                android:layout_height="35dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="29.63dp"
                 android:layout_marginTop="6dp"
@@ -82,30 +83,32 @@
                 android:textSize="16sp"
                 android:hint="예) 자신을 어필해보세요.(25자 이내)"
                 android:textColorHint="#c5c5c5"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 android:background="#ffffff"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:background="#ffffff">
             <TextView
                 android:layout_width="150dp"
-                android:layout_height="19dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="271dp"
                 android:layout_marginTop="19dp"
                 android:layout_marginBottom="6dp"
                 android:text="이메일 또는 웹사이트"
                 android:textSize="16sp"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:textColor="#000000"/>
             <EditText
                 android:id="@+id/profile_edit_url_et"
                 android:inputType="textMultiLine|textNoSuggestions"
                 android:layout_width="311.37dp"
-                android:layout_height="29dp"
+                android:layout_height="35dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="29.63dp"
                 android:layout_marginTop="6dp"
@@ -113,6 +116,7 @@
                 android:textSize="16sp"
                 android:hint="예) www.mypage.com"
                 android:textColorHint="#c5c5c5"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 android:background="#ffffff"/>
         </LinearLayout>
 
@@ -126,12 +130,13 @@
             <TextView
                 android:id="@+id/object_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="9dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="315dp"
                 android:layout_marginTop="19dp"
                 android:text="목적"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
@@ -152,11 +157,12 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="315dp"
                 android:layout_marginTop="9dp"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:text="분야"
                 android:textColor="#000000"
                 android:textSize="16sp" />
@@ -178,12 +184,13 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="9dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="315dp"
                 android:layout_marginTop="19dp"
                 android:text="지역"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
@@ -197,13 +204,16 @@
                 android:textAlignment="center"
                 android:spinnerMode="dropdown"/>
 
-            <ImageButton
-                android:id="@+id/profile_edit_ok_ib"
+            <Button
+                android:id="@+id/profile_edit_ok_btn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:src="@drawable/okbtn"
-                android:background="@android:color/transparent"/>
+                android:background="#45b6ff"
+                android:text="완료"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:fontFamily="@font/notosanscjkkr_bold"/>
 
         </LinearLayout>
     </LinearLayout>

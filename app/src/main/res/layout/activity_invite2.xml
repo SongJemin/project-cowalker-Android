@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Jemin.Activity.Invite2Activity">
+    android:layout_height="match_parent" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,19 +11,18 @@
         android:focusableInTouchMode="true"
         android:orientation="vertical">
 
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="141dp"
+            android:layout_height="163dp"
             android:background="#f8f8f8">
 
             <View
                 android:id="@+id/invite2_line1_view"
                 android:layout_width="27dp"
                 android:layout_height="3dp"
-                android:background="#64dfff"
+                android:background="#45b6ff"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="37dp"
+                android:layout_marginTop="42dp"
                 android:layout_toLeftOf="@+id/invite2_progress2_img"
                 android:layout_marginRight="2dp"
                 />
@@ -37,7 +33,7 @@
                 android:layout_height="3dp"
                 android:background="#c5c5c5"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="37dp"
+                android:layout_marginTop="42dp"
                 />
 
             <View
@@ -46,7 +42,7 @@
                 android:layout_height="3dp"
                 android:background="#c5c5c5"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="37dp"
+                android:layout_marginTop="42dp"
                 android:layout_toRightOf="@+id/invite2_progress3_img"
                 android:layout_marginLeft="2dp"
                 />
@@ -56,7 +52,8 @@
                 android:id="@+id/invite2_progress1_img"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
                 android:layout_toLeftOf="@+id/invite2_line1_view"
                 android:layout_marginRight="2dp"
                 android:background="@drawable/check"
@@ -68,8 +65,8 @@
                 android:layout_height="25dp"
                 android:layout_toLeftOf="@+id/invite2_line2_view"
                 android:layout_marginRight="2dp"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/active2"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/progress_2_active"
                 />
 
             <ImageView
@@ -94,12 +91,12 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="38dp"
+                android:layout_height="wrap_content"
                 android:text="어떤 도움이 필요한가요?"
                 android:textSize="26sp"
                 android:textColor="#444444"
-                android:layout_marginLeft="20dp"
-                android:textStyle="bold"
+                android:layout_marginLeft="40dp"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:layout_marginTop="35dp"
                 android:layout_below="@+id/invite2_progress1_img"
                 />
@@ -109,19 +106,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="95dp"
+            android:layout_height="110dp"
             android:background="#ffffff"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
+                android:layout_height="wrap_content"
                 android:text="활동"
                 android:layout_marginTop="12dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="40dp"
                 android:textColor="#000000"
-                android:textStyle="bold"
-                android:textSize="16sp"
+                android:fontFamily="@font/notosanscjkkr_bold"                android:textSize="16sp"
                 />
             
             <EditText
@@ -130,28 +126,30 @@
                 android:layout_height="wrap_content"
                 android:hint="어떤 도움을 받기 원하나요?"
                 android:textSize="15dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 android:backgroundTint="@color/Transparent"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="5dp"
                 />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="95dp"
+            android:layout_height="110dp"
             android:background="#ffffff"
             android:layout_marginTop="9dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
+                android:layout_height="wrap_content"
                 android:text="활동 시간 및 기간"
                 android:layout_marginTop="12dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="40dp"
                 android:textColor="#000000"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:textSize="16sp"
                 />
 
@@ -162,27 +160,29 @@
                 android:hint="예) 2018.07.01~2018.09.09 주 3회 정기모임"
                 android:textSize="15dp"
                 android:backgroundTint="@color/Transparent"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginLeft="45dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="5dp"
                 />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="95dp"
+            android:layout_height="110dp"
             android:background="#ffffff"
             android:layout_marginTop="9dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
+                android:layout_height="wrap_content"
                 android:text="활동 위치"
                 android:layout_marginTop="12dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="40dp"
                 android:textColor="#000000"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:textSize="16sp"
                 />
 
@@ -193,27 +193,29 @@
                 android:hint="상세 주소를 입력해주세요."
                 android:textSize="15dp"
                 android:backgroundTint="@color/Transparent"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="95dp"
+            android:layout_height="110dp"
             android:background="#ffffff"
             android:layout_marginTop="9dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
+                android:layout_height="wrap_content"
                 android:text="혜택 및 보상"
-                android:layout_marginTop="12dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="40dp"
                 android:textColor="#000000"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:textSize="16sp"
                 />
 
@@ -224,7 +226,8 @@
                 android:hint="예) 상금 분배, 스톡옵션, 페이"
                 android:textSize="15dp"
                 android:backgroundTint="@color/Transparent"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="45dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 android:layout_marginTop="12dp"
                 />
 
@@ -235,12 +238,13 @@
             android:id="@+id/invite2_next_btn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="17dp"
             android:text="다음"
             android:gravity="center"
-            android:textSize="20dp"
+            android:textSize="16dp"
+            android:fontFamily="@font/notosanscjkkr_bold"
             android:textColor="#ffffff"
-            android:background="#64dfff"/>
+            android:background="#45b6ff"/>
 
     </LinearLayout>
 

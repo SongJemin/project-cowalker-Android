@@ -14,10 +14,10 @@
             android:layout_height="wrap_content"
             android:textSize="26sp"
             android:text="프로젝트"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="40dp"
             android:layout_marginBottom="30dp"
-            android:textStyle="bold"
+            android:fontFamily="@font/notosanscjkkr_bold"
             android:textColor="#444444"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                 android:textSize="16sp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="7dp"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:textColor="#000000"/>
         </LinearLayout>
 
@@ -75,7 +75,7 @@
                 android:textSize="16sp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="7dp"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:textColor="#000000"/>
         </LinearLayout>
 

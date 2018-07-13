@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ffffff">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -10,13 +11,13 @@
         <ImageView
             android:id="@+id/otherpage_background_img"
             android:layout_width="match_parent"
-            android:layout_height="177dp"
+            android:layout_height="200dp"
             android:background="@drawable/boyoung"/>
 
         <RelativeLayout
             android:layout_width="81dp"
             android:layout_height="81dp"
-            android:layout_marginTop="137dp"
+            android:layout_marginTop="160dp"
             android:layout_marginLeft="20dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -33,51 +34,33 @@
                 android:src="@drawable/profile_default"
                 />
         </RelativeLayout>
-        <Button
-            android:layout_width="29dp"
-            android:layout_height="29dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="141dp"
-            android:layout_marginRight="11dp"
-            android:background="@drawable/oval"
-            />
-        <Button
-            android:id="@+id/otherpage_camera_btn"
-            android:layout_width="29dp"
-            android:layout_height="29dp"
-            android:layout_marginTop="189dp"
-            android:layout_marginLeft="75dp"
-            android:background="@drawable/oval"
-            />
-
 
         <TextView
             android:id="@+id/otherpage_name_tv"
             android:layout_width="wrap_content"
-            android:layout_height="29dp"
+            android:layout_height="wrap_content"
             android:text="박보영"
             android:textSize="20sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/notosanscjkkr_bold"
             android:layout_marginLeft="121dp"
             android:layout_below="@id/otherpage_background_img"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="3dp"
             android:textColor="#444444"
             />
 
         <TextView
             android:id="@+id/otherpage_role_tv"
             android:layout_width="wrap_content"
-            android:layout_height="29dp"
+            android:layout_height="wrap_content"
             android:text="PM"
             android:textSize="20sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/notosanscjkkr_bold"
             android:layout_marginLeft="5dp"
             android:layout_below="@id/otherpage_background_img"
             android:layout_toRightOf="@id/otherpage_name_tv"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="3dp"
             android:textColor="#444444"
             />
-
 
         <Button
             android:id="@+id/otherpage_message_btn"
@@ -85,7 +68,7 @@
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="12dp"
             android:layout_alignTop="@id/otherpage_name_tv"
             android:background="@drawable/message_gray"
             />
@@ -93,12 +76,13 @@
         <TextView
             android:id="@+id/otherpage_summary_tv"
             android:layout_width="314dp"
-            android:layout_height="44dp"
+            android:layout_height="70dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/otherpage_name_tv"
             android:layout_marginTop="22dp"
             android:text="누구나 타고난 환경과 관계 없이 꿈을 꿀 수 있는 사회를 만들고 싶습니다."
             android:textSize="14sp"
+            android:fontFamily="@font/notosanscjkkr_regular"
             android:textColor="#444444"
             />
 
@@ -106,11 +90,12 @@
             android:id="@+id/otherpage_link_tv"
             android:layout_width="118dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="7dp"
             android:layout_below="@id/otherpage_summary_tv"
             android:background="#eeeeee"
             android:fontFamily="@font/notosanscjkkr_regular"
-            android:text="fjsdj"
+            android:text="www.naver.com"
             android:textSize="14sp"
             android:textColor="#444444"
             android:gravity="center"/>
@@ -118,8 +103,9 @@
         <TextView
             android:id="@+id/otherpage_intro_btn"
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:text="더 보기>"
+            android:fontFamily="@font/notosanscjkkr_regular"
             android:layout_alignParentRight="true"
             android:textColor="#c5c5c5"
             android:layout_alignBottom="@id/otherpage_link_tv"
@@ -142,69 +128,67 @@
             android:layout_below="@id/otherpage_link_tv"
             android:layout_marginTop="15dp">
 
-
-
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="17dp"
+                android:layout_height="wrap_content"
                 android:text="목적"
                 android:textColor="#c5c5c5"
-                android:layout_marginLeft="21dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 />
 
             <TextView
                 android:id="@+id/otherpage_aim_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="17dp"
+                android:layout_height="wrap_content"
                 android:text="공모전참여"
                 android:textColor="#444444"
-                android:layout_marginLeft="17dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="17dp"
+                android:layout_height="wrap_content"
                 android:text="분야"
                 android:textColor="#c5c5c5"
-                android:layout_marginLeft="23dp"
+                android:layout_marginLeft="55dp"
                 android:layout_marginTop="10dp"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 />
 
             <TextView
                 android:id="@+id/otherpage_department_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="17dp"
+                android:layout_height="wrap_content"
                 android:text="콘텐츠"
                 android:textColor="#444444"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="17dp"
+                android:layout_height="wrap_content"
                 android:text="지역"
                 android:textColor="#c5c5c5"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="55dp"
                 android:layout_marginTop="10dp"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 />
 
             <TextView
                 android:id="@+id/otherpage_area_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="17dp"
+                android:layout_height="wrap_content"
                 android:text="서울"
                 android:textColor="#444444"
-                android:layout_marginLeft="21dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 />
 
         </LinearLayout>
@@ -213,25 +197,27 @@
             android:background="#f8f8f8"
             android:id="@+id/otherpage_project_layout"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
             android:layout_below="@id/otherpage_subject_layout"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_marginLeft="25dp"
+                android:layout_width="18dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="38dp"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/profile_list"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:text="프로젝트"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="23dp"
+                android:layout_marginLeft="25dp"
                 android:textColor="#444444"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 />
 
             <Button
@@ -239,7 +225,7 @@
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:background="@drawable/nextdarkgray"
-                android:layout_marginLeft="200dp"
+                android:layout_marginLeft="230dp"
                 android:layout_gravity="center_vertical"
                 />
 

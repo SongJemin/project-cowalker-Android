@@ -17,16 +17,22 @@
 
     <EditText
         android:id="@+id/notice_message_ed"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="26dp"
         android:layout_width="match_parent"
-        android:layout_height="256dp"
+        android:layout_height="350dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:background="#ffffff"
+        android:hint="상대방에게 보낼 메시지를 입력하세요."
         />
-    <ImageView
+    <Button
         android:id="@+id/notice_message_iv"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="130dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/send_ok_btn" />
+        android:layout_height="70dp"
+        android:layout_marginTop="145dp"
+        android:background="#45b6ff"
+        android:text="전송"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:fontFamily="@font/notosanscjkkr_bold"/>
 </LinearLayout>
