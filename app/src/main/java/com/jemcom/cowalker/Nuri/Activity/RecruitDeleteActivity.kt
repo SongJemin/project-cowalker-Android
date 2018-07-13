@@ -1,5 +1,6 @@
 package com.jemcom.cowalker.Nuri.Activity
 
+import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -21,7 +22,9 @@ import android.content.DialogInterface
 import android.graphics.Color
 import android.os.Build
 import android.support.v7.app.AlertDialog
+import com.jemcom.cowalker.Jemin.Activity.ProjectDetailActivity
 import com.jemcom.cowalker.Network.Delete.DeleteRecruitResponse
+import com.jemcom.cowalker.Network.Get.GetRecruitList
 
 
 class RecruitDeleteActivity : AppCompatActivity(),View.OnClickListener {
@@ -32,6 +35,8 @@ class RecruitDeleteActivity : AppCompatActivity(),View.OnClickListener {
     var check = 0
     var project_idx : String = ""
     var recruit_idx : String = ""
+    var position = 0
+    lateinit var data : ArrayList<GetRecruitList>
 
     companion object {
         lateinit var activity: RecruitDeleteActivity
@@ -54,6 +59,8 @@ class RecruitDeleteActivity : AppCompatActivity(),View.OnClickListener {
                         })
                         .setNegativeButton("취소", null)
                         .show()
+//                var intent = Intent(applicationContext,ProjectDetailActivity::class.java)
+//                startActivity(intent)
             }
         }
     }
@@ -75,7 +82,6 @@ class RecruitDeleteActivity : AppCompatActivity(),View.OnClickListener {
         networkService = ApplicationController.instance.networkSerVice
         val getRecruitintent = intent
         project_idx = getRecruitintent.getStringExtra("project_idx")
-        recruit_idx = getRecruitintent.getStringExtra("recruit_idx")
         recruitListItems = ArrayList()
 
         activity = this
@@ -103,7 +109,7 @@ class RecruitDeleteActivity : AppCompatActivity(),View.OnClickListener {
                 if(response!!.isSuccessful)
                 {
                     Log.v("TAG","모집 리스트 받아오기")
-                    var data = response.body().result
+                    data = response.body().result
                     Log.v("TAG","모집 리스트 값 = "+data.toString())
 
                     for(i in 0..data.size-1)
@@ -122,8 +128,10 @@ class RecruitDeleteActivity : AppCompatActivity(),View.OnClickListener {
 
     fun delete()
     {
-
-        var deleteRecruitResponse = networkService.deleteRecruit(project_idx,recruit_idx)
+        val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+        System.out.println("값은" + project_idx + "힝" + data[position].recruit_idx)
+        var deleteRecruitResponse = networkService.deleteRecruit(token,project_idx,data[position].recruit_idx)
 
         deleteRecruitResponse.enqueue(object : Callback<DeleteRecruitResponse>{
             override fun onFailure(call: Call<DeleteRecruitResponse>?, t: Throwable?) {
@@ -133,7 +141,8 @@ class RecruitDeleteActivity : AppCompatActivity(),View.OnClickListener {
             override fun onResponse(call: Call<DeleteRecruitResponse>?, response: Response<DeleteRecruitResponse>?) {
                 if(response!!.isSuccessful)
                 {
-                    var intent = Intent(applicationContext,LoginActivity::class.java)
+                    var intent = Intent(applicationContext,ProjectDetailActivity::class.java)
+                    intent.putExtra("project_idx",project_idx)
                     startActivity(intent)
                 }
                 else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()

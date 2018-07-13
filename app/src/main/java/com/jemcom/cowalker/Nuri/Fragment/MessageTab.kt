@@ -73,7 +73,7 @@ class MessageTab: Fragment(),View.OnClickListener {
                     if(data.size > 0) {
                         for (i in 0..data.size - 1) {
 //                        data[i].partner_profile_url
-                            messageItems.add(MessageItem("https://project-cowalker.s3.ap-northeast-2.amazonaws.com/1530947972948.32123", data[i].partner_name, data[i].contents, data[i].time))
+                            messageItems.add(MessageItem(data[i].partner_profile_url, data[i].partner_name, data[i].contents, data[i].time))
                             messageAdapter = MessageAdapter(messageItems, requestManager)
                             messageAdapter.setOnItemClickListener(this@MessageTab)
                             v.message_rv.layoutManager = LinearLayoutManager(v.context)

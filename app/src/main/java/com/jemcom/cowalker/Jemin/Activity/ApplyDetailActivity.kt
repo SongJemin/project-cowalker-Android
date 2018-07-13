@@ -19,6 +19,7 @@ import com.jemcom.cowalker.Network.Get.Response.GetQuestionListResponse
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.Network.Post.PostJoin
 import com.jemcom.cowalker.Network.Post.Response.PostJoinResponse
+import com.jemcom.cowalker.Nuri.Activity.LoginActivity
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
 
 import com.jemcom.cowalker.R
@@ -32,6 +33,7 @@ import retrofit2.Response
 
 class ApplyDetailActivity : AppCompatActivity() {
 
+
     lateinit var questionDetailAdapter : QuestionDetailAdapter
     lateinit var networkService: NetworkService
     var project_idx : String = ""
@@ -42,7 +44,7 @@ class ApplyDetailActivity : AppCompatActivity() {
     var position : String = ""
     var task : String = ""
     var sharer_idx : String = ""
-
+    var flag : Int = 0
 
     companion object {
         lateinit var detailActivity: ApplyDetailActivity
@@ -69,7 +71,20 @@ class ApplyDetailActivity : AppCompatActivity() {
         recruit_idx = getRecruitintent.getStringExtra("recruit_idx")
         Log.v("TAG", "모집 상세에서 받은 모집 번호 = "+recruit_idx)
         project_idx = getRecruitintent.getStringExtra("project_idx")
-        sharer_idx = getRecruitintent.getStringExtra("sharer_idx")
+        flag = getRecruitintent.getIntExtra("flag",0)
+
+       // 공유로 들어온 경우
+        if(flag == 2)
+        {
+            Log.v("TAG", "공유로 들어온 경우")
+            sharer_idx = getRecruitintent.getStringExtra("sharer_idx")
+        }
+        else
+        {
+            Log.v("TAG", "일반적으로 들어온 경우")
+
+        }
+
         Log.v("TAG", "모집 상세에서 받은 공유자 번호 = "+sharer_idx)
         position = getRecruitintent.getStringExtra("position")
         task = getRecruitintent.getStringExtra("task")
@@ -79,6 +94,7 @@ class ApplyDetailActivity : AppCompatActivity() {
         apply_detail_summary_tv.setText(task)
 
         apply_detail_apply_btn.setOnClickListener {
+
             if(sharer_idx!="")
             {
                 Log.v("sdaf","일반지원")
@@ -88,6 +104,7 @@ class ApplyDetailActivity : AppCompatActivity() {
                 Log.v("sdaf","공유지원")
                 post()
             }
+
 
         }
 

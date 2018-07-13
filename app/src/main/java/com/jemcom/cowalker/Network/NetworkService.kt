@@ -102,7 +102,7 @@ interface NetworkService {
     @PUT("/api/intro")
     fun putIntroEdit(
             @Header("Authorization") authorization: String,
-            @Part("contents") contents : String,
+            @Part("contents") contents : RequestBody,
             @Part img : ArrayList<MultipartBody.Part?>
     ) : Call<PutIntroEditResponse>
 
@@ -139,13 +139,13 @@ interface NetworkService {
             @Part profile_img : MultipartBody.Part?,
             @Part background_img : MultipartBody.Part?,
 //            @Part("name") name:String,
-            @Part("position") position:String,
-            @Part("introduce") introduce:String,
+            @Part("position") position:RequestBody,
+            @Part("introduce") introduce:RequestBody,
 //            @Part("introduce_detail") introduce_detail:String,
-            @Part("portfolio_url") portfolio_url : String,
-            @Part("aim") aim : String,
-            @Part("department") department : String,
-            @Part("area") area : String
+            @Part("portfolio_url") portfolio_url : RequestBody,
+            @Part("aim") aim : RequestBody,
+            @Part("department") department : RequestBody,
+            @Part("area") area : RequestBody
     ) : Call<PutMyPageResponse>
 
     @GET("/api/project/{project_idx}")
@@ -193,6 +193,7 @@ interface NetworkService {
 
     @DELETE("/api/project/{project_idx}/recruit/{recruit_idx}")
     fun deleteRecruit(
+            @Header("authorization") authorization: String,
             @Path("project_idx") project_idx : String,
             @Path("recruit_idx") recruit_idx : String
     ) : Call<DeleteRecruitResponse>
@@ -289,11 +290,12 @@ interface NetworkService {
 
     @Multipart
     @PUT("/api/mypage/photo")
-    fun putMypagePhoto(
+    fun putPhoto(
             @Header("authorization") authorization: String,
             @Part profile_img : MultipartBody.Part?,
             @Part background_img : MultipartBody.Part?
     ) : Call<PutMypagePhotoResponse>
+
     @POST("/api/share")
     fun postSharedSns(
             @Header("authorization") authorization : String,

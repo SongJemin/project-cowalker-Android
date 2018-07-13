@@ -61,11 +61,12 @@ class ProfileMore2Activity : AppCompatActivity(),View.OnClickListener {
     {
         val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
-        var getProfieMineResponse = networkService.getIntroMine("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTE3MzIzOSwiZXhwIjoxNTMzNzY1MjM5fQ.taqF_rP7P2DzGiSTT234wv3dqjjsTBLA0J01K-PDlxk")
+        var getProfieMineResponse = networkService.getIntroMine(token)
 
         getProfieMineResponse.enqueue(object : Callback<GetIntroOtherResponse>{ // object 객체 무조건 밑에 override해주기, 내용 없어도 해주기.
             override fun onFailure(call: Call<GetIntroOtherResponse>?, t: Throwable?) {
                 Toast.makeText(applicationContext, "서버 연결 실패", Toast.LENGTH_SHORT).show() // 실패시 토스트 메시지 띄워주자.
+                System.out.println("이유가 " + t.toString())
             }
             override fun onResponse(call: Call<GetIntroOtherResponse>?, response: Response<GetIntroOtherResponse>?) {
                 if(response!!.isSuccessful) // 성공 했을 때

@@ -91,11 +91,15 @@ class MyInfoEditActivity : AppCompatActivity() {
     {
         val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
-        var putEditResponse = networkService.putIntroEdit(token,my_info_edit_explain_et.text.toString(),imgList)
+        var explain = RequestBody.create(MediaType.parse("text/plain"),
+                explainValue)
+        var putEditResponse = networkService.putIntroEdit(token,explain,imgList)
 
+        System.out.println("내정보 " + explain)
         putEditResponse.enqueue(object : Callback<PutIntroEditResponse>{
             override fun onFailure(call: Call<PutIntroEditResponse>?, t: Throwable?) {
                 Toast.makeText(applicationContext,"서버 연결 실패",Toast.LENGTH_SHORT).show()
+                System.out.println("이유가 " + t.toString())
             }
 
             override fun onResponse(call: Call<PutIntroEditResponse>?, response: Response<PutIntroEditResponse>?) {

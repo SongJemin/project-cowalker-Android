@@ -18,6 +18,7 @@ import com.jemcom.cowalker.Network.Get.Response.GetRecruitListResponse
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.Network.Post.PostJoin
 import com.jemcom.cowalker.Network.Post.Response.PostJoinResponse
+import com.jemcom.cowalker.Nuri.Activity.LoginActivity
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
 import com.jemcom.cowalker.Nuri.Item.RecruitListItem
 import com.jemcom.cowalker.R
@@ -35,6 +36,9 @@ import retrofit2.Response
 
 // 지원서 액티비티
 class ApplyActivity : AppCompatActivity(), View.OnClickListener {
+
+    val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+    val token = pref.getString("token","")
     lateinit var recruitListItems: ArrayList<RecruitListItem>
     lateinit var recruitListGetAdapter : RecruitListGetAdapter
     var recruitData : java.util.ArrayList<GetRecruitList> = java.util.ArrayList<GetRecruitList>()
@@ -90,7 +94,11 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener {
         apply_apply_btn.setOnClickListener(this)
 
         apply_apply_btn.setOnClickListener{
-              post()
+              if(token.length > 0) post()
+            else{
+                  var intent = Intent(applicationContext,LoginActivity::class.java)
+                  startActivity(intent)
+              }
         }
     }
 

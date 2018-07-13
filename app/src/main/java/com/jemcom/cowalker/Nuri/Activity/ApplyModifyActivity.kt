@@ -1,5 +1,6 @@
 package com.jemcom.cowalker.Nuri.Activity
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -93,7 +94,7 @@ class ApplyModifyActivity : AppCompatActivity(),View.OnClickListener {
                 }
                 this@ApplyModifyActivity.start_date = startYear.toString() + "-" + startZeroMonth + "-" + startZeroDay
                 this@ApplyModifyActivity.end_date = finishYear.toString() + "-" + finishZeroMonth + "-" + finishZeroDay
-                invite_range_btn.text = this@ApplyModifyActivity.start_date + " ~ " + this@ApplyModifyActivity.end_date
+                invite_range_btn.text = date
             }
             pd.show(fragmentManager, "YearMonthPickerTest")
         }
@@ -105,9 +106,11 @@ class ApplyModifyActivity : AppCompatActivity(),View.OnClickListener {
     fun get()
     {
 
-        val recruit_idx = "5b3ecc11ca5c3444e4f802f1"
-        val project_idx = "5b3dd2387172d402215033d2"
-        val getRecruitDetailResponse = networkService.getRecruitDetail("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA2NzAxNTMsImV4cCI6MTUzMzI2MjE1M30.BdRb0yary7AY8_yi8MDRDXuXrW19QSqRJI-9Xin3SXs",project_idx,recruit_idx)
+        val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+        val recruit_idx = getIntent().getStringExtra("recruit_idx").toString()
+        val project_idx = getIntent().getStringExtra("project_idx").toString()
+        val getRecruitDetailResponse = networkService.getRecruitDetail(token,project_idx,recruit_idx)
 
         getRecruitDetailResponse.enqueue(object : Callback<GetRecruitDetailResponse> {
             override fun onFailure(call: Call<GetRecruitDetailResponse>?, t: Throwable?) {
@@ -118,8 +121,8 @@ class ApplyModifyActivity : AppCompatActivity(),View.OnClickListener {
                 if(response!!.isSuccessful)
                 {
                     data = response.body().result
-                    var start = data[0].start_date.split("T").toString()
-                    var end = data[0].end_date.split("T").toString()
+                    var start = data[0].start_date.split(",").toString()
+                    var end = data[0].end_date.split(",").toString()
                     date = start + " ~ " + end
                     if(data[0].position.equals("PM")) invite_pm_btn.isSelected = true
                     else if(data[0].position.equals("기획자")) invite_planner_btn.isSelected = true
