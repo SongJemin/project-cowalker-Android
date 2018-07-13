@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,17 +17,15 @@
             android:focusableInTouchMode="true"
             android:orientation="vertical">
 
-
-
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="38dp"
+                android:layout_height="wrap_content"
                 android:text="새 프로젝트"
                 android:textColor="#444444"
-                android:textStyle="bold"
                 android:textSize="26sp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="29dp"/>
+                android:layout_marginTop="29dp"
+                android:fontFamily="@font/notosanscjkkr_bold"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
@@ -38,13 +35,13 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
+                android:layout_height="wrap_content"
                 android:text="프로젝트 이미지"
                 android:textColor="#444444"
                 android:textSize="16sp"
                 android:layout_marginTop="13dp"
                 android:layout_marginLeft="20dp"
-                android:textStyle="bold"/>
+                android:fontFamily="@font/notosanscjkkr_bold" />
 
 
             <HorizontalScrollView
@@ -70,8 +67,6 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="9dp"
                             android:orientation="horizontal">
-
-
                         </LinearLayout>
 
                         <Button
@@ -93,39 +88,46 @@
                         android:textColor="#444444"
                         android:layout_marginTop="5dp"
                         android:layout_marginLeft="67dp"
+                        android:fontFamily="@font/notosanscjkkr_regular"
                         />
 
                 </LinearLayout>
 
             </HorizontalScrollView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:text="프로젝트 소개"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:textColor="#444444"
-                android:layout_marginLeft="20dp"
-                android:textStyle="bold"/>
-
-            <EditText
-                android:id="@+id/projectchange2_explain_edit"
-                android:layout_width="336dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#ffffff"
-                android:hint="팀소개, 주요업무, 자격요건, 팀빌딩 절차, 문의처, 상세정보"
-                android:paddingTop="20dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="40dp"
-                android:textSize="16sp"
-                android:gravity="top"
-                android:layout_marginTop="13dp"
-                android:layout_gravity="center"/>
+                android:orientation="vertical"
+                android:background="#ffffff">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="프로젝트 소개"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:textColor="#444444"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/notosanscjkkr_bold" />
+
+                <EditText
+                    android:id="@+id/projectchange2_explain_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:hint="팀소개, 주요업무, 자격요건, 팀빌딩 절차, 문의처, 상세정보"
+                    android:paddingTop="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="40dp"
+                    android:textSize="16sp"
+                    android:gravity="top"
+                    android:layout_marginTop="13dp"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:layout_gravity="center"/>
 
 
-
-
+            </LinearLayout>
         </LinearLayout>
 
         <Button
@@ -133,6 +135,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"
+            android:textSize="16sp"
             android:background="@drawable/okbtn"
             android:layout_marginTop="50dp"/>
 

@@ -16,7 +16,7 @@ import com.jemcom.cowalker.R
 import com.jemcom.cowalker.Jemin.Fragment.SearchFragment
 import com.jemcom.cowalker.Nuri.Activity.RecruitDeleteActivity
 import com.jemcom.cowalker.Nuri.Fragment.OtherpageTab
-
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     //test
@@ -26,10 +26,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private val FRAGMENT5 = 5
     private val FRAGMENT6 = 6
     private var homeTabBtn: ImageButton? = null
+    private var homeTabSelectedBtn: ImageButton? = null
     private var searchTabBtn: ImageButton? = null
+    private var searchTabSelectedBtn: ImageButton? = null
     private var createTabBtn: ImageButton? = null
+    private var createTabSelectedBtn: ImageButton? = null
     private var alarmTabBtn: ImageButton? = null
+    private var alarmTabSelectedBtn: ImageButton? = null
     private var mypageTabBtn: ImageButton? = null
+    private var mypageTabSelectedBtn: ImageButton? = null
     val FINISH_INTERVAL_TIME = 2000
     var backPressedTime : Long = 0
 
@@ -66,10 +71,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // 위젯에 대한 참조
         homeTabBtn = findViewById<View>(R.id.home_tab_btn) as ImageButton
+        homeTabSelectedBtn = findViewById<View>(R.id.home_tab_selected_btn) as ImageButton
         searchTabBtn = findViewById<View>(R.id.search_tab_btn) as ImageButton
+        searchTabSelectedBtn = findViewById<View>(R.id.home_tab_selected_btn) as ImageButton
         createTabBtn = findViewById<View>(R.id.create_tab_btn) as ImageButton
+        createTabSelectedBtn = findViewById<View>(R.id.home_tab_selected_btn) as ImageButton
         alarmTabBtn = findViewById<View>(R.id.alarm_tab_btn) as ImageButton
+        alarmTabSelectedBtn = findViewById<View>(R.id.home_tab_selected_btn) as ImageButton
         mypageTabBtn = findViewById<View>(R.id.mypage_tab_btn) as ImageButton
+        mypageTabSelectedBtn = findViewById<View>(R.id.home_tab_selected_btn) as ImageButton
 
         // 탭 버튼에 대한 리스너 연결
         homeTabBtn!!.setOnClickListener(this)
@@ -92,28 +102,87 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.home_tab_btn ->
+            R.id.home_tab_btn -> {
                 // '홈 버튼' 클릭 시 '홈 프래그먼트' 호출
                 callFragment(FRAGMENT1)
+                home_tab_btn.visibility = View.GONE
+                home_tab_selected_btn.visibility = View.VISIBLE
+
+                search_tab_btn.visibility = View.VISIBLE
+                search_tab_selected_btn.visibility = View.GONE
+                create_tab_btn.visibility = View.VISIBLE
+                create_tab_selected_btn.visibility = View.GONE
+                alarm_tab_btn.visibility = View.VISIBLE
+                alarm_tab_selected_btn.visibility = View.GONE
+                mypage_tab_btn.visibility = View.VISIBLE
+                mypage_tab_selected_btn.visibility = View.GONE
+            }
 
             R.id.search_tab_btn ->{
                 // '탐색 버튼' 클릭 시 '탐색 프래그먼트' 호출
-               callFragment(FRAGMENT2)
+                callFragment(FRAGMENT2)
+                search_tab_btn.visibility = View.GONE
+                search_tab_selected_btn.visibility = View.VISIBLE
+
+                home_tab_btn.visibility = View.VISIBLE
+                home_tab_selected_btn.visibility = View.GONE
+                create_tab_btn.visibility = View.VISIBLE
+                create_tab_selected_btn.visibility = View.GONE
+                alarm_tab_btn.visibility = View.VISIBLE
+                alarm_tab_selected_btn.visibility = View.GONE
+                mypage_tab_btn.visibility = View.VISIBLE
+                mypage_tab_selected_btn.visibility = View.GONE
             }
             R.id.create_tab_btn -> {
                 // '방생성 버튼' 클릭 시 '방생성 액티비티' 호출
+                create_tab_btn.visibility = View.GONE
+                create_tab_selected_btn.visibility = View.VISIBLE
+
+                home_tab_btn.visibility = View.VISIBLE
+                home_tab_selected_btn.visibility = View.GONE
+                search_tab_btn.visibility = View.VISIBLE
+                search_tab_selected_btn.visibility = View.GONE
+                alarm_tab_btn.visibility = View.VISIBLE
+                alarm_tab_selected_btn.visibility = View.GONE
+                mypage_tab_btn.visibility = View.VISIBLE
+                mypage_tab_selected_btn.visibility = View.GONE
+
                 val intent = Intent(applicationContext, ProjectCreateActivity::class.java)
                 startActivity(intent)
                 overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
             }
 
-            R.id.alarm_tab_btn ->
+            R.id.alarm_tab_btn -> {
                 // '알림 버튼' 클릭 시 '알림 프래그먼트' 호출
                 callFragment(FRAGMENT4)
+                alarm_tab_btn.visibility = View.GONE
+                alarm_tab_selected_btn.visibility = View.VISIBLE
 
-            R.id.mypage_tab_btn ->
+                home_tab_btn.visibility = View.VISIBLE
+                home_tab_selected_btn.visibility = View.GONE
+                search_tab_btn.visibility = View.VISIBLE
+                search_tab_selected_btn.visibility = View.GONE
+                create_tab_btn.visibility = View.VISIBLE
+                create_tab_selected_btn.visibility = View.GONE
+                mypage_tab_btn.visibility = View.VISIBLE
+                mypage_tab_selected_btn.visibility = View.GONE
+            }
+
+            R.id.mypage_tab_btn -> {
                 // '마이페이지 버튼' 클릭 시 '마이페이지 프래그먼트' 호출
                 callFragment(FRAGMENT5)
+                mypage_tab_btn.visibility = View.GONE
+                mypage_tab_selected_btn.visibility = View.VISIBLE
+
+                home_tab_btn.visibility = View.VISIBLE
+                home_tab_selected_btn.visibility = View.GONE
+                search_tab_btn.visibility = View.VISIBLE
+                search_tab_selected_btn.visibility = View.GONE
+                create_tab_btn.visibility = View.VISIBLE
+                create_tab_selected_btn.visibility = View.GONE
+                alarm_tab_btn.visibility = View.VISIBLE
+                alarm_tab_selected_btn.visibility = View.GONE
+            }
         }
     }
 
@@ -137,7 +206,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 transaction.commit()
             }
 
-
             4 -> {
                 // '알림 프래그먼트' 호출
                 val alarmFragment = NoticeTab()
@@ -151,6 +219,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 transaction.replace(R.id.fragment_container, mypageFragment)
                 transaction.commit()
             }
+
             6 -> {
                 // '타인의 마이페이지 프래그먼트' 호출
                 val otherpageFragment = OtherpageTab()
@@ -158,6 +227,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 transaction.commit()
             }
         }
-
     }
 }

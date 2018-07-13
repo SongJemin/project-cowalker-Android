@@ -9,6 +9,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.ScrollView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.jemcom.cowalker.Hyunmin.Activity.ProjectIntroActivity
@@ -74,20 +76,23 @@ class HomeFragment : Fragment(), View.OnClickListener {
         Log.v("Home Fragment","홈에서 토큰 값 = " + token);
         get(view)
 
-
         return view
     }
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+//        val scrollView = view!!.findViewById(R.id.scroll_view) as ScrollView
+//        scrollView.requestFocus(View.FOCUS_UP)
+//        scrollView.scrollTo(0,0)
 
-       // GetProjectResponseData = ArrayList()
+        // GetProjectResponseData = ArrayList()
         //initDataSet()
 
     }
@@ -101,9 +106,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         getProjectDetail();
 
-
     }
-
 
     fun getProjectDetail()
     {
@@ -176,7 +179,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         startActivity(intent)
                     }
                     else if(userResult=="참여하기")
-                    { val intent = Intent(getActivity(), ProjectIntroActivity::class.java)
+                    { val intent = Intent(getActivity(), ProjectIntroCreaterActivity::class.java)
                         //val intent = Intent(getActivity(), ProjectIntroActivity::class.java)
                         //val intent = Intent(getActivity(), ProjectIntroActivity::class.java)
                         intent.putExtra("title", projectTitle)

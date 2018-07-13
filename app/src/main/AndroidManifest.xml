@@ -52,7 +52,7 @@
         <activity android:name=".Jemin.Activity.TestActivity" />
         <activity android:name=".Jemin.Activity.Invite4Activity" />
         <activity android:name=".Jemin.Activity.Invite3Activity" />
-        <activity android:name=".Jemin.Activity.SearchFilterActivity" />
+        <activity android:name=".Nuri.Activity.ApplyModifyActivity" />
         <activity android:name=".Hyunmin.Activity.MypageProfileEditActivity" />
         <activity android:name=".Hyunmin.Activity.ProjectIntroActivity" />
         <activity android:name=".Hyunmin.Activity.ProfileEditActivity" />
@@ -72,7 +72,6 @@
         <activity android:name=".Jemin.Activity.ApplyPaperActivity" />
         <activity android:name=".Nuri.Activity.OtherpageProjectlistActivity" />
         <activity android:name=".Nuri.Activity.MyInfoEditActivity" />
-        <activity android:name=".Nuri.Activity.ApplyModifyActivity" />
         <activity android:name=".Nuri.Activity.ApplyModify2Activity" />
         <activity android:name=".Nuri.Activity.ApplyModify3Activity" />
         <activity android:name=".Nuri.Activity.ApplyModify4Activity" />
@@ -82,6 +81,7 @@
             android:theme="@style/Transparent" />
         <activity android:name=".Nuri.Activity.PopupActivity"
             android:theme="@style/Transparent" ></activity>
+        <activity android:name=".Jemin.Activity.SearchFilterActivity" />
     </application>
 
 </manifest>

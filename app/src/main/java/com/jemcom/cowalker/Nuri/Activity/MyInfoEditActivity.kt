@@ -69,7 +69,7 @@ class MyInfoEditActivity : AppCompatActivity() {
             changeImage()
         }
 
-        my_info_edit_ok_ib.setOnClickListener {
+        my_info_edit_ok_btn.setOnClickListener {
             explainValue = my_info_edit_explain_et.getText().toString()
             putEdit()
         }
