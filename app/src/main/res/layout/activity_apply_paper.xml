@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Jemin.Activity.ApplyPaperActivity"
+    android:background="#f8f8f8"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:text="지원서"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#444444"
+            android:layout_gravity="center"
+            />
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/apply_paper_background_layout"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:layout_marginTop="53dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/layout_design">
+
+
+            <TextView
+                android:id="@+id/apply_paper_position_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="20dp"
+                android:text="역할"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/apply_paper_number_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
+                android:layout_marginLeft="8dp"
+                android:text="1"
+                android:layout_toRightOf="@+id/apply_paper_position_tv"
+                android:layout_alignTop="@+id/apply_paper_position_tv"
+                android:textColor="#666666" />
+
+            <TextView
+                android:id="@+id/apply_paper_personnel_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
+                android:layout_marginLeft="1dp"
+                android:text="명"
+                android:layout_toRightOf="@+id/apply_paper_number_tv"
+                android:layout_alignTop="@+id/apply_paper_number_tv"
+                android:textColor="#666666" />
+
+            <TextView
+                android:id="@+id/apply_paper_dday_tv"
+                android:layout_width="42dp"
+                android:layout_height="19dp"
+                android:layout_marginTop="15dp"
+                android:background="#45b6ff"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:text="D-9"
+                android:gravity="center"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/apply_paper_task_tv"
+                android:layout_width="106dp"
+                android:layout_height="19dp"
+                android:layout_marginTop="5dp"
+                android:text="역할 내용"
+                android:textColor="#666666"
+                android:layout_below="@+id/apply_paper_position_tv"
+                android:layout_alignLeft="@+id/apply_paper_position_tv"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="211dp"
+            android:background="#ffffff"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:text="자기 소개"
+                android:layout_marginTop="14dp"
+                android:layout_marginLeft="20dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                />
+            
+            <TextView
+                android:id="@+id/apply_paper_introduce"
+                android:layout_width="315dp"
+                android:layout_height="120dp"
+                android:text="자기 소개 내용"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="15dp"
+                android:textColor="#444444"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:background="#ffffff"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:text="이력서, 포트폴리오 링크"
+                android:layout_marginTop="18dp"
+                android:layout_marginLeft="20dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                />
+
+            <TextView
+                android:id="@+id/apply_paper_portfolio_url"
+                android:layout_width="315dp"
+                android:layout_height="wrap_content"
+                android:text="이력서, 포트폴리오 링크 내용"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="15dp"
+                android:textColor="#444444"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="98dp"
+            android:background="#ffffff"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:text="연락처"
+                android:layout_marginTop="23dp"
+                android:layout_marginLeft="20dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                />
+
+            <TextView
+                android:id="@+id/apply_paper_phone"
+                android:layout_width="315dp"
+                android:layout_height="wrap_content"
+                android:text="연락처 내용"
+                android:layout_marginTop="14dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="15dp"
+                android:textColor="#444444"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:orientation="vertical"
+            android:background="#ffffff"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="질문 (선택)"
+                android:textColor="#444444"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="16sp"
+                />
+            
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/apply_paper_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="282dp">
+
+                
+            </android.support.v7.widget.RecyclerView>
+
+
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/apply_paper_reject_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/rejectbtn"
+                />
+
+            <Button
+                android:id="@+id/apply_paper_approve_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/approve_unclick"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

@@ -34,15 +34,13 @@ import java.util.ArrayList
 class ProjectCreate2Activity : AppCompatActivity() {
 
     lateinit var networkService: NetworkService
-    internal lateinit var CropIntent: Intent
     private var mLayout: LinearLayout? = null
-    private var imgButton: ImageView? = null
     private val REQ_CODE_SELECT_IMAGE = 100
     lateinit var data : Uri
     private var btn: ImageView? = null
     internal lateinit var context: Context
+
     internal var count = 0
-    lateinit var token : String
     internal var uri: Uri? = null
 
     internal var titleValue: String? = null
@@ -70,9 +68,7 @@ class ProjectCreate2Activity : AppCompatActivity() {
 
         networkService = ApplicationController.instance.networkSerVice
 
-        val pref = applicationContext.getSharedPreferences("auto",Activity.MODE_PRIVATE)
-        token = pref.getString("token","")
-        Log.v("TAG","생성 액티비티 토큰 값 = " + token);
+
 
         mLayout = findViewById<View>(R.id.create_project2_layout) as LinearLayout
         context = this
@@ -167,6 +163,8 @@ class ProjectCreate2Activity : AppCompatActivity() {
     }
 
     fun postBoard() {
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
         Log.v("TAG","토큰 확인 = " + token);
         val title = RequestBody.create(MediaType.parse("text.plain"), titleValue)
         val summary = RequestBody.create(MediaType.parse("text.plain"), summaryValue)
@@ -174,9 +172,9 @@ class ProjectCreate2Activity : AppCompatActivity() {
         val department = RequestBody.create(MediaType.parse("text.plain"), departmentValue)
         val aim = RequestBody.create(MediaType.parse("text.plain"), aimValue)
         val explain = RequestBody.create(MediaType.parse("text.plain"), explainValue)
-        val postProjectResponse = networkService.uploadProject("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTE3MzIzOSwiZXhwIjoxNTMzNzY1MjM5fQ.taqF_rP7P2DzGiSTT234wv3dqjjsTBLA0J01K-PDlxk", title, summary, area, department, aim, explain, imgList)
+        val postProjectResponse = networkService.uploadProject(token, title, summary, area, department, aim, explain, imgList)
 
-        Log.v("TAG", "서버 전송 : 토큰 = " + token + ", 제목 = " + titleValue + ", 요약 소개 = " + summaryValue
+        Log.v("TAG", "프로젝트 생성 전송 : 토큰 = " + token + ", 제목 = " + titleValue + ", 요약 소개 = " + summaryValue
                 + ", 지역 = " + areaValue + ", 분야 = " + departmentValue + ", 목적 = " + aimValue + ", 설명 = " + explainValue + ", img = " + imgList)
 
         postProjectResponse.enqueue(object : retrofit2.Callback<PostProjectResponse>{

@@ -57,6 +57,15 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="130dp"
+                    android:layout_marginTop="0dp"
+                    android:text="With "
+                    android:textColor="#f8c930"
+                    android:textSize="14sp" />
+
+                <TextView
                     android:id="@+id/introcreate_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -260,6 +269,9 @@
                     android:layout_marginLeft="20dp"
                     android:background="@android:color/transparent"
                     android:src="@drawable/addbtn"/>
+                    android:background="@drawable/addbtn"
+                    />
+
             </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
@@ -286,6 +298,7 @@
                 android:orientation="vertical">
 
                 <ImageButton
+                    android:id="@+id/introcreate_recommend_btn"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="11dp"

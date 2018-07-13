@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:background="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/projectlist_iv"
+            android:layout_width="154dp"
+            android:layout_height="154dp"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/projectlist_title_tv"
+            android:layout_width="154dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_below="@+id/projectlist_iv"
+            android:layout_marginLeft="5dp"
+            android:text="제목"
+            android:lines="3"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="13sp"
+            android:fontFamily="@font/notosanscjkkr_bold"/>
+
+        <TextView
+            android:id="@+id/projectlist_sub_tv"
+            android:layout_width="154dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_below="@+id/projectlist_iv"
+            android:text="내용"
+            android:layout_marginLeft="5dp"
+            android:lines="2"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="10sp"
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/notosanscjkkr_regular"/>
+
+    </RelativeLayout>
+    <View
+        android:layout_width="8dp"
+        android:layout_height="match_parent"
+        android:background="#f8f8f8"/>
+</LinearLayout>

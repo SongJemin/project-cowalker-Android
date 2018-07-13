@@ -21,12 +21,26 @@
             android:value="@string/kakao_app_key" />
 
         <activity android:name=".Jemin.Activity.MainActivity" />
-        <activity android:name=".Jemin.Activity.SplashActivity">
+        <activity android:name=".Nuri.Activity.ApplyModifyActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/kakaolink_host"
+                    android:scheme="@string/kakao_scheme" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.kakao.sdk.AppKey"
+                android:value="@string/kakao_app_key" />
         </activity>
         <activity android:name=".Jemin.Activity.ProjectCreateActivity" />
         <activity android:name=".Jemin.Activity.InviteActivity" />
@@ -39,22 +53,30 @@
         <activity android:name=".Jemin.Activity.Invite4Activity" />
         <activity android:name=".Jemin.Activity.Invite3Activity" />
         <activity android:name=".Jemin.Activity.SearchFilterActivity" />
-        <activity android:name=".Hyunmin.Activity.MypageProjectlistActivity" />
         <activity android:name=".Hyunmin.Activity.MypageProfileEditActivity" />
         <activity android:name=".Hyunmin.Activity.ProjectIntroActivity" />
         <activity android:name=".Hyunmin.Activity.ProfileEditActivity" />
         <activity android:name=".Nuri.Activity.MessageActivity" />
-        <activity android:name=".Hyunmin.Activity.ProfileMore2Activity"></activity>
+        <activity android:name=".Hyunmin.Activity.ProfileMore2Activity" />
         <activity android:name=".Jemin.Activity.ProjectIntroCreaterActivity" />
         <activity android:name=".Jemin.Activity.ProjectChangeActivity" />
         <activity android:name=".Jemin.Activity.ProjectChange2Activity" />
         <activity android:name=".Jemin.Activity.ProjectIntroWaitActivity" />
         <activity android:name=".Jemin.Activity.ProjectIntroParticipActivity" />
-        <activity android:name=".Jemin.Activity.Test2Activity" />
         <activity android:name=".Nuri.Activity.RecruitDetailActivity" />
-        <activity android:name=".Nuri.Activity.RecruitDeleteActivity"></activity>
+        <activity android:name=".Nuri.Activity.RecruitDeleteActivity" />
         <activity android:name=".Jemin.Activity.ProjectMemberActivity" />
-        <activity android:name=".Jemin.Activity.ApplyActivity"></activity>
+        <activity android:name=".Jemin.Activity.ApplyActivity" />
+        <activity android:name=".Jemin.Activity.ApplyDetailActivity" />
+        <activity android:name=".Jemin.Activity.ApplyMemberActivity" />
+        <activity android:name=".Jemin.Activity.ApplyPaperActivity"></activity>
+        <activity android:name=".Nuri.Activity.OtherpageProjectlistActivity" />
+        <activity android:name=".Nuri.Activity.MyInfoEditActivity"></activity>
+        <activity android:name=".Jemin.Activity.SplashActivity"></activity>
+        <activity android:name=".Nuri.Activity.ApplyModify2Activity"></activity>
+        <activity android:name=".Nuri.Activity.ApplyModify3Activity"></activity>
+        <activity android:name=".Nuri.Activity.ApplyModify4Activity"></activity>
+        <activity android:name=".Hyunmin.Activity.MypageProjectlistActivity"></activity>
     </application>
 
 </manifest>

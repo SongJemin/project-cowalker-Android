@@ -1,5 +1,7 @@
 package com.jemcom.cowalker.Jemin.Activity
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -13,20 +15,41 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Delete.DeleteProjectResponse
+import com.jemcom.cowalker.Network.Get.GetRecruitList
 import com.jemcom.cowalker.Network.Get.Response.GetRecruitListResponse
 import com.jemcom.cowalker.Network.NetworkService
+import com.jemcom.cowalker.Network.Post.PostShareProject
+import com.jemcom.cowalker.Network.Post.PostSignup
+import com.jemcom.cowalker.Network.Post.Response.PostProjectResponse
+import com.jemcom.cowalker.Network.Post.Response.PostShareResponse
+import com.jemcom.cowalker.Network.Post.Response.PostSignupResponse
+import com.jemcom.cowalker.Nuri.Activity.LoginActivity
+import com.jemcom.cowalker.Nuri.Activity.RecruitDetailActivity
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListAdapter
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
 import com.jemcom.cowalker.Nuri.Item.RecruitListItem
 import com.jemcom.cowalker.R
+import com.kakao.kakaolink.v2.KakaoLinkResponse
+import com.kakao.kakaolink.v2.KakaoLinkService
+import com.kakao.message.template.ButtonObject
+import com.kakao.message.template.ContentObject
+import com.kakao.message.template.FeedTemplate
+import com.kakao.message.template.LinkObject
+import com.kakao.network.ErrorResult
+import com.kakao.network.callback.ResponseCallback
+import com.kakao.util.helper.log.Logger
+import kotlinx.android.synthetic.main.activity_project_intro.*
 import kotlinx.android.synthetic.main.activity_project_intro_creater.*
 import kotlinx.android.synthetic.main.activity_recruit_delete.*
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
 
+    var data : java.util.ArrayList<GetRecruitList> = java.util.ArrayList<GetRecruitList>()
     lateinit var networkService: NetworkService
     lateinit var addBtn: ImageButton
     lateinit var changeBtn: Button
@@ -42,6 +65,8 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var recruitListItems: ArrayList<RecruitListItem>
     lateinit var recruitListGetAdapter : RecruitListGetAdapter
 
+    var url = "https://cdn.xl.thumbs.canstockphoto.com/computer-generated-3d-image-cooperation-stock-illustrations_csp2074347.jpg"
+
     var title: String = ""
      var summary: String = ""
       var aim: String = ""
@@ -52,11 +77,18 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
       var img_url: String = ""
       var project_idx: String = ""
      lateinit    var requestManager: RequestManager
+    var recruit_idx : String = ""
 
-    override fun onClick(v: View?) {
-        val index : Int = recruit_list_recyclerview.getChildAdapterPosition(v)
+    override fun onClick(v: View) {
 
-        recruit_list_recyclerview.getChildViewHolder(v)
+        var idx = recruit_list_recyclerview.getChildAdapterPosition(v)
+        recruit_idx = data!![idx].recruit_idx!!
+        Log.v("TAG", "참여하기 선택한 모집번호 = "+ recruit_idx)
+
+        val intent = Intent(v.context, RecruitDetailActivity::class.java)
+        intent.putExtra("project_idx", project_idx)
+        intent.putExtra("recruit_idx", recruit_idx)
+        startActivity(intent)
 
     }
 
@@ -120,6 +152,12 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
         }
 
+        introcreate_recommend_btn.setOnClickListener {
+
+            postShareProject()
+
+        }
+
         changeBtn.setOnClickListener {
             val items = arrayOf<CharSequence>("프로젝트 수정", "프로젝트 삭제")
 
@@ -175,11 +213,10 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
         })
     }
 
+
     fun getList()
     {
-        //var project_idx = "2"
         var getRecruitListResponse = networkService.getRecruitList(project_idx)
-        //var getRecruitListResponse = networkService.getRecruitList(project_idx)
 
         getRecruitListResponse.enqueue(object : Callback<GetRecruitListResponse>{
             override fun onFailure(call: Call<GetRecruitListResponse>?, t: Throwable?) {
@@ -191,7 +228,7 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
                 if(response!!.isSuccessful)
                 {
                     Log.v("TAG","모집 리스트 받아오기")
-                    var data = response.body().result
+                    data = response.body().result
                     Log.v("TAG","모집 리스트 값 = "+data.toString())
 
                     for(i in 0..data.size-1)
@@ -208,6 +245,60 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
             }
         })
     }
+
+
+    private fun sendLink() {
+        val params = FeedTemplate
+                .newBuilder(ContentObject.newBuilder("공공서비스 어플리케이션 공모전",
+                        url,
+                        LinkObject.newBuilder().setWebUrl("")
+                                .setMobileWebUrl("").build())
+                        .setDescrption("이충엽님이 당신을 추천하셨습니다. 함께 해주세요!")
+                        .build())
+
+                .addButton(ButtonObject("깅스앱으로 열기", LinkObject.newBuilder()
+
+                        .setWebUrl("'https://developers.kakao.com")
+                        .setMobileWebUrl("'https://developers.kakao.com")
+                        .setAndroidExecutionParams("key1=value1")
+                        .setIosExecutionParams("key1=value1")
+                        .build()))
+                .build()
+
+        KakaoLinkService.getInstance().sendDefault(this, params, object : ResponseCallback<KakaoLinkResponse>() {
+
+            override fun onFailure(errorResult: ErrorResult) {
+
+                Logger.e(errorResult.toString())
+            }
+            override fun onSuccess(result: KakaoLinkResponse) {}
+        })
+    }
+
+
+    fun postShareProject()
+    {
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+        var data = PostShareProject(project_idx)
+        var postShareResponse = networkService.postShareProject(token,data)
+
+        postShareResponse.enqueue(object : retrofit2.Callback<PostShareResponse>{
+
+            override fun onResponse(call: Call<PostShareResponse>, response: Response<PostShareResponse>) {
+                if(response.isSuccessful){
+                    Log.v("TAG","프로젝트 공유 성공")
+                    sendLink()
+                }
+            }
+
+            override fun onFailure(call: Call<PostShareResponse>, t: Throwable?) {
+                Toast.makeText(applicationContext,"서버 연결 실패",Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
 
     override fun onBackPressed() {
         val intent = Intent(this@ProjectIntroCreaterActivity, MainActivity::class.java)

@@ -10,12 +10,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.jemcom.cowalker.Hyunmin.Activity.MypageProfileEditActivity
 import com.jemcom.cowalker.Hyunmin.Activity.MypageProjectlistActivity
 import com.jemcom.cowalker.Hyunmin.Activity.ProfileEditActivity
+import com.jemcom.cowalker.Hyunmin.Activity.ProfileMore2Activity
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Get.Response.GetMypageResponse
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.Nuri.Activity.LoginActivity
+import com.jemcom.cowalker.Nuri.Activity.OtherpageProjectlistActivity
 import com.jemcom.cowalker.R
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import kotlinx.android.synthetic.main.fragment_mypage.view.*
@@ -42,7 +45,12 @@ class MypageTab : Fragment(),View.OnClickListener {
             }
 
             mypage_edit_btn -> {
-                val intent = Intent(activity, ProfileEditActivity::class.java)
+                val intent = Intent(activity, MypageProfileEditActivity::class.java)
+                startActivity(intent)
+            }
+
+            mypage_intro_btn -> {
+                val intent = Intent(activity, ProfileMore2Activity::class.java)
                 startActivity(intent)
             }
         }
@@ -60,7 +68,7 @@ class MypageTab : Fragment(),View.OnClickListener {
         view.logout_btn.setOnClickListener(this)
         view.mypage_project_btn.setOnClickListener(this)
         view.mypage_edit_btn.setOnClickListener(this)
-
+        view.mypage_intro_btn.setOnClickListener(this)
         get(view)
 
         return view
@@ -70,7 +78,7 @@ class MypageTab : Fragment(),View.OnClickListener {
     {
         val pref = v.context.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
-        var getMypageResponse = networkService.getMypage("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA5NTE1ODMsImV4cCI6MTUzMzU0MzU4M30.90d2qcRcikydx8R-lMMyLgcYGcAxY0Poi61a-NGpujY")
+        var getMypageResponse = networkService.getMypage(token)
 
         getMypageResponse.enqueue(object : Callback<GetMypageResponse>{
             override fun onFailure(call: Call<GetMypageResponse>?, t: Throwable?) {

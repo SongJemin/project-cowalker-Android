@@ -72,6 +72,7 @@
                 android:textColor="#000000"/>
 
             <EditText
+                android:id="@+id/profile_edit_intro_et"
                 android:inputType="textMultiLine|textNoSuggestions"
                 android:layout_width="311.37dp"
                 android:layout_height="35dp"
@@ -104,6 +105,7 @@
                 android:fontFamily="@font/notosanscjkkr_bold"
                 android:textColor="#000000"/>
             <EditText
+                android:id="@+id/profile_edit_url_et"
                 android:inputType="textMultiLine|textNoSuggestions"
                 android:layout_width="311.37dp"
                 android:layout_height="35dp"
@@ -203,6 +205,8 @@
                 android:spinnerMode="dropdown"/>
 
             <Button
+            <ImageButton
+                android:id="@+id/profile_edit_ok_ib"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center"

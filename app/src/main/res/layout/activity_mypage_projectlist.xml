@@ -38,18 +38,31 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="244dp"
-            android:background="#f8f8f8">
+            android:layout_height="wrap_content"
+            android:background="#f8f8f8"
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/create_tv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="244dp"
                 android:text="개설한 프로젝트가 없습니다."
                 android:gravity="center"
                 android:textSize="18sp"
                 android:textColor="#c5c5c5"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 />
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_margin="8dp"
+                android:id="@+id/projectlist_create_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/my_toolbar"
+                android:layout_above="@+id/main_tab"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"></android.support.v7.widget.RecyclerView>
+
         </LinearLayout>
 
         <LinearLayout
@@ -70,10 +83,30 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="244dp"
-            android:background="#f8f8f8">
+            android:layout_height="wrap_content"
+            android:background="#f8f8f8"
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/participate_tv"
+            android:layout_width="match_parent"
+                android:layout_height="244dp"
+            android:text="참여한 프로젝트가 없습니다."
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="#c5c5c5"
+            />
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_margin="8dp"
+                android:id="@+id/projectlist_participate_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/my_toolbar"
+                android:layout_above="@+id/main_tab"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"></android.support.v7.widget.RecyclerView>
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="참여한 프로젝트가 없습니다."
@@ -102,9 +135,19 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="244dp"
-            android:background="#f8f8f8">
+            android:layout_height="wrap_content"
+            android:background="#f8f8f8"
+            android:orientation="vertical">
+
             <TextView
+                android:id="@+id/apply_null_tv"
+            android:layout_width="match_parent"
+                android:layout_height="244dp"
+            android:text="지원한 프로젝트가 없습니다."
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="#c5c5c5"
+            />
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="지원한 프로젝트가 없습니다."
@@ -113,6 +156,16 @@
                 android:textColor="#c5c5c5"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 />
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_margin="8dp"
+                android:id="@+id/projectlist_apply_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/my_toolbar"
+                android:layout_above="@+id/main_tab"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"></android.support.v7.widget.RecyclerView>
 
         </LinearLayout>
     </LinearLayout>

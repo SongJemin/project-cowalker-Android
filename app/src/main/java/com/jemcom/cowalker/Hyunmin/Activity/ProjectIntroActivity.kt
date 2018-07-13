@@ -21,10 +21,21 @@ import com.jemcom.cowalker.Network.Get.GetRecruitList
 import com.jemcom.cowalker.Network.Get.Response.GetMypageOtherResponse
 import com.jemcom.cowalker.Network.Get.Response.GetRecruitListResponse
 import com.jemcom.cowalker.Network.NetworkService
+import com.jemcom.cowalker.Network.Post.PostShareProject
+import com.jemcom.cowalker.Network.Post.Response.PostShareResponse
 import com.jemcom.cowalker.Nuri.Activity.RecruitDetailActivity
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
 import com.jemcom.cowalker.Nuri.Item.RecruitListItem
 import com.jemcom.cowalker.R
+import com.kakao.kakaolink.v2.KakaoLinkResponse
+import com.kakao.kakaolink.v2.KakaoLinkService
+import com.kakao.message.template.ButtonObject
+import com.kakao.message.template.ContentObject
+import com.kakao.message.template.FeedTemplate
+import com.kakao.message.template.LinkObject
+import com.kakao.network.ErrorResult
+import com.kakao.network.callback.ResponseCallback
+import com.kakao.util.helper.log.Logger
 import kotlinx.android.synthetic.main.activity_project_intro.*
 import kotlinx.android.synthetic.main.activity_project_intro_creater.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -48,11 +59,12 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
     var img_url: String = ""
     var project_idx: String = ""
     var recruit_idx: String = ""
+    var url = "https://cdn.xl.thumbs.canstockphoto.com/computer-generated-3d-image-cooperation-stock-illustrations_csp2074347.jpg"
 
     override fun onClick(v: View) {
         var idx = recruit_list_recyclerview2!!.getChildAdapterPosition(v)
         recruit_idx = recruitData!![idx].recruit_idx!!
-        Log.v("TAG", "선택한 모집번호 = "+ recruit_idx)
+        Log.v("TAG", "참여하기 선택한 모집번호 = "+ recruit_idx)
 
         val intent = Intent(v.context, RecruitDetailActivity::class.java)
         intent.putExtra("project_idx", project_idx)
@@ -70,10 +82,6 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
        // intro_title_tv.setText(title)
 
        intro_title_tv.text = intent.getStringExtra("title")
-
-        val viewPager = findViewById<ViewPager>(R.id.image_swipe)
-        val adapter = ImageAdapter(this)
-        viewPager.adapter = adapter
         networkService = ApplicationController.instance.networkSerVice
         recruitListItems = ArrayList()
 
@@ -98,7 +106,8 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
         projectIntro_profile_iv.setOnClickListener(this)
 
         btn_join.setOnClickListener{
-            val nextIntent = Intent(this, RecruitDetailActivity::class.java)
+            val nextIntent = Intent(this, ApplyActivity::class.java)
+            nextIntent.putExtra("project_idx", project_idx)
             startActivity(nextIntent)
         }
         see_more.setOnClickListener  {
@@ -121,6 +130,14 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
             get()
         }
 
+        intro_recommend_btn.setOnClickListener {
+
+        }
+
+        intro_share_btn.setOnClickListener {
+            postShareProject()
+        }
+
     }
 
     fun get()
@@ -128,7 +145,7 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
         val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
         val user_idx = "2"
-        var getMypageOtherResponse = networkService.getMypageOther(" eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMDYsImlhdCI6MTUzMTA3OTA5MywiZXhwIjoxNTMzNjcxMDkzfQ.ZWdFvvvkoW9wnD5wBUT8zvKlpks0krr_Z-DMgfl8qPI",user_idx)
+        var getMypageOtherResponse = networkService.getMypageOther(token,user_idx)
         getMypageOtherResponse.enqueue(object : Callback<GetMypageOtherResponse>{
             override fun onFailure(call: Call<GetMypageOtherResponse>?, t: Throwable?) {
             }
@@ -189,6 +206,62 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
             }
         })
     }
+
+    private fun sendLink() {
+        val params = FeedTemplate
+                .newBuilder(ContentObject.newBuilder("공공서비스 어플리케이션 공모전",
+                        url,
+                        LinkObject.newBuilder().setWebUrl("")
+                                .setMobileWebUrl("").build())
+                        .setDescrption("이충엽님이 당신을 추천하셨습니다. 함께 해주세요!")
+                        .build())
+
+                .addButton(ButtonObject("깅스앱으로 열기", LinkObject.newBuilder()
+
+                        .setWebUrl("'https://developers.kakao.com")
+                        .setMobileWebUrl("'https://developers.kakao.com")
+                        .setAndroidExecutionParams("key1=value1")
+                        .setIosExecutionParams("key1=value1")
+                        .build()))
+                .build()
+
+        KakaoLinkService.getInstance().sendDefault(this, params, object : ResponseCallback<KakaoLinkResponse>() {
+
+            override fun onFailure(errorResult: ErrorResult) {
+
+                Logger.e(errorResult.toString())
+            }
+
+            override fun onSuccess(result: KakaoLinkResponse) {}
+        })
+
+
+    }
+
+    fun postShareProject()
+    {
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+        var data = PostShareProject(project_idx)
+        var postShareResponse = networkService.postShareProject(token,data)
+
+        postShareResponse.enqueue(object : retrofit2.Callback<PostShareResponse>{
+
+            override fun onResponse(call: Call<PostShareResponse>, response: Response<PostShareResponse>) {
+                if(response.isSuccessful){
+                    Log.v("TAG","프로젝트 공유 성공")
+                    sendLink()
+                }
+            }
+
+            override fun onFailure(call: Call<PostShareResponse>, t: Throwable?) {
+                Toast.makeText(applicationContext,"서버 연결 실패",Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+
 
     override fun onBackPressed() {
         val intent = Intent(this@ProjectIntroActivity, MainActivity::class.java)

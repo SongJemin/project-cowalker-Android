@@ -26,7 +26,7 @@ class MemberAdapter(private var memberItems : ArrayList<GetProjectMemberMessage>
         requestManager.load(memberItems[position].profile_url).into(holder.memberProfileImage)
         // default값 (서버에서 이름 넘겨주는 걸로 바뀌면 수정)
         //holder.memberNumber.text = memberItems[position].member_idx.toString()
-        holder.memberNumber.text = "송제민"
+        holder.memberName.text = memberItems[position].name
         holder.memberPosition.text = memberItems[position].position
     }
 }
