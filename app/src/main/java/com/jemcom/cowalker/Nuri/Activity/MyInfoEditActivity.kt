@@ -89,7 +89,9 @@ class MyInfoEditActivity : AppCompatActivity() {
 
     fun putEdit()
     {
-        var putEditResponse = networkService.putIntroEdit("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTE3MzIzOSwiZXhwIjoxNTMzNzY1MjM5fQ.taqF_rP7P2DzGiSTT234wv3dqjjsTBLA0J01K-PDlxk",my_info_edit_explain_et.text.toString(),imgList)
+        val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+        var putEditResponse = networkService.putIntroEdit(token,my_info_edit_explain_et.text.toString(),imgList)
 
         putEditResponse.enqueue(object : Callback<PutIntroEditResponse>{
             override fun onFailure(call: Call<PutIntroEditResponse>?, t: Throwable?) {
@@ -150,6 +152,7 @@ class MyInfoEditActivity : AppCompatActivity() {
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
                     val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
                     val img = File(getRealPathFromURI(context,this.data).toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
+
 
                     ///RequestBody photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray());
                     // MultipartBody.Part 실제 파일의 이름을 보내기 위해 사용!!

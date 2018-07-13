@@ -1,5 +1,6 @@
 package com.jemcom.cowalker.Nuri.Fragment
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -56,7 +57,9 @@ class MessageTab: Fragment(),View.OnClickListener {
     fun get(v : View)
     {
 
-        var getMessageResponse = networkService.getMessage("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA5NTE1ODMsImV4cCI6MTUzMzU0MzU4M30.90d2qcRcikydx8R-lMMyLgcYGcAxY0Poi61a-NGpujY")
+        val pref = v.context.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+        var getMessageResponse = networkService.getMessage(token)
         getMessageResponse.enqueue(object : Callback<GetMessageResponse> {
             override fun onFailure(call: Call<GetMessageResponse>?, t: Throwable?) {
                 Toast.makeText(v.context,"서버 연결 실패", Toast.LENGTH_SHORT).show()
@@ -67,14 +70,15 @@ class MessageTab: Fragment(),View.OnClickListener {
                 {
                     data = response.body().result
 
-                    for(i in 0..data.size-1)
-                    {
+                    if(data.size > 0) {
+                        for (i in 0..data.size - 1) {
 //                        data[i].partner_profile_url
-                        messageItems.add(MessageItem("https://project-cowalker.s3.ap-northeast-2.amazonaws.com/1530947972948.32123", data[i].partner_name, data[i].contents, "56분 전"))
-                        messageAdapter = MessageAdapter(messageItems, requestManager)
-                        messageAdapter.setOnItemClickListener(this@MessageTab)
-                        v.message_rv.layoutManager = LinearLayoutManager(v.context)
-                        v.message_rv.adapter = messageAdapter
+                            messageItems.add(MessageItem("https://project-cowalker.s3.ap-northeast-2.amazonaws.com/1530947972948.32123", data[i].partner_name, data[i].contents, data[i].time))
+                            messageAdapter = MessageAdapter(messageItems, requestManager)
+                            messageAdapter.setOnItemClickListener(this@MessageTab)
+                            v.message_rv.layoutManager = LinearLayoutManager(v.context)
+                            v.message_rv.adapter = messageAdapter
+                        }
                     }
                 }
                 else Toast.makeText(v.context,"실패", Toast.LENGTH_SHORT).show()

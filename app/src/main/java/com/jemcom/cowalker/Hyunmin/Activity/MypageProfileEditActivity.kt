@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -22,7 +21,6 @@ import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.Multipart
 
 class MypageProfileEditActivity : AppCompatActivity(), View.OnClickListener {
     var projectAim : String? = null
@@ -163,7 +161,6 @@ class MypageProfileEditActivity : AppCompatActivity(), View.OnClickListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 if (position == 0) {
                     projectArea = "서울"
-                    Log.v("TAG", "장소 = " + projectArea)
                 } else if (position == 1) {
                     projectArea = "경기도"
                 } else if (position == 2) {
@@ -186,17 +183,13 @@ class MypageProfileEditActivity : AppCompatActivity(), View.OnClickListener {
     }
     fun putEdit()
     {
+        val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
         val profile_img : MultipartBody.Part? = null
         val background_img : MultipartBody.Part? =null
-        val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
-        val token  = pref.getString("token","")
         var putEditResponse = networkService.putMypage(token,
                 profile_img,background_img,projectPosition!!,profile_edit_intro_et.text.toString(),profile_edit_url_et.text.toString(),projectAim!!,projectDepartment!!,projectArea!!);
 
-        Log.v("TAG", "마이페이지 포지션 = "+ projectPosition)
-        Log.v("TAG", "마이페이지 목적 = "+ projectAim)
-        Log.v("TAG", "마이페이지 분야 = "+ projectDepartment)
-        Log.v("TAG", "마이페이지 장소 = "+ projectArea)
         putEditResponse.enqueue(object : Callback<PutMyPageResponse>{
             override fun onFailure(call: Call<PutMyPageResponse>?, t: Throwable?) {
                 Toast.makeText(applicationContext,"서버 연결 실패", Toast.LENGTH_SHORT).show()

@@ -51,14 +51,16 @@ class NewsTab : Fragment() {
             override fun onResponse(call: Call<GetAlarmResponse>?, response: Response<GetAlarmResponse>?) {
                 if(response!!.isSuccessful)
                 {
-                    var data = response.body().result
-                    for(i in 0..data.size-1)
-                    {
-                        newsItems.add(NewsItem(data[i].project_name, data[i].contents, "56분 전"))
+                    var message = response.body().message
+                    if(!message.equals("no alarm list")) {
+                        var data = response.body().result
+                        for (i in 0..data.size - 1) {
+                            newsItems.add(NewsItem(data[i].project_name, data[i].contents, data[i].time))
+                        }
+                        newsAdapter = NewsAdapter(newsItems)
+                        v.news_rv.layoutManager = LinearLayoutManager(v.context)
+                        v.news_rv.adapter = newsAdapter
                     }
-                    newsAdapter = NewsAdapter(newsItems)
-                    v.news_rv.layoutManager = LinearLayoutManager(v.context)
-                    v.news_rv.adapter = newsAdapter
                 }
                 else Toast.makeText(v.context,"실패",Toast.LENGTH_SHORT).show()
             }
