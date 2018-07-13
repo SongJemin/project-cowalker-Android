@@ -1,4 +1,4 @@
-package com.jemcom.cowalker.Nuri.Activity
+package com.jemcom.cowalker.Jemin.Activity
 
 import android.content.Intent
 import android.graphics.Color
@@ -11,8 +11,9 @@ import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Get.GetRecruitDetail
 import com.jemcom.cowalker.Network.Get.Response.GetRecruitDetailResponse
 import com.jemcom.cowalker.Network.NetworkService
+import com.jemcom.cowalker.Nuri.Activity.ApplyModify3Activity
 import com.jemcom.cowalker.R
-import kotlinx.android.synthetic.main.activity_invite.*
+import com.jemcom.cowalker.R.id.*
 import kotlinx.android.synthetic.main.activity_invite2.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,7 +28,7 @@ class ApplyModify2Activity : AppCompatActivity(), View.OnClickListener {
         when(v)
         {
             invite2_next_btn -> {
-                var intent = Intent(applicationContext,ApplyModify3Activity::class.java)
+                var intent = Intent(applicationContext, ApplyModify3Activity::class.java)
                 intent.putExtra("position",getIntent().getStringExtra("position"))
                 intent.putExtra("number",getIntent().getStringExtra("number"))
                 intent.putExtra("start_date",getIntent().getStringExtra("start_date"))

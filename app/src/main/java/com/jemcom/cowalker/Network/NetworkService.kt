@@ -60,9 +60,9 @@ interface NetworkService {
     fun postShare(
             @Header("authorization") authorization : String,
             @Body join : PostJoin,
-            @Query ("sharer_idx") sharer_idx : String,
             @Query ("project_idx") project_idx: String,
-            @Query ("recruit_idx") recruit_idx: String
+            @Query ("recruit_idx") recruit_idx: String,
+            @Query ("sharer_idx") sharer_idx : String
     ) : Call<PostJoinResponse>
 
     @GET("/api/apply/{apply_idx}")

@@ -53,6 +53,8 @@ class RecruitDetailActivity : AppCompatActivity() {
     var imgUrl : String = ""
 
     var recruit_idx_value : String = ""
+    var sharer_idx_value : String = ""
+    var sharer_idx : String = ""
 
 
     override fun onNewIntent(intent: Intent) {
@@ -80,16 +82,19 @@ class RecruitDetailActivity : AppCompatActivity() {
         var test : Uri? = null
         test = intent.data
         if (test != null) {
-            val project_idx = test.getQueryParameter("project_idx")
+            project_idx = test.getQueryParameter("project_idx")
             val recruit_idx = test.getQueryParameter("recruit_idx")
+            val sharer_idx = test.getQueryParameter("sharer_idx")
             Log.v("TAG","까똑 = " + test)
             Log.v("TAG","테스트 값 = " + test.toString())
             Log.v("TAG", "카카오톡 프로젝트 넘버 = " + test.getQueryParameter("project_idx"))
             Log.v("TAG", "카카오톡 모집 넘버 = " + test.getQueryParameter("recruit_idx"))
             Log.v("TAG", "카카오톡 진짜 받은 프로젝트 넘버 = " + project_idx )
             Log.v("TAG", "카카오톡 진짜 받은 모집 넘버 = " + recruit_idx )
+            Log.v("TAG", "카카오톡 진짜 받은 공유자 넘버 = " + sharer_idx )
             getKakao(project_idx, recruit_idx)
             setRecruitIdx(recruit_idx)
+            setSharerIdx(sharer_idx)
 
         }
         else{
@@ -177,6 +182,10 @@ class RecruitDetailActivity : AppCompatActivity() {
                     intent.putExtra("recruit_idx", getRecruitIdx())
                     intent.putExtra("task", task)
                     intent.putExtra("position", position)
+                    intent.putExtra("sharer_idx", getSharerIdx())
+                    Log.v("TAG", "리쿠릇에서 어플라이로 보내는 공유자번호 = " + getSharerIdx())
+                    Log.v("TAG", "리쿠릇에서 어플라이로 보내는 플젝번호 = " + project_idx)
+
                     Log.v("TAG", "리쿠릇에서 어플라이로 보내는 포지션 = " + position)
 
                     startActivity(intent)
@@ -339,59 +348,7 @@ class RecruitDetailActivity : AppCompatActivity() {
         })
     }
 
-    private fun sendLink(project_idx:String, recruit_idx :String) {
-        Log.v("TAG","모집 상세 프로젝트 숫자 ="+project_idx + "모집 번호 숫자 = " + recruit_idx)
-        val params = FeedTemplate
-                .newBuilder(ContentObject.newBuilder("공공서비스 어플리케이션 공모전",
-                        imgUrl,
-                        LinkObject.newBuilder().setWebUrl("")
-                                .setMobileWebUrl("").build())
-                        .setDescrption("이충엽님이 당신을 추천하셨습니다. 함께 해주세요!")
-                        .build())
 
-                .addButton(ButtonObject("깅스앱으로 열기", LinkObject.newBuilder()
-
-                        //.setWebUrl("'https://developers.kakao.com")
-                        //.setMobileWebUrl("http://bghgu.tk:3000/api/project/"+project_idx+"/recruit/"+recruit_idx)
-
-                        .setAndroidExecutionParams("project_idx="+project_idx+"&recruit_idx="+recruit_idx)
-                        .build()))
-                .build()
-
-        KakaoLinkService.getInstance().sendDefault(this, params, object : ResponseCallback<KakaoLinkResponse>() {
-
-            override fun onFailure(errorResult: ErrorResult) {
-
-                Logger.e(errorResult.toString())
-            }
-
-            override fun onSuccess(result: KakaoLinkResponse) {}
-        })
-    }
-
-
-    fun postShareRecruit()
-    {
-        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
-        val token = pref.getString("token","")
-        var data = PostShareRecruit(recruit_idx)
-        var postShareResponse = networkService.postShareRecruit(token,data)
-
-        postShareResponse.enqueue(object : retrofit2.Callback<PostShareResponse>{
-
-            override fun onResponse(call: Call<PostShareResponse>, response: Response<PostShareResponse>) {
-                if(response.isSuccessful){
-                    Log.v("TAG","모집 공유 성공")
-                    sendLink(project_idx, recruit_idx)
-                }
-            }
-
-            override fun onFailure(call: Call<PostShareResponse>, t: Throwable?) {
-                Toast.makeText(applicationContext,"서버 연결 실패",Toast.LENGTH_SHORT).show()
-            }
-
-        })
-    }
 
     fun setRecruitIdx(recruit_idx: String) {
 
@@ -399,5 +356,12 @@ class RecruitDetailActivity : AppCompatActivity() {
     }
     fun getRecruitIdx() : String{
         return recruit_idx_value
+    }
+    fun setSharerIdx(sharer_idx: String) {
+
+        sharer_idx_value = sharer_idx
+    }
+    fun getSharerIdx() : String{
+        return sharer_idx_value
     }
 }

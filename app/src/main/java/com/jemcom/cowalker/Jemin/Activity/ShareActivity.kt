@@ -43,6 +43,7 @@ class ShareActivity : AppCompatActivity() {
     var recruit_idx: String = ""
     var title: String = ""
     var imgUrl: String = ""
+    var sharer_idx : String = ""
 
     @BindView(R.id.fb_share_button)
     internal var facebookbtn: Button? = null
@@ -78,8 +79,8 @@ class ShareActivity : AppCompatActivity() {
         }
     }
 
-    private fun sendLink(project_idx:String, recruit_idx :String) {
-        Log.v("TAG","모집 상세 프로젝트 숫자 ="+project_idx + "모집 번호 숫자 = " + recruit_idx)
+    private fun sendLink(project_idx:String, recruit_idx :String, sharere_idx : String) {
+        Log.v("TAG","모집 상세 프로젝트 숫자 ="+project_idx + "모집 번호 숫자 = " + recruit_idx + "공유자 번호 숫자 = " + sharere_idx)
         val params = FeedTemplate
                 .newBuilder(ContentObject.newBuilder(title,
                         imgUrl,
@@ -94,7 +95,7 @@ class ShareActivity : AppCompatActivity() {
                         //.setWebUrl("'https://developers.kakao.com")
                         //.setMobileWebUrl("http://bghgu.tk:3000/api/project/"+project_idx+"/recruit/"+recruit_idx)
 
-                        .setAndroidExecutionParams("project_idx="+project_idx+"&recruit_idx="+recruit_idx)
+                        .setAndroidExecutionParams("project_idx="+project_idx+"&recruit_idx="+recruit_idx+"&sharer_idx="+sharer_idx)
                         .build()))
                 .build()
 
@@ -114,7 +115,9 @@ class ShareActivity : AppCompatActivity() {
     {
         val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
-        var data = PostShareRecruit(recruit_idx)
+        var data = PostShareRecruit(project_idx, recruit_idx)
+        Log.v("TAG","모집 공유 서버 들리기 프로젝트넘버 = " +project_idx)
+        Log.v("TAG","모집 공유 서버 들리기 모집넘버 = " +recruit_idx)
         var postShareResponse = networkService.postShareRecruit(token,data)
 
         postShareResponse.enqueue(object : retrofit2.Callback<PostShareResponse>{
@@ -122,7 +125,9 @@ class ShareActivity : AppCompatActivity() {
             override fun onResponse(call: Call<PostShareResponse>, response: Response<PostShareResponse>) {
                 if(response.isSuccessful){
                     Log.v("TAG","모집 공유 성공")
-                    sendLink(project_idx, recruit_idx)
+                    sharer_idx = response.body().sharer_idx
+                    Log.v("TAG","공유자 idx = "+ sharer_idx)
+                    sendLink(project_idx, recruit_idx, sharer_idx)
                 }
             }
 

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
+import com.jemcom.cowalker.Jemin.Activity.ApplyModify2Activity
 import com.jemcom.cowalker.Jemin.Activity.MyYearMonthPickerDialog
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Get.GetRecruitDetail
@@ -35,7 +36,7 @@ class ApplyModifyActivity : AppCompatActivity(),View.OnClickListener {
         {
             invite1_next_btn -> {
 
-                var intent = Intent(applicationContext,ApplyModify2Activity::class.java)
+                var intent = Intent(applicationContext, ApplyModify2Activity::class.java)
                 intent.putExtra("position",data[0].position)
                 intent.putExtra("number",invite_personnel_edit.text)
                 intent.putExtra("start_date",invite_range_btn.text.split(" ~ ")[0])

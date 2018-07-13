@@ -22,6 +22,7 @@ import com.jemcom.cowalker.Network.Post.Response.PostJoinResponse
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
 
 import com.jemcom.cowalker.R
+import com.jemcom.cowalker.R.id.*
 import kotlinx.android.synthetic.main.activity_apply.*
 import kotlinx.android.synthetic.main.activity_apply_detail.*
 import kotlinx.android.synthetic.main.activity_project_intro_creater.*
@@ -40,6 +41,7 @@ class ApplyDetailActivity : AppCompatActivity() {
     var count = ""
     var position : String = ""
     var task : String = ""
+    var sharer_idx : String = ""
 
 
     companion object {
@@ -67,6 +69,8 @@ class ApplyDetailActivity : AppCompatActivity() {
         recruit_idx = getRecruitintent.getStringExtra("recruit_idx")
         Log.v("TAG", "모집 상세에서 받은 모집 번호 = "+recruit_idx)
         project_idx = getRecruitintent.getStringExtra("project_idx")
+        sharer_idx = getRecruitintent.getStringExtra("sharer_idx")
+        Log.v("TAG", "모집 상세에서 받은 공유자 번호 = "+sharer_idx)
         position = getRecruitintent.getStringExtra("position")
         task = getRecruitintent.getStringExtra("task")
         get()
@@ -75,7 +79,16 @@ class ApplyDetailActivity : AppCompatActivity() {
         apply_detail_summary_tv.setText(task)
 
         apply_detail_apply_btn.setOnClickListener {
-            post()
+            if(sharer_idx!="")
+            {
+                Log.v("sdaf","일반지원")
+                postShare()
+            }
+            else{
+                Log.v("sdaf","공유지원")
+                post()
+            }
+
         }
 
     }
@@ -133,6 +146,45 @@ class ApplyDetailActivity : AppCompatActivity() {
             override fun onResponse(call: Call<PostJoinResponse>?, response: Response<PostJoinResponse>?) {
                 if(response!!.isSuccessful)
                 {
+                    var message = response.body()
+                    Toast.makeText(applicationContext,"성공",Toast.LENGTH_SHORT).show()
+
+                    var intent = Intent(applicationContext, MainActivity::class.java)
+                    startActivity(intent)
+
+                }
+                else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun postShare()
+    {
+        var introduce = apply_detail_introduce_edit.text.toString()
+        var portfolio = apply_detail_portfolio_edit.text.toString()
+        var phone = apply_detail_phone_edit.text.toString()
+        val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+
+        Log.v("TAG", "detail 모집번호 = " + recruit_idx)
+        Log.v("TAG", "detail 포지션 = " + position)
+        Log.v("TAG", "공유할때 프로젝트 번호 = " + project_idx)
+        Log.v("TAG", "공유할때 공유자 번호 = " + sharer_idx)
+        var data = PostJoin(introduce,portfolio, recruit_idx,project_idx,position, detailAnswerList, phone)
+
+        var postJoinResponse = networkService.postShare(token,data,project_idx, recruit_idx, sharer_idx)
+
+        postJoinResponse.enqueue(object : Callback<PostJoinResponse>{
+
+            override fun onFailure(call: Call<PostJoinResponse>?, t: Throwable?) {
+
+                Toast.makeText(applicationContext,"서버 연결 실패",Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<PostJoinResponse>?, response: Response<PostJoinResponse>?) {
+                Log.v("TAG","공유 통신 성공")
+                if(response!!.isSuccessful)
+                {Log.v("TAG","공유 전달 성공")
                     var message = response.body()
                     Toast.makeText(applicationContext,"성공",Toast.LENGTH_SHORT).show()
 
