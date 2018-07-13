@@ -29,7 +29,7 @@
             android:layout_marginRight="17dp"
             android:layout_marginTop="19dp"
             android:orientation="vertical"
-            android:background="@drawable/layout_design">
+            android:background="@drawable/layout_design2">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -59,12 +59,13 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="200dp"
+                    android:layout_marginLeft="215dp"
                     android:background="#45b6ff"
                     android:gravity="center"
+                    android:textAlignment="center"
                     android:fontFamily="@font/notosanscjkkr_regular"
                     android:text="D-9"
-                    android:textSize="13sp"
+                    android:textSize="10sp"
                     android:textColor="#ffffff" />
             </LinearLayout>
                 <TextView
@@ -80,7 +81,7 @@
         <LinearLayout
             android:background="#ffffff"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="155dp"
             android:orientation="vertical" >
             <LinearLayout
                 android:layout_width="match_parent"
@@ -158,16 +159,24 @@
                     android:layout_marginLeft="47dp"
                     android:layout_toRightOf="@+id/recruit_detail_personnel_tv"
                     android:layout_alignTop="@+id/recruit_detail_personnel_tv"
-                    android:text="3명"
+                    android:text="3"
                     android:textSize="16sp"
                     android:textColor="#626262"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="명"
+                    android:layout_marginLeft="2dp"
+                    android:textSize="16sp"
+                    android:textColor="#626262"
+                    android:fontFamily="@font/notosanscjkkr_regular"/>
             </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="345dp"
+            android:layout_height="430dp"
             android:orientation="vertical"
             android:background="#ffffff"
             android:layout_marginTop="10dp" >
@@ -186,7 +195,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:text="웹앱 서비스 개발"
                 android:textColor="#626262"
@@ -207,7 +215,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:text="node.js에 능해야 함"
                 android:textColor="#626262"
@@ -228,7 +235,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:text="강남"
-            android:layout_marginTop="5dp"
             android:fontFamily="@font/notosanscjkkr_regular"
             android:textSize="16sp"
             android:textColor="#626262"/>
@@ -248,16 +254,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
                 android:fontFamily="@font/notosanscjkkr_regular"
-                android:text="상금 분배"
                 android:textColor="#626262"
+                android:text="상금 분배"
                 android:textSize="16sp" />
 
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="340dp"
+            android:layout_height="440dp"
             android:orientation="vertical"
             android:background="#ffffff"
             android:layout_marginTop="10dp" >
@@ -277,7 +282,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:text="node.js에 능해야 함"
                 android:textColor="#626262"
@@ -287,7 +291,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/notosanscjkkr_bold"
                 android:text="경력 및 경험"
                 android:textColor="#000000"
@@ -300,7 +304,6 @@
                 android:layout_marginLeft="30dp"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:inputType="textImeMultiLine"
-                android:layout_marginTop="5dp"
                 android:text="경력 무관"
                 android:textColor="#626262"
                 android:textSize="16sp" />
@@ -318,7 +321,6 @@
                 android:id="@+id/recruit_detail_preference_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
                 android:text="이더리움 기반 암호화폐 개발 역량"
                 android:fontFamily="@font/notosanscjkkr_regular"
@@ -340,12 +342,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:inputType="textImeMultiLine"
                 android:minLines="1"
                 android:maxLines="5"
-                android:text="팀워크를 중시 여기며, 훌륭하고 열정적인 분과 함께하고 싶습니다."
+                android:text="팀워크를 중시 여기며, 훌륭하고 열정적인 분을 원합니다."
                 android:textColor="#626262"
                 android:textSize="16sp" />
 
@@ -378,7 +379,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="7"
+                android:text="0"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:textColor="#868686"/>
         </LinearLayout>
@@ -412,7 +413,7 @@
                 android:textColor="#868686"
                 android:layout_marginLeft="7dp"
                 android:fontFamily="@font/notosanscjkkr_regular"
-                android:text="5"/>
+                android:text="0"/>
         </LinearLayout>
 
         <LinearLayout

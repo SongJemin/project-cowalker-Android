@@ -15,7 +15,7 @@
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="528dp"
-        android:src="@drawable/home_main"
+        android:src="@drawable/img_main"
         android:focusable="true"
         android:background="@android:color/transparent"/>
 

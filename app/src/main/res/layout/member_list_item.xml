@@ -30,23 +30,25 @@
             <TextView
                 android:id="@+id/member_name_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
+                android:layout_height="wrap_content"
                 android:text="이충엽"
                 android:textColor="#000000"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginTop="20dp"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:layout_marginTop="3dp"
                 />
+
             <TextView
                 android:id="@+id/member_position_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-15dp"
                 android:text="PM"
-                android:textSize="16sp"
                 android:textColor="#c5c5c5"
-                android:layout_marginTop="2dp"
-                />
-            
+                android:layout_marginLeft="4dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:textSize="16sp" />
+
 
 
 

@@ -23,6 +23,7 @@ import com.jemcom.cowalker.Network.Get.Response.GetRecruitListResponse
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.Network.Post.PostShareProject
 import com.jemcom.cowalker.Network.Post.Response.PostShareResponse
+import com.jemcom.cowalker.Nuri.Activity.RecommendActivity
 import com.jemcom.cowalker.Nuri.Activity.RecruitDetailActivity
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
 import com.jemcom.cowalker.Nuri.Item.RecruitListItem
@@ -110,6 +111,12 @@ class ProjectIntroActivity : AppCompatActivity(),View.OnClickListener {
             nextIntent.putExtra("project_idx", project_idx)
             startActivity(nextIntent)
         }
+
+        intro_recommend_layout.setOnClickListener{
+            val intent = Intent(this@ProjectIntroActivity, RecommendActivity::class.java)
+            startActivity(intent)
+        }
+
         see_more.setOnClickListener  {
             see_more.visibility = View.GONE
             see_close.visibility = View.VISIBLE

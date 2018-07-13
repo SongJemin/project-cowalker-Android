@@ -30,7 +30,7 @@
                     android:layout_width="52dp"
                     android:layout_height="52dp"
                     android:layout_marginTop="22dp"
-                    android:layout_marginLeft="40dp">
+                    android:layout_marginLeft="30dp">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/projectIntro_profile_iv"
@@ -44,7 +44,7 @@
                     android:id="@+id/intro_title_tv"
                     android:layout_width="254dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="28dp"
                     android:layout_marginTop="15dp"
                     android:text="KU석KU석 프로젝트      '사라진 친구를 찾아라'"
                     android:textColor="#444444"
@@ -74,14 +74,14 @@
                     android:textColor="#f8c930"
                     android:textSize="16sp"
                     android:layout_marginLeft="4dp"
-                    android:layout_marginTop="13sp"/>
+                    android:layout_marginTop="9dp"/>
 
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="3dp"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="7dp"
                     android:background="@android:color/transparent"
                     android:src="@drawable/message" />
             </LinearLayout>
@@ -270,6 +270,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/intro_recommend_layout"
                 android:layout_width="41dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="43dp"
@@ -297,6 +298,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/intro_share_layout"
                 android:layout_width="41dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"

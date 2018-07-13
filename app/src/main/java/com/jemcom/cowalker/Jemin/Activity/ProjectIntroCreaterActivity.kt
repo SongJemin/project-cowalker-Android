@@ -24,6 +24,7 @@ import com.jemcom.cowalker.Network.Post.Response.PostProjectResponse
 import com.jemcom.cowalker.Network.Post.Response.PostShareResponse
 import com.jemcom.cowalker.Network.Post.Response.PostSignupResponse
 import com.jemcom.cowalker.Nuri.Activity.LoginActivity
+import com.jemcom.cowalker.Nuri.Activity.RecommendActivity
 import com.jemcom.cowalker.Nuri.Activity.RecruitDetailActivity
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListAdapter
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
@@ -141,6 +142,11 @@ class ProjectIntroCreaterActivity : AppCompatActivity(), View.OnClickListener {
         introcreate_invite_Tv.setOnClickListener{
             val intent = Intent(this@ProjectIntroCreaterActivity, ProjectMemberActivity::class.java)
             intent.putExtra("project_idx", project_idx)
+            startActivity(intent)
+        }
+
+        introcreate_recommend_layout.setOnClickListener{
+            val intent = Intent(this@ProjectIntroCreaterActivity, RecommendActivity::class.java)
             startActivity(intent)
         }
 

@@ -15,6 +15,7 @@ import com.jemcom.cowalker.Network.Get.Response.GetRecruitListResponse
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.Network.Post.PostShareProject
 import com.jemcom.cowalker.Network.Post.Response.PostShareResponse
+import com.jemcom.cowalker.Nuri.Activity.RecommendActivity
 import com.jemcom.cowalker.Nuri.Activity.RecruitDetailActivity
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
 import com.jemcom.cowalker.Nuri.Item.RecruitListItem
@@ -86,6 +87,11 @@ class ProjectIntroParticipActivity : AppCompatActivity(), View.OnClickListener {
             if(intent.getStringExtra("img_url") != null) img_url = intent.getStringExtra("img_url")
             if(intent.getStringExtra("project_idx") != null) project_idx = intent.getStringExtra("project_idx")
             getList()
+        }
+
+        intro_particip_recommend_layout.setOnClickListener{
+            val intent = Intent(this@ProjectIntroParticipActivity, RecommendActivity::class.java)
+            startActivity(intent)
         }
 
         intro_particip_share_btn.setOnClickListener {

@@ -107,7 +107,6 @@ class RecruitDetailActivity : AppCompatActivity() {
 
             else {
 
-
                 var intent = Intent(applicationContext, ApplyDetailActivity::class.java)
                 intent.putExtra("project_idx", project_idx)
                 intent.putExtra("recruit_idx", recruit_idx)
