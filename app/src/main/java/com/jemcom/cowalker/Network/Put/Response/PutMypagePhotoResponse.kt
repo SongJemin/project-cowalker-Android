@@ -1,4 +1,5 @@
 package com.jemcom.cowalker.Network.Put.Response
 
-class PutMypagePhotoResponse {
-}
+data class PutMypagePhotoResponse (
+        var message : String
+)

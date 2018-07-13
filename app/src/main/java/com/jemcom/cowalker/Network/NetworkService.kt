@@ -277,4 +277,12 @@ interface NetworkService {
             @Header("authorization") authorization: String,
             @Body recommend : PostRecommend
     ) : Call<PostRecommendResponse>
+
+    @Multipart
+    @PUT("/api/mypage/photo")
+    fun putMypagePhoto(
+            @Header("authorization") authorization: String,
+            @Part profile_img : MultipartBody.Part?,
+            @Part background_img : MultipartBody.Part?
+    ) : Call<PutMypagePhotoResponse>
 }

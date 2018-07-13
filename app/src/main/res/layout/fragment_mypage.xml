@@ -35,6 +35,7 @@
                 />
         </RelativeLayout>
         <Button
+            android:id="@+id/mypage_background_chang_btn"
             android:layout_width="29dp"
             android:layout_height="29dp"
             android:layout_alignParentRight="true"
@@ -43,7 +44,7 @@
             android:background="@drawable/camera"
             />
         <Button
-            android:id="@+id/mypage_camera_btn"
+            android:id="@+id/mypage_profile_change_btn"
             android:layout_width="29dp"
             android:layout_height="29dp"
             android:layout_marginTop="205dp"
@@ -116,7 +117,7 @@
 
         <TextView
             android:id="@+id/mypage_link_tv"
-            android:layout_width="118dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="7dp"

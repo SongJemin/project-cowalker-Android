@@ -1,5 +1,6 @@
 package com.jemcom.cowalker.Nuri.Activity
 
+import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -55,8 +56,10 @@ class MessageActivity : AppCompatActivity(),View.OnClickListener {
     fun get()
     {
 
+        val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
         var partner_id = intent.getStringExtra("partner_id")
-        var getMessageLookResponse = networkService.getMessageLook("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA5NTE1ODMsImV4cCI6MTUzMzU0MzU4M30.90d2qcRcikydx8R-lMMyLgcYGcAxY0Poi61a-NGpujY",partner_id)
+        var getMessageLookResponse = networkService.getMessageLook(token,partner_id)
         getMessageLookResponse.enqueue(object : Callback<GetMessageLookResponse> {
             override fun onFailure(call: Call<GetMessageLookResponse>?, t: Throwable?) {
                 Toast.makeText(applicationContext,"서버 연결 실패", Toast.LENGTH_SHORT).show()

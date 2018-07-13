@@ -40,7 +40,7 @@ class NewsTab : Fragment() {
     {
         val pref = v.context.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
-        var getAlarmResponse = networkService.getAlarm("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA2NzAxNTMsImV4cCI6MTUzMzI2MjE1M30.BdRb0yary7AY8_yi8MDRDXuXrW19QSqRJI-9Xin3SXs")
+        var getAlarmResponse = networkService.getAlarm(token)
 
         getAlarmResponse.enqueue(object : Callback<GetAlarmResponse>
         {
@@ -51,14 +51,16 @@ class NewsTab : Fragment() {
             override fun onResponse(call: Call<GetAlarmResponse>?, response: Response<GetAlarmResponse>?) {
                 if(response!!.isSuccessful)
                 {
-                    var data = response.body().result
-                    for(i in 0..data.size-1)
-                    {
-                        newsItems.add(NewsItem(data[i].project_name, data[i].contents, "56분 전"))
+                    var message = response.body().message
+                    if(!message.equals("no alarm list")) {
+                        var data = response.body().result
+                        for (i in 0..data.size - 1) {
+                            newsItems.add(NewsItem(data[i].project_name, data[i].contents, data[i].time))
+                        }
+                        newsAdapter = NewsAdapter(newsItems)
+                        v.news_rv.layoutManager = LinearLayoutManager(v.context)
+                        v.news_rv.adapter = newsAdapter
                     }
-                    newsAdapter = NewsAdapter(newsItems)
-                    v.news_rv.layoutManager = LinearLayoutManager(v.context)
-                    v.news_rv.adapter = newsAdapter
                 }
                 else Toast.makeText(v.context,"실패",Toast.LENGTH_SHORT).show()
             }

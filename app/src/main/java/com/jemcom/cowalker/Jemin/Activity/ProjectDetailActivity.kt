@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.ViewPager
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -13,6 +14,7 @@ import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.jemcom.cowalker.Hyunmin.Adapter.ImageAdapter
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Delete.DeleteProjectResponse
 import com.jemcom.cowalker.Network.Get.GetProjectDetailMessage
@@ -374,7 +376,11 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
                     if(projectUserName
                             != "default"){
                         Log.v("TAG","사진 디폴트 ㄴㄴ")
-                        requestManager.load(projectUserProfileUrl).into(project_detail_profile_iv);
+//                        requestManager.load(projectUserProfileUrl).into(project_detail_profile_iv);
+
+                        var viewPager = findViewById<ViewPager>(R.id.project_detail_profile_viewpager)
+                        var adapter = ImageAdapter(applicationContext, requestManager, detailData[0].img_url)
+                        viewPager.adapter = adapter
                     }
                     else{
                         Log.v("TAG", "프로필 사진 디폴트")
