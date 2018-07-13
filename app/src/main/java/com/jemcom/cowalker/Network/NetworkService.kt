@@ -267,4 +267,9 @@ interface NetworkService {
             @Path("user_idx") user_idx : String
     ) : Call<GetProjectMineParticipateResponse>
 
+    @POST("/api/share")
+    fun postSharedSns(
+            @Header("authorization") authorization : String,
+            @Body sharedsns : PostSharedSns
+    ) : Call<PostSharedSnsResponse>
 }
