@@ -164,7 +164,7 @@ interface NetworkService {
     @GET("/api/mypage/{user_idx}")
     fun getMypageOther(
             @Header("authorization") authorization: String,
-            @Path("user_idx") user_id: String
+            @Path("user_idx") user_idx: String
     ) : Call<GetMypageOtherResponse>
 
     @GET("/api/project/{project_idx}/recruit/{recruit_idx}")

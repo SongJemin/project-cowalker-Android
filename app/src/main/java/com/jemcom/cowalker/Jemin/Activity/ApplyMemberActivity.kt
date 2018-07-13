@@ -50,6 +50,8 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
     var applicant_idx_result : Int = 0
     var applicant_idx : String = ""
     var apply_idx : String = ""
+    var num : String = ""
+    var task : String = ""
 
 
 
@@ -60,6 +62,8 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
         applyMemberActivity = this
         val intent = intent
         recruit_idx = intent.getStringExtra("recruit_idx")
+        num = intent.getStringExtra("num")
+        task = intent.getStringExtra("task")
         networkService = ApplicationController.instance.networkSerVice // 어플리케이션을 실행하자마자 어플리케이션 콘트롤러가 실행되는데 그 때 사용?
         requestManager = Glide.with(this)
         getMember()

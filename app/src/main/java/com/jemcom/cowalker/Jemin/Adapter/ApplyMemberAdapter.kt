@@ -22,6 +22,8 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
     var applicant_idxList : ArrayList<Int> = ArrayList<Int>()
     var applicant_idx : String = ""
     var recruit_idx : String = ""
+    var num : String = ""
+    var task : String = ""
     var apply_idx_result : String = ""
 
     //내가 쓸 뷰홀더가 뭔지를 적어준다.
@@ -50,12 +52,17 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
             Log.v("Adapter", "지원자 번호 = " + applicant_idxList[position])
 
             recruit_idx = ApplyMemberActivity.applyMemberActivity.recruit_idx
+            num = ApplyMemberActivity.applyMemberActivity.num
+            task = ApplyMemberActivity.applyMemberActivity.task
 
             applicant_idx = applicant_idxList[position].toString()
             var intent = Intent(mContext, ApplyPaperActivity::class.java)
             intent.putExtra("apply_idx",apply_idx[position])
             intent.putExtra("applicant_idx",applicant_idx)
             intent.putExtra("recruit_idx",recruit_idx)
+            intent.putExtra("num",num)
+            intent.putExtra("task",task)
+            intent.putExtra("position",applyMemberItems[position].position)
             Log.v("Adapter", "지원서로 보내는 모집 번호 = "+ recruit_idx)
             mContext.startActivity(intent)
 

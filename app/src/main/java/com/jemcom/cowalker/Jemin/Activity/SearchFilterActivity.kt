@@ -33,7 +33,7 @@ class SearchFilterActivity : AppCompatActivity(), View.OnClickListener {
                 filter_aimetc_btn.setTextColor(Color.BLACK)
                 filter_creative_btn.setSelected(false)
                 filter_creative_btn.setTextColor(Color.BLACK)
-                filterAim = "전체"
+                filterAim = ""
             }
 
             filter_startup_btn -> {
@@ -167,7 +167,7 @@ class SearchFilterActivity : AppCompatActivity(), View.OnClickListener {
                 filter_departmentetc_btn.setTextColor(Color.BLACK)
                 filter_departstartup_btn.setSelected(false)
                 filter_departstartup_btn.setTextColor(Color.BLACK)
-                filterDepartment = "전체"
+                filterDepartment = ""
             }
 
             filter_chain_btn -> {
@@ -301,7 +301,7 @@ class SearchFilterActivity : AppCompatActivity(), View.OnClickListener {
                 filter_developer_btn.setTextColor(Color.BLACK)
                 filter_positionetc_btn.setSelected(false)
                 filter_positionetc_btn.setTextColor(Color.BLACK)
-                filterPosition = "전체"
+                filterPosition = ""
             }
 
             filter_pm_btn -> {
@@ -412,7 +412,7 @@ class SearchFilterActivity : AppCompatActivity(), View.OnClickListener {
                 filter_gyeongsang_btn.setTextColor(Color.BLACK)
                 filter_jeju_btn.setSelected(false)
                 filter_jeju_btn.setTextColor(Color.BLACK)
-                filterArea = "전체"
+                filterArea = ""
             }
 
             filter_seoul_btn -> {

@@ -31,6 +31,7 @@ class ApplyPaperActivity : AppCompatActivity() {
     var answerList : ArrayList<String> = ArrayList<String>()
     var data : ArrayList<GetApplyPaperMessage> = ArrayList<GetApplyPaperMessage>()
     var question : String = ""
+    var position : String = ""
     var questionList : ArrayList<String> = ArrayList<String>()
 
     var join : Int = 0
@@ -44,9 +45,11 @@ class ApplyPaperActivity : AppCompatActivity() {
         apply_idx = intent.getStringExtra("apply_idx")
         applicant_idx = intent.getStringExtra("applicant_idx")
         recruit_idx = intent.getStringExtra("recruit_idx")
+        position = intent.getStringExtra("position")
         Log.v("TAG", "지원서액티비티 지원서 번호 = " + apply_idx)
         Log.v("TAG", "지원서액티비티 지원자 번호 = " + applicant_idx)
         Log.v("TAG", "지원서액티비티 모집 번호 = " + recruit_idx)
+        apply_paper_position_tv.setText(position)
         get()
 
         apply_paper_approve_btn.setOnClickListener{
@@ -73,13 +76,21 @@ class ApplyPaperActivity : AppCompatActivity() {
 
     fun get()
     {
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
         val getApplyPaperResponse = networkService.getApplyPaper(token, apply_idx, applicant_idx)
+        Log.v("TAG", "토큰 = "+token)
+        Log.v("TAG", "지원서번호 = "+apply_idx)
+        Log.v("TAG", "지원자번호 = "+applicant_idx)
 
 
         getApplyPaperResponse.enqueue(object : Callback<GetApplyPaperResponse> {
 
             override fun onResponse(call: Call<GetApplyPaperResponse>, response: Response<GetApplyPaperResponse>) {
+
+                Log.v("TAG","지원서리스트 통신")
                 if(response.isSuccessful){
+                    Log.v("TAG","지원서리스트 전달 통신")
                     data = response!!.body().result
 
                     for(i in 0..data[0].answers!!.size-1) {
@@ -106,6 +117,7 @@ class ApplyPaperActivity : AppCompatActivity() {
 
     fun getQuestionList()
     {
+
         val getQuestionListResponse = networkService.getQuestionList(recruit_idx)
 
 
@@ -113,6 +125,7 @@ class ApplyPaperActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<GetQuestionListResponse>, response: Response<GetQuestionListResponse>) {
                 Log.v("TAG", "질문리스트 통신 성공")
+                Log.v("TAG", "지원서액티비티 모집 번호 = "+ recruit_idx)
                 if(response.isSuccessful){
                     var data = response!!.body().result
                     for(i in 0..data.size-1) {

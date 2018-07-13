@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,6 +41,7 @@ class OtherpageTab : Fragment(), View.OnClickListener {
         }
     }
 
+    var user_idx : String = ""
     lateinit var networkService : NetworkService
     lateinit var requestManager : RequestManager
 
@@ -60,19 +62,23 @@ class OtherpageTab : Fragment(), View.OnClickListener {
     {
         val pref = v.context.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
-        val user_idx = "2"
-        var getMypageResponse = networkService.getMypageOther("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA5NTE1ODMsImV4cCI6MTUzMzU0MzU4M30.90d2qcRcikydx8R-lMMyLgcYGcAxY0Poi61a-NGpujY",user_idx)
-
+        val extra = arguments
+        user_idx = extra!!.getString("user_idx")
+        var getMypageResponse = networkService.getMypageOther(token,user_idx)
+        Log.v("TAG","타인 페이지 토큰 = " + token)
+        Log.v("TAG","타인 페이지 유저번호 = " + user_idx)
         getMypageResponse.enqueue(object : Callback<GetMypageOtherResponse> {
             override fun onFailure(call: Call<GetMypageOtherResponse>?, t: Throwable?) {
                 Toast.makeText(v.context,"서버 연결 실패", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<GetMypageOtherResponse>?, response: Response<GetMypageOtherResponse>?) {
-
+                Log.v("TAG", "통신은 성공")
                 if(response!!.isSuccessful)
                 {
+
                     var data = response.body().data
+                    Log.v("TAG", "타인 페이지 데이터 = "+data.toString())
                     v.otherpage_name_tv.setText(data[0].name)
                     v.otherpage_role_tv.setText(data[0].position)
                     v.otherpage_summary_tv.setText(data[0].introduce)

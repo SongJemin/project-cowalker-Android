@@ -16,6 +16,11 @@ import com.jemcom.cowalker.R
 import com.jemcom.cowalker.Jemin.Fragment.SearchFragment
 import com.jemcom.cowalker.Nuri.Activity.RecruitDeleteActivity
 import com.jemcom.cowalker.Nuri.Fragment.OtherpageTab
+import android.R.attr.fragment
+import android.R.attr.value
+import android.R.attr.key
+import android.util.Log
+
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -34,11 +39,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var alarmTabBtn: ImageButton? = null
     private var alarmTabSelectedBtn: ImageButton? = null
     private var mypageTabBtn: ImageButton? = null
+
     private var mypageTabSelectedBtn: ImageButton? = null
     val FINISH_INTERVAL_TIME = 2000
     var backPressedTime : Long = 0
 
-
+    var user_idx : String? = null
     override fun onBackPressed() {
         var tempTime = System.currentTimeMillis()
         var intervalTime = tempTime-backPressedTime
@@ -91,9 +97,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // 임의로 액티비티 호출 시점에 어느 프레그먼트를 프레임레이아웃에 띄울 것인지를 정함
         if(intent != null) {
             var status = intent.getStringExtra("status")
+            user_idx = intent.getStringExtra("user_idx")
             if(status != null) {
                 if (status.equals("mypage")) callFragment(FRAGMENT5)
-                else callFragment(FRAGMENT6)
+                else {
+                    callFragment(FRAGMENT6)
+
+                }
+
             }
             else callFragment(FRAGMENT1)
         }
@@ -170,6 +181,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.mypage_tab_btn -> {
                 // '마이페이지 버튼' 클릭 시 '마이페이지 프래그먼트' 호출
+
+
                 callFragment(FRAGMENT5)
                 mypage_tab_btn.visibility = View.GONE
                 mypage_tab_selected_btn.visibility = View.VISIBLE
@@ -222,7 +235,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             6 -> {
                 // '타인의 마이페이지 프래그먼트' 호출
+
                 val otherpageFragment = OtherpageTab()
+                val bundle = Bundle()
+                bundle.putString("user_idx", user_idx)
+                Log.v("TAG","메인에서 보내는 유저 번호 = "+user_idx)
+                otherpageFragment.setArguments(bundle)
+
                 transaction.replace(R.id.fragment_container, otherpageFragment)
                 transaction.commit()
             }

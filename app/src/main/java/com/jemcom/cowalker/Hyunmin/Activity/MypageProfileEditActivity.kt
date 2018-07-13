@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -24,12 +25,11 @@ import retrofit2.Response
 import retrofit2.http.Multipart
 
 class MypageProfileEditActivity : AppCompatActivity(), View.OnClickListener {
-
+    var projectAim : String? = null
+    var projectDepartment : String? = null
+    var projectArea : String? = null
+    var projectPosition : String? = null
     lateinit var networkService: NetworkService
-    var projectPosition = ""
-    var projectAim = ""
-    var projectDepartment = ""
-    var projectArea = ""
 
     override fun onClick(v: View?) {
         when(v)
@@ -190,7 +190,8 @@ class MypageProfileEditActivity : AppCompatActivity(), View.OnClickListener {
         val profile_img : MultipartBody.Part? = null
         val background_img : MultipartBody.Part? =null
         var putEditResponse = networkService.putMypage(token,
-                profile_img,background_img,projectPosition,profile_edit_intro_et.text.toString(),profile_edit_url_et.text.toString(),projectAim,projectDepartment,projectArea);
+                profile_img,background_img,projectPosition!!,profile_edit_intro_et.text.toString(),profile_edit_url_et.text.toString(),projectAim!!,projectDepartment!!,projectArea!!);
+
 
         putEditResponse.enqueue(object : Callback<PutMyPageResponse>{
             override fun onFailure(call: Call<PutMyPageResponse>?, t: Throwable?) {
