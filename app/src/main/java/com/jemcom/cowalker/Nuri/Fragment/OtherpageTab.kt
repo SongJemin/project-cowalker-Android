@@ -15,8 +15,11 @@ import com.jemcom.cowalker.Hyunmin.Activity.MypageProjectlistActivity
 import com.jemcom.cowalker.Hyunmin.Activity.ProfileEditActivity
 import com.jemcom.cowalker.Hyunmin.Activity.ProfileMoreActivity
 import com.jemcom.cowalker.Network.ApplicationController
+import com.jemcom.cowalker.Network.Get.GetMypage
+import com.jemcom.cowalker.Network.Get.GetOtherpage
 import com.jemcom.cowalker.Network.Get.Response.GetMypageOtherResponse
 import com.jemcom.cowalker.Network.NetworkService
+import com.jemcom.cowalker.Nuri.Activity.MessageActivity
 import com.jemcom.cowalker.Nuri.Activity.OtherpageProjectlistActivity
 import com.jemcom.cowalker.R
 import kotlinx.android.synthetic.main.fragment_otherpage.*
@@ -27,9 +30,15 @@ import retrofit2.Response
 
 class OtherpageTab : Fragment(), View.OnClickListener {
 
+    lateinit var data : ArrayList<GetOtherpage>
     override fun onClick(v: View?) {
         when(v)
         {
+            otherpage_message_btn->{
+                val intent = Intent(activity, MessageActivity::class.java)
+                intent.putExtra("partner_id",data[0].user_idx)
+                startActivity(intent)
+            }
             otherpage_project_btn ->{
                 val intent = Intent(activity, OtherpageProjectlistActivity::class.java)
                 startActivity(intent)
@@ -77,7 +86,7 @@ class OtherpageTab : Fragment(), View.OnClickListener {
                 if(response!!.isSuccessful)
                 {
 
-                    var data = response.body().data
+                    data = response.body().data
                     Log.v("TAG", "타인 페이지 데이터 = "+data.toString())
                     v.otherpage_name_tv.setText(data[0].name)
                     v.otherpage_role_tv.setText(data[0].position)

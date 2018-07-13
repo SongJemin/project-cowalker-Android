@@ -19,6 +19,7 @@ import com.jemcom.cowalker.Network.Get.Response.GetQuestionListResponse
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.Network.Post.PostJoin
 import com.jemcom.cowalker.Network.Post.Response.PostJoinResponse
+import com.jemcom.cowalker.Nuri.Activity.LoginActivity
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
 
 import com.jemcom.cowalker.R
@@ -31,6 +32,8 @@ import retrofit2.Response
 
 class ApplyDetailActivity : AppCompatActivity() {
 
+    val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+    val token = pref.getString("token","")
     lateinit var questionDetailAdapter : QuestionDetailAdapter
     lateinit var networkService: NetworkService
     var project_idx : String = ""
@@ -71,7 +74,11 @@ class ApplyDetailActivity : AppCompatActivity() {
 
 
         apply_detail_apply_btn.setOnClickListener {
-            post()
+           if(token.length > 0) post()
+            else {
+               var intent = Intent(applicationContext,LoginActivity::class.java)
+               startActivity(intent)
+           }
         }
 
     }

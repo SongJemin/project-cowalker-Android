@@ -26,6 +26,8 @@ import com.jemcom.cowalker.Network.Get.Response.GetRecruitListResponse
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.Network.Post.PostShareProject
 import com.jemcom.cowalker.Network.Post.Response.PostShareResponse
+import com.jemcom.cowalker.Nuri.Activity.LoginActivity
+import com.jemcom.cowalker.Nuri.Activity.RecruitDeleteActivity
 import com.jemcom.cowalker.Nuri.Activity.RecruitDetailActivity
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
 import com.jemcom.cowalker.Nuri.Item.RecruitListItem
@@ -48,6 +50,8 @@ import retrofit2.Response
 
 class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
 
+    val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+    val token = pref.getString("token","")
 
     override fun onClick(v: View) {
         var idx = project_detail_recyclerview.getChildAdapterPosition(v)
@@ -129,13 +133,20 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
         project_detail_see_close.setOnClickListener(this)
         project_detail_profile_iv.setOnClickListener(this)
 
+        project_detail_delete_btn.setOnClickListener{
+            var intent = Intent(applicationContext, RecruitDeleteActivity::class.java)
+            intent.putExtra("project_idx",project_idx)
+            intent.putExtra("recruit_idx",recruit_idx)
+            startActivity(intent)
+        }
+
         project_detail_recommend_btn.setOnClickListener {
         }
 
         project_detail_share_btn.setOnClickListener {
-            val intent = Intent(this@ProjectDetailActivity, ShareActivity::class.java)
-            intent.putExtra("project_idx", project_idx)
-            startActivity(intent)
+//            val intent = Intent(this@ProjectDetailActivity, ShareActivity::class.java)
+//            intent.putExtra("project_idx", project_idx)
+//            startActivity(intent)
         }
         project_detail_profile_iv.setOnClickListener {
             get()
@@ -156,11 +167,16 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
             project_detail_see_more.visibility = View.VISIBLE
             project_detail_explain_tv.maxLines = 2
         }
-
         project_detail_add_btn.setOnClickListener {
-            val intent = Intent(this@ProjectDetailActivity, InviteActivity::class.java)
-            intent.putExtra("project_idx", project_idx)
-            startActivity(intent)
+            if(token.length > 0) {
+                val intent = Intent(this@ProjectDetailActivity, InviteActivity::class.java)
+                intent.putExtra("project_idx", project_idx)
+                startActivity(intent)
+            }
+            else {
+                val intent = Intent(applicationContext,LoginActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         project_detail_change_btn.setOnClickListener {

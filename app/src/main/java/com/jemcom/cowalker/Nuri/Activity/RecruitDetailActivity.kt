@@ -39,6 +39,8 @@ import java.text.SimpleDateFormat
 
 class RecruitDetailActivity : AppCompatActivity() {
 
+    val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+    val token = pref.getString("token","")
     lateinit var networkService: NetworkService
     lateinit var recruitListItems: ArrayList<RecruitListItem>
     lateinit var recruitListAdapter : RecruitListAdapter
@@ -105,12 +107,19 @@ class RecruitDetailActivity : AppCompatActivity() {
 
 
         recruit_detail_applymember_linear.setOnClickListener{
-            var intent = Intent(applicationContext, ApplyMemberActivity::class.java)
-            intent.putExtra("recruit_idx",recruit_idx)
-            intent.putExtra("num",num)
-            Log.v("tag","리쿠릇디테일에서 보내는 num"+num)
-            intent.putExtra("task",task)
-            startActivity(intent)
+            if(token.length > 0) {
+                var intent = Intent(applicationContext, ApplyMemberActivity::class.java)
+                intent.putExtra("recruit_idx", recruit_idx)
+                intent.putExtra("num", num)
+                Log.v("tag", "리쿠릇디테일에서 보내는 num" + num)
+                intent.putExtra("task", task)
+                startActivity(intent)
+            }
+            else
+            {
+                var intent = Intent(applicationContext,LoginActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         recruit_detail_participmember_linear.setOnClickListener{
@@ -138,6 +147,8 @@ class RecruitDetailActivity : AppCompatActivity() {
                     // 프로젝트 수정
                     if (items[id] === "모집 수정") {
                         val intent = Intent(this@RecruitDetailActivity, ApplyModifyActivity::class.java)
+                        intent.putExtra("project_idx", project_idx)
+                        intent.putExtra("recruit_idx", recruit_idx)
                         startActivity(intent)
 
                     } else if (items[id] === "모집 삭제") {

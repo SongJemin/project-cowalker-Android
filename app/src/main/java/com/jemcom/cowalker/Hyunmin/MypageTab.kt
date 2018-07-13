@@ -212,18 +212,21 @@ class MypageTab : Fragment(),View.OnClickListener {
 
     fun put(v : View)
     {
+        System.out.println("왜?!")
         val pref = v.context.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
         if(status.equals("background")) {
-            var putPhotoResponse = networkService.putMypagePhoto(token,null,image)
+            var putPhotoResponse = networkService.putPhoto(token,null,image)
             putPhotoResponse.enqueue(object : Callback<PutMypagePhotoResponse>{
                 override fun onFailure(call: Call<PutMypagePhotoResponse>?, t: Throwable?) {
                     Toast.makeText(v.context,"서버 연결 실패",Toast.LENGTH_SHORT).show()
+                    System.out.println("왜?"+ t.toString())
                 }
 
                 override fun onResponse(call: Call<PutMypagePhotoResponse>?, response: Response<PutMypagePhotoResponse>?) {
                     if(response!!.isSuccessful)
                     {
+                        System.out.println("왜?")
                         val intent = Intent(v.context, MainActivity::class.java)
                         intent.putExtra("status","mypage")
                         startActivity(intent)
@@ -232,24 +235,24 @@ class MypageTab : Fragment(),View.OnClickListener {
                 }
             })
         }
-        else
-        {
-            var putPhotoResponse = networkService.putMypagePhoto(token,image,null)
-            putPhotoResponse.enqueue(object : Callback<PutMypagePhotoResponse>{
-                override fun onFailure(call: Call<PutMypagePhotoResponse>?, t: Throwable?) {
-                    Toast.makeText(v.context,"서버 연결 실패",Toast.LENGTH_SHORT).show()
-                }
-
-                override fun onResponse(call: Call<PutMypagePhotoResponse>?, response: Response<PutMypagePhotoResponse>?) {
-                    if(response!!.isSuccessful)
-                    {
-                        val intent = Intent(v.context,MainActivity::class.java)
-                        intent.putExtra("status","mypage")
-                        startActivity(intent)
-                    }
-                    else Toast.makeText(v.context,"실패",Toast.LENGTH_SHORT).show()
-                }
-            })
+        else{
+//        {
+//            var putPhotoResponse = networkService.putBackgroundPhoto(token,null)
+//            putPhotoResponse.enqueue(object : Callback<PutMypagePhotoResponse>{
+//                override fun onFailure(call: Call<PutMypagePhotoResponse>?, t: Throwable?) {
+//                    Toast.makeText(v.context,"서버 연결 실패",Toast.LENGTH_SHORT).show()
+//                }
+//
+//                override fun onResponse(call: Call<PutMypagePhotoResponse>?, response: Response<PutMypagePhotoResponse>?) {
+//                    if(response!!.isSuccessful)
+//                    {
+//                        val intent = Intent(v.context,MainActivity::class.java)
+//                        intent.putExtra("status","mypage")
+//                        startActivity(intent)
+//                    }
+//                    else Toast.makeText(v.context,"실패",Toast.LENGTH_SHORT).show()
+//                }
+//            })
         }
 
     }

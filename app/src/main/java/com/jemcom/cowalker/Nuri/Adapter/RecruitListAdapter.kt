@@ -28,13 +28,15 @@ class RecruitListAdapter (private var recruitlistItems : ArrayList<RecruitListIt
         holder.dday.text = recruitlistItems[position].dday.toString()
 
         holder.check.setOnClickListener{
-            if(holder.check.isSelected != false)
+            if(holder.check.isSelected == false && RecruitDeleteActivity.activity.check == 0)
             {
+                RecruitDeleteActivity.activity.position = position
                 RecruitDeleteActivity.activity.check = 1
                 holder.check.isSelected = true
             }
             else
             {
+                RecruitDeleteActivity.activity.position = position
                 RecruitDeleteActivity.activity.check = 0
                 holder.check.isSelected = false
             }
