@@ -12,7 +12,8 @@
 
         <RelativeLayout
             android:layout_width="80dp"
-            android:layout_height="80dp">
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/messageitem_profile_cv"
@@ -27,11 +28,12 @@
             android:layout_marginTop="7dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="9dp"
             android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="25dp">
+                android:layout_height="30dp">
 
                 <TextView
                     android:paddingRight="5dp"
@@ -50,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="6dp"
+                    android:layout_marginRight="12dp"
                     android:layout_alignParentRight="true"
                     android:fontFamily="@font/notosanscjkkr_regular"
                     android:textColor="@color/colorinfo"

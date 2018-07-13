@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
 import com.jemcom.cowalker.Network.ApplicationController
+import com.jemcom.cowalker.Network.Get.GetRecruitDetail
 import com.jemcom.cowalker.Network.Get.Response.GetRecruitDetailResponse
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.R
@@ -17,6 +18,7 @@ import retrofit2.Response
 
 class ApplyModify2Activity : AppCompatActivity(), View.OnClickListener {
 
+    lateinit var data : ArrayList<GetRecruitDetail>
     lateinit var networkService: NetworkService
 
     override fun onClick(v: View?) {
@@ -24,6 +26,14 @@ class ApplyModify2Activity : AppCompatActivity(), View.OnClickListener {
         {
             invite2_next_btn -> {
                 var intent = Intent(applicationContext,ApplyModify3Activity::class.java)
+                intent.putExtra("position",getIntent().getStringExtra("position"))
+                intent.putExtra("number",getIntent().getStringExtra("number"))
+                intent.putExtra("start_date",getIntent().getStringExtra("start_date"))
+                intent.putExtra("end_date,",getIntent().getStringExtra("end_date"))
+                intent.putExtra("task",invite2_task_edit.text)
+                intent.putExtra("activity",invite2_activity_edit.text)
+                intent.putExtra("area",invite2_area_edit.text)
+                intent.putExtra("reward",invite2_reward_edit.text)
                 startActivity(intent)
             }
         }
@@ -55,7 +65,7 @@ class ApplyModify2Activity : AppCompatActivity(), View.OnClickListener {
             override fun onResponse(call: Call<GetRecruitDetailResponse>?, response: Response<GetRecruitDetailResponse>?) {
                 if(response!!.isSuccessful)
                 {
-                    var data = response.body().result
+                    data = response.body().result
                     invite2_task_edit.setText(data[0].task)
                     invite2_activity_edit.setText(data[0].activity)
                     invite2_area_edit.setText(data[0].area)

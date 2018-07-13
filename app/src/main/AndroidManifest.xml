@@ -38,17 +38,13 @@
         <activity android:name=".Jemin.Activity.TestActivity" />
         <activity android:name=".Jemin.Activity.Invite4Activity" />
         <activity android:name=".Jemin.Activity.Invite3Activity" />
-        <activity android:name=".Jemin.Activity.SearchFilterActivity" />
+        <activity android:name=".Nuri.Activity.ApplyModifyActivity" />
         <activity android:name=".Hyunmin.Activity.MypageProfileEditActivity" />
-        <activity android:name=".Hyunmin.Activity.ProjectIntroActivity"></activity>
         <activity android:name=".Hyunmin.Activity.ProfileEditActivity" />
         <activity android:name=".Nuri.Activity.MessageActivity" />
         <activity android:name=".Hyunmin.Activity.ProfileMore2Activity" />
-        <activity android:name=".Jemin.Activity.ProjectIntroCreaterActivity" />
         <activity android:name=".Jemin.Activity.ProjectChangeActivity" />
         <activity android:name=".Jemin.Activity.ProjectChange2Activity" />
-        <activity android:name=".Jemin.Activity.ProjectIntroWaitActivity" />
-        <activity android:name=".Jemin.Activity.ProjectIntroParticipActivity" />
         <activity android:name=".Nuri.Activity.RecruitDetailActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -73,12 +69,18 @@
         <activity android:name=".Jemin.Activity.ApplyPaperActivity" />
         <activity android:name=".Nuri.Activity.OtherpageProjectlistActivity" />
         <activity android:name=".Nuri.Activity.MyInfoEditActivity" />
-        <activity android:name=".Nuri.Activity.ApplyModifyActivity" />
         <activity android:name=".Nuri.Activity.ApplyModify2Activity" />
         <activity android:name=".Nuri.Activity.ApplyModify3Activity" />
         <activity android:name=".Nuri.Activity.ApplyModify4Activity" />
         <activity android:name=".Hyunmin.Activity.MypageProjectlistActivity" />
         <activity android:name=".Jemin.Activity.ProjectDetailActivity"></activity>
+        <activity
+            android:name=".Nuri.Activity.RecommendActivity"
+            android:theme="@style/Transparent" />
+        <activity android:name=".Nuri.Activity.PopupActivity"
+            android:theme="@style/Transparent" ></activity>
+        <activity android:name=".Jemin.Activity.SearchFilterActivity" />
+>>>>>>> origin/master
     </application>
 
 </manifest>

@@ -16,14 +16,14 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
+            android:layout_height="wrap_content"
             android:text="새 프로젝트"
             android:textSize="26sp"
             android:textColor="#444444"
             android:layout_marginLeft="20dp"
-            android:textStyle="bold"
             android:layout_marginTop="29dp"
             android:layout_below="@+id/invite2_progress1_img"
+            android:fontFamily="@font/notosanscjkkr_bold"
             />
 
 
@@ -42,6 +42,7 @@
                 android:hint="제목을 입력하세요."
                 android:layout_gravity="center_vertical"
                 android:backgroundTint="@color/Transparent"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 android:textSize="15dp"
                 />
 
@@ -56,13 +57,13 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
+                android:layout_height="wrap_content"
                 android:text="한줄 소개말"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="20dp"
                 android:textColor="#000000"
-                android:textStyle="bold"
                 android:textSize="16sp"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 />
 
             <EditText
@@ -74,6 +75,7 @@
                 android:hint="프로젝트를 한 마디로 설명해보세요."
                 android:layout_gravity="center_vertical"
                 android:backgroundTint="@color/Transparent"
+                android:fontFamily="@font/notosanscjkkr_regular"
                 android:textSize="15dp"
                 />
 
@@ -88,19 +90,19 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
+                android:layout_height="wrap_content"
                 android:text="목적"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:textColor="#000000"
-                android:textStyle="bold"
                 android:textSize="16sp"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 />
 
             <Spinner
                 android:id="@+id/create1_purpose_spinner"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="40dp"
                 android:layout_marginRight="20dp"
                 android:layout_height="47dp"
                 android:layout_marginTop="9dp"
@@ -113,18 +115,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="134dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:orientation="vertical"
             android:background="#ffffff">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
+                android:layout_height="wrap_content"
                 android:text="분야"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:textColor="#000000"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:textSize="16sp"
                 />
 
@@ -132,9 +134,10 @@
                 android:id="@+id/create1_field_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="40dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="9dp"
+                android:layout_marginBottom="20dp"
                 >
 
             </Spinner>
@@ -144,18 +147,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="134dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:orientation="vertical"
             android:background="#ffffff">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
+                android:layout_height="wrap_content"
                 android:text="지역"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:textColor="#000000"
-                android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkr_bold"
                 android:textSize="16sp"
                 />
 
@@ -163,9 +166,10 @@
                 android:id="@+id/create1_location_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="40dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="9dp"
+                android:layout_marginBottom="20dp"
                 />
 
         </LinearLayout>
@@ -173,12 +177,13 @@
             android:id="@+id/create1_next_btn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="0dp"
             android:text="다음"
             android:gravity="center"
-            android:textSize="20dp"
+            android:textSize="16sp"
             android:textColor="#ffffff"
-            android:background="#64dfff"/>
+            android:fontFamily="@font/notosanscjkkr_bold"
+            android:background="#45b6ff"/>
 
     </LinearLayout>
 </ScrollView>

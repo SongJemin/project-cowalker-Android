@@ -6,9 +6,11 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
 import com.jemcom.cowalker.Network.ApplicationController
+import com.jemcom.cowalker.Network.Get.GetRecruitDetail
 import com.jemcom.cowalker.Network.Get.Response.GetRecruitDetailResponse
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.R
+import kotlinx.android.synthetic.main.activity_invite2.*
 import kotlinx.android.synthetic.main.activity_invite3.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,13 +18,27 @@ import retrofit2.Response
 
 class ApplyModify3Activity : AppCompatActivity(), View.OnClickListener {
 
+
+    lateinit var data : ArrayList<GetRecruitDetail>
     lateinit var networkService: NetworkService
 
     override fun onClick(v: View?) {
         when(v)
         {
             invite3_next_btn -> {
-                var intent = Intent(applicationContext, ApplyModify4Activity::class.java)
+                var intent = Intent(applicationContext,ApplyModify4Activity::class.java)
+                intent.putExtra("position",getIntent().getStringExtra("position"))
+                intent.putExtra("number",getIntent().getStringExtra("number"))
+                intent.putExtra("start_date",getIntent().getStringExtra("start_date"))
+                intent.putExtra("end_date,",getIntent().getStringExtra("end_date"))
+                intent.putExtra("task",getIntent().getStringExtra("task"))
+                intent.putExtra("activity",getIntent().getStringExtra("activity"))
+                intent.putExtra("area",getIntent().getStringExtra("area"))
+                intent.putExtra("reward",getIntent().getStringExtra("reward"))
+                intent.putExtra("ability",data[0].ability)
+                intent.putExtra("career",data[0].career)
+                intent.putExtra("preference",data[0].preference)
+                intent.putExtra("comment",data[0].comment)
                 startActivity(intent)
             }
         }
@@ -54,7 +70,7 @@ class ApplyModify3Activity : AppCompatActivity(), View.OnClickListener {
             override fun onResponse(call: Call<GetRecruitDetailResponse>?, response: Response<GetRecruitDetailResponse>?) {
                 if(response!!.isSuccessful)
                 {
-                    var data = response.body().result
+                    data = response.body().result
                     invite3_ability_edit.setText(data[0].ability)
                     invite3_career_edit.setText(data[0].career)
                     invite3_preference_edit.setText(data[0].preference)

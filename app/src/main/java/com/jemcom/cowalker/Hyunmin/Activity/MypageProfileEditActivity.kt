@@ -34,7 +34,7 @@ class MypageProfileEditActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v)
         {
-            profile_edit_ok_ib -> {
+            profile_edit_ok_btn -> {
                 putEdit()
             }
         }
@@ -45,7 +45,7 @@ class MypageProfileEditActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_mypage_profile_edit)
 
         networkService = ApplicationController.instance.networkSerVice
-        profile_edit_ok_ib.setOnClickListener(this)
+        profile_edit_ok_btn.setOnClickListener(this)
 
         val view = window.decorView
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

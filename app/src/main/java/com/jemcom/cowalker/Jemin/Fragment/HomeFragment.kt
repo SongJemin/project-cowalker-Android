@@ -83,7 +83,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         super.onCreate(savedInstanceState)
 
 
-       // GetProjectResponseData = ArrayList()
+        // GetProjectResponseData = ArrayList()
         //initDataSet()
 
     }

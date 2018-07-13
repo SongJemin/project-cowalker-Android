@@ -7,15 +7,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="180dp"
+            android:layout_marginLeft="175dp"
+            android:fontFamily="@font/notosanscjkkr_bold"
             android:text="내 소개"
+            android:layout_marginTop="5dp"
             android:textColor="#444444"
             android:textSize="18sp" />
 
@@ -24,7 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="130dp"
+            android:layout_marginLeft="145dp"
+            android:layout_marginTop="5dp"
             android:background="@android:color/transparent"
             android:src="@drawable/pen" />
     </LinearLayout>
@@ -32,11 +35,12 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/image_swipe"
         android:layout_width="match_parent"
-        android:layout_height="200dp"></android.support.v4.view.ViewPager>
+        android:layout_marginTop="10dp"
+        android:layout_height="300dp"></android.support.v4.view.ViewPager>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="233dp"
+        android:layout_height="300dp"
         android:layout_marginTop="7dp"
         android:background="#ffffff"
         android:orientation="vertical">
@@ -44,9 +48,10 @@
         <TextView
             android:id="@+id/profile_more_contents2_tv"
             android:layout_width="320dp"
-            android:layout_height="110dp"
+            android:layout_height="200dp"
             android:layout_gravity="center"
             android:layout_marginTop="39dp"
+            android:fontFamily="@font/notosanscjkkr_regular"
             android:text="저는 건국대학교 문화콘텐츠학과에 재학중인 대학생 이충엽 입니다. 저는 사회의 문제점을 파악하고, 이를 해결하기 위해 창업을 꿈꾸고 있습니다.
 저와 함께 새로운 질서를 만들고 싶으신 분들은 함께 여정을 떠나봅시다."
             android:textColor="#444444"
