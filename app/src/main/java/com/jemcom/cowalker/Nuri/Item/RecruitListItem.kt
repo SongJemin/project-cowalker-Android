@@ -4,5 +4,5 @@ data class RecruitListItem (
         var position : String,
         var number : Int,
         var task : String,
-        var dday : Int
+        var dday : String
 )

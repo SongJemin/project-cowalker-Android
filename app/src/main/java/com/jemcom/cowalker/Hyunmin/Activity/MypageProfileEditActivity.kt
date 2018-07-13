@@ -17,7 +17,9 @@ import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.Network.Put.Response.PutMyPageResponse
 import com.jemcom.cowalker.R
 import kotlinx.android.synthetic.main.activity_mypage_profile_edit.*
+import okhttp3.MediaType
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -188,7 +190,13 @@ class MypageProfileEditActivity : AppCompatActivity(), View.OnClickListener {
         val profile_img : MultipartBody.Part? = null
         val background_img : MultipartBody.Part? =null
         var putEditResponse = networkService.putMypage(token,
-                profile_img,background_img,projectPosition!!,profile_edit_intro_et.text.toString(),profile_edit_url_et.text.toString(),projectAim!!,projectDepartment!!,projectArea!!);
+                profile_img,background_img, RequestBody.create(MediaType.parse("text/plain"),
+                projectPosition!!),RequestBody.create(MediaType.parse("text/plain"),
+                profile_edit_intro_et.text.toString()),RequestBody.create(MediaType.parse("text/plain"),
+                profile_edit_url_et.text.toString()),RequestBody.create(MediaType.parse("text/plain"),
+                projectAim!!),RequestBody.create(MediaType.parse("text/plain"),
+                projectDepartment!!),RequestBody.create(MediaType.parse("text/plain"),
+                projectArea!!));
 
         putEditResponse.enqueue(object : Callback<PutMyPageResponse>{
             override fun onFailure(call: Call<PutMyPageResponse>?, t: Throwable?) {

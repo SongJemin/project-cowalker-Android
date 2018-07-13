@@ -44,7 +44,7 @@ public class ProjectCreateActivity extends AppCompatActivity {
 
                 Log.v("TAG", "title = " + projectTitle + ", summary = " + projectSummary + ", aim = "
                         + projectAim + ", department = " + projectDepartment + ", Area = " + projectArea);
-                Intent intent = new Intent(ProjectCreateActivity.this, ShareActivity.class);
+                Intent intent = new Intent(ProjectCreateActivity.this, ProjectCreate2Activity.class);
 
                 //Intent intent = new Intent(ProjectCreateActivity.this, ProjectCreate2Activity.class);
                 intent.putExtra("title",projectTitle);

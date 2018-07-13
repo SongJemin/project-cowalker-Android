@@ -80,7 +80,7 @@ class MypageProjectlistActivity : AppCompatActivity() {
                     else projectlist_create_rv.setVisibility(View.GONE)
                     for(i in 0..data.size-1)
                     {
-                        projectMineItems.add(ProjectItem("https://project-cowalker.s3.ap-northeast-2.amazonaws.com/1531246857588.jpg",data[i].title,data[i].aim + " / " + data[i].department + " / " + data[i].area))
+                        projectMineItems.add(ProjectItem(data[i].img_url[0],data[i].title,data[i].aim + " / " + data[i].department + " / " + data[i].area))
                     }
                     System.out.println("사이즈222 : " + projectMineItems.size)
                     projectMineAdapter = ProjectAdapter(projectMineItems,requestManager)
