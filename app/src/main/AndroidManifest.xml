@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-
+    .
     <application
         android:name=".Network.ApplicationController"
         android:allowBackup="true"
@@ -19,6 +19,9 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/color_push" />
 
         <activity android:name=".Jemin.Activity.MainActivity" />
         <activity android:name=".Jemin.Activity.SplashActivity">
@@ -29,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Jemin.Activity.ProjectCreateActivity" />
-        <activity android:name=".Jemin.Activity.InviteActivity"/>
+        <activity android:name=".Jemin.Activity.InviteActivity" />
         <activity android:name=".Jemin.Activity.Invite2Activity" />
         <activity android:name=".Jemin.Activity.ProjectCreate2Activity" />
         <activity android:name=".Nuri.Activity.SignupActivity" />
@@ -73,14 +76,38 @@
         <activity android:name=".Nuri.Activity.ApplyModify3Activity" />
         <activity android:name=".Nuri.Activity.ApplyModify4Activity" />
         <activity android:name=".Hyunmin.Activity.MypageProjectlistActivity" />
-        <activity android:name=".Jemin.Activity.ProjectDetailActivity"></activity>
+        <activity android:name=".Jemin.Activity.ProjectDetailActivity" />
         <activity
             android:name=".Nuri.Activity.RecommendActivity"
             android:theme="@style/Transparent" />
-        <activity android:name=".Nuri.Activity.PopupActivity"
-            android:theme="@style/Transparent" ></activity>
+        <activity
+            android:name=".Nuri.Activity.PopupActivity"
+            android:theme="@style/Transparent" />
         <activity android:name=".Jemin.Activity.SearchFilterActivity" />
->>>>>>> origin/master
+
+        <!-- FCM 관련 서비스 -->
+        <service android:name=".Firebase.FirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".Firebase.FirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- 여기까지 -->
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider"
+            android:exported="true" />
+
+        <activity android:name=".Jemin.Activity.ShareActivity"></activity>
     </application>
 
 </manifest>

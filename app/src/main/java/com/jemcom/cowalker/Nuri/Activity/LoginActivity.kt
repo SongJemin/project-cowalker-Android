@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
+import com.google.firebase.iid.FirebaseInstanceId
 import com.jemcom.cowalker.Jemin.Activity.MainActivity
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.NetworkService
@@ -146,7 +147,8 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
 
     fun post()
     {
-        var data = PostLogin(email,password)
+        var fcm_token = FirebaseInstanceId.getInstance().getToken();
+        var data = PostLogin(email,password,fcm_token)
         var postLoginResponse = networkService.postLogin(data)
 
         postLoginResponse.enqueue(object : Callback<PostLoginResponse>{

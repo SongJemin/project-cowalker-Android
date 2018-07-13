@@ -277,4 +277,9 @@ interface NetworkService {
             @Header("authorization") authorization: String,
             @Body recommend : PostRecommend
     ) : Call<PostRecommendResponse>
+    @POST("/api/share")
+    fun postSharedSns(
+            @Header("authorization") authorization : String,
+            @Body sharedsns : PostSharedSns
+    ) : Call<PostSharedSnsResponse>
 }

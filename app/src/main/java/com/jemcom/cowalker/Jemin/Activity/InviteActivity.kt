@@ -94,6 +94,7 @@ class InviteActivity : AppCompatActivity() {
                 Log.v("TAG", "역할 = " + position + "시작 = " + start_date + "마지막 = " + end_date + "명 = " + number)
 
                 startActivity(intent)
+
             }
 
 

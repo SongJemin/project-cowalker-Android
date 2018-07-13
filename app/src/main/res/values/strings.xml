@@ -14,8 +14,8 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+        completions."</string>
+    <string name="facebook_app_id">667779520229002</string>
 
     <string-array name="profile_edit_role_spin">
         <item>PM</item>
