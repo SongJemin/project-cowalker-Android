@@ -1,6 +1,7 @@
 package com.jemcom.cowalker.Jemin.Activity
 
 import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
@@ -76,9 +77,12 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener {
             // 21 버전 이상일 때
             window.statusBarColor = Color.BLACK
         }
+
         activity = this
         val getintent = intent
         project_idx = getintent.getStringExtra("project_idx")
+
+
         networkService = ApplicationController.instance.networkSerVice
         recruitListItems = ArrayList()
         getList()
@@ -112,6 +116,8 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener {
                 {
                     var message = response.body()
                     Toast.makeText(applicationContext,"성공",Toast.LENGTH_SHORT).show()
+                    var intent = Intent(applicationContext, MainActivity::class.java)
+                    startActivity(intent)
                 }
                 else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()
             }

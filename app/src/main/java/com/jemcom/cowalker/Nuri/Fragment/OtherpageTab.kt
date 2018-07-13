@@ -36,6 +36,8 @@ class OtherpageTab : Fragment(), View.OnClickListener {
             }
             otherpage_intro_btn -> {
                 val intent = Intent(activity, ProfileMoreActivity::class.java)
+                Log.v("TAG", "아더페이지 유저명 = " + user_idx)
+                intent.putExtra("user_idx",user_idx)
                 startActivity(intent)
             }
         }

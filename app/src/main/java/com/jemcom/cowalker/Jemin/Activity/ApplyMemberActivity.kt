@@ -106,10 +106,15 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
                 if(response!!.isSuccessful)
                 {
 
-                    applyMemberData = response.body().result
-                    applyMemberAdapter = ApplyMemberAdapter(this@ApplyMemberActivity, applyMemberData,requestManager)
-                    apply_member_list_recyclerview.layoutManager = LinearLayoutManager( this@ApplyMemberActivity)
-                    apply_member_list_recyclerview.adapter = applyMemberAdapter
+                    if(response.body().result == null){
+                        Log.v("TAG","널값은여기")
+                    }
+                    else {
+                        applyMemberData = response.body().result
+                        applyMemberAdapter = ApplyMemberAdapter(this@ApplyMemberActivity, applyMemberData, requestManager)
+                        apply_member_list_recyclerview.layoutManager = LinearLayoutManager(this@ApplyMemberActivity)
+                        apply_member_list_recyclerview.adapter = applyMemberAdapter
+                    }
                 }
 
             }

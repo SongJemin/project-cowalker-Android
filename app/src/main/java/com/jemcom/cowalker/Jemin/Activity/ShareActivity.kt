@@ -18,6 +18,7 @@ import com.facebook.share.widget.ShareDialog
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.Network.Post.PostShareProject
+import com.jemcom.cowalker.Network.Post.PostShareRecruit
 import com.jemcom.cowalker.Network.Post.PostSharedSns
 import com.jemcom.cowalker.Network.Post.Response.PostShareResponse
 import com.jemcom.cowalker.Network.Post.Response.PostSharedSnsResponse
@@ -40,6 +41,8 @@ class ShareActivity : AppCompatActivity() {
     lateinit var networkService: NetworkService
     var project_idx: String = ""
     var recruit_idx: String = ""
+    var title: String = ""
+    var imgUrl: String = ""
 
     @BindView(R.id.fb_share_button)
     internal var facebookbtn: Button? = null
@@ -53,18 +56,21 @@ class ShareActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_share)
-
+        networkService = ApplicationController.instance.networkSerVice
         FacebookSdk.sdkInitialize(applicationContext)
         AppEventsLogger.activateApp(this)
         ButterKnife.bind(this)
 
 
 
-        //project_idx = intent.getStringExtra("project_idx")
+        project_idx = intent.getStringExtra("project_idx")
+        recruit_idx = intent.getStringExtra("recruit_idx")
+        title = intent.getStringExtra("title")
+        imgUrl = intent.getStringExtra("imgUrl")
 
         share_kakao_btn.setOnClickListener {
-
-            sendLink()
+            //postShareProject()
+            postShareRecruit()
         }
 
         share_facebook_btn.setOnClickListener {
@@ -72,48 +78,23 @@ class ShareActivity : AppCompatActivity() {
         }
     }
 
-    fun postShareProject() {
-
-        networkService = ApplicationController.instance.networkSerVice
-        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
-        val token = pref.getString("token", "")
-        var data = PostShareProject(project_idx)
-        var postShareResponse = networkService.postShareProject(token, data)
-
-        postShareResponse.enqueue(object : retrofit2.Callback<PostShareResponse> {
-
-            override fun onResponse(call: Call<PostShareResponse>, response: Response<PostShareResponse>) {
-                if (response.isSuccessful) {
-                    Log.v("TAG", "프로젝트 공유 성공")
-                    sendLink()
-                }
-            }
-
-            override fun onFailure(call: Call<PostShareResponse>, t: Throwable?) {
-                Toast.makeText(applicationContext, "1서버 연결 실패", Toast.LENGTH_SHORT).show()
-            }
-
-        })
-    }
-
-    private fun sendLink() {
-
-        Log.v("TAG", "프로젝트 숫자 =" + project_idx)
+    private fun sendLink(project_idx:String, recruit_idx :String) {
+        Log.v("TAG","모집 상세 프로젝트 숫자 ="+project_idx + "모집 번호 숫자 = " + recruit_idx)
         val params = FeedTemplate
-                .newBuilder(ContentObject.newBuilder("코워커 모집",
-                        url,
+                .newBuilder(ContentObject.newBuilder(title,
+                        imgUrl,
                         LinkObject.newBuilder().setWebUrl("")
                                 .setMobileWebUrl("").build())
-                        .setDescrption("당신에게 공유하였습니다. 함께 해주세요!")
+                        .setDescrption("우리의 팀이 되어주세요!" +
+                                "공유를 해주시면 씨앗을 드립니다")
                         .build())
 
-                .addButton(ButtonObject("깅스앱으로 열기", LinkObject.newBuilder()
+                .addButton(ButtonObject("코워커 앱으로 열기", LinkObject.newBuilder()
 
-                        .setWebUrl("'https://developers.kakao.com")
-                        //서버 막힘.setMobileWebUrl("'http://bghgu.tk:3000/api/project?project_idx=" + project_idx)
-                        .setMobileWebUrl("'http://bghgu.tk:3000/api/project?project_idx=" + "12323")
-                        /*.setAndroidExecutionParams("key1=value1")
-                        .setIosExecutionParams("key1=value1")*/
+                        //.setWebUrl("'https://developers.kakao.com")
+                        //.setMobileWebUrl("http://bghgu.tk:3000/api/project/"+project_idx+"/recruit/"+recruit_idx)
+
+                        .setAndroidExecutionParams("project_idx="+project_idx+"&recruit_idx="+recruit_idx)
                         .build()))
                 .build()
 
@@ -125,6 +106,30 @@ class ShareActivity : AppCompatActivity() {
             }
 
             override fun onSuccess(result: KakaoLinkResponse) {}
+        })
+    }
+
+
+    fun postShareRecruit()
+    {
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+        var data = PostShareRecruit(recruit_idx)
+        var postShareResponse = networkService.postShareRecruit(token,data)
+
+        postShareResponse.enqueue(object : retrofit2.Callback<PostShareResponse>{
+
+            override fun onResponse(call: Call<PostShareResponse>, response: Response<PostShareResponse>) {
+                if(response.isSuccessful){
+                    Log.v("TAG","모집 공유 성공")
+                    sendLink(project_idx, recruit_idx)
+                }
+            }
+
+            override fun onFailure(call: Call<PostShareResponse>, t: Throwable?) {
+                Toast.makeText(applicationContext,"서버 연결 실패",Toast.LENGTH_SHORT).show()
+            }
+
         })
     }
 

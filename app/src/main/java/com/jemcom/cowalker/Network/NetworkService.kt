@@ -56,6 +56,15 @@ interface NetworkService {
             @Body join : PostJoin
     ) : Call<PostJoinResponse>
 
+    @POST("/api/apply")
+    fun postShare(
+            @Header("authorization") authorization : String,
+            @Body join : PostJoin,
+            @Query ("sharer_idx") sharer_idx : String,
+            @Query ("project_idx") project_idx: String,
+            @Query ("recruit_idx") recruit_idx: String
+    ) : Call<PostJoinResponse>
+
     @GET("/api/apply/{apply_idx}")
     fun getApplyMine(
             @Header("authorization") authorization : String,

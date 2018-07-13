@@ -460,13 +460,13 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/recruit_detail_share_btn"
                 android:layout_width="41dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
                 android:orientation="vertical">
 
                 <ImageButton
-                    android:id="@+id/recruit_detail_share_btn"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="7dp"

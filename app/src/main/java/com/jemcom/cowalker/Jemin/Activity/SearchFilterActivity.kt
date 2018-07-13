@@ -206,7 +206,7 @@ class SearchFilterActivity : AppCompatActivity(), View.OnClickListener {
                 filter_departmentetc_btn.setTextColor(Color.BLACK)
                 filter_departstartup_btn.setSelected(false)
                 filter_departstartup_btn.setTextColor(Color.BLACK)
-                filterDepartment = "iot"
+                filterDepartment = "IoT"
             }
 
             filter_ai_btn -> {

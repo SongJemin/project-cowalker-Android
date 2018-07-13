@@ -61,6 +61,8 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
         intent.putExtra("recruit_idx", recruit_idx)
         intent.putExtra("num", num)
         intent.putExtra("task", task)
+        intent.putExtra("title", title)
+        intent.putExtra("imgUrl", imgUrl)
         var userResult : String = ""
         startActivity(intent)
     }
@@ -136,6 +138,7 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
             val intent = Intent(this@ProjectDetailActivity, ShareActivity::class.java)
             intent.putExtra("project_idx", project_idx)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
         }
         project_detail_profile_iv.setOnClickListener {
             get()

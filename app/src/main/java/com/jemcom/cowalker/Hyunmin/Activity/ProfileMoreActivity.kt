@@ -5,6 +5,7 @@ import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.view.ViewPager
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -23,10 +24,14 @@ class ProfileMoreActivity : AppCompatActivity() {
 
     lateinit var networkService: NetworkService // 필수로 적어야 함.
     lateinit var requestManager : RequestManager
+    var user_idx : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_more)
+
+        user_idx = intent.getStringExtra("user_idx")
+        Log.v("TAG", "아더프로필모어 유저= "+user_idx)
         val view = window.decorView
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (view != null) {
@@ -46,7 +51,6 @@ class ProfileMoreActivity : AppCompatActivity() {
 
     fun get()
     {
-        var user_idx = "2" // 현재는 임시값을 넣어준 것
         var getProfieOtherResponse = networkService.getIntroOther(user_idx)
 
         getProfieOtherResponse.enqueue(object : Callback<GetIntroOtherResponse>{ // object 객체 무조건 밑에 override해주기, 내용 없어도 해주기.

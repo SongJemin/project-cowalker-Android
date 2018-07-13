@@ -39,6 +39,7 @@ class ApplyDetailActivity : AppCompatActivity() {
     var detailAnswerList : ArrayList<String> = ArrayList()
     var count = ""
     var position : String = ""
+    var task : String = ""
 
 
     companion object {
@@ -64,11 +65,14 @@ class ApplyDetailActivity : AppCompatActivity() {
         networkService = ApplicationController.instance.networkSerVice
         val getRecruitintent = intent
         recruit_idx = getRecruitintent.getStringExtra("recruit_idx")
+        Log.v("TAG", "모집 상세에서 받은 모집 번호 = "+recruit_idx)
         project_idx = getRecruitintent.getStringExtra("project_idx")
         position = getRecruitintent.getStringExtra("position")
+        task = getRecruitintent.getStringExtra("task")
         get()
         Log.v("TAG","리쿠릇에서 받은 포지션 = " + position)
-
+        apply_detail_position1_tv.setText(position)
+        apply_detail_summary_tv.setText(task)
 
         apply_detail_apply_btn.setOnClickListener {
             post()
@@ -131,6 +135,10 @@ class ApplyDetailActivity : AppCompatActivity() {
                 {
                     var message = response.body()
                     Toast.makeText(applicationContext,"성공",Toast.LENGTH_SHORT).show()
+
+                    var intent = Intent(applicationContext, MainActivity::class.java)
+                    startActivity(intent)
+
                 }
                 else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()
             }
