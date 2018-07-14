@@ -1,0 +1,47 @@
+* [33ma3fc2ca[m[33m ([m[1;36mHEAD -> [m[1;32mSongJemin[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/SongJemin[m[33m, [m[1;32mmaster[m[33m)[m HomeTab Layout Complete!
+* [33ma991077[m test
+*   [33m4361801[m 카카오톡 공유 기능 구현5
+[32m|[m[33m\[m  
+[32m|[m *   [33md31f391[m Merge pull request #4 from seong4862/SeongNuri
+[32m|[m [34m|[m[35m\[m  
+[32m|[m [34m|[m * [33md0baaf8[m 자동 로그인 완성
+[32m|[m * [35m|[m   [33m7a5778d[m Merge pull request #3 from seong4862/SeongNuri
+[32m|[m [36m|[m[35m\[m [35m\[m  
+[32m|[m [36m|[m [35m|[m[35m/[m  
+[32m|[m [36m|[m * [33m1e66dd7[m 로그인(통신, 예외O, 자동로그인X), 회원가입(통신, 예외 0),홈화면 뒤로가기 막음
+[32m|[m [36m|[m [1;31m|[m *   [33m49d05fc[m[33m ([m[1;35mrefs/stash[m[33m)[m WIP on SongJemin: 7c7a543 카카오톡 공유 기능 구현3
+[32m|[m [36m|[m [1;31m|[m [32m|[m[1;33m\[m  
+[32m|[m [36m|[m[32m_[m[1;31m|[m[32m/[m [1;33m/[m  
+[32m|[m[32m/[m[36m|[m [1;31m|[m [1;33m|[m   
+[32m|[m [36m|[m [1;31m|[m * [33mdaa4b6e[m index on SongJemin: 7c7a543 카카오톡 공유 기능 구현3
+[32m|[m [36m|[m[32m_[m[1;31m|[m[32m/[m  
+[32m|[m[32m/[m[36m|[m [1;31m|[m   
+* [36m|[m [1;31m|[m [33m7c7a543[m 카카오톡 공유 기능 구현3
+* [36m|[m [1;31m|[m [33m1b77fc2[m 카카오톡 공유 기능 구현2
+* [36m|[m [1;31m|[m [33m8fd3342[m 카카오톡 공유 기능 구현
+* [36m|[m [1;31m|[m [33m477202d[m 스플래쉬, 로그인(통신), 회원가입, 프로젝트 개설1,2 모집하기 1,2, 날짜 범위 정하기, 대표 사진들 저장 Merge Complete
+[36m|[m[36m/[m [1;31m/[m  
+* [1;31m|[m   [33mc6d16dc[m Merge pull request #2 from seong4862/SeongNuri
+[1;34m|[m[1;31m\[m [1;31m\[m  
+[1;34m|[m [1;31m|[m[1;31m/[m  
+[1;34m|[m * [33mffacc7d[m 로그인(통신), 회원가입, 알림, 프로젝트 개설1,2, 모집하기1,2
+* [1;35m|[m   [33m3c4cca9[m Merge pull request #1 from seong4862/SeongNuri
+[1;36m|[m[1;35m\[m [1;35m\[m  
+[1;36m|[m [1;35m|[m[1;35m/[m  
+[1;36m|[m * [33m8db6438[m Hi Nuri~~~~!!
+[1;36m|[m[1;36m/[m  
+* [33m49f8f39[m testComplete!
+* [33m6635e06[m Crop Image and Save ImageView Complete!
+* [33m8b3fa3d[m InviteSecond Add Dynamic Edittext Complete!
+* [33m64149b2[m Add Dynamic Edittext Complete!
+* [33mbe456f1[m[33m ([m[1;32mSeongNuri[m[33m, [m[1;32mJeonhyunmin[m[33m)[m Splash, TabActivity Complete!
+* [33m5ca185a[m recreate folder, files
+* [33mfc0e206[m temp delete to fix
+*   [33mcff9628[m Merge branch 'SongJemin'
+[32m|[m[33m\[m  
+[32m|[m * [33m77bb50f[m Initial README.md
+* [33m|[m [33m8e28cd3[m dddd
+[33m|[m[33m/[m  
+* [33m8baf130[m test commit
+* [33mb8f3a77[m test commit
+* [33ma5392d2[m attempt to fix dirty repo
