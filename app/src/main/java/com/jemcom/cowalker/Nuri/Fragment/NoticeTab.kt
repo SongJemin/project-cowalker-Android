@@ -59,7 +59,7 @@ class NoticeTab : Fragment(), View.OnClickListener {
         val fm = childFragmentManager
         val transaction = fm.beginTransaction()
         transaction.replace(R.id.notice_fragment, fragment)
-        transaction.addToBackStack(null)
+//        transaction.addToBackStack(null)
         transaction.commit()
     }
 }

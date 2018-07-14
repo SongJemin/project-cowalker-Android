@@ -68,8 +68,14 @@ class Notice_messageActivity : AppCompatActivity(), View.OnClickListener {
                 if(response!!.isSuccessful)
                 {
                     var message = response.body()
-                    Toast.makeText(applicationContext,"성공",Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(applicationContext,"성공",Toast.LENGTH_SHORT).show()
+                    var intent = Intent(applicationContext,MessageActivity::class.java)
+                    intent.putExtra("partner_id",user_id)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intent)
+                    finish()
                 }
+
                 else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()
             }
         })

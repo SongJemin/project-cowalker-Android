@@ -194,8 +194,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val token = pref.getString("token","")
                 if(token.length > 0) callFragment(FRAGMENT4)
                 else {
+                    Toast.makeText(this@MainActivity,"로그인 후에 이용해주세요", Toast.LENGTH_SHORT).show()
                     var intent = Intent(applicationContext,LoginActivity::class.java)
                     startActivity(intent)
+                    finish()
                 }
             }
 
@@ -216,8 +218,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val token = pref.getString("token","")
                 if(token.length > 0) callFragment(FRAGMENT5)
                 else {
+                    Toast.makeText(this@MainActivity,"로그인 후에 이용해주세요", Toast.LENGTH_SHORT).show()
                     var intent = Intent(applicationContext,LoginActivity::class.java)
                     startActivity(intent)
+                    finish()
                 }
             }
         }

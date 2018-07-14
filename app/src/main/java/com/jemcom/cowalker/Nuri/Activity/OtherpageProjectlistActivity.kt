@@ -53,7 +53,7 @@ class OtherpageProjectlistActivity : AppCompatActivity() {
         requestManager = Glide.with(this)
         pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         token  = pref.getString("token","")
-        user_idx = "1"
+        user_idx = intent.getStringExtra("user_idx")
 
         getCreate()
         getParticipate()
@@ -62,7 +62,7 @@ class OtherpageProjectlistActivity : AppCompatActivity() {
 
     fun getCreate()
     {
-        var getProjectMine = networkService.getProjectOther("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA2NzAxNTMsImV4cCI6MTUzMzI2MjE1M30.BdRb0yary7AY8_yi8MDRDXuXrW19QSqRJI-9Xin3SXs",user_idx)
+        var getProjectMine = networkService.getProjectOther(token,user_idx)
 
         getProjectMine.enqueue(object : Callback<GetProjectMineResponse> {
             override fun onFailure(call: Call<GetProjectMineResponse>?, t: Throwable?) {

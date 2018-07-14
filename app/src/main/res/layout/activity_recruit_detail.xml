@@ -23,7 +23,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="88dp"
+            android:layout_height="93dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="17dp"
             android:layout_marginRight="17dp"
@@ -70,7 +70,7 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="215dp"
+                    android:layout_marginLeft="185dp"
                     android:background="#45b6ff"
                     android:gravity="center"
                     android:textAlignment="center"
@@ -188,7 +188,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="430dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#ffffff"
             android:layout_marginTop="10dp" >
@@ -269,12 +269,13 @@
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:textColor="#626262"
                 android:text="상금 분배"
+                android:layout_marginBottom="30dp"
                 android:textSize="16sp" />
 
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="440dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#ffffff"
             android:layout_marginTop="10dp" >
@@ -360,6 +361,7 @@
                 android:maxLines="5"
                 android:text="팀워크를 중시 여기며, 훌륭하고 열정적인 분을 원합니다."
                 android:textColor="#626262"
+                android:layout_marginBottom="25dp"
                 android:textSize="16sp" />
 
         </LinearLayout>

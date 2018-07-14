@@ -22,6 +22,7 @@ import com.jemcom.cowalker.Network.Post.PostShareRecruit
 import com.jemcom.cowalker.Network.Post.PostSharedSns
 import com.jemcom.cowalker.Network.Post.Response.PostShareResponse
 import com.jemcom.cowalker.Network.Post.Response.PostSharedSnsResponse
+import com.jemcom.cowalker.Nuri.Activity.RecruitDetailActivity
 import com.jemcom.cowalker.R
 import com.jemcom.cowalker.R.id.share_facebook_btn
 import com.kakao.kakaolink.v2.KakaoLinkResponse
@@ -193,7 +194,7 @@ class ShareActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        val intent = Intent(applicationContext, ProjectCreateActivity::class.java)
+        val intent = Intent(applicationContext, RecruitDetailActivity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_down, R.anim.slide_out_down)
     }

@@ -20,6 +20,7 @@ import com.jemcom.cowalker.Network.Get.GetOtherpage
 import com.jemcom.cowalker.Network.Get.Response.GetMypageOtherResponse
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.Nuri.Activity.MessageActivity
+import com.jemcom.cowalker.Nuri.Activity.Notice_messageActivity
 import com.jemcom.cowalker.Nuri.Activity.OtherpageProjectlistActivity
 import com.jemcom.cowalker.R
 import kotlinx.android.synthetic.main.fragment_otherpage.*
@@ -35,12 +36,13 @@ class OtherpageTab : Fragment(), View.OnClickListener {
         when(v)
         {
             otherpage_message_btn->{
-                val intent = Intent(activity, MessageActivity::class.java)
+                val intent = Intent(activity, Notice_messageActivity::class.java)
                 intent.putExtra("partner_id",data[0].user_idx)
                 startActivity(intent)
             }
             otherpage_project_btn ->{
                 val intent = Intent(activity, OtherpageProjectlistActivity::class.java)
+                intent.putExtra("user_idx",user_idx)
                 startActivity(intent)
             }
             otherpage_intro_btn -> {
@@ -64,6 +66,7 @@ class OtherpageTab : Fragment(), View.OnClickListener {
         requestManager = Glide.with(this)
         view.otherpage_project_btn.setOnClickListener(this)
         view.otherpage_intro_btn.setOnClickListener(this)
+        view.otherpage_message_btn.setOnClickListener(this)
         get(view)
 
         return view

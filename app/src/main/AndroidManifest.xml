@@ -76,6 +76,7 @@
         <activity android:name=".Nuri.Activity.ApplyModify4Activity" />
         <activity android:name=".Hyunmin.Activity.MypageProjectlistActivity" />
         <activity android:name=".Jemin.Activity.ProjectDetailActivity" />
+        <activity android:name=".Hyunmin.Activity.ProfileMoreActivity" />
         <activity
             android:name=".Nuri.Activity.PopupActivity"
             android:theme="@style/Transparent" />

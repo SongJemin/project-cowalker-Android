@@ -35,7 +35,7 @@
                     android:layout_height="64dp"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="22dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="25dp"
                     android:src="@drawable/profile_default"
                     />
 
@@ -43,10 +43,10 @@
                 <TextView
                     android:id="@+id/project_detail_title_tv"
                     android:layout_width="254dp"
-                    android:layout_height="76dp"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginTop="21dp"
-                    android:text="KU석KU석 프로젝트      '사라진 친구를 찾아라'"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginTop="30dp"
+                    android:text="KU석KU석 프로젝트"
                     android:textColor="#444444"
                     android:fontFamily="@font/notosanscjkkr_bold"
                     android:textSize="24sp" />
@@ -62,7 +62,7 @@
                     android:layout_height="20dp"
                     android:layout_marginLeft="109dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="0dp"
+                    android:layout_marginTop="-10dp"
                     android:text="With "
                     android:textColor="#f8c930"
                     android:textSize="16sp" />
@@ -71,8 +71,8 @@
                     android:id="@+id/project_detail_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginTop="0dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="-10dp"
                     android:layout_gravity="center"
                     android:text="이충엽"
                     android:textColor="#f8c930"
@@ -80,10 +80,11 @@
                     android:textSize="16sp" />
 
                 <ImageButton
+                    android:id="@+id/project_detail_message_ib"
                     android:layout_width="20dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="-3dp"
                     android:layout_marginLeft="5dp"
                     android:background="@android:color/transparent"
                     android:src="@drawable/message" />
@@ -119,7 +120,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="17dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -139,10 +141,10 @@
 
                 <TextView
                     android:id="@+id/project_detail_aim_tv"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginLeft="10dp"
                     android:text="공모전 참여"
                     android:fontFamily="@font/notosanscjkkr_regular"
                     android:textColor="#444444"
@@ -151,7 +153,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="26dp"
+                    android:layout_marginLeft="15dp"
                     android:text="분야"
                     android:layout_marginTop="15dp"
                     android:textColor="#c5c5c5"
@@ -160,9 +162,9 @@
 
                 <TextView
                     android:id="@+id/project_detail_department_tv"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="15dp"
                     android:text="콘텐츠"
                     android:fontFamily="@font/notosanscjkkr_regular"
@@ -172,7 +174,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="37dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/notosanscjkkr_bold"
                     android:text="지역"
@@ -181,9 +183,9 @@
 
                 <TextView
                     android:id="@+id/project_detail_area_tv"
-                    android:layout_width="wrap_content"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="15dp"
                     android:text="서울"
                     android:fontFamily="@font/notosanscjkkr_regular"
@@ -194,7 +196,7 @@
             <TextView
                 android:id="@+id/project_detail_summary_tv"
                 android:layout_width="335dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="5dp"
                 android:text="대학교에서 역사도 배우고 즐기는 야외 방탈출 게임"
@@ -210,7 +212,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="135dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -220,7 +222,6 @@
                 android:layout_marginTop="16dp"
                 android:text="프로젝트 상세 소개"
                 android:fontFamily="@font/notosanscjkkr_bold"
-                android:textStyle="bold"
                 android:textColor="#444444"
                 android:textSize="15sp" />
 
@@ -230,6 +231,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="38dp"
                 android:layout_marginRight="14dp"
+                android:layout_marginBottom="17dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:maxLines="2"
@@ -240,7 +242,7 @@
                 android:id="@+id/project_detail_see_more"
                 android:layout_width="73dp"
                 android:layout_height="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="20dp"
                 android:layout_marginLeft="166dp"
                 android:layout_marginTop="14dp"
                 android:background="@android:color/transparent"
@@ -251,8 +253,10 @@
                 android:id="@+id/project_detail_see_close"
                 android:layout_width="73dp"
                 android:layout_height="16dp"
-                android:layout_marginLeft="200dp"
+                android:layout_marginLeft="166dp"
+                android:layout_marginTop="14dp"
                 android:clickable="true"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/foldingbtn"
                 android:visibility="gone"/>
         </LinearLayout>
@@ -311,13 +315,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="67dp"
+            android:layout_height="80dp"
             android:background="@drawable/lowbar_design"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/project_detail_recommend_btn"
-                android:layout_width="41dp"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="43dp"
                 android:orientation="vertical">
@@ -345,7 +349,7 @@
 
             <LinearLayout
                 android:id="@+id/project_detail_share_btn"
-                android:layout_width="41dp"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="18dp"
                 android:orientation="vertical">
@@ -373,10 +377,11 @@
                 android:layout_width="206dp"
                 android:layout_height="50dp"
                 android:layout_marginBottom="7dp"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="35dp"
                 android:layout_marginTop="10dp"
                 android:background="#45b6ff"
-
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:layout_gravity="center"
                 android:text="프로젝트 관리"
                 android:textColor="#ffffff" />
         </LinearLayout>

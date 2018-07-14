@@ -27,6 +27,7 @@ import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.Network.Post.PostShareProject
 import com.jemcom.cowalker.Network.Post.Response.PostShareResponse
 import com.jemcom.cowalker.Nuri.Activity.LoginActivity
+import com.jemcom.cowalker.Nuri.Activity.Notice_messageActivity
 import com.jemcom.cowalker.Nuri.Activity.RecruitDeleteActivity
 import com.jemcom.cowalker.Nuri.Activity.RecruitDetailActivity
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListGetAdapter
@@ -120,7 +121,7 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
         networkService = ApplicationController.instance.networkSerVice // 어플리케이션을 실행하자마자 어플리케이션 콘트롤러가 실행되는데 그 때 사용?
         Log.v("asdf","여기 실행")
         requestManager = Glide.with(this)   // 사진 크기 조절이 안되서 일단 주석 처리
-        //project_detail_profile_iv.setBackground(ContextCompat.getDrawable(this, R.drawable.profile_default));
+        project_detail_profile_iv.setBackground(ContextCompat.getDrawable(this, R.drawable.profile_default));
         var getintent = intent
         project_idx = getintent.getStringExtra("project_idx")
 
@@ -134,6 +135,12 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
         project_detail_see_close.setOnClickListener(this)
         project_detail_profile_iv.setOnClickListener(this)
 
+        project_detail_message_ib.setOnClickListener{
+            var intent = Intent(applicationContext, Notice_messageActivity::class.java)
+            intent.putExtra("partner_id",user_idx)
+            startActivity(intent)
+            finish()
+        }
         project_detail_delete_btn.setOnClickListener{
             var intent = Intent(applicationContext, RecruitDeleteActivity::class.java)
             intent.putExtra("project_idx",project_idx)
