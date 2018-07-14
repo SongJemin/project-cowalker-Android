@@ -80,10 +80,10 @@ class MypageProjectlistActivity : AppCompatActivity() {
                     else projectlist_create_rv.setVisibility(View.GONE)
                     for(i in 0..data.size-1)
                     {
-                        projectMineItems.add(ProjectItem(data[i].img_url[0],data[i].title,data[i].aim + " / " + data[i].department + " / " + data[i].area))
+                        projectMineItems.add(ProjectItem(data[i].img_url[0],data[i].title,data[i].aim + " / " + data[i].department + " / " + data[i].area,data[i].project_idx))
                     }
                     System.out.println("사이즈222 : " + projectMineItems.size)
-                    projectMineAdapter = ProjectAdapter(projectMineItems,requestManager)
+                    projectMineAdapter = ProjectAdapter(projectMineItems,requestManager,applicationContext)
                     projectlist_create_rv.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.HORIZONTAL, false)
                     projectlist_create_rv.adapter = projectMineAdapter
                 }
@@ -112,10 +112,10 @@ class MypageProjectlistActivity : AppCompatActivity() {
                     else projectlist_participate_rv.setVisibility(View.GONE)
                     for(i in 0..data.size-1)
                     {
-                        projectParticipateItems.add(ProjectItem(data[i].img_url[0],data[i].title,data[i].aim + " / " + data[i].department + " / " + data[i].area))
+                        projectParticipateItems.add(ProjectItem(data[i].img_url[0],data[i].title,data[i].aim + " / " + data[i].department + " / " + data[i].area,data[i]._id))
                     }
 
-                    projectMineAdapter = ProjectAdapter(projectParticipateItems,requestManager)
+                    projectMineAdapter = ProjectAdapter(projectParticipateItems,requestManager,applicationContext)
                     projectlist_participate_rv.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.HORIZONTAL, false)
                     projectlist_participate_rv.adapter = projectMineAdapter
                 }
@@ -144,10 +144,10 @@ class MypageProjectlistActivity : AppCompatActivity() {
                     else projectlist_apply_rv.setVisibility(View.GONE)
                     for(i in 0..data.size-1)
                     {
-                        projectApplyItems.add(ProjectItem(data[i].img_url[0],data[i].title,data[i].aim + " / " + data[i].department + " / " + data[i].area))
+                        projectApplyItems.add(ProjectItem(data[i].img_url[0],data[i].title,data[i].aim + " / " + data[i].department + " / " + data[i].area,data[i]._id))
                     }
 
-                    projectMineAdapter = ProjectAdapter(projectApplyItems,requestManager)
+                    projectMineAdapter = ProjectAdapter(projectApplyItems,requestManager,applicationContext)
                     projectlist_apply_rv.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.HORIZONTAL, false)
                     projectlist_apply_rv.adapter = projectMineAdapter
                 }

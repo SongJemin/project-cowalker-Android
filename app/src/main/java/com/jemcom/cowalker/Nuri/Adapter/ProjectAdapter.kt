@@ -1,15 +1,18 @@
 package com.jemcom.cowalker.Nuri.Adapter
 
+import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
+import com.jemcom.cowalker.Jemin.Activity.ProjectDetailActivity
 import com.jemcom.cowalker.Nuri.Holder.ProjectViewHolder
 import com.jemcom.cowalker.Nuri.Item.ProjectItem
 import com.jemcom.cowalker.R
 
-class ProjectAdapter (private var projectItems : ArrayList<ProjectItem>, var requestManager: RequestManager) : RecyclerView.Adapter<ProjectViewHolder>() {
+class ProjectAdapter (private var projectItems : ArrayList<ProjectItem>, var requestManager: RequestManager, var context : Context) : RecyclerView.Adapter<ProjectViewHolder>() {
 
 
     //내가 쓸 뷰홀더가 뭔지를 적어준다.
@@ -27,5 +30,10 @@ class ProjectAdapter (private var projectItems : ArrayList<ProjectItem>, var req
         holder.title.text = projectItems[position].title
         holder.sub.text = projectItems[position].sub
 
+        holder.img.setOnClickListener {
+            var intent = Intent(context,ProjectDetailActivity::class.java)
+            intent.putExtra("project_idx",projectItems[position].idx)
+            context.startActivity(intent)
+        }
     }
 }

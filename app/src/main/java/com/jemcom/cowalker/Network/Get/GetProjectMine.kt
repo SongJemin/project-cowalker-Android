@@ -1,6 +1,7 @@
 package com.jemcom.cowalker.Network.Get
 
 data class GetProjectMine (
+        var project_idx : String,
         var title : String,
         var summary : String,
         var area : String,

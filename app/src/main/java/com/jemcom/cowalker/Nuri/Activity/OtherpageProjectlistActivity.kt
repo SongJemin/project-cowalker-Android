@@ -78,9 +78,9 @@ class OtherpageProjectlistActivity : AppCompatActivity() {
                     else projectlist_create_rv.setVisibility(View.GONE)
                     for(i in 0..data.size-1)
                     {
-                        projectMineItems.add(ProjectItem("https://project-cowalker.s3.ap-northeast-2.amazonaws.com/1531246857588.jpg",data[i].title,data[i].aim + " / " + data[i].department + " / " + data[i].area))
+                        projectMineItems.add(ProjectItem("https://project-cowalker.s3.ap-northeast-2.amazonaws.com/1531246857588.jpg",data[i].title,data[i].aim + " / " + data[i].department + " / " + data[i].area,""))
                     }
-                    projectMineAdapter = ProjectAdapter(projectMineItems,requestManager)
+                    projectMineAdapter = ProjectAdapter(projectMineItems,requestManager,applicationContext)
                     projectlist_create_rv.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
                     projectlist_create_rv.adapter = projectMineAdapter
                 }
@@ -107,10 +107,10 @@ class OtherpageProjectlistActivity : AppCompatActivity() {
                     else projectlist_participate_rv.setVisibility(View.GONE)
                     for(i in 0..data.size-1)
                     {
-                        projectParticipateItems.add(ProjectItem(data[i].img_url[0],data[i].title,data[i].aim + " / " + data[i].department + " / " + data[i].area))
+                        projectParticipateItems.add(ProjectItem(data[i].img_url[0],data[i].title,data[i].aim + " / " + data[i].department + " / " + data[i].area,data[i]._id))
                     }
 
-                    projectMineAdapter = ProjectAdapter(projectParticipateItems,requestManager)
+                    projectMineAdapter = ProjectAdapter(projectParticipateItems,requestManager,applicationContext)
                     projectlist_participate_rv.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
                     projectlist_participate_rv.adapter = projectMineAdapter
                 }
