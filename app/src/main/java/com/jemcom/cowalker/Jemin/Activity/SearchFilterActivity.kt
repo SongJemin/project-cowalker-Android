@@ -6,6 +6,7 @@ import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.jemcom.cowalker.R
 import kotlinx.android.synthetic.main.activity_search_filter.*
 
@@ -680,6 +681,15 @@ class SearchFilterActivity : AppCompatActivity(), View.OnClickListener {
         }
 
 
+    override fun onBackPressed() {
+        val intent = Intent()
+        intent.putExtra("filterAim", filterAim)
+        intent.putExtra("filterDepartment", filterDepartment)
+        intent.putExtra("filterPosition", filterPosition)
+        intent.putExtra("filterArea", filterArea)
 
+        setResult(27, intent)
+        finish()
+    }
 }
 

@@ -32,7 +32,7 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/profile_default"
+                android:background="@drawable/profile_default"
                 />
         </RelativeLayout>
 
@@ -270,6 +270,7 @@
                 />
 
             <TextView
+                android:id="@+id/myod_gg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"

@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,23 +57,35 @@ class MessageTab: Fragment(),View.OnClickListener {
 
     fun get(v : View)
     {
+        Log.v("TAG","쪽지함테스트1")
 
         val pref = v.context.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        Log.v("TAG","쪽지함테스트2")
         val token = pref.getString("token","")
+        Log.v("TAG","쪽지함테스트3")
         var getMessageResponse = networkService.getMessage(token)
+        Log.v("TAG","쪽지함테스트4")
         getMessageResponse.enqueue(object : Callback<GetMessageResponse> {
+
             override fun onFailure(call: Call<GetMessageResponse>?, t: Throwable?) {
                 Toast.makeText(v.context,"서버 연결 실패", Toast.LENGTH_SHORT).show()
+                Log.v("TAG","쪽지함 서버 연결 실패")
             }
 
             override fun onResponse(call: Call<GetMessageResponse>?, response: Response<GetMessageResponse>?) {
+                Log.v("TAG","쪽지함 서버 연결은 성공")
                 if(response!!.isSuccessful)
                 {
+                    Log.v("TAG","쪽지함 서버 값 전달 성공")
                     data = response.body().result
 
                     if(data.size > 0) {
                         for (i in 0..data.size - 1) {
 //                        data[i].partner_profile_url
+                            Log.v("TAG", "쪽지함 프로필url = "+data[i].partner_profile_url)
+                            Log.v("TAG", "쪽지함 이름 = "+data[i].partner_name)
+                            Log.v("TAG", "쪽지함 내용 = "+data[i].contents)
+                            Log.v("TAG", "쪽지함 시간 = "+data[i].time)
                             messageItems.add(MessageItem(data[i].partner_profile_url, data[i].partner_name, data[i].contents, data[i].time))
                             messageAdapter = MessageAdapter(messageItems, requestManager)
                             messageAdapter.setOnItemClickListener(this@MessageTab)

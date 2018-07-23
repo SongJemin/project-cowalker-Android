@@ -74,16 +74,7 @@
                     android:fontFamily="@font/notosanscjkkr_regular"
                     />
 
-                <Button
-                    android:layout_width="50dp"
-                    android:layout_height="18dp"
-                    android:text="D-9"
-                    android:background="#45b6ff"
-                    android:layout_alignTop="@+id/apply_detail_position1_tv"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="12dp"
-                    android:textColor="#ffffff"
-                    />
+
 
                 <TextView
                     android:id="@+id/apply_detail_summary_tv"
@@ -238,6 +229,7 @@
 
 
             </android.support.v7.widget.RecyclerView>
+
 
         </LinearLayout>
 

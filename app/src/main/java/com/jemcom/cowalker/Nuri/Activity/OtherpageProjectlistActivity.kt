@@ -78,7 +78,7 @@ class OtherpageProjectlistActivity : AppCompatActivity() {
                     else projectlist_create_rv.setVisibility(View.GONE)
                     for(i in 0..data.size-1)
                     {
-                        projectMineItems.add(ProjectItem("https://project-cowalker.s3.ap-northeast-2.amazonaws.com/1531246857588.jpg",data[i].title,data[i].aim + " / " + data[i].department + " / " + data[i].area,""))
+                        projectMineItems.add(ProjectItem("https://project-cowalker.s3.ap-northeast-2.amazonaws.com/1531246857588.jpg",data[i].title,data[i].aim + " / " + data[i].department + " / " + data[i].area,data[i].project_idx))
                     }
                     projectMineAdapter = ProjectAdapter(projectMineItems,requestManager,applicationContext)
                     projectlist_create_rv.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)

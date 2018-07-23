@@ -46,6 +46,10 @@ class ShareActivity : AppCompatActivity() {
     var imgUrl: String = ""
     var sharer_idx : String = ""
 
+    var num : String = ""
+    var task : String = ""
+    var dday : String = ""
+
     @BindView(R.id.fb_share_button)
     internal var facebookbtn: Button? = null
 
@@ -69,6 +73,10 @@ class ShareActivity : AppCompatActivity() {
         recruit_idx = intent.getStringExtra("recruit_idx")
         title = intent.getStringExtra("title")
         imgUrl = intent.getStringExtra("imgUrl")
+
+        num = intent.getStringExtra("imgUrl")
+        task = intent.getStringExtra("imgUrl")
+        dday = intent.getStringExtra("imgUrl")
 
         share_kakao_btn.setOnClickListener {
             //postShareProject()
@@ -143,9 +151,10 @@ class ShareActivity : AppCompatActivity() {
 
         networkService = ApplicationController.instance.networkSerVice // 어플리케이션을 실행하자마자 어플리케이션 콘트롤러가 실행되는데 그 때 사용?3333
         //서버랑 통신
-        val project_idx = "5b485b6568a9df1f8e89dfb5"
-        val recruit_idx = "5b4860f286e69824a632180b"
-        val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozNCwiaWF0IjoxNTMxNDE1MzYyLCJleHAiOjE1MzQwMDczNjJ9.41CKoAi1cODVpaPJ4sFv7iBYB7vxhYV5D0jJaXZIovo"
+        val project_idx = project_idx
+        val recruit_idx = recruit_idx
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
 
         val postSharedSns = PostSharedSns(project_idx, recruit_idx)
 
@@ -193,9 +202,5 @@ class ShareActivity : AppCompatActivity() {
 
     }
 
-    override fun onBackPressed() {
-        val intent = Intent(applicationContext, RecruitDetailActivity::class.java)
-        startActivity(intent)
-        overridePendingTransition(R.anim.slide_in_down, R.anim.slide_out_down)
-    }
+
 }

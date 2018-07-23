@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,15 +53,16 @@ class MypageTab : Fragment(),View.OnClickListener {
     override fun onClick(v: View?) {
         when(v)
         {
+
             mypage_background_img->{
                 status = "background"
                 changeImage()
-                put(v!!)
+                //put(v!!)
             }
             mypage_profile_change_btn->{
                 status = "profile"
                 changeImage()
-                put(v!!)
+                //put(v!!)
             }
             logout_btn -> {
                 val pref = v!!.context.getSharedPreferences("auto", Activity.MODE_PRIVATE)
@@ -93,9 +95,9 @@ class MypageTab : Fragment(),View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_mypage, container, false)
-
+        requestManager = Glide.with(this)   // 사진 크기 조절이 안되서 일단 주석 처리
         networkService = ApplicationController.instance.networkSerVice
-        requestManager = Glide.with(this)
+
         view.logout_btn.setOnClickListener(this)
         view.mypage_project_btn.setOnClickListener(this)
         view.mypage_edit_btn.setOnClickListener(this)
@@ -127,11 +129,14 @@ class MypageTab : Fragment(),View.OnClickListener {
                     v.mypage_role_tv.setText(data[0].position)
                     v.mypage_summary_tv.setText(data[0].introduce)
                     v.mypage_aim_tv.setText(data[0].aim)
+                    v.myod_gg.setText(data[0].point.toString())
                     v.mypage_department_tv.setText(data[0].department)
                     v.mypage_area_tv.setText(data[0].area)
                     v.mypage_link_tv.setText(data[0].portfolio_url)
+                    Log.v("TAG","마이탭 = "+ data[0].profile_url)
+
                     requestManager.load(data[0].profile_url).into(v.mypage_profile_img)
-                    requestManager.load(data[0].background_url).into(v.mypage_background_img)
+                    requestManager.load(data[0].background_url).centerCrop().into(v.mypage_background_img)
                 }
                 else Toast.makeText(v.context,"실패",Toast.LENGTH_SHORT).show()
             }
@@ -170,6 +175,7 @@ class MypageTab : Fragment(),View.OnClickListener {
                                 .load(data.data)
                                 .centerCrop()
                                 .into(mypage_background_img)
+                        put()
                     }
                     else
                     {
@@ -179,6 +185,7 @@ class MypageTab : Fragment(),View.OnClickListener {
                                 .load(data.data)
                                 .centerCrop()
                                 .into(mypage_profile_img)
+                        put()
                     }
 
                 } catch (e: Exception) {
@@ -195,6 +202,9 @@ class MypageTab : Fragment(),View.OnClickListener {
         intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
         intent.data = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         startActivityForResult(intent, REQ_CODE_SELECT_IMAGE)
+
+
+
     }
 
     fun getRealPathFromURI(context: Context, contentUri: Uri): String {
@@ -210,49 +220,65 @@ class MypageTab : Fragment(),View.OnClickListener {
         }
     }
 
-    fun put(v : View)
+    fun put()
     {
         System.out.println("왜?!")
-        val pref = v.context.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val pref = context!!.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
+        Log.v("TAG", "마이페이지 사진 통신 시작전")
+        Log.v("TAG", "마이페이지 사진 통신 시작전 status = "+status)
         if(status.equals("background")) {
+            Log.v("TAG", "마이페이지 배경사진 통신 시작전2")
             var putPhotoResponse = networkService.putPhoto(token,null,image)
+            Log.v("TAG", "마이페이지 배경사진 통신 시작전3")
             putPhotoResponse.enqueue(object : Callback<PutMypagePhotoResponse>{
                 override fun onFailure(call: Call<PutMypagePhotoResponse>?, t: Throwable?) {
-                    Toast.makeText(v.context,"서버 연결 실패",Toast.LENGTH_SHORT).show()
+                    Log.v("TAG", "마이페이지 배경사진 통신 실패")
+                    Toast.makeText(context,"배경사진 서버 연결 실패",Toast.LENGTH_SHORT).show()
                     System.out.println("왜?"+ t.toString())
                 }
 
                 override fun onResponse(call: Call<PutMypagePhotoResponse>?, response: Response<PutMypagePhotoResponse>?) {
+                    Log.v("TAG", "마이페이지 배경사진 통신 성공")
                     if(response!!.isSuccessful)
                     {
                         System.out.println("왜?")
-                        val intent = Intent(v.context, MainActivity::class.java)
-                        intent.putExtra("status","mypage")
-                        startActivity(intent)
+                        Log.v("TAG", "마이페이지 배경사진 업뎃 성공")
+                        //val intent = Intent(activity, MainActivity::class.java)
+                        //intent.putExtra("status","mypage")
+                        //startActivity(intent)
                     }
-                    else Toast.makeText(v.context,"실패",Toast.LENGTH_SHORT).show()
+                    else Toast.makeText(context,"배경사진 실패",Toast.LENGTH_SHORT).show()
                 }
             })
         }
         else{
-//        {
-//            var putPhotoResponse = networkService.putBackgroundPhoto(token,null)
-//            putPhotoResponse.enqueue(object : Callback<PutMypagePhotoResponse>{
-//                override fun onFailure(call: Call<PutMypagePhotoResponse>?, t: Throwable?) {
-//                    Toast.makeText(v.context,"서버 연결 실패",Toast.LENGTH_SHORT).show()
-//                }
-//
-//                override fun onResponse(call: Call<PutMypagePhotoResponse>?, response: Response<PutMypagePhotoResponse>?) {
-//                    if(response!!.isSuccessful)
-//                    {
-//                        val intent = Intent(v.context,MainActivity::class.java)
-//                        intent.putExtra("status","mypage")
-//                        startActivity(intent)
-//                    }
-//                    else Toast.makeText(v.context,"실패",Toast.LENGTH_SHORT).show()
-//                }
-//            })
+
+            Log.v("TAG", "마이페이지 프로필사진 통신 시작전2")
+            var putPhotoResponse = networkService.putPhoto(token,null,image)
+            Log.v("TAG", "마이페이지 프로필사진 통신 시작전3")
+            putPhotoResponse.enqueue(object : Callback<PutMypagePhotoResponse>{
+                override fun onFailure(call: Call<PutMypagePhotoResponse>?, t: Throwable?) {
+                    Log.v("TAG", "마이페이지 프로필사진 통신 실패")
+                    Toast.makeText(context,"서버 연결 실패",Toast.LENGTH_SHORT).show()
+                    System.out.println("왜?"+ t.toString())
+                }
+
+
+
+                override fun onResponse(call: Call<PutMypagePhotoResponse>?, response: Response<PutMypagePhotoResponse>?) {
+                    Log.v("TAG", "마이페이지 프로필사진 통신 성공")
+                    if(response!!.isSuccessful)
+                    {
+                        System.out.println("왜?")
+                        Log.v("TAG", "마이페이지 프로필사진 업뎃 성공")
+                        //val intent = Intent(context, MainActivity::class.java)
+                        //intent.putExtra("status","mypage")
+                        //startActivity(intent)
+                    }
+                    else Toast.makeText(context,"실패",Toast.LENGTH_SHORT).show()
+                }
+            })
         }
 
     }

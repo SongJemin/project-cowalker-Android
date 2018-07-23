@@ -1,5 +1,6 @@
 package com.jemcom.cowalker.Nuri.Activity
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -31,6 +32,8 @@ class RecommendActivity : AppCompatActivity(),View.OnClickListener {
     var check = 0
     var position = -1
     var idx :String?= ""
+    var project_idx : String =""
+    var recruit_idx : String =""
 
 
     companion object {
@@ -54,6 +57,8 @@ class RecommendActivity : AppCompatActivity(),View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recommend)
         val view = window.decorView
+        project_idx = intent.getStringExtra("project_idx")
+        recruit_idx = intent.getStringExtra("recruit_idx")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (view != null) {
                 // 23 버전 이상일 때 상태바 하얀 색상에 회색 아이콘 색상을 설정
@@ -72,7 +77,6 @@ class RecommendActivity : AppCompatActivity(),View.OnClickListener {
 
     fun get()
     {
-        var project_idx = "5b4755b9d2b973301fe964a7"
         var getProjectResponse = networkService.getRecruitList(project_idx)
 
         getProjectResponse.enqueue(object : Callback<GetRecruitListResponse>{
@@ -100,11 +104,12 @@ class RecommendActivity : AppCompatActivity(),View.OnClickListener {
 
     fun post()
     {
-        var project_idx = "5b4755b9d2b973301fe964a7"
+        val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
         var reason = recommend_ed.text.toString()
         var data = PostRecommend(project_idx,idx!!,reason)
         System.out.println(reason)
-        var postRecommendResponse = networkService.postRecommend("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMTcsImlhdCI6MTUzMTM4ODE4NywiZXhwIjoxNTMzOTgwMTg3fQ.9gIoju4t1FIZI1OK9cgwkYE56Z7LS4RUbMBKNZHFf58",data)
+        var postRecommendResponse = networkService.postRecommend(token,data)
 
         postRecommendResponse.enqueue(object : Callback<PostRecommendResponse>{
             override fun onFailure(call: Call<PostRecommendResponse>?, t: Throwable?) {
@@ -115,6 +120,8 @@ class RecommendActivity : AppCompatActivity(),View.OnClickListener {
                 if (response!!.isSuccessful)
                 {
                     var intent = Intent(applicationContext,PopupActivity::class.java)
+                    intent.putExtra("project_idx",project_idx)
+                    intent.putExtra("recruit_idx",recruit_idx)
                     startActivity(intent)
                 }
                 else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()

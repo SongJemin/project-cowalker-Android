@@ -33,6 +33,6 @@ class RecruitListGetAdapter (private var recruitlistItems : ArrayList<RecruitLis
         holder.postion.text = recruitlistItems[position].position
         holder.number.text = recruitlistItems[position].number.toString()
         holder.task.text = recruitlistItems[position].task
-        holder.dday.text = recruitlistItems[position].dday
+        holder.dday.text = "D"+recruitlistItems[position].dday
     }
 }

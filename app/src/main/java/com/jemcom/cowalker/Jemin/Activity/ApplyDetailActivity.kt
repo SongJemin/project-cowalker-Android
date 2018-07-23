@@ -86,8 +86,12 @@ class ApplyDetailActivity : AppCompatActivity() {
         }
 
         Log.v("TAG", "모집 상세에서 받은 공유자 번호 = "+sharer_idx)
+
+
         position = getRecruitintent.getStringExtra("position")
         task = getRecruitintent.getStringExtra("task")
+
+
         get()
         Log.v("TAG","리쿠릇에서 받은 포지션 = " + position)
         apply_detail_position1_tv.setText(position)

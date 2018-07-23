@@ -52,11 +52,14 @@ class RecruitDetailActivity : AppCompatActivity() {
     var task : String = ""
     var title : String = ""
     var imgUrl : String = ""
-
+    var dday : String = ""
+    var replaceStartdate :String = ""
+    var replaceEnddate : String = ""
     var recruit_idx_value : String = ""
     var sharer_idx_value : String = ""
     var sharer_idx : String = ""
     var flag : Int = 0
+    var share_flag : Int = 0
 
 
     override fun onNewIntent(intent: Intent) {
@@ -101,6 +104,7 @@ class RecruitDetailActivity : AppCompatActivity() {
         }
         else{
             Log.v("TAG","인텐트로 넘어온 화면")
+
             val getRecruitintent = intent
             num = getRecruitintent.getStringExtra("num")
             task = getRecruitintent.getStringExtra("task")
@@ -108,6 +112,10 @@ class RecruitDetailActivity : AppCompatActivity() {
             recruit_idx = getRecruitintent.getStringExtra("recruit_idx")
             title = getRecruitintent.getStringExtra("title")
             imgUrl = getRecruitintent.getStringExtra("imgUrl")
+            dday = getRecruitintent.getStringExtra("dday")
+
+            recruit_detail_dday_tv.setText("D"+dday)
+
             get()
         }
 
@@ -123,6 +131,7 @@ class RecruitDetailActivity : AppCompatActivity() {
                 intent.putExtra("num", num)
                 Log.v("tag", "리쿠릇디테일에서 보내는 num" + num)
                 intent.putExtra("task", task)
+                Log.v("tag", "리쿠릇디테일에서 보내는 task" + task)
                 startActivity(intent)
             }
             else
@@ -145,10 +154,25 @@ class RecruitDetailActivity : AppCompatActivity() {
             intent.putExtra("recruit_idx", recruit_idx)
             intent.putExtra("title",title)
             intent.putExtra("imgUrl",imgUrl)
+
+            intent.putExtra("num",num)
+            intent.putExtra("task",task)
+            intent.putExtra("dday",dday)
+
+
+
+
             Log.v("asdf","로그 = " + project_idx + ", "+ recruit_idx)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
             //postShareRecruit()
+        }
+
+        recruit_detail_recommend_btn.setOnClickListener {
+            val intent = Intent(this@RecruitDetailActivity, RecommendActivity::class.java)
+            intent.putExtra("project_idx", project_idx)
+            intent.putExtra("recruit_idx", recruit_idx)
+            startActivity(intent)
         }
 
         recruit_detail_btn.setOnClickListener {
@@ -203,6 +227,7 @@ class RecruitDetailActivity : AppCompatActivity() {
                     Log.v("TAG", "리쿠릇에서 어플라이로 보내는 플젝번호 = " + project_idx)
 
                     Log.v("TAG", "리쿠릇에서 어플라이로 보내는 포지션 = " + position)
+                    Log.v("TAG", "리쿠릇에서 어플라이로 보내는 태스크 = " + task)
 
                     startActivity(intent)
                 }
@@ -218,18 +243,11 @@ class RecruitDetailActivity : AppCompatActivity() {
                     intent.putExtra("task", task)
                     intent.putExtra("position", position)
                     Log.v("TAG", "리쿠릇에서 어플라이로 보내는 포지션 = " + position)
-
+                    Log.v("TAG", "리쿠릇에서 어플라이로 보내는 태스크 = " + task)
                     startActivity(intent)
                 }
 
-                var intent = Intent(applicationContext, ApplyDetailActivity::class.java)
-                intent.putExtra("project_idx", project_idx)
-                intent.putExtra("recruit_idx", recruit_idx)
 
-                intent.putExtra("position", position)
-                Log.v("TAG", "리쿠릇에서 어플라이로 보내는 포지션 = " + position)
-
-                startActivity(intent)
             }
         }
 
@@ -277,6 +295,12 @@ class RecruitDetailActivity : AppCompatActivity() {
                     recruit_detail_ability_tv.setText(data[0].ability)
                     recruit_detail_career_tv.setText(data[0].career)
                     recruit_detail_preference_tv.setText(data[0].preference)
+
+
+                    replaceStartdate  = data[0].start_date.replace("T00:00:00.000Z", "")
+                    recruit_detail_startdate_tv.setText(replaceStartdate)
+                    replaceEnddate = data[0].end_date.replace("T00:00:00.000Z", "")
+                    recruit_detail_enddate_tv.setText(replaceEnddate)
 
                     //나중에 버튼 텍스트 변경 예정
                     //recruit_detail_comment_tv.setText(data[0].comment)

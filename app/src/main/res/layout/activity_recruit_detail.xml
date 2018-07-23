@@ -67,10 +67,11 @@
                     android:textColor="#666666" />
 
                 <TextView
+                    android:id="@+id/recruit_detail_dday_tv"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="185dp"
+                    android:layout_marginLeft="220dp"
                     android:background="#45b6ff"
                     android:gravity="center"
                     android:textAlignment="center"
@@ -137,14 +138,27 @@
                     android:textColor="#000000"
                     android:textSize="16sp" />
                 <TextView
-                    android:id="@+id/recruit_detail_data_tv"
+                    android:id="@+id/recruit_detail_startdate_tv"
                     android:fontFamily="@font/notosanscjkkr_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="47dp"
-                    android:layout_toRightOf="@+id/recruit_detail_data_tv"
-                    android:layout_alignTop="@+id/recruit_detail_data_tv"
-                    android:text="2018.07.01 ~ 2018.08.04"
+                    android:text="2018.07.01"
+                    android:textSize="16sp"
+                    android:textColor="#626262"/>
+                <TextView
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" ~ "
+                    android:textSize="16sp"
+                    android:textColor="#626262"/>
+                <TextView
+                    android:id="@+id/recruit_detail_enddate_tv"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2018.08.04"
                     android:textSize="16sp"
                     android:textColor="#626262"/>
             </LinearLayout>
@@ -393,7 +407,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="0"
+                android:text=""
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:textColor="#868686"/>
         </LinearLayout>
@@ -427,7 +441,7 @@
                 android:textColor="#868686"
                 android:layout_marginLeft="7dp"
                 android:fontFamily="@font/notosanscjkkr_regular"
-                android:text="0"/>
+                android:text=""/>
         </LinearLayout>
 
         <LinearLayout
@@ -438,6 +452,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/recruit_detail_recommend_btn"
                 android:layout_width="41dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="43dp"

@@ -58,6 +58,7 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
         recruit_idx = data!![idx].recruit_idx!!
         num = data!![idx].number!!.toString()
         task = data!![idx].task!!
+        dday = data!![idx].dday!!
         Log.v("TAG", "참여하기 선택한 모집번호 = "+ recruit_idx)
 
         val intent = Intent(v.context, RecruitDetailActivity::class.java)
@@ -67,6 +68,7 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
         intent.putExtra("task", task)
         intent.putExtra("title", title)
         intent.putExtra("imgUrl", imgUrl)
+        intent.putExtra("dday", dday)
         var userResult : String = ""
         startActivity(intent)
     }
@@ -100,6 +102,7 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var imgUrl : String
     var userResult : String = ""
     var projectUserProfileUrl : String? = ""
+    var dday : String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -148,16 +151,16 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
         }
 
-        project_detail_recommend_btn.setOnClickListener {
-        }
-
-        project_detail_share_btn.setOnClickListener {
-            val intent = Intent(this@ProjectDetailActivity, ShareActivity::class.java)
-            intent.putExtra("project_idx", project_idx)
-            startActivity(intent)
-            overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
-
-        }
+//        project_detail_recommend_btn.setOnClickListener {
+//        }
+//
+//        project_detail_share_btn.setOnClickListener {
+//            val intent = Intent(this@ProjectDetailActivity, ShareActivity::class.java)
+//            intent.putExtra("project_idx", project_idx)
+//            startActivity(intent)
+//            overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
+//
+//        }
         project_detail_profile_iv.setOnClickListener {
             get()
         }
@@ -377,7 +380,7 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
                     if(projectUserName
                             != "default"){
                         Log.v("TAG","사진 디폴트 ㄴㄴ")
-//                        requestManager.load(projectUserProfileUrl).into(project_detail_profile_iv);
+                       requestManager.load(projectUserProfileUrl).into(project_detail_profile_iv);
 
                         var viewPager = findViewById<ViewPager>(R.id.project_detail_profile_viewpager)
                         var adapter = ImageAdapter(applicationContext, requestManager, detailData[0].img_url)

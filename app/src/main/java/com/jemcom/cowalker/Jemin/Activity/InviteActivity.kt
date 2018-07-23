@@ -89,7 +89,7 @@ class InviteActivity : AppCompatActivity() {
                 editor.putString("position", position)
                 editor.putString("start_date", start_date)
                 editor.putString("end_date", end_date)
-                editor.putInt("number", number)
+                editor.putInt("number", numberValue)
                 editor.commit()
                 Log.v("TAG", "역할 = " + position + "시작 = " + start_date + "마지막 = " + end_date + "명 = " + number)
 

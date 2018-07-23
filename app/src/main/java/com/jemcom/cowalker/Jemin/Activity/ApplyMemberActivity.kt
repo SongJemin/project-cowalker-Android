@@ -81,7 +81,10 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
         applyMemberActivity = this
         val intent = intent
         flag=intent.getIntExtra("flag",0)
-        //Log.v("asdf","멤버액티비티 num = "+num)
+        num = intent.getStringExtra("num")
+        Log.v("asdf","멤버액티비티 num = "+num)
+        task = intent.getStringExtra("task")
+        Log.v("asdf","멤버액티비티 태스크 = "+task)
 
         // 흐름 순차적
         if(flag==1)
@@ -90,10 +93,9 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
         }
 
 
-        //num = intent.getStringExtra("num")
+
         //Log.v("asdf","멤버액티비티 num2 = "+num)
-      //  task = intent.getStringExtra("task")
-     //   Log.v("asdf","멤버액티비티 태스크 = "+task)
+
         networkService = ApplicationController.instance.networkSerVice // 어플리케이션을 실행하자마자 어플리케이션 콘트롤러가 실행되는데 그 때 사용?
         requestManager = Glide.with(this)
         getMember()

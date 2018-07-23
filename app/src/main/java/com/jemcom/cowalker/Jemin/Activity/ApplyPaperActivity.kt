@@ -81,6 +81,9 @@ class ApplyPaperActivity : AppCompatActivity() {
             changeJoin()
             var intent = Intent(applicationContext, ApplyMemberActivity::class.java)
             intent.putExtra("recruit_idx", recruit_idx)
+            intent.putExtra("num", num)
+            intent.putExtra("task", task)
+            intent.putExtra("flag", 1)
             startActivity(intent)
         }
 
@@ -89,6 +92,10 @@ class ApplyPaperActivity : AppCompatActivity() {
             changeJoin()
             var intent = Intent(applicationContext, ApplyMemberActivity::class.java)
             intent.putExtra("recruit_idx", recruit_idx)
+            intent.putExtra("num", num)
+            intent.putExtra("task", task)
+            intent.putExtra("flag", 1)
+
             startActivity(intent)
         }
 

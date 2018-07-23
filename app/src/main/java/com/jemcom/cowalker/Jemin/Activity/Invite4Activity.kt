@@ -189,6 +189,7 @@ class Invite4Activity : AppCompatActivity() {
         Log.v("TAG","초대4화면 플젝넘버 = "+project_idx);
         val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
+        Log.v("TAG", "모집인원 숫자 = "+number)
         var data = PostInvite(project_idx, position, start_date, end_date, number, task, activity, reward, area, ability, career, preference, comment, question_ㅣist)
         var postInviteResponse = networkService.postInvite(token,data)
 

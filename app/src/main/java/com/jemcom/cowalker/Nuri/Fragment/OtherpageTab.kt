@@ -100,6 +100,7 @@ class OtherpageTab : Fragment(), View.OnClickListener {
                     v.otherpage_department_tv.setText(data[0].department)
                     v.otherpage_area_tv.setText(data[0].area)
                     v.otherpage_link_tv.setText(data[0].portfolio_url)
+                    Log.v("TAG","아덜페이지 프로필이미지 = " + data[0].profile_url)
                     requestManager.load(data[0].profile_url).into(v.otherpage_profile_img)
                     requestManager.load(data[0].background_url).into(v.otherpage_background_img)
                 }
