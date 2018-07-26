@@ -80,11 +80,9 @@
         <activity
             android:name=".Nuri.Activity.PopupActivity"
             android:theme="@style/Transparent" />
-
-
-        <activity android:name=".Nuri.Activity.RecommendActivity"
-            android:theme="@style/Transparent" ></activity>
-
+        <activity
+            android:name=".Nuri.Activity.RecommendActivity"
+            android:theme="@style/Transparent" />
         <activity android:name=".Jemin.Activity.SearchFilterActivity" />
 
         <!-- FCM 관련 서비스 -->
@@ -109,8 +107,10 @@
             android:authorities="com.facebook.app.FacebookContentProvider"
             android:exported="true" />
 
-        <activity android:name=".Jemin.Activity.ShareActivity"
-            android:theme="@style/Transparent" ></activity>
+        <activity
+            android:name=".Jemin.Activity.ShareActivity"
+            android:theme="@style/Transparent" />
+        <activity android:name=".Jemin.Activity.RecomendPaperActivity"></activity>
     </application>
 
 </manifest>

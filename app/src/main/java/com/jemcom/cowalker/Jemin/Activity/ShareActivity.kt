@@ -49,6 +49,7 @@ class ShareActivity : AppCompatActivity() {
     var num : String = ""
     var task : String = ""
     var dday : String = ""
+    var share_flag : String = ""
 
     var check_flag : String = ""
 
@@ -69,15 +70,32 @@ class ShareActivity : AppCompatActivity() {
         ButterKnife.bind(this)
 
 
-
         project_idx = intent.getStringExtra("project_idx")
         recruit_idx = intent.getStringExtra("recruit_idx")
-        title = intent.getStringExtra("title")
-        imgUrl = intent.getStringExtra("imgUrl")
+        share_flag = intent.getStringExtra("share_flag")
 
-        num = intent.getStringExtra("imgUrl")
-        task = intent.getStringExtra("imgUrl")
-        dday = intent.getStringExtra("imgUrl")
+        Log.v("TAG", "공유 플래그 = " + share_flag)
+
+        // 프로젝트 공유 시
+        if(share_flag == "1")
+        {
+            title = intent.getStringExtra("title")
+            imgUrl = intent.getStringExtra("imgUrl")
+
+        }
+
+        // 모집 공유 시
+        else if(share_flag == "2")
+        {
+
+            title = intent.getStringExtra("title")
+            imgUrl = intent.getStringExtra("imgUrl")
+
+            num = intent.getStringExtra("imgUrl")
+            task = intent.getStringExtra("imgUrl")
+            dday = intent.getStringExtra("imgUrl")
+
+        }
 
         share_kakao_btn.setOnClickListener {
             //postShareProject()

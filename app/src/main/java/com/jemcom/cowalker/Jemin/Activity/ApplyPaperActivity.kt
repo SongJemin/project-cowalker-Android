@@ -42,6 +42,7 @@ class ApplyPaperActivity : AppCompatActivity() {
 
     var join : Int = 0
     var token : String = ""
+    var recommend_flag : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,13 +69,22 @@ class ApplyPaperActivity : AppCompatActivity() {
         position = intent.getStringExtra("position")
         num = intent.getStringExtra("num")
         task = intent.getStringExtra("task")
+        recommend_flag = intent.getStringExtra("recommend_flag")
         Log.v("TAG", "지원서액티비티 지원서 번호 = " + apply_idx)
         Log.v("TAG", "지원서액티비티 지원자 번호 = " + applicant_idx)
         Log.v("TAG", "지원서액티비티 모집 번호 = " + recruit_idx)
+        Log.v("TAG", "지원서액티비티 추천 플래그 = " + recommend_flag)
         apply_paper_position_tv.setText(position)
         apply_paper_number_tv.setText(num)
         apply_paper_task_tv.setText(task)
         get()
+
+
+        // 일반 or 공유 지원서
+        if(recommend_flag=="2")
+        {
+            apply_paper_recommend_layout.visibility = View.GONE
+        }
 
         apply_paper_approve_btn.setOnClickListener{
             join = 1

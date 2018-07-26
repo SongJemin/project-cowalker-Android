@@ -61,7 +61,8 @@ class RecruitDetailActivity : AppCompatActivity() {
     var check_flag_value : String = ""
     var sharer_idx : String = ""
     var flag : Int = 0
-
+    var recommend_flag : String = ""
+    var share_flag : String = ""
 
     override fun onNewIntent(intent: Intent) {
         // super.onNewIntent(intent);
@@ -97,6 +98,7 @@ class RecruitDetailActivity : AppCompatActivity() {
                 project_idx = test.getQueryParameter("project_idx")
                 val recruit_idx = test.getQueryParameter("recruit_idx")
                 val recommend_idx = test.getQueryParameter("recommend_idx")
+                recommend_flag = "1"
 
                 Log.v("TAG","추천 까똑 = " + test)
                 Log.v("TAG","추천 통해 받은 테스트 값 = " + test.toString())
@@ -106,6 +108,7 @@ class RecruitDetailActivity : AppCompatActivity() {
                 Log.v("TAG", "카카오톡 진짜 추천 통해 받은 모집 넘버 = " + recruit_idx )
                 Log.v("TAG", "카카오톡 진짜 받은 추천자 넘버 = " + recommend_idx )
                 Log.v("TAG", "카카오톡 진짜 받은 추천자 체크플래그 = " + check_flag )
+                Log.v("TAG", "카카오톡 진짜 받은 추천페이지 체크플래그 = " + recommend_flag)
                 getKakao(project_idx, recruit_idx)
                 setRecruitIdx(recruit_idx)
                 setRecommendIdx(recommend_idx)
@@ -119,18 +122,32 @@ class RecruitDetailActivity : AppCompatActivity() {
                 val recruit_idx = test.getQueryParameter("recruit_idx")
                 val sharer_idx = test.getQueryParameter("sharer_idx")
 
-                Log.v("TAG","까똑 = " + test)
-                Log.v("TAG","테스트 값 = " + test.toString())
-                Log.v("TAG", "카카오톡 프로젝트 넘버 = " + test.getQueryParameter("project_idx"))
-                Log.v("TAG", "카카오톡 모집 넘버 = " + test.getQueryParameter("recruit_idx"))
-                Log.v("TAG", "카카오톡 진짜 받은 프로젝트 넘버 = " + project_idx )
-                Log.v("TAG", "카카오톡 진짜 받은 모집 넘버 = " + recruit_idx )
-                Log.v("TAG", "카카오톡 진짜 받은 공유자 넘버 = " + sharer_idx )
-                Log.v("TAG", "카카오톡 진짜 받은 공유자 체크플래그 = " + check_flag )
-                getKakao(project_idx, recruit_idx)
-                setRecruitIdx(recruit_idx)
-                setSharerIdx(sharer_idx)
-                setCheckFlag(check_flag)
+                if(recruit_idx=="")
+                {
+                    Log.v("TAG","프로젝트 공유로 이동")
+                    var intent = Intent(applicationContext, ProjectDetailActivity::class.java)
+                    intent.putExtra("project_idx",project_idx)
+                    startActivity(intent)
+
+                }
+                else{
+                    recommend_flag = "2"
+
+                    Log.v("TAG","까똑 = " + test)
+                    Log.v("TAG","테스트 값 = " + test.toString())
+                    Log.v("TAG", "카카오톡 프로젝트 넘버 = " + test.getQueryParameter("project_idx"))
+                    Log.v("TAG", "카카오톡 모집 넘버 = " + test.getQueryParameter("recruit_idx"))
+                    Log.v("TAG", "카카오톡 진짜 받은 프로젝트 넘버 = " + project_idx )
+                    Log.v("TAG", "카카오톡 진짜 받은 모집 넘버 = " + recruit_idx )
+                    Log.v("TAG", "카카오톡 진짜 받은 공유자 넘버 = " + sharer_idx )
+                    Log.v("TAG", "카카오톡 진짜 받은 공유자 체크플래그 = " + check_flag )
+                    getKakao(project_idx, recruit_idx)
+                    setRecruitIdx(recruit_idx)
+                    setSharerIdx(sharer_idx)
+                    setCheckFlag(check_flag)
+                }
+
+
             }
 
 
@@ -139,6 +156,7 @@ class RecruitDetailActivity : AppCompatActivity() {
         else{
             Log.v("TAG","인텐트로 넘어온 화면")
 
+            recommend_flag = "2"
             val getRecruitintent = intent
             num = getRecruitintent.getStringExtra("num")
             task = getRecruitintent.getStringExtra("task")
@@ -160,6 +178,7 @@ class RecruitDetailActivity : AppCompatActivity() {
             val token = pref.getString("token","")
             if(token.length > 0) {
                 var intent = Intent(applicationContext, ApplyMemberActivity::class.java)
+                intent.putExtra("recommend_flag", recommend_flag)
                 intent.putExtra("recruit_idx", recruit_idx)
                 intent.putExtra("flag", 1)
                 intent.putExtra("num", num)
@@ -183,6 +202,7 @@ class RecruitDetailActivity : AppCompatActivity() {
         }
 
         recruit_detail_share_btn.setOnClickListener {
+            share_flag = "2"
             val intent = Intent(this@RecruitDetailActivity, ShareActivity::class.java)
             intent.putExtra("project_idx", project_idx)
             intent.putExtra("recruit_idx", recruit_idx)
@@ -192,6 +212,7 @@ class RecruitDetailActivity : AppCompatActivity() {
             intent.putExtra("num",num)
             intent.putExtra("task",task)
             intent.putExtra("dday",dday)
+            intent.putExtra("share_flag",share_flag)
 
             Log.v("asdf","로그 = " + project_idx + ", "+ recruit_idx)
             startActivity(intent)
@@ -297,11 +318,14 @@ class RecruitDetailActivity : AppCompatActivity() {
                 else{
                     var intent = Intent(applicationContext, ApplyDetailActivity::class.java)
                     flag = 1
+                    var check_flag : String = ""
+                    check_flag = "2"
                     intent.putExtra("flag", 1)
                     intent.putExtra("project_idx", project_idx)
                     intent.putExtra("recruit_idx", recruit_idx)
                     intent.putExtra("task", task)
                     intent.putExtra("position", position)
+                    intent.putExtra("check_flag", check_flag)
                     Log.v("TAG", "리쿠릇에서 어플라이로 보내는 포지션 = " + position)
                     Log.v("TAG", "리쿠릇에서 어플라이로 보내는 태스크 = " + task)
                     startActivity(intent)

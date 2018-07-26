@@ -224,6 +224,77 @@
         </LinearLayout>
         
         <LinearLayout
+            android:id="@+id/apply_paper_recommend_layout"
+            android:layout_width="match_parent"
+            android:layout_height="178dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:orientation="vertical"
+                android:background="#f8f8f8">
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="153dp"
+                android:background="#ffffff"
+                >
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/recommend_paper_recommender_img"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="65dp"
+                    android:layout_marginLeft="26dp"
+                    android:background="@drawable/profile_default"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="추천합니다"
+                    android:textSize="16sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="20dp"
+                    />
+
+                <TextView
+                    android:id="@+id/recommend_paper_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="송제민"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:layout_marginTop="65dp"
+                    android:layout_marginLeft="90dp"
+                    />
+
+                <TextView
+                    android:id="@+id/recommend_paper_explain_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이 분은 개발의 신입니다 신!!!!!!"
+                    android:textSize="14sp"
+                    android:textColor="#444444"
+                    android:textStyle="bold"
+                    android:layout_marginTop="85dp"
+                    android:layout_marginLeft="90dp"
+                    />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+        
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal">
