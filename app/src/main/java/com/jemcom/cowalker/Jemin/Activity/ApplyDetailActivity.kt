@@ -44,7 +44,10 @@ class ApplyDetailActivity : AppCompatActivity() {
     var position : String = ""
     var task : String = ""
     var sharer_idx : String = ""
+    var recommend_idx_string : String = ""
+    var recommend_idx : Int = 0
     var flag : Int = 0
+    var check_flag : String = ""
 
     companion object {
         lateinit var detailActivity: ApplyDetailActivity
@@ -72,20 +75,34 @@ class ApplyDetailActivity : AppCompatActivity() {
         Log.v("TAG", "모집 상세에서 받은 모집 번호 = "+recruit_idx)
         project_idx = getRecruitintent.getStringExtra("project_idx")
         flag = getRecruitintent.getIntExtra("flag",0)
+        check_flag = getRecruitintent.getStringExtra("check_flag")
 
-       // 공유로 들어온 경우
+       // 카카오톡을 통해 들어온 경우
         if(flag == 2)
         {
-            Log.v("TAG", "공유로 들어온 경우")
-            sharer_idx = getRecruitintent.getStringExtra("sharer_idx")
+            // 추천을 통해 들어온 경우
+            if(check_flag=="1")
+            {
+                Log.v("TAG","지원서 추천을 통해 들어온 경우")
+                recommend_idx_string = getRecruitintent.getStringExtra("recommend_idx")
+                Log.v("TAG","지원서로 넘어온 추천자 번호" + recommend_idx_string)
+                recommend_idx = Integer.parseInt(recommend_idx_string)
+            }
+
+            // 공유를 통해 들어온 경우
+            else if(check_flag=="2")
+            {
+                Log.v("TAG", "지원서 공유를 통해 들어온 경우")
+                sharer_idx = getRecruitintent.getStringExtra("sharer_idx")
+                Log.v("TAG","지원서로 넘어온 공유자 번호" + sharer_idx)
+            }
+
         }
         else
         {
             Log.v("TAG", "일반적으로 들어온 경우")
 
         }
-
-        Log.v("TAG", "모집 상세에서 받은 공유자 번호 = "+sharer_idx)
 
 
         position = getRecruitintent.getStringExtra("position")
@@ -99,15 +116,27 @@ class ApplyDetailActivity : AppCompatActivity() {
 
         apply_detail_apply_btn.setOnClickListener {
 
-            if(sharer_idx!="")
+            // 일반 지원서
+            if(check_flag=="")
             {
                 Log.v("sdaf","일반지원")
-                postShare()
-            }
-            else{
-                Log.v("sdaf","공유지원")
                 post()
             }
+
+            // 추천 지원서
+            if(check_flag=="1")
+            {
+                Log.v("sdaf","추천지원")
+                postRecommend()
+            }
+
+            // 공유 지원서
+            else if(check_flag=="2")
+            {
+                Log.v("sdaf","공유지원")
+                postShare()
+            }
+
 
 
         }
@@ -206,6 +235,45 @@ class ApplyDetailActivity : AppCompatActivity() {
                 Log.v("TAG","공유 통신 성공")
                 if(response!!.isSuccessful)
                 {Log.v("TAG","공유 전달 성공")
+                    var message = response.body()
+                    Toast.makeText(applicationContext,"성공",Toast.LENGTH_SHORT).show()
+
+                    var intent = Intent(applicationContext, MainActivity::class.java)
+                    startActivity(intent)
+
+                }
+                else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun postRecommend()
+    {
+        var introduce = apply_detail_introduce_edit.text.toString()
+        var portfolio = apply_detail_portfolio_edit.text.toString()
+        var phone = apply_detail_phone_edit.text.toString()
+        val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+
+        Log.v("TAG", "추천할때 프로젝트 번호 = " + project_idx)
+        Log.v("TAG", "추천할때 모집 번호 = " + recruit_idx)
+        Log.v("TAG", "추천할때 추천자 번호 = " + recommend_idx)
+        var data = PostJoin(introduce,portfolio, recruit_idx,project_idx,position, detailAnswerList, phone)
+
+        var postJoinResponse = networkService.postRecommend(token,data,project_idx, recruit_idx, recommend_idx)
+
+        postJoinResponse.enqueue(object : Callback<PostJoinResponse>{
+
+            override fun onFailure(call: Call<PostJoinResponse>?, t: Throwable?) {
+
+                Toast.makeText(applicationContext,"서버 연결 실패",Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<PostJoinResponse>?, response: Response<PostJoinResponse>?) {
+                Log.v("TAG","추천 통신 성공")
+                if(response!!.isSuccessful)
+                {
+                    Log.v("TAG","추천 전달 성공")
                     var message = response.body()
                     Toast.makeText(applicationContext,"성공",Toast.LENGTH_SHORT).show()
 

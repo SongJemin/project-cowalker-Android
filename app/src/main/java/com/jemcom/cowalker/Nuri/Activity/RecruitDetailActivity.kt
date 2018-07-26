@@ -56,10 +56,11 @@ class RecruitDetailActivity : AppCompatActivity() {
     var replaceStartdate :String = ""
     var replaceEnddate : String = ""
     var recruit_idx_value : String = ""
+    var recommend_idx_value : String = ""
     var sharer_idx_value : String = ""
+    var check_flag_value : String = ""
     var sharer_idx : String = ""
     var flag : Int = 0
-    var share_flag : Int = 0
 
 
     override fun onNewIntent(intent: Intent) {
@@ -87,19 +88,52 @@ class RecruitDetailActivity : AppCompatActivity() {
         var test : Uri? = null
         test = intent.data
         if (test != null) {
-            project_idx = test.getQueryParameter("project_idx")
-            val recruit_idx = test.getQueryParameter("recruit_idx")
-            val sharer_idx = test.getQueryParameter("sharer_idx")
-            Log.v("TAG","까똑 = " + test)
-            Log.v("TAG","테스트 값 = " + test.toString())
-            Log.v("TAG", "카카오톡 프로젝트 넘버 = " + test.getQueryParameter("project_idx"))
-            Log.v("TAG", "카카오톡 모집 넘버 = " + test.getQueryParameter("recruit_idx"))
-            Log.v("TAG", "카카오톡 진짜 받은 프로젝트 넘버 = " + project_idx )
-            Log.v("TAG", "카카오톡 진짜 받은 모집 넘버 = " + recruit_idx )
-            Log.v("TAG", "카카오톡 진짜 받은 공유자 넘버 = " + sharer_idx )
-            getKakao(project_idx, recruit_idx)
-            setRecruitIdx(recruit_idx)
-            setSharerIdx(sharer_idx)
+            val check_flag = test.getQueryParameter("check_flag")
+            Log.v("TAG", "체크플래그 확인 = " + check_flag)
+            //check_flag가 1이면 추천 기능 구현
+            if(check_flag=="1")
+            {
+                Log.v("TAG", "체크플래그 확인 결과 추천 기능 구현")
+                project_idx = test.getQueryParameter("project_idx")
+                val recruit_idx = test.getQueryParameter("recruit_idx")
+                val recommend_idx = test.getQueryParameter("recommend_idx")
+
+                Log.v("TAG","추천 까똑 = " + test)
+                Log.v("TAG","추천 통해 받은 테스트 값 = " + test.toString())
+                Log.v("TAG", "카카오톡 추천 통해 받은 프로젝트 넘버 = " + test.getQueryParameter("project_idx"))
+                Log.v("TAG", "카카오톡 추천 통해 받은 모집 넘버 = " + test.getQueryParameter("recruit_idx"))
+                Log.v("TAG", "카카오톡 진짜 추천 통해 받은 프로젝트 넘버 = " + project_idx )
+                Log.v("TAG", "카카오톡 진짜 추천 통해 받은 모집 넘버 = " + recruit_idx )
+                Log.v("TAG", "카카오톡 진짜 받은 추천자 넘버 = " + recommend_idx )
+                Log.v("TAG", "카카오톡 진짜 받은 추천자 체크플래그 = " + check_flag )
+                getKakao(project_idx, recruit_idx)
+                setRecruitIdx(recruit_idx)
+                setRecommendIdx(recommend_idx)
+                setCheckFlag(check_flag)
+            }
+
+            //check_flag가 2이면 공유 기능 구현
+            else if(check_flag=="2") {
+                Log.v("TAG", "체크플래그 확인 결과 공유 기능 구현")
+                project_idx = test.getQueryParameter("project_idx")
+                val recruit_idx = test.getQueryParameter("recruit_idx")
+                val sharer_idx = test.getQueryParameter("sharer_idx")
+
+                Log.v("TAG","까똑 = " + test)
+                Log.v("TAG","테스트 값 = " + test.toString())
+                Log.v("TAG", "카카오톡 프로젝트 넘버 = " + test.getQueryParameter("project_idx"))
+                Log.v("TAG", "카카오톡 모집 넘버 = " + test.getQueryParameter("recruit_idx"))
+                Log.v("TAG", "카카오톡 진짜 받은 프로젝트 넘버 = " + project_idx )
+                Log.v("TAG", "카카오톡 진짜 받은 모집 넘버 = " + recruit_idx )
+                Log.v("TAG", "카카오톡 진짜 받은 공유자 넘버 = " + sharer_idx )
+                Log.v("TAG", "카카오톡 진짜 받은 공유자 체크플래그 = " + check_flag )
+                getKakao(project_idx, recruit_idx)
+                setRecruitIdx(recruit_idx)
+                setSharerIdx(sharer_idx)
+                setCheckFlag(check_flag)
+            }
+
+
 
         }
         else{
@@ -159,9 +193,6 @@ class RecruitDetailActivity : AppCompatActivity() {
             intent.putExtra("task",task)
             intent.putExtra("dday",dday)
 
-
-
-
             Log.v("asdf","로그 = " + project_idx + ", "+ recruit_idx)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
@@ -214,22 +245,51 @@ class RecruitDetailActivity : AppCompatActivity() {
             else {
                 // 카카오톡에서 받은 사람이라면
                 if (test != null) {
-                    var intent = Intent(applicationContext, ApplyDetailActivity::class.java)
-                    flag = 2
-                    intent.putExtra("project_idx", project_idx)
-                    intent.putExtra("recruit_idx", getRecruitIdx())
-                    intent.putExtra("task", task)
-                    intent.putExtra("flag", 2)
-                    intent.putExtra("position", position)
-                    intent.putExtra("sharer_idx", getSharerIdx())
-                    Log.v("TAG", "리쿠릇에서 어플라이로 보내는 공유자번호 = " + getSharerIdx())
 
-                    Log.v("TAG", "리쿠릇에서 어플라이로 보내는 플젝번호 = " + project_idx)
+                    // 추천을 통해 들어온 사람이라면
+                    if(getCheckFlag()=="1")
+                    {
+                        Log.v("TAG", "체크플래그 1 확인 후 지원서페이지 넘어가기 전")
+                        var intent = Intent(applicationContext, ApplyDetailActivity::class.java)
+                        flag = 2
+                        intent.putExtra("project_idx", project_idx)
+                        intent.putExtra("recruit_idx", getRecruitIdx())
+                        intent.putExtra("task", task)
+                        intent.putExtra("flag", 2)
+                        intent.putExtra("check_flag", getCheckFlag())
+                        intent.putExtra("position", position)
+                        intent.putExtra("recommend_idx", getRecommendIdx())
+                        Log.v("TAG", "리쿠릇에서 어플라이로 보내는 플젝번호 = " + project_idx)
 
-                    Log.v("TAG", "리쿠릇에서 어플라이로 보내는 포지션 = " + position)
-                    Log.v("TAG", "리쿠릇에서 어플라이로 보내는 태스크 = " + task)
+                        Log.v("TAG", "리쿠릇에서 어플라이로 보내는 포지션 = " + position)
+                        Log.v("TAG", "리쿠릇에서 어플라이로 보내는 태스크 = " + task)
 
-                    startActivity(intent)
+                        startActivity(intent)
+                    }
+
+                    // 공유를 통해 들어온 사람이라면
+                    else if(getCheckFlag()=="2")
+                    {
+                        Log.v("TAG", "체크플래그 2 확인 후 지원서페이지 넘어가기 전")
+                        var intent = Intent(applicationContext, ApplyDetailActivity::class.java)
+                        flag = 2
+                        intent.putExtra("project_idx", project_idx)
+                        intent.putExtra("recruit_idx", getRecruitIdx())
+                        intent.putExtra("task", task)
+                        intent.putExtra("flag", 2)
+                        intent.putExtra("check_flag", getCheckFlag())
+                        intent.putExtra("position", position)
+                        intent.putExtra("sharer_idx", getSharerIdx())
+                        Log.v("TAG", "리쿠릇에서 어플라이로 보내는 공유자번호 = " + getSharerIdx())
+
+                        Log.v("TAG", "리쿠릇에서 어플라이로 보내는 플젝번호 = " + project_idx)
+
+                        Log.v("TAG", "리쿠릇에서 어플라이로 보내는 포지션 = " + position)
+                        Log.v("TAG", "리쿠릇에서 어플라이로 보내는 태스크 = " + task)
+
+                        startActivity(intent)
+                    }
+
                 }
 
 
@@ -408,11 +468,30 @@ class RecruitDetailActivity : AppCompatActivity() {
     fun getRecruitIdx() : String{
         return recruit_idx_value
     }
+
+    fun setRecommendIdx(recommend_idx: String) {
+
+        recommend_idx_value = recommend_idx
+    }
+
+    fun getRecommendIdx() : String{
+        return recommend_idx_value
+    }
+
     fun setSharerIdx(sharer_idx: String) {
 
         sharer_idx_value = sharer_idx
     }
     fun getSharerIdx() : String{
         return sharer_idx_value
+    }
+
+    fun setCheckFlag(check_flag: String) {
+
+        check_flag_value = check_flag
+    }
+
+    fun getCheckFlag() : String{
+        return check_flag_value
     }
 }

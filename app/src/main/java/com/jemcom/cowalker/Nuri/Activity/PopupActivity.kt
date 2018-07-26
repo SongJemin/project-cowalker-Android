@@ -19,22 +19,26 @@ class PopupActivity : AppCompatActivity() {
 
     var project_idx : String = ""
     var recruit_idx : String = ""
+    var recommend_idx : String = ""
+    var check_flag : String = ""
 
-            override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_popup)
 
                 project_idx = intent.getStringExtra("project_idx")
                 recruit_idx = intent.getStringExtra("recruit_idx")
+                recommend_idx = intent.getStringExtra("recommend_idx")
+                check_flag = "1"
 
 
         pop_kakao_btn.setOnClickListener {
-            sendLink(project_idx, recruit_idx)
+            sendLink(project_idx, recruit_idx, recommend_idx, check_flag)
         }
     }
 
-    private fun sendLink(project_idx:String, recruit_idx :String) {
-        Log.v("TAG","모집 상세 프로젝트 숫자 ="+project_idx + "모집 번호 숫자 = " + recruit_idx )
+    private fun sendLink(project_idx : String, recruit_idx : String, recommend_idx : String, check_flag : String) {
+        Log.v("TAG","모집 상세 프로젝트 숫자 ="+project_idx + "모집 번호 숫자 = " + recruit_idx + "추천인 숫자 = " + recommend_idx)
         val params = FeedTemplate
                 .newBuilder(ContentObject.newBuilder("추천합니다",
                         "Asdf",
@@ -49,7 +53,7 @@ class PopupActivity : AppCompatActivity() {
                         //.setWebUrl("'https://developers.kakao.com")
                         //.setMobileWebUrl("http://bghgu.tk:3000/api/project/"+project_idx+"/recruit/"+recruit_idx)
 
-                        .setAndroidExecutionParams("project_idx="+project_idx+"&recruit_idx="+recruit_idx)
+                        .setAndroidExecutionParams("project_idx="+project_idx+"&recruit_idx="+recruit_idx +"&recommend_idx="+recommend_idx +"&check_flag="+check_flag)
                         .build()))
                 .build()
 

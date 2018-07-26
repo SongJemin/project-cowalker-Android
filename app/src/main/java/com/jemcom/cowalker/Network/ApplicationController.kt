@@ -8,7 +8,8 @@ class ApplicationController : Application() {
 
     lateinit var networkSerVice : NetworkService
 
-    private val baseUrl = "http://52.78.122.242:3000"
+    //private val baseUrl = "http://52.78.122.242:3000"
+    private val baseUrl = "http://bghgu.tk:3000"
     companion object {
         lateinit var instance: ApplicationController
         //일종의 스태틱
@@ -23,7 +24,6 @@ class ApplicationController : Application() {
 
     fun buildNetwork(){
         val builder = Retrofit.Builder()
-
         val retrofit = builder
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())

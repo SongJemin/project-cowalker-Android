@@ -7,6 +7,7 @@ import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.jemcom.cowalker.Jemin.Activity.ApplyActivity
@@ -34,7 +35,7 @@ class RecommendActivity : AppCompatActivity(),View.OnClickListener {
     var idx :String?= ""
     var project_idx : String =""
     var recruit_idx : String =""
-
+    var recommend_idx : String = ""
 
     companion object {
         lateinit var activity: RecommendActivity
@@ -107,8 +108,10 @@ class RecommendActivity : AppCompatActivity(),View.OnClickListener {
         val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
         val token = pref.getString("token","")
         var reason = recommend_ed.text.toString()
-        var data = PostRecommend(project_idx,idx!!,reason)
-        System.out.println(reason)
+        var data = PostRecommend(project_idx,recruit_idx,reason)
+        Log.v("TAG", "추천 데이터 project_idx = " + project_idx)
+        Log.v("TAG", "추천 데이터 recruit_idx = " + recruit_idx)
+        Log.v("TAG", "추천 데이터 reason = " + reason)
         var postRecommendResponse = networkService.postRecommend(token,data)
 
         postRecommendResponse.enqueue(object : Callback<PostRecommendResponse>{
@@ -119,9 +122,12 @@ class RecommendActivity : AppCompatActivity(),View.OnClickListener {
             override fun onResponse(call: Call<PostRecommendResponse>?, response: Response<PostRecommendResponse>?) {
                 if (response!!.isSuccessful)
                 {
+                    recommend_idx = response.body().recommend_idx
+                    Log.v("TAG", "추천자 번호 = " + recommend_idx)
                     var intent = Intent(applicationContext,PopupActivity::class.java)
                     intent.putExtra("project_idx",project_idx)
                     intent.putExtra("recruit_idx",recruit_idx)
+                    intent.putExtra("recommend_idx",recommend_idx)
                     startActivity(intent)
                 }
                 else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()

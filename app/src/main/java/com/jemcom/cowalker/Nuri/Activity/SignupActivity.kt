@@ -7,6 +7,7 @@ import android.graphics.PorterDuff
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.jemcom.cowalker.Network.ApplicationController
@@ -92,7 +93,10 @@ class SignupActivity : AppCompatActivity(),View.OnClickListener {
             window.statusBarColor = Color.BLACK
         }
 
+
         networkService = ApplicationController.instance.networkSerVice
+        Log.v("TAG","네트워크서비스 instance값 확인" + ApplicationController.instance)
+        Log.v("TAG","네트워크서비스 networkService값 확인" + ApplicationController.instance.networkSerVice)
     }
 
     fun post()

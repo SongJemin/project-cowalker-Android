@@ -50,6 +50,8 @@ class ShareActivity : AppCompatActivity() {
     var task : String = ""
     var dday : String = ""
 
+    var check_flag : String = ""
+
     @BindView(R.id.fb_share_button)
     internal var facebookbtn: Button? = null
 
@@ -58,7 +60,6 @@ class ShareActivity : AppCompatActivity() {
         shareFacebook()
     }
 
-    var url = "https://cdn.xl.thumbs.canstockphoto.com/computer-generated-3d-image-cooperation-stock-illustrations_csp2074347.jpg"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_share)
@@ -88,8 +89,8 @@ class ShareActivity : AppCompatActivity() {
         }
     }
 
-    private fun sendLink(project_idx:String, recruit_idx :String, sharere_idx : String) {
-        Log.v("TAG","모집 상세 프로젝트 숫자 ="+project_idx + "모집 번호 숫자 = " + recruit_idx + "공유자 번호 숫자 = " + sharere_idx)
+    private fun sendLink(project_idx:String, recruit_idx :String, sharere_idx : String, check_flag : String) {
+        Log.v("TAG","모집 상세 프로젝트 숫자 ="+project_idx + "모집 번호 숫자 = " + recruit_idx + "공유자 번호 숫자 = " + sharere_idx + "체크 플래그 = " + check_flag)
         val params = FeedTemplate
                 .newBuilder(ContentObject.newBuilder(title,
                         imgUrl,
@@ -104,7 +105,7 @@ class ShareActivity : AppCompatActivity() {
                         //.setWebUrl("'https://developers.kakao.com")
                         //.setMobileWebUrl("http://bghgu.tk:3000/api/project/"+project_idx+"/recruit/"+recruit_idx)
 
-                        .setAndroidExecutionParams("project_idx="+project_idx+"&recruit_idx="+recruit_idx+"&sharer_idx="+sharer_idx)
+                        .setAndroidExecutionParams("project_idx="+project_idx+"&recruit_idx="+recruit_idx+"&sharer_idx="+sharer_idx+"&check_flag="+check_flag)
                         .build()))
                 .build()
 
@@ -135,8 +136,9 @@ class ShareActivity : AppCompatActivity() {
                 if(response.isSuccessful){
                     Log.v("TAG","모집 공유 성공")
                     sharer_idx = response.body().sharer_idx
+                    check_flag = "2"
                     Log.v("TAG","공유자 idx = "+ sharer_idx)
-                    sendLink(project_idx, recruit_idx, sharer_idx)
+                    sendLink(project_idx, recruit_idx, sharer_idx, check_flag)
                 }
             }
 

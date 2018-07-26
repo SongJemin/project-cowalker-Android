@@ -48,9 +48,6 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
         applicant_idxList.add(applyMemberItems[position].applicant_idx)
 
         holder.applyMemberContentBtn.setOnClickListener {
-            Log.v("Adapter", "클릭 postion = " + position)
-            Log.v("Adapter", "지원 번호 = " + apply_idx[position])
-            Log.v("Adapter", "지원자 번호 = " + applicant_idxList[position])
 
             recruit_idx = ApplyMemberActivity.applyMemberActivity.recruit_idx
             num = ApplyMemberActivity.applyMemberActivity.num
@@ -64,9 +61,8 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
             intent.putExtra("num",num)
             intent.putExtra("task",task)
             intent.putExtra("position",applyMemberItems[position].position)
-            Log.v("Adapter", "지원서로 보내는 모집 번호 = "+ recruit_idx)
-            Log.v("Adapter", "지원서로 보내는 넘 = "+ num)
-            Log.v("Adapter", "지원서로 보내는 태스크 = "+ task)
+
+
             mContext.startActivity(intent)
 
                     //mContext.startActivity(Intent(mContext, MainActivity::class.java)
@@ -76,45 +72,43 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
 
 
         holder.applyMemberApproveBtn.setOnClickListener {
-            Log.v("Adapter", "클릭 postion = " + position)
-            Log.v("Adapter", "지원 번호 = " + apply_idx[position])
-            Log.v("Adapter", "지원자 번호 = " + applicant_idxList[position])
 
             recruit_idx = ApplyMemberActivity.applyMemberActivity.recruit_idx
             token = ApplyMemberActivity.applyMemberActivity.token
             applicant_idx = applicant_idxList[position].toString()
             apply_idx_result = apply_idx[position]
-            Log.v("TAG", "지원리스트에서 승인, 토큰 = " + token)
-            Log.v("TAG", "지원리스트에서 승인, 지원자번호 = " + applicant_idx)
-            Log.v("TAG", "지원리스트에서 승인, 지원번호 = " + apply_idx_result)
+
             var join = 1
+            num = ApplyMemberActivity.applyMemberActivity.num
+            task = ApplyMemberActivity.applyMemberActivity.task
             ApplyMemberActivity.applyMemberActivity.changeAdapterJoin(token, apply_idx_result, applicant_idx, join)
             var intent = Intent(mContext, ApplyMemberActivity::class.java)
-            intent.putExtra("flag",2)
-            mContext.startActivity(intent)
+            intent.putExtra("flag",3)
+            intent.putExtra("num",num)
+            intent.putExtra("task",task)
+            intent.putExtra("recruit_idx",recruit_idx)
 
-            Log.v("Adapter", "지원서로 보내는 모집 번호 = "+ recruit_idx)
+            mContext.startActivity(intent)
+            ApplyMemberActivity.applyMemberActivity.activityFinish()
         }
 
         holder.applyMemberRejectBtn.setOnClickListener {
-            Log.v("Adapter", "클릭 postion = " + position)
-            Log.v("Adapter", "지원 번호 = " + apply_idx[position])
-            Log.v("Adapter", "지원자 번호 = " + applicant_idxList[position])
 
             recruit_idx = ApplyMemberActivity.applyMemberActivity.recruit_idx
             token = ApplyMemberActivity.applyMemberActivity.token
             applicant_idx = applicant_idxList[position].toString()
             apply_idx_result = apply_idx[position]
-            Log.v("TAG", "지원리스트에서 거절, 토큰 = " + token)
-            Log.v("TAG", "지원리스트에서 거절, 지원자번호 = " + applicant_idx)
-            Log.v("TAG", "지원리스트에서 거절, 지원번호 = " + apply_idx_result)
+            num = ApplyMemberActivity.applyMemberActivity.num
+            task = ApplyMemberActivity.applyMemberActivity.task
             var join = 2
             ApplyMemberActivity.applyMemberActivity.changeAdapterJoin(token, apply_idx_result, applicant_idx, join)
             var intent = Intent(mContext, ApplyMemberActivity::class.java)
-            intent.putExtra("flag",2)
+            intent.putExtra("flag",3)
+            intent.putExtra("num",num)
+            intent.putExtra("task",task)
+            intent.putExtra("recruit_idx",recruit_idx)
             mContext.startActivity(intent)
-
-            Log.v("Adapter", "지원서로 보내는 모집 번호 = "+ recruit_idx)
+            ApplyMemberActivity.applyMemberActivity.activityFinish()
 
         }
 

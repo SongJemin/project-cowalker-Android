@@ -91,6 +91,10 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
         {
             recruit_idx = intent.getStringExtra("recruit_idx")
         }
+        else if(flag==3)
+        {
+            recruit_idx = intent.getStringExtra("recruit_idx")
+        }
 
 
 
@@ -166,6 +170,10 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
 
         })
 
+    }
+
+    fun activityFinish(){
+        finish();
     }
 
 
