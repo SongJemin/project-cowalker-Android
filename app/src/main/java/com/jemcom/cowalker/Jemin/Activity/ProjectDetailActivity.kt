@@ -133,7 +133,6 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
         getProjectDetail()
 
 
-
         project_detail_see_more.setOnClickListener(this)
         project_detail_see_close.setOnClickListener(this)
         project_detail_profile_iv.setOnClickListener(this)
@@ -150,24 +149,6 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
             intent.putExtra("project_idx",project_idx)
 
             startActivity(intent)
-        }
-
-        project_detail_share_btn.setOnClickListener {
-
-            var share_recruit_idx : String = ""
-            share_recruit_idx = ""
-            var share_flag : String = ""
-            share_flag = "1"
-            val intent = Intent(this@ProjectDetailActivity, ShareActivity::class.java)
-            intent.putExtra("project_idx", project_idx)
-            intent.putExtra("recruit_idx", recruit_idx)
-            intent.putExtra("recruit_idx", share_recruit_idx)
-            intent.putExtra("share_flag", share_flag)
-
-            intent.putExtra("title", title)
-            intent.putExtra("imgUrl", imgUrl)
-            startActivity(intent)
-            overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
         }
 
 

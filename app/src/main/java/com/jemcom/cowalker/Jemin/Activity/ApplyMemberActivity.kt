@@ -56,7 +56,6 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
     var task : String = ""
     var token : String = ""
     var flag : Int =1
-    var recommend_flag : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,11 +81,11 @@ class ApplyMemberActivity : AppCompatActivity(), View.OnClickListener {
         val intent = intent
         flag=intent.getIntExtra("flag",0)
         num = intent.getStringExtra("num")
+
         Log.v("asdf","멤버액티비티 num = "+num)
         task = intent.getStringExtra("task")
         Log.v("asdf","멤버액티비티 태스크 = "+task)
 
-        recommend_flag = intent.getStringExtra("recommend_flag")
 
         // 흐름 순차적
         if(flag==1)

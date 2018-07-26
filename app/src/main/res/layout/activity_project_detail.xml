@@ -315,67 +315,14 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:background="@drawable/lowbar_design"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:id="@+id/project_detail_recommend_btn"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="43dp"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginLeft="11dp"
-                    android:layout_marginTop="17dp"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/recommend_darkgray" />
-
-                <TextView
-                    android:layout_width="41dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="11sp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginTop="3dp"
-                    android:fontFamily="@font/notosanscjkkr_regular"
-                    android:text="추천하기"
-                    android:textColor="#000000"/>
+            android:orientation="vertical">
 
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/project_detail_share_btn"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="18dp"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginTop="17dp"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/sharebtn" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="공유하기"
-                    android:fontFamily="@font/notosanscjkkr_regular"
-                    android:layout_marginTop="3dp"
-                    android:textColor="#000000"
-                    android:textSize="11sp"/>
-
-            </LinearLayout>
             <Button
                 android:id="@+id/project_detail_change_btn"
                 android:layout_width="206dp"
                 android:layout_height="50dp"
                 android:layout_marginBottom="7dp"
-                android:layout_marginLeft="35dp"
                 android:layout_marginTop="10dp"
                 android:background="#45b6ff"
                 android:fontFamily="@font/notosanscjkkr_bold"

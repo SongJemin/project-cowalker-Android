@@ -26,7 +26,7 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
     var task : String = ""
     var apply_idx_result : String = ""
     var token : String = ""
-    var recommend_flag : String = ""
+    var recommend_idx : Int = 0
 
     //내가 쓸 뷰홀더가 뭔지를 적어준다.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApplyMemberViewHolder {
@@ -53,7 +53,14 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
             recruit_idx = ApplyMemberActivity.applyMemberActivity.recruit_idx
             num = ApplyMemberActivity.applyMemberActivity.num
             task = ApplyMemberActivity.applyMemberActivity.task
-            recommend_flag = ApplyMemberActivity.applyMemberActivity.recommend_flag
+
+
+            if(applyMemberItems[position].recommend_idx == null)
+            {
+                applyMemberItems[position].recommend_idx = 0
+            }
+            recommend_idx = applyMemberItems[position].recommend_idx!!
+            Log.v("TAG","선택 지원자 추천 번호 = " + recommend_idx)
 
             applicant_idx = applicant_idxList[position].toString()
             var intent = Intent(mContext, ApplyPaperActivity::class.java)
@@ -63,13 +70,10 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
             intent.putExtra("num",num)
             intent.putExtra("task",task)
             intent.putExtra("position",applyMemberItems[position].position)
-            intent.putExtra("recommend_flag", recommend_flag)
+            intent.putExtra("recommend_idx",recommend_idx)
 
             mContext.startActivity(intent)
 
-                    //mContext.startActivity(Intent(mContext, MainActivity::class.java)
-                    //.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    //)
         }
 
 
@@ -83,14 +87,12 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
             var join = 1
             num = ApplyMemberActivity.applyMemberActivity.num
             task = ApplyMemberActivity.applyMemberActivity.task
-            recommend_flag = ApplyMemberActivity.applyMemberActivity.recommend_flag
             ApplyMemberActivity.applyMemberActivity.changeAdapterJoin(token, apply_idx_result, applicant_idx, join)
             var intent = Intent(mContext, ApplyMemberActivity::class.java)
             intent.putExtra("flag",3)
             intent.putExtra("num",num)
             intent.putExtra("task",task)
             intent.putExtra("recruit_idx",recruit_idx)
-            intent.putExtra("recommend_flag", recommend_flag)
 
             mContext.startActivity(intent)
             ApplyMemberActivity.applyMemberActivity.activityFinish()
@@ -104,7 +106,6 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
             apply_idx_result = apply_idx[position]
             num = ApplyMemberActivity.applyMemberActivity.num
             task = ApplyMemberActivity.applyMemberActivity.task
-            recommend_flag = ApplyMemberActivity.applyMemberActivity.recommend_flag
             var join = 2
             ApplyMemberActivity.applyMemberActivity.changeAdapterJoin(token, apply_idx_result, applicant_idx, join)
             var intent = Intent(mContext, ApplyMemberActivity::class.java)
@@ -112,7 +113,6 @@ class ApplyMemberAdapter(context: Context, private var applyMemberItems: ArrayLi
             intent.putExtra("num",num)
             intent.putExtra("task",task)
             intent.putExtra("recruit_idx",recruit_idx)
-            intent.putExtra("recommend_flag", recommend_flag)
             mContext.startActivity(intent)
             ApplyMemberActivity.applyMemberActivity.activityFinish()
 

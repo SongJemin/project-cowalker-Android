@@ -310,4 +310,12 @@ interface NetworkService {
             @Header("authorization") authorization : String,
             @Body sharedsns : PostSharedSns
     ) : Call<PostSharedSnsResponse>
+
+    @GET("/api/recommend")
+    fun getRecommendContent(
+            @Header("authorization") authorization: String,
+            @Query("recommend_idx") recommend_idx: Int
+    ) : Call<GetRecommendContentResponse>
+
+
 }

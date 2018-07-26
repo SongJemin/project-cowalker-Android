@@ -4,7 +4,7 @@ data class PutApplyModify (
         var position : String,
         var start_date : String,
         var end_date : String,
-        var num : String,
+        var number : Int,
         var task : String,
         var activity : String,
         var reward : String,

@@ -10,23 +10,29 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import com.jemcom.cowalker.Jemin.Adapter.ApplyPaperListAdapter
 import com.jemcom.cowalker.Network.ApplicationController
 import com.jemcom.cowalker.Network.Get.GetApplyPaperMessage
 import com.jemcom.cowalker.Network.Get.Response.GetApplyPaperResponse
+import com.jemcom.cowalker.Network.Get.Response.GetMypageOtherResponse
 import com.jemcom.cowalker.Network.Get.Response.GetQuestionListResponse
+import com.jemcom.cowalker.Network.Get.Response.GetRecommendContentResponse
 import com.jemcom.cowalker.Network.NetworkService
 import com.jemcom.cowalker.Network.Put.Response.PutCreaterDecideResponse
 import com.jemcom.cowalker.Nuri.Activity.LoginActivity
 
 import com.jemcom.cowalker.R
 import kotlinx.android.synthetic.main.activity_apply_paper.*
+import kotlinx.android.synthetic.main.fragment_otherpage.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class ApplyPaperActivity : AppCompatActivity() {
 
+    lateinit var requestManager : RequestManager
     lateinit var applyPaperListAdapter : ApplyPaperListAdapter
     lateinit var networkService: NetworkService
     var apply_idx : String = ""
@@ -42,14 +48,16 @@ class ApplyPaperActivity : AppCompatActivity() {
 
     var join : Int = 0
     var token : String = ""
-    var recommend_flag : String = ""
+    var recommend_idx : Int = 0
+
+    var user_idx_int : Int = 0
+    var user_idx : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apply_paper)
 
-
-
+        requestManager = Glide.with(this)
         val view = window.decorView
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (view != null) {
@@ -69,21 +77,25 @@ class ApplyPaperActivity : AppCompatActivity() {
         position = intent.getStringExtra("position")
         num = intent.getStringExtra("num")
         task = intent.getStringExtra("task")
-        recommend_flag = intent.getStringExtra("recommend_flag")
+        recommend_idx = intent.getIntExtra("recommend_idx",0)
+
         Log.v("TAG", "지원서액티비티 지원서 번호 = " + apply_idx)
         Log.v("TAG", "지원서액티비티 지원자 번호 = " + applicant_idx)
         Log.v("TAG", "지원서액티비티 모집 번호 = " + recruit_idx)
-        Log.v("TAG", "지원서액티비티 추천 플래그 = " + recommend_flag)
+        Log.v("TAG", "지원서액티비티 추천 번호 = " + recommend_idx)
         apply_paper_position_tv.setText(position)
         apply_paper_number_tv.setText(num)
         apply_paper_task_tv.setText(task)
         get()
 
-
-        // 일반 or 공유 지원서
-        if(recommend_flag=="2")
+        if(recommend_idx == 0)
         {
             apply_paper_recommend_layout.visibility = View.GONE
+        }
+
+        else
+        {
+            getRecommendContent()
         }
 
         apply_paper_approve_btn.setOnClickListener{
@@ -189,6 +201,39 @@ class ApplyPaperActivity : AppCompatActivity() {
         })
     }
 
+    fun getRecommendContent(){
+
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+
+        val getRecommendContentResponse = networkService.getRecommendContent(token, recommend_idx)
+        Log.v("TAG", "추천서 토큰 = " + token)
+        Log.v("TAG", "추천서 추천번호 = " + recruit_idx)
+        getRecommendContentResponse.enqueue(object : Callback<GetRecommendContentResponse> {
+
+            override fun onResponse(call: Call<GetRecommendContentResponse>, response: Response<GetRecommendContentResponse>) {
+                Log.v("TAG", "추천서 내용 통신 성공")
+                if(response.isSuccessful){
+                    Log.v("TAG", "추천서 내용 값 전달 성공")
+                    var data = response!!.body().result
+
+                    recommend_paper_explain_tv.setText(data[0].reason)
+                    user_idx = data[0].recommender_idx.toString()
+                    Log.v("TAG", "추천서 받은 유저번호 값 = " + user_idx)
+
+                    getProfile()
+
+                }
+            }
+
+            override fun onFailure(call: Call<GetRecommendContentResponse>, t: Throwable?) {
+                Toast.makeText(applicationContext,"서버 연결 실패", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+
     fun changeJoin() {
 
         val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
@@ -215,4 +260,27 @@ class ApplyPaperActivity : AppCompatActivity() {
 
 
 
+    fun getProfile()
+    {
+        val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+        var getMypageResponse = networkService.getMypageOther(token,user_idx)
+        Log.v("TAG","추천자 번호 = " + user_idx)
+        getMypageResponse.enqueue(object : Callback<GetMypageOtherResponse> {
+            override fun onFailure(call: Call<GetMypageOtherResponse>?, t: Throwable?) {
+            }
+
+            override fun onResponse(call: Call<GetMypageOtherResponse>?, response: Response<GetMypageOtherResponse>?) {
+                if(response!!.isSuccessful)
+                {
+
+                    var dataResult = response.body().data
+                    recommend_paper_name_tv.setText(dataResult[0].name)
+                    Log.v("TAG","추천자 이름 = " + dataResult[0].name)
+                    Log.v("TAG","추천자 프로필이미지 = " + dataResult[0].profile_url)
+                    requestManager.load(dataResult[0].profile_url).into(recommend_paper_recommender_img)
+                }
+            }
+        })
+    }
 }

@@ -47,6 +47,7 @@ class MypageTab : Fragment(),View.OnClickListener {
     private val REQ_CODE_SELECT_IMAGE = 100
     lateinit var data : Uri
     var status : String? = null
+
     var img = ""
     private var image : MultipartBody.Part? = null
 
@@ -163,7 +164,7 @@ class MypageTab : Fragment(),View.OnClickListener {
                     val baos = ByteArrayOutputStream()
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
                     val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
-                    val photo = File(this.data.toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
+                    val photo = File(getRealPathFromURI(context!!, this.data).toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
 
                     ///RequestBody photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray());
                     // MultipartBody.Part 실제 파일의 이름을 보내기 위해 사용!!
@@ -196,6 +197,8 @@ class MypageTab : Fragment(),View.OnClickListener {
         }
 
     }
+
+
 
     fun changeImage(){
         val intent = Intent(Intent.ACTION_PICK)

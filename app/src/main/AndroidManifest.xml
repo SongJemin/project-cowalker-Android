@@ -40,7 +40,7 @@
         <activity android:name=".Nuri.Activity.LoginActivity" />
         <activity android:name=".Jemin.Activity.Invite4Activity" />
         <activity android:name=".Jemin.Activity.Invite3Activity" />
-        <activity android:name=".Nuri.Activity.ApplyModifyActivity" />
+        <activity android:name=".Jemin.Activity.ApplyModifyActivity" />
         <activity android:name=".Hyunmin.Activity.MypageProfileEditActivity" />
         <activity android:name=".Hyunmin.Activity.ProfileEditActivity" />
         <activity android:name=".Nuri.Activity.MessageActivity" />

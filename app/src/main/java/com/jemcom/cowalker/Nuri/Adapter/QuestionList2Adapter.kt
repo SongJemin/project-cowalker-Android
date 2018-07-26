@@ -6,9 +6,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.jemcom.cowalker.Jemin.Activity.ApplyActivity
 import com.jemcom.cowalker.Nuri.Activity.ApplyModify4Activity
-import com.jemcom.cowalker.Nuri.Activity.ApplyModifyActivity
 import com.jemcom.cowalker.Nuri.Holder.QuestionList2ViewHolder
 import com.jemcom.cowalker.R
 
@@ -31,11 +29,11 @@ class QuestionList2Adapter (private var questionListItems : ArrayList<String>) :
         holder.questionTitle!!.addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(p0: Editable?) {
-                if(ApplyModify4Activity.Oactivity.questionList.size > position)
+                if(ApplyModify4Activity.Oactivity.question_list.size > position)
                 {
-                    ApplyModify4Activity.Oactivity.questionList[position] = holder.questionTitle!!.text.toString()
+                    ApplyModify4Activity.Oactivity.question_list[position] = holder.questionTitle!!.text.toString()
                 }
-                else ApplyModify4Activity.Oactivity.questionList.add(holder.questionTitle!!.text.toString())
+                else ApplyModify4Activity.Oactivity.question_list.add(holder.questionTitle!!.text.toString())
 
             }
 

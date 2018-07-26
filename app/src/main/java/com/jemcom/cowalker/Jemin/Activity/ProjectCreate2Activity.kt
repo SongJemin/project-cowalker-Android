@@ -43,6 +43,7 @@ class ProjectCreate2Activity : AppCompatActivity() {
     internal lateinit var context: Context
 
     internal var count = 0
+
     internal var uri: Uri? = null
 
     internal var titleValue: String? = null

@@ -13,30 +13,15 @@ import android.view.View
 import android.widget.Toast
 import com.jemcom.cowalker.Jemin.Activity.*
 import com.jemcom.cowalker.Network.ApplicationController
-import com.jemcom.cowalker.Network.Get.Response.GetMypageOtherResponse
 import com.jemcom.cowalker.Network.Get.Response.GetRecruitDetailResponse
 import com.jemcom.cowalker.Network.NetworkService
-import com.jemcom.cowalker.Network.Post.PostShareProject
-import com.jemcom.cowalker.Network.Post.PostShareRecruit
-import com.jemcom.cowalker.Network.Post.Response.PostShareResponse
 import com.jemcom.cowalker.Nuri.Adapter.RecruitListAdapter
 import com.jemcom.cowalker.Nuri.Item.RecruitListItem
 import com.jemcom.cowalker.R
-import com.kakao.kakaolink.v2.KakaoLinkResponse
-import com.kakao.kakaolink.v2.KakaoLinkService
-import com.kakao.message.template.ButtonObject
-import com.kakao.message.template.ContentObject
-import com.kakao.message.template.FeedTemplate
-import com.kakao.message.template.LinkObject
-import com.kakao.network.ErrorResult
-import com.kakao.network.callback.ResponseCallback
-import com.kakao.util.helper.log.Logger
-import kotlinx.android.synthetic.main.activity_project_detail.*
 import kotlinx.android.synthetic.main.activity_recruit_detail.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
 
 class RecruitDetailActivity : AppCompatActivity() {
 
@@ -61,7 +46,6 @@ class RecruitDetailActivity : AppCompatActivity() {
     var check_flag_value : String = ""
     var sharer_idx : String = ""
     var flag : Int = 0
-    var recommend_flag : String = ""
     var share_flag : String = ""
 
     override fun onNewIntent(intent: Intent) {
@@ -91,6 +75,7 @@ class RecruitDetailActivity : AppCompatActivity() {
         if (test != null) {
             val check_flag = test.getQueryParameter("check_flag")
             Log.v("TAG", "체크플래그 확인 = " + check_flag)
+
             //check_flag가 1이면 추천 기능 구현
             if(check_flag=="1")
             {
@@ -98,7 +83,9 @@ class RecruitDetailActivity : AppCompatActivity() {
                 project_idx = test.getQueryParameter("project_idx")
                 val recruit_idx = test.getQueryParameter("recruit_idx")
                 val recommend_idx = test.getQueryParameter("recommend_idx")
-                recommend_flag = "1"
+
+                // 모집 추천
+
 
                 Log.v("TAG","추천 까똑 = " + test)
                 Log.v("TAG","추천 통해 받은 테스트 값 = " + test.toString())
@@ -108,11 +95,11 @@ class RecruitDetailActivity : AppCompatActivity() {
                 Log.v("TAG", "카카오톡 진짜 추천 통해 받은 모집 넘버 = " + recruit_idx )
                 Log.v("TAG", "카카오톡 진짜 받은 추천자 넘버 = " + recommend_idx )
                 Log.v("TAG", "카카오톡 진짜 받은 추천자 체크플래그 = " + check_flag )
-                Log.v("TAG", "카카오톡 진짜 받은 추천페이지 체크플래그 = " + recommend_flag)
                 getKakao(project_idx, recruit_idx)
                 setRecruitIdx(recruit_idx)
                 setRecommendIdx(recommend_idx)
                 setCheckFlag(check_flag)
+
             }
 
             //check_flag가 2이면 공유 기능 구현
@@ -122,16 +109,6 @@ class RecruitDetailActivity : AppCompatActivity() {
                 val recruit_idx = test.getQueryParameter("recruit_idx")
                 val sharer_idx = test.getQueryParameter("sharer_idx")
 
-                if(recruit_idx=="")
-                {
-                    Log.v("TAG","프로젝트 공유로 이동")
-                    var intent = Intent(applicationContext, ProjectDetailActivity::class.java)
-                    intent.putExtra("project_idx",project_idx)
-                    startActivity(intent)
-
-                }
-                else{
-                    recommend_flag = "2"
 
                     Log.v("TAG","까똑 = " + test)
                     Log.v("TAG","테스트 값 = " + test.toString())
@@ -145,7 +122,7 @@ class RecruitDetailActivity : AppCompatActivity() {
                     setRecruitIdx(recruit_idx)
                     setSharerIdx(sharer_idx)
                     setCheckFlag(check_flag)
-                }
+
 
 
             }
@@ -156,7 +133,6 @@ class RecruitDetailActivity : AppCompatActivity() {
         else{
             Log.v("TAG","인텐트로 넘어온 화면")
 
-            recommend_flag = "2"
             val getRecruitintent = intent
             num = getRecruitintent.getStringExtra("num")
             task = getRecruitintent.getStringExtra("task")
@@ -178,7 +154,6 @@ class RecruitDetailActivity : AppCompatActivity() {
             val token = pref.getString("token","")
             if(token.length > 0) {
                 var intent = Intent(applicationContext, ApplyMemberActivity::class.java)
-                intent.putExtra("recommend_flag", recommend_flag)
                 intent.putExtra("recruit_idx", recruit_idx)
                 intent.putExtra("flag", 1)
                 intent.putExtra("num", num)

@@ -1,10 +1,12 @@
 package com.jemcom.cowalker.Jemin.Activity
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.jemcom.cowalker.Network.ApplicationController
@@ -23,6 +25,8 @@ class ApplyModify2Activity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var data : ArrayList<GetRecruitDetail>
     lateinit var networkService: NetworkService
+    var project_idx : String = ""
+    var recruit_idx : String = ""
 
     override fun onClick(v: View?) {
         when(v)
@@ -30,13 +34,16 @@ class ApplyModify2Activity : AppCompatActivity(), View.OnClickListener {
             invite2_next_btn -> {
                 var intent = Intent(applicationContext, ApplyModify3Activity::class.java)
                 intent.putExtra("position",getIntent().getStringExtra("position"))
-                intent.putExtra("number",getIntent().getStringExtra("number"))
+                intent.putExtra("number",getIntent().getIntExtra("number",0))
                 intent.putExtra("start_date",getIntent().getStringExtra("start_date"))
-                intent.putExtra("end_date,",getIntent().getStringExtra("end_date"))
-                intent.putExtra("task",invite2_task_edit.text)
-                intent.putExtra("activity",invite2_activity_edit.text)
-                intent.putExtra("area",invite2_area_edit.text)
-                intent.putExtra("reward",invite2_reward_edit.text)
+                intent.putExtra("end_date",getIntent().getStringExtra("end_date"))
+                intent.putExtra("task",invite2_task_edit.text.toString())
+                intent.putExtra("activity",invite2_activity_edit.text.toString())
+                intent.putExtra("area",invite2_area_edit.text.toString())
+                intent.putExtra("reward",invite2_reward_edit.text.toString())
+
+                intent.putExtra("project_idx", project_idx)
+                intent.putExtra("recruit_idx", recruit_idx)
                 startActivity(intent)
             }
         }
@@ -59,16 +66,17 @@ class ApplyModify2Activity : AppCompatActivity(), View.OnClickListener {
         }
         networkService = ApplicationController.instance.networkSerVice
         invite2_next_btn.setOnClickListener(this)
+        project_idx = intent.getStringExtra("project_idx")
+        recruit_idx = intent.getStringExtra("recruit_idx")
 
         get()
     }
 
     fun get()
     {
-
-        val recruit_idx = "5b3ecc11ca5c3444e4f802f1"
-        val project_idx = "5b3dd2387172d402215033d2"
-        val getRecruitDetailResponse = networkService.getRecruitDetail("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE1MzA2NzAxNTMsImV4cCI6MTUzMzI2MjE1M30.BdRb0yary7AY8_yi8MDRDXuXrW19QSqRJI-9Xin3SXs",project_idx,recruit_idx)
+        val pref = applicationContext.getSharedPreferences("auto", Activity.MODE_PRIVATE)
+        val token = pref.getString("token","")
+        val getRecruitDetailResponse = networkService.getRecruitDetail(token,project_idx,recruit_idx)
 
         getRecruitDetailResponse.enqueue(object : Callback<GetRecruitDetailResponse> {
             override fun onFailure(call: Call<GetRecruitDetailResponse>?, t: Throwable?) {
