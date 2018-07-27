@@ -12,8 +12,10 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.Toast
 
 import com.jemcom.cowalker.R
+import kotlinx.android.synthetic.main.activity_invite2.*
 
 class Invite2Activity : AppCompatActivity() {
     internal var url = "https://cdn.xl.thumbs.canstockphoto.com/computer-generated-3d-image-cooperation-stock-illustrations_csp2074347.jpg"
@@ -68,6 +70,12 @@ class Invite2Activity : AppCompatActivity() {
             activity = activityEdit.text.toString()
             area = areaEdit.text.toString()
             reward = rewardEdit.text.toString()
+
+            if( task == null || activity == null || area == null || reward == null )
+            {
+                Toast.makeText(getApplicationContext(), "공백 없이 입력해주세요", Toast.LENGTH_LONG).show();
+
+            }
 
             val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
             val editor = pref.edit()

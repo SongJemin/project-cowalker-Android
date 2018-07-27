@@ -48,14 +48,20 @@ class ApplyModifyActivity : AppCompatActivity(),View.OnClickListener {
             
             invite1_next_btn -> {
 
+                if(number.toString() == "" || position == null || start_date == null || end_date == null )
+                {
+                    Toast.makeText(getApplicationContext(), "공백 없이 입력해주세요", Toast.LENGTH_LONG).show();
+
+                }
+
                 var intent = Intent(applicationContext, ApplyModify2Activity::class.java)
                 number = Integer.parseInt(invite_personnel_edit.text.toString())
                 intent.putExtra("position", position)
                 Log.v("TAG","모집 수정 position = "+ position)
-                intent.putExtra("start_date", startDateIntent)
-                Log.v("TAG","모집 수정 start_date = "+ startDateIntent)
-                intent.putExtra("end_date", endDateIntent)
-                Log.v("TAG","모집 수정 end_date = "+ endDateIntent)
+                intent.putExtra("start_date", startResult)
+                Log.v("TAG","모집 수정 start_date = "+ startResult)
+                intent.putExtra("end_date", endResult)
+                Log.v("TAG","모집 수정 end_date = "+ endResult)
                 intent.putExtra("number", number)
                 Log.v("TAG","모집 수정 number = "+ number)
                 intent.putExtra("project_idx", project_idx)
@@ -281,9 +287,10 @@ class ApplyModifyActivity : AppCompatActivity(),View.OnClickListener {
                 this@ApplyModifyActivity.end_date = finishYear.toString() + "-" + finishZeroMonth + "-" + finishZeroDay
                 Log.v("TAG" , "ㅁㅈ수정start_date = "+this@ApplyModifyActivity.start_date)
                 Log.v("TAG" , "ㅁㅈ수정start_date = "+this@ApplyModifyActivity.end_date)
-                invite_range_btn.text = this@ApplyModifyActivity.start_date + " ~ " + this@ApplyModifyActivity.end_date
-                startDateIntent = this@ApplyModifyActivity.start_date
-                endDateIntent = this@ApplyModifyActivity.end_date
+                startResult = this@ApplyModifyActivity.start_date
+                endResult = this@ApplyModifyActivity.end_date
+                invite_range_btn.text = startResult + " ~ " + endResult
+
             }
             pd.show(fragmentManager, "YearMonthPickerTest")
         }
@@ -313,6 +320,7 @@ class ApplyModifyActivity : AppCompatActivity(),View.OnClickListener {
                     startResult = data[0].start_date.split(",").toString().replace("T00:00:00.000Z]", "").replace("[","")
                     endResult = data[0].end_date.split(",").toString().replace("T00:00:00.000Z]", "").replace("[","")
                     date = startResult + " ~ " + endResult
+                    position = data[0].position
                     if(data[0].position.equals("PM")) invite_pm_btn.isSelected = true
                     else if(data[0].position.equals("기획자")) invite_planner_btn.isSelected = true
                     else if(data[0].position.equals("디자이너")) invite_designer_btn.isSelected = true

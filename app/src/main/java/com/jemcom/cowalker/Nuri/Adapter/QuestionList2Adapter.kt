@@ -25,6 +25,7 @@ class QuestionList2Adapter (private var questionListItems : ArrayList<String>) :
 
     //데이터클래스와 뷰홀더를 이어준다.
     override fun onBindViewHolder(holder: QuestionList2ViewHolder, position: Int) {
+        holder.questionNum.setText((position+1).toString())
         holder.questionTitle!!.setText(questionListItems[position])
         holder.questionTitle!!.addTextChangedListener(object : TextWatcher {
 

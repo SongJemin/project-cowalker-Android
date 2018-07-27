@@ -7,11 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
+import android.widget.*
 
 import com.jemcom.cowalker.R
 
@@ -43,6 +39,13 @@ class ProjectChangeActivity : AppCompatActivity() {
         nextBtn.setOnClickListener {
             projectTitle = titleEdit.text.toString()
             projectSummary = summaryEdit.text.toString()
+
+            if (projectTitle.isEmpty()) {
+                Toast.makeText(this@ProjectChangeActivity, "제목을 입력해주세요", Toast.LENGTH_SHORT).show()
+            }
+            if (projectSummary.isEmpty()) {
+                Toast.makeText(this@ProjectChangeActivity, "한줄 소개말을 입력해주세요", Toast.LENGTH_SHORT).show()
+            }
 
             Log.v("TAG", "title = " + projectTitle + ", summary = " + projectSummary + ", aim = "
                     + projectAim + ", department = " + projectDepartment + ", Area = " + projectArea)

@@ -354,7 +354,9 @@ class RecruitDetailActivity : AppCompatActivity() {
                     recruit_detail_ability_tv.setText(data[0].ability)
                     recruit_detail_career_tv.setText(data[0].career)
                     recruit_detail_preference_tv.setText(data[0].preference)
-
+                    Log.v("TAG","수정 에러 확인 = "+data[0].position)
+                    Log.v("TAG","수정 에러 확인 = "+data[0].start_date)
+                    Log.v("TAG","수정 에러 확인 = "+data[0].end_date)
 
                     replaceStartdate  = data[0].start_date.replace("T00:00:00.000Z", "")
                     recruit_detail_startdate_tv.setText(replaceStartdate)

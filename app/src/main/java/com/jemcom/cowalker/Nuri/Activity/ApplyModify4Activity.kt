@@ -117,7 +117,6 @@ class ApplyModify4Activity : AppCompatActivity() {
         Log.v("TAG","모집 수정 최종 ability = " + intent.getStringExtra("ability"))
         Log.v("TAG","모집 수정 최종 career = " + intent.getStringExtra("career"))
         Log.v("TAG","모집 수정 최종 preference = " + intent.getStringExtra("preference"))
-        Log.v("TAG","모집 수정 최종 questionList[0] = " + question_list[0])
 
         val pref = getSharedPreferences("auto", Activity.MODE_PRIVATE)
         token = pref.getString("token","")
@@ -166,7 +165,7 @@ class ApplyModify4Activity : AppCompatActivity() {
                     return_question_list.clear()
                     var data = response!!.body().result
                     for(i in 0..data.size-1) {
-                        count2 = (i+1).toString()+". "+data[i]
+                        count2 = data[i]
                         question_list.add(data[i])
                         return_question_list.add(count2)
                         Log.v("TAG","질문 1 = " + count)
@@ -198,7 +197,6 @@ class ApplyModify4Activity : AppCompatActivity() {
         val linear = LinearLayout(this)
         val text = TextView(this)
 
-        val btn = Button(this)
 
         lp.setMargins(0, 0, 0, 20)
         linear.layoutParams = lp
@@ -237,7 +235,6 @@ class ApplyModify4Activity : AppCompatActivity() {
         linear.addView(text)
         linear.addView(editText[editNumber])
         editNumber += 1
-        linear.addView(btn)
 
         dynamicLayout!!.addView(linear)
     }

@@ -32,6 +32,13 @@ class ApplyModify2Activity : AppCompatActivity(), View.OnClickListener {
         when(v)
         {
             invite2_next_btn -> {
+
+                if(invite2_task_edit.text.toString() == null || invite2_activity_edit.text.toString() == null || invite2_area_edit.text.toString() == null || invite2_reward_edit.text.toString() == null )
+                {
+                    Toast.makeText(getApplicationContext(), "공백 없이 입력해주세요", Toast.LENGTH_LONG).show();
+
+                }
+
                 var intent = Intent(applicationContext, ApplyModify3Activity::class.java)
                 intent.putExtra("position",getIntent().getStringExtra("position"))
                 intent.putExtra("number",getIntent().getIntExtra("number",0))

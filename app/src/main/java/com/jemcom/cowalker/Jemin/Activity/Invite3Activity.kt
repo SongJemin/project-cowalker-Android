@@ -9,8 +9,10 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 import com.jemcom.cowalker.R
+import kotlinx.android.synthetic.main.activity_invite3.*
 
 class Invite3Activity : AppCompatActivity() {
 
@@ -58,6 +60,12 @@ class Invite3Activity : AppCompatActivity() {
             career = careerEdit.text.toString()
             preference = preferenceEdit.text.toString()
             comment = commentEdit.text.toString()
+
+            if(ability == null || career == null || preference == null )
+            {
+                Toast.makeText(getApplicationContext(), "공백 없이 입력해주세요", Toast.LENGTH_LONG).show();
+
+            }
 
             val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
             val editor = pref.edit()
