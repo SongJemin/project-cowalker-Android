@@ -32,29 +32,32 @@ class ApplyModify3Activity : AppCompatActivity(), View.OnClickListener {
         {
             invite3_next_btn -> {
 
-                if(invite3_ability_edit.text.toString() == null || invite3_career_edit.text.toString() == null || invite3_preference_edit.text.toString() == null )
+                if(invite3_ability_edit.text.toString() == "" || invite3_career_edit.text.toString() == "" || invite3_preference_edit.text.toString() == "" )
                 {
                     Toast.makeText(getApplicationContext(), "공백 없이 입력해주세요", Toast.LENGTH_LONG).show();
 
                 }
 
-                var intent = Intent(applicationContext,ApplyModify4Activity::class.java)
-                intent.putExtra("position",getIntent().getStringExtra("position"))
-                intent.putExtra("number",getIntent().getIntExtra("number",0))
-                intent.putExtra("start_date",getIntent().getStringExtra("start_date"))
-                intent.putExtra("end_date",getIntent().getStringExtra("end_date"))
-                intent.putExtra("task",getIntent().getStringExtra("task"))
-                intent.putExtra("activity",getIntent().getStringExtra("activity"))
-                intent.putExtra("area",getIntent().getStringExtra("area"))
-                intent.putExtra("reward",getIntent().getStringExtra("reward"))
-                intent.putExtra("ability",invite3_ability_edit.text.toString())
-                intent.putExtra("career",invite3_career_edit.text.toString())
-                intent.putExtra("preference",invite3_preference_edit.text.toString())
-                intent.putExtra("comment",invite3_comment_edit.text.toString())
+                else{
+                    var intent = Intent(applicationContext,ApplyModify4Activity::class.java)
+                    intent.putExtra("position",getIntent().getStringExtra("position"))
+                    intent.putExtra("number",getIntent().getIntExtra("number",0))
+                    intent.putExtra("start_date",getIntent().getStringExtra("start_date"))
+                    intent.putExtra("end_date",getIntent().getStringExtra("end_date"))
+                    intent.putExtra("task",getIntent().getStringExtra("task"))
+                    intent.putExtra("activity",getIntent().getStringExtra("activity"))
+                    intent.putExtra("area",getIntent().getStringExtra("area"))
+                    intent.putExtra("reward",getIntent().getStringExtra("reward"))
+                    intent.putExtra("ability",invite3_ability_edit.text.toString())
+                    intent.putExtra("career",invite3_career_edit.text.toString())
+                    intent.putExtra("preference",invite3_preference_edit.text.toString())
+                    intent.putExtra("comment",invite3_comment_edit.text.toString())
 
-                intent.putExtra("project_idx", project_idx)
-                intent.putExtra("recruit_idx", recruit_idx)
-                startActivity(intent)
+                    intent.putExtra("project_idx", project_idx)
+                    intent.putExtra("recruit_idx", recruit_idx)
+                    startActivity(intent)
+                }
+
             }
         }
     }

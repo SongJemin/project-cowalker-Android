@@ -33,25 +33,28 @@ class ApplyModify2Activity : AppCompatActivity(), View.OnClickListener {
         {
             invite2_next_btn -> {
 
-                if(invite2_task_edit.text.toString() == null || invite2_activity_edit.text.toString() == null || invite2_area_edit.text.toString() == null || invite2_reward_edit.text.toString() == null )
+                if(invite2_task_edit.text.toString() == "" || invite2_activity_edit.text.toString() == "" || invite2_area_edit.text.toString() == "" || invite2_reward_edit.text.toString() == "" )
                 {
                     Toast.makeText(getApplicationContext(), "공백 없이 입력해주세요", Toast.LENGTH_LONG).show();
 
                 }
 
-                var intent = Intent(applicationContext, ApplyModify3Activity::class.java)
-                intent.putExtra("position",getIntent().getStringExtra("position"))
-                intent.putExtra("number",getIntent().getIntExtra("number",0))
-                intent.putExtra("start_date",getIntent().getStringExtra("start_date"))
-                intent.putExtra("end_date",getIntent().getStringExtra("end_date"))
-                intent.putExtra("task",invite2_task_edit.text.toString())
-                intent.putExtra("activity",invite2_activity_edit.text.toString())
-                intent.putExtra("area",invite2_area_edit.text.toString())
-                intent.putExtra("reward",invite2_reward_edit.text.toString())
+                else{
+                    var intent = Intent(applicationContext, ApplyModify3Activity::class.java)
+                    intent.putExtra("position",getIntent().getStringExtra("position"))
+                    intent.putExtra("number",getIntent().getIntExtra("number",0))
+                    intent.putExtra("start_date",getIntent().getStringExtra("start_date"))
+                    intent.putExtra("end_date",getIntent().getStringExtra("end_date"))
+                    intent.putExtra("task",invite2_task_edit.text.toString())
+                    intent.putExtra("activity",invite2_activity_edit.text.toString())
+                    intent.putExtra("area",invite2_area_edit.text.toString())
+                    intent.putExtra("reward",invite2_reward_edit.text.toString())
 
-                intent.putExtra("project_idx", project_idx)
-                intent.putExtra("recruit_idx", recruit_idx)
-                startActivity(intent)
+                    intent.putExtra("project_idx", project_idx)
+                    intent.putExtra("recruit_idx", recruit_idx)
+                    startActivity(intent)
+                }
+
             }
         }
     }

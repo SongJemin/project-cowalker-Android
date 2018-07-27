@@ -61,23 +61,27 @@ class Invite3Activity : AppCompatActivity() {
             preference = preferenceEdit.text.toString()
             comment = commentEdit.text.toString()
 
-            if(ability == null || career == null || preference == null )
+            if(ability == "" || career == "" || preference == "" )
             {
                 Toast.makeText(getApplicationContext(), "공백 없이 입력해주세요", Toast.LENGTH_LONG).show();
 
             }
 
-            val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
-            val editor = pref.edit()
-            editor.putString("ability", ability)
-            editor.putString("career", career)
-            editor.putString("preference", preference)
-            editor.putString("comment", comment)
-            editor.commit()
-            val intent = Intent(this@Invite3Activity, Invite4Activity::class.java)
-            Log.v("TAG", "초대3화면 플젝넘버 = $project_idx")
-            intent.putExtra("project_idx", project_idx)
-            startActivity(intent)
+            else{
+                val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
+                val editor = pref.edit()
+                editor.putString("ability", ability)
+                editor.putString("career", career)
+                editor.putString("preference", preference)
+                editor.putString("comment", comment)
+                editor.commit()
+                val intent = Intent(this@Invite3Activity, Invite4Activity::class.java)
+                Log.v("TAG", "초대3화면 플젝넘버 = $project_idx")
+                intent.putExtra("project_idx", project_idx)
+                startActivity(intent)
+            }
+
+
         }
     }
 }

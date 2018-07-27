@@ -71,24 +71,29 @@ class Invite2Activity : AppCompatActivity() {
             area = areaEdit.text.toString()
             reward = rewardEdit.text.toString()
 
-            if( task == null || activity == null || area == null || reward == null )
+            if( task == "" || activity == "" || area == "" || reward == "" )
             {
                 Toast.makeText(getApplicationContext(), "공백 없이 입력해주세요", Toast.LENGTH_LONG).show();
 
             }
 
-            val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
-            val editor = pref.edit()
-            editor.putString("task", task)
-            editor.putString("activity", activity)
-            editor.putString("area", area)
-            editor.putString("reward", reward)
-            editor.commit()
+            else
+            {
+                val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
+                val editor = pref.edit()
+                editor.putString("task", task)
+                editor.putString("activity", activity)
+                editor.putString("area", area)
+                editor.putString("reward", reward)
+                editor.commit()
 
-            val intent = Intent(this@Invite2Activity, Invite3Activity::class.java)
-            Log.v("TAG", "초대2화면 플젝넘버 = $project_idx")
-            intent.putExtra("project_idx", project_idx)
-            startActivity(intent)
+                val intent = Intent(this@Invite2Activity, Invite3Activity::class.java)
+                Log.v("TAG", "초대2화면 플젝넘버 = $project_idx")
+                intent.putExtra("project_idx", project_idx)
+                startActivity(intent)
+            }
+
+
         }
 
 

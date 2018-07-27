@@ -33,7 +33,7 @@ class InviteActivity : AppCompatActivity() {
 
     lateinit var start_date: String
     lateinit var end_date: String
-    lateinit var position: String
+    var position: String = ""
     internal var number: Int = 0
     lateinit var project_idx: String
 
@@ -78,22 +78,31 @@ class InviteActivity : AppCompatActivity() {
 
             }
             else {
-                numberValue = Integer.parseInt(numberEdit.text.toString())
+                try{
+                    numberValue = Integer.parseInt(numberEdit.text.toString())
 
-                val intent = Intent(this@InviteActivity, Invite2Activity::class.java)
-                Log.v("TAG", "초대1화면 플젝넘버 = $project_idx")
-                intent.putExtra("project_idx", project_idx)
+                    val intent = Intent(this@InviteActivity, Invite2Activity::class.java)
+                    Log.v("TAG", "초대1화면 플젝넘버 = $project_idx")
+                    intent.putExtra("project_idx", project_idx)
 
-                val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
-                val editor = pref.edit()
-                editor.putString("position", position)
-                editor.putString("start_date", start_date)
-                editor.putString("end_date", end_date)
-                editor.putInt("number", numberValue)
-                editor.commit()
-                Log.v("TAG", "역할 = " + position + "시작 = " + start_date + "마지막 = " + end_date + "명 = " + number)
+                    val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
+                    val editor = pref.edit()
+                    editor.putString("position", position)
+                    editor.putString("start_date", start_date)
+                    editor.putString("end_date", end_date)
+                    editor.putInt("number", numberValue)
+                    editor.commit()
+                    Log.v("TAG", "역할 = " + position + "시작 = " + start_date + "마지막 = " + end_date + "명 = " + number)
 
-                startActivity(intent)
+                    startActivity(intent)
+                }
+                catch (e : NumberFormatException)
+                {
+                    Toast.makeText(getApplicationContext(), "숫자를 입력해주세요", Toast.LENGTH_LONG).show()
+                    e.printStackTrace()
+                }
+
+
 
             }
 

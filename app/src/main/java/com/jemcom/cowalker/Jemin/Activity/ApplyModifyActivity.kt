@@ -54,19 +54,27 @@ class ApplyModifyActivity : AppCompatActivity(),View.OnClickListener {
 
                 }
 
-                var intent = Intent(applicationContext, ApplyModify2Activity::class.java)
-                number = Integer.parseInt(invite_personnel_edit.text.toString())
-                intent.putExtra("position", position)
-                Log.v("TAG","모집 수정 position = "+ position)
-                intent.putExtra("start_date", startResult)
-                Log.v("TAG","모집 수정 start_date = "+ startResult)
-                intent.putExtra("end_date", endResult)
-                Log.v("TAG","모집 수정 end_date = "+ endResult)
-                intent.putExtra("number", number)
-                Log.v("TAG","모집 수정 number = "+ number)
-                intent.putExtra("project_idx", project_idx)
-                intent.putExtra("recruit_idx", recruit_idx)
-                startActivity(intent)
+                try{
+                    var intent = Intent(applicationContext, ApplyModify2Activity::class.java)
+                    number = Integer.parseInt(invite_personnel_edit.text.toString())
+                    intent.putExtra("position", position)
+                    Log.v("TAG","모집 수정 position = "+ position)
+                    intent.putExtra("start_date", startResult)
+                    Log.v("TAG","모집 수정 start_date = "+ startResult)
+                    intent.putExtra("end_date", endResult)
+                    Log.v("TAG","모집 수정 end_date = "+ endResult)
+                    intent.putExtra("number", number)
+                    Log.v("TAG","모집 수정 number = "+ number)
+                    intent.putExtra("project_idx", project_idx)
+                    intent.putExtra("recruit_idx", recruit_idx)
+                    startActivity(intent)
+                }
+                catch(e : NumberFormatException){
+                    Toast.makeText(getApplicationContext(), "숫자를 입력해주세요", Toast.LENGTH_LONG).show()
+                    e.printStackTrace()
+                }
+
+
             }
         }
     }
@@ -325,7 +333,7 @@ class ApplyModifyActivity : AppCompatActivity(),View.OnClickListener {
                     else if(data[0].position.equals("기획자")) invite_planner_btn.isSelected = true
                     else if(data[0].position.equals("디자이너")) invite_designer_btn.isSelected = true
                     else if(data[0].position.equals("개발자")) invite_developer_btn.isSelected = true
-                    else invite_role_tv.isSelected = true
+                    else invite_etc_btn.isSelected = true
                     invite_personnel_edit.setText(data[0].number)
                     invite_range_btn.text = date
                 }
