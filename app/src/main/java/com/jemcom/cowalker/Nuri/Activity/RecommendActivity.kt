@@ -36,6 +36,8 @@ class RecommendActivity : AppCompatActivity(),View.OnClickListener {
     var project_idx : String =""
     var recruit_idx : String =""
     var recommend_idx : String = ""
+    var title : String = ""
+    var imgUrl : String = ""
 
     companion object {
         lateinit var activity: RecommendActivity
@@ -60,6 +62,8 @@ class RecommendActivity : AppCompatActivity(),View.OnClickListener {
         val view = window.decorView
         project_idx = intent.getStringExtra("project_idx")
         recruit_idx = intent.getStringExtra("recruit_idx")
+        title = intent.getStringExtra("title")
+        imgUrl = intent.getStringExtra("imgUrl")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (view != null) {
                 // 23 버전 이상일 때 상태바 하얀 색상에 회색 아이콘 색상을 설정
@@ -128,6 +132,8 @@ class RecommendActivity : AppCompatActivity(),View.OnClickListener {
                     intent.putExtra("project_idx",project_idx)
                     intent.putExtra("recruit_idx",recruit_idx)
                     intent.putExtra("recommend_idx",recommend_idx)
+                    intent.putExtra("title",title)
+                    intent.putExtra("imgUrl",imgUrl)
                     startActivity(intent)
                 }
                 else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()

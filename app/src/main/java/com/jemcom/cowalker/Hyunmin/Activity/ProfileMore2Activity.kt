@@ -33,6 +33,7 @@ class ProfileMore2Activity : AppCompatActivity(),View.OnClickListener {
             profile_edit_btn -> {
                 var intent = Intent(applicationContext,MyInfoEditActivity::class.java)
                 startActivity(intent)
+                finish()
             }
         }
     }

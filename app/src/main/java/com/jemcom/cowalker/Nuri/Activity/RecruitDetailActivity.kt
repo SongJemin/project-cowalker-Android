@@ -199,6 +199,8 @@ class RecruitDetailActivity : AppCompatActivity() {
             val intent = Intent(this@RecruitDetailActivity, RecommendActivity::class.java)
             intent.putExtra("project_idx", project_idx)
             intent.putExtra("recruit_idx", recruit_idx)
+            intent.putExtra("title",title)
+            intent.putExtra("imgUrl",imgUrl)
             startActivity(intent)
         }
 
@@ -354,6 +356,7 @@ class RecruitDetailActivity : AppCompatActivity() {
                     recruit_detail_ability_tv.setText(data[0].ability)
                     recruit_detail_career_tv.setText(data[0].career)
                     recruit_detail_preference_tv.setText(data[0].preference)
+                    recruit_detail_comment_tv.setText(data[0].comment)
                     Log.v("TAG","수정 에러 확인 = "+data[0].position)
                     Log.v("TAG","수정 에러 확인 = "+data[0].start_date)
                     Log.v("TAG","수정 에러 확인 = "+data[0].end_date)

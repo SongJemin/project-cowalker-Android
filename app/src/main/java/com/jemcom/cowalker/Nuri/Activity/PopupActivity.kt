@@ -21,6 +21,8 @@ class PopupActivity : AppCompatActivity() {
     var recruit_idx : String = ""
     var recommend_idx : String = ""
     var check_flag : String = ""
+    var imgUrl: String = ""
+    var title: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +32,8 @@ class PopupActivity : AppCompatActivity() {
                 recruit_idx = intent.getStringExtra("recruit_idx")
                 recommend_idx = intent.getStringExtra("recommend_idx")
                 check_flag = "1"
-
+        imgUrl = intent.getStringExtra("imgUrl")
+        title = intent.getStringExtra("title")
 
         pop_kakao_btn.setOnClickListener {
             sendLink(project_idx, recruit_idx, recommend_idx, check_flag)
@@ -40,12 +43,12 @@ class PopupActivity : AppCompatActivity() {
     private fun sendLink(project_idx : String, recruit_idx : String, recommend_idx : String, check_flag : String) {
         Log.v("TAG","모집 상세 프로젝트 숫자 ="+project_idx + "모집 번호 숫자 = " + recruit_idx + "추천인 숫자 = " + recommend_idx)
         val params = FeedTemplate
-                .newBuilder(ContentObject.newBuilder("추천합니다",
-                        "Asdf",
+                .newBuilder(ContentObject.newBuilder(title,
+                        imgUrl,
                         LinkObject.newBuilder().setWebUrl("")
                                 .setMobileWebUrl("").build())
-                        .setDescrption("우리의 팀이 되어주세요!" +
-                                "공유를 해주시면 씨앗을 드립니다")
+                        .setDescrption("당신은 해당 모집에 추천되셨습니다. " +
+                                "함께 해주세요!")
                         .build())
 
                 .addButton(ButtonObject("코워커 앱으로 열기", LinkObject.newBuilder()

@@ -1,6 +1,7 @@
 package com.jemcom.cowalker.Jemin.Activity
 
 import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -202,7 +203,16 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
                         startActivity(intent)
 
                     } else if (items[id] === "프로젝트 삭제") {
-                        deleteBoard()
+
+                        AlertDialog.Builder(this)
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .setMessage("해당 프로젝트를 삭제하시겠습니까?")
+                                .setPositiveButton("삭제", DialogInterface.OnClickListener { dialog, which ->
+                                    deleteBoard()
+                                })
+                                .setNegativeButton("취소", null)
+                                .show()
+
                     }// 프로젝트 삭제
                     dialog.dismiss()
                 }

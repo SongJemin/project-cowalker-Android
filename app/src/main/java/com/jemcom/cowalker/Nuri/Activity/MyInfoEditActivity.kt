@@ -107,6 +107,7 @@ class MyInfoEditActivity : AppCompatActivity() {
                 {
                     var intent = Intent(applicationContext,ProfileMore2Activity::class.java)
                     startActivity(intent)
+                    finish()
                 }
                 else Toast.makeText(applicationContext,"실패",Toast.LENGTH_SHORT).show()
             }

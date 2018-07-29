@@ -74,7 +74,7 @@ class ProjectCreateActivity : AppCompatActivity() {
             window.statusBarColor = Color.BLACK
         }
 
-        val purpose_list = arrayOf("창업", "공모전 참여", "스터디", "사이드 프로젝트", "창업", "기타")
+        val purpose_list = arrayOf("창업", "공모전 참여", "스터디", "사이드 프로젝트", "창작", "기타")
         val field_list = arrayOf("블록체인", "IoT", "인공지능", "디자인", "콘텐츠", "기타")
         val location_list = arrayOf("서울", "경기도", "인천", "강원도", "충청도", "전라도", "경상도", "제주도")
 
@@ -121,7 +121,7 @@ class ProjectCreateActivity : AppCompatActivity() {
                 } else if (position == 3) {
                     projectAim = "사이드 프로젝트"
                 } else if (position == 4) {
-                    projectAim = "창업"
+                    projectAim = "창작"
                 } else if (position == 5) {
                     projectAim = "기타"
                 }

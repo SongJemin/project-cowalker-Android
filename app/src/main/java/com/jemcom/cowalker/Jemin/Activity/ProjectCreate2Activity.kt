@@ -213,6 +213,9 @@ class ProjectCreate2Activity : AppCompatActivity() {
                     var intent = Intent(applicationContext, MainActivity::class.java)
                     startActivity(intent)
                 }
+                else{
+                    Toast.makeText(applicationContext,"프로젝트 이미지를 선택해주세요",Toast.LENGTH_SHORT).show()
+                }
             }
 
             override fun onFailure(call: Call<PostProjectResponse>, t: Throwable?) {
