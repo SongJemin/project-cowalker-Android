@@ -3,6 +3,7 @@ package com.jemcom.cowalker.Nuri.Activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.jemcom.cowalker.R
 import com.kakao.kakaolink.v2.KakaoLinkResponse
 import com.kakao.kakaolink.v2.KakaoLinkService
@@ -37,6 +38,22 @@ class PopupActivity : AppCompatActivity() {
 
         pop_kakao_btn.setOnClickListener {
             sendLink(project_idx, recruit_idx, recommend_idx, check_flag)
+        }
+
+        pop_link_btn.setOnClickListener {
+            Toast.makeText(applicationContext,"준비 중입니다",Toast.LENGTH_SHORT).show()
+        }
+
+        pop_message_btn.setOnClickListener {
+            Toast.makeText(applicationContext,"준비 중입니다",Toast.LENGTH_SHORT).show()
+        }
+
+        pop_mail_btn.setOnClickListener {
+            Toast.makeText(applicationContext,"준비 중입니다",Toast.LENGTH_SHORT).show()
+        }
+
+        pop_more_btn.setOnClickListener {
+            Toast.makeText(applicationContext,"준비 중입니다", Toast.LENGTH_SHORT).show()
         }
     }
 

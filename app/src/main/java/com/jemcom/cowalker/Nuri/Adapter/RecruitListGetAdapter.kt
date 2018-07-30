@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.jemcom.cowalker.Jemin.Activity.ApplyActivity
 import com.jemcom.cowalker.Nuri.Holder.RecruitListGetViewHolder
 import com.jemcom.cowalker.Nuri.Holder.RecruitListViewHolder
 import com.jemcom.cowalker.Nuri.Item.RecruitListItem
@@ -12,6 +13,7 @@ import com.jemcom.cowalker.R
 class RecruitListGetAdapter (private var recruitlistItems : ArrayList<RecruitListItem>) : RecyclerView.Adapter<RecruitListGetViewHolder>() {
 
     private lateinit var onItemClick : View.OnClickListener
+    var selectedPosition : Int = 0
 
     fun setOnItemClickListener(I : View.OnClickListener)
     {
@@ -34,5 +36,9 @@ class RecruitListGetAdapter (private var recruitlistItems : ArrayList<RecruitLis
         holder.number.text = recruitlistItems[position].number.toString()
         holder.task.text = recruitlistItems[position].task
         holder.dday.text = "D"+recruitlistItems[position].dday
+
+
+
+
     }
 }

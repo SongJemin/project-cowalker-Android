@@ -370,7 +370,6 @@ class RecruitDetailActivity : AppCompatActivity() {
                     //recruit_detail_comment_tv.setText(data[0].comment)
                     if(btnResult.equals("개설자")){
                         btnResult = "모집 관리"
-
                     }
                     else{
                         recruit_detail_applymember_linear.setVisibility(View.GONE)

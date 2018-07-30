@@ -58,7 +58,7 @@ class ApplyActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
 
         var idx = apply_list_recyclerview!!.getChildAdapterPosition(v)
-        3//apply_list_recyclerview!!.getChildViewHolder(v).itemView.setBackgroundColor(Color.parseColor("#000000"))
+        //apply_list_recyclerview!!.getChildViewHolder(v).itemView.setBackgroundColor(Color.parseColor("#000000"))
         recruit_idx = recruitData!![idx].recruit_idx!!
         position = recruitData!![idx].position!!
         Log.v("TAG", "지원서에서 클릭 모집번호 = "+ recruit_idx)

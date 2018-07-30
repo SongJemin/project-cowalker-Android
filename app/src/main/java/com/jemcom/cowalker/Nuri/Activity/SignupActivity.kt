@@ -24,7 +24,7 @@ import java.util.regex.Pattern
 class SignupActivity : AppCompatActivity(),View.OnClickListener {
 
     lateinit var networkService: NetworkService
-    lateinit var email : String
+    var email : String = ""
     lateinit var password : String
     lateinit var passwordck : String
     lateinit var name : String
@@ -58,7 +58,7 @@ class SignupActivity : AppCompatActivity(),View.OnClickListener {
                 }
                 else
                 {
-                    Toast.makeText(applicationContext,"정보를 모두 입력해주세요.",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext,"정보를 모두 입력하거나 이메일 중복확인 해주세요.",Toast.LENGTH_SHORT).show()
                     signup_ok_btn.isSelected = false
                 }
             }

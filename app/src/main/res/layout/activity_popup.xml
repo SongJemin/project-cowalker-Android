@@ -59,6 +59,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/pop_link_btn"
                 android:layout_marginLeft="80dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,6 +79,7 @@
                     android:text="링크"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/pop_mail_btn"
                 android:layout_marginLeft="83dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,6 +108,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <LinearLayout
+                android:id="@+id/pop_message_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -125,6 +128,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/pop_more_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="85dp"

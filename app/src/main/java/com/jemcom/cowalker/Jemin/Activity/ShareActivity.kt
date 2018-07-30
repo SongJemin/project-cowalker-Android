@@ -105,6 +105,22 @@ class ShareActivity : AppCompatActivity() {
         share_facebook_btn.setOnClickListener {
             shareFacebook()
         }
+
+        share_mail_btn.setOnClickListener {
+            Toast.makeText(applicationContext,"준비 중입니다",Toast.LENGTH_SHORT).show()
+        }
+
+        share_link_btn.setOnClickListener{
+            Toast.makeText(applicationContext,"준비 중입니다",Toast.LENGTH_SHORT).show()
+        }
+
+        share_message_btn.setOnClickListener {
+            Toast.makeText(applicationContext,"준비 중입니다",Toast.LENGTH_SHORT).show()
+        }
+
+        share_more_btn.setOnClickListener {
+            Toast.makeText(applicationContext,"준비 중입니다",Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun sendLink(project_idx:String, recruit_idx :String, sharere_idx : String, check_flag : String) {

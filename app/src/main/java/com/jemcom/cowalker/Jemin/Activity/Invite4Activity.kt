@@ -205,8 +205,8 @@ class Invite4Activity : AppCompatActivity() {
                 Log.v("TAG", "모집하기통신 성공")
                 if(response.isSuccessful){
                     Log.v("TAG", "모집하기값 전달 성공")
-                    var intent = Intent(applicationContext,  LoginActivity::class.java)
-                 //   intent.putExtra("project_idx",project_idx)
+                    var intent = Intent(applicationContext,  ProjectDetailActivity::class.java)
+                    intent.putExtra("project_idx", project_idx)
 
                     startActivity(intent)
                 }

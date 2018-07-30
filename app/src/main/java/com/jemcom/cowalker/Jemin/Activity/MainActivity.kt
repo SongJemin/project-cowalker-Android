@@ -54,10 +54,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         var intervalTime = tempTime-backPressedTime
 
         if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
-            super.onBackPressed()
+            moveTaskToBack(true)
+            finish()
+            android.os.Process.killProcess(android.os.Process.myPid())
         } else {
             backPressedTime = tempTime
-            Toast.makeText(applicationContext, "한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "한번 더 누르면 어플이 종료됩니다.", Toast.LENGTH_SHORT).show()
         }
     }
 
